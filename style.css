@@ -14,6 +14,9 @@
         --secondary: rgb(61, 102, 79);
         --accent: rgb(130, 171, 157);
     }
+    .menu_item:hover{
+        color: white;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +26,9 @@
         --primary: rgb(65, 195, 100);
         --secondary: rgb(61, 102, 79);
         --accent: rgb(130, 171, 157);
+    }
+    .menu_item:hover{
+        color: black;
     }
 }
 header{
