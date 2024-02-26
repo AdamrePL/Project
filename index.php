@@ -12,18 +12,23 @@
 </head>
 <body>
     
-    <header></header>
-    <div id="main"></div>
-    <?php
-        //TODO @AdamrePL: implement :3
+    <header>    
 
-    ?>
+    <!-- logo, search, light/dark button, user menu-->
+
+    </header>
+    <div id="main"></div>
+        <?php
+            //TODO @AdamrePL: implement :3
+
+        ?>
     <nav id="menu">
         <p>Main</p>
         <p>offer_browse</p>
         <p>offer_create</p>
         <p>my_offer</p>
     </nav>
+
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
 
     <noscript>
