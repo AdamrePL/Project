@@ -23,8 +23,8 @@
             </form>
         </search>    
     </header>
-        
-        <menu>
+       
+        <menu aria-expanded="true"> 
             <p>Main</p>
             <p>offer_browse</p>
             <p>offer_create</p>

@@ -14,7 +14,7 @@
         --secondary: rgb(61, 102, 79);
         --accent: rgb(130, 171, 157);
     }
-    menu > p:hover{
+    menu:active > p:hover{
         color: white;
     }
 }
@@ -27,7 +27,7 @@
         --secondary: rgb(61, 102, 79);
         --accent: rgb(130, 171, 157);
     }
-    menu > p:hover{
+    menu:active > p:hover{
         color: black;
     }
 }
@@ -55,4 +55,18 @@ img {
 
 footer{
     background-color: var(--accent);
+}
+
+menu {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+menu > p {
+    height: 10rem;
+    aspect-ratio: 1/1;
+    background: white;
+    flex-grow: 0;
+    color: black;
+    word-break:break-all;
 }
