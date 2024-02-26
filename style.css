@@ -12,6 +12,7 @@
 
 input {
     outline-offset: 3px;
+    outline-color: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -73,7 +74,8 @@ header > search > form > input {
     padding: 0.7rem;
     width: 50%;
     border-radius: 10px;
-    border: 1px solid black;
+    border: none;
+    border-bottom: 1px solid black;
 }
 
 header > search > form > input::placeholder {
