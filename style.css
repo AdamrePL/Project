@@ -36,16 +36,38 @@ body {
     color: var(--text);
     font-size: 1.5em;
     background: var(--background);
+    inset: 0;
+    position: absolute;
 }
 
 header {
+    padding-top: 2rem;
     text-align: center;
     height: 100svh;
+    background: var(--primary);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 header > h1 {
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 4.5rem;
+}
+
+header > p {
+    text-wrap: balance;
+    line-height: 1.5;
+    font-size: 1.75rem;
+}
+
+header > search > form > input {
+    padding: 0.7rem;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 0.1px solid black;
+    border-radius: 10px;
 }
 
 img {
