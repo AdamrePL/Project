@@ -13,26 +13,27 @@
 <body>
     
     <header>    
-
-    <!-- logo, search, light/dark button, user menu-->
-
+        <nav id="menu">
+            <p>Main</p>
+            <p>offer_browse</p>
+            <p>offer_create</p>
+            <p>my_offer</p>
+        </nav>
+    
+        <img id="logo">
+        <span id="search"></span> <!-- search listings by book offered -->
+        <span id="theme_toggle"></span>
+        <span id="user_menu"></span>>
     </header>
     <div id="main"></div>
         <?php
             //TODO @AdamrePL: implement :3
 
         ?>
-    <nav id="menu">
-        <p>Main</p>
-        <p>offer_browse</p>
-        <p>offer_create</p>
-        <p>my_offer</p>
-    </nav>
-
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
 
     <noscript>
-        Your pc has virus!
+        Please turn on scripts or your pc go kaput
     </noscript>
 </body>
 </html>
