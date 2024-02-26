@@ -25,12 +25,21 @@
         --accent: rgb(130, 171, 157);
     }
 }
+header{
+    text-shadow: none;
+    /* *let header get body bg, assign bg to menu lole */
+}
 
 body {
     font-size: 2em;
+    background: var(--background);
 }
 
 img {
     display: block;
     width: 100%;
+}
+
+footer{
+    background-color: var(--accent);
 }

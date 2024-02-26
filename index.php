@@ -14,10 +14,10 @@
     
     <header>    
         <nav id="menu">
-            <p>Main</p>
-            <p>offer_browse</p>
-            <p>offer_create</p>
-            <p>my_offer</p>
+            <p class="menu_item selected">Main</p>
+            <p class="menu_item selected">offer_browse</p>
+            <p class="menu_item selected">offer_create</p>
+            <p class="menu_item selected">my_offer</p>
         </nav>
     
         <img id="logo">
@@ -27,8 +27,8 @@
     </header>
     <div id="main"></div>
         <?php
+            echo "heyo :D";
             //TODO @AdamrePL: implement :3
-
         ?>
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
 
