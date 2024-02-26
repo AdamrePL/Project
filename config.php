@@ -5,4 +5,6 @@
     define('DB', 'gielda');
 
     $conn = mysqli_connect(SERVER, USER, PWD, DB);
+
+    session_start();
 ?>
