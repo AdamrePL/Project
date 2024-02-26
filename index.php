@@ -1,4 +1,4 @@
-<?php require_once "config.php"; ?>
+<?php // require_once "config.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,21 +14,21 @@
     
     <header>    
         <nav id="menu">
-            <p>Main</p>
-            <p>offer_browse</p>
-            <p>offer_create</p>
-            <p>my_offer</p>
+            <p class="menu_item selected">Main</p>
+            <p class="menu_item selected">offer_browse</p>
+            <p class="menu_item selected">offer_create</p>
+            <p class="menu_item selected">my_offer</p>
         </nav>
     
         <img id="logo">
         <span id="search"></span> <!-- search listings by book offered -->
         <span id="theme_toggle"></span>
-        <span id="user_menu"></span>>
+        <span id="user_menu"></span>
     </header>
     <div id="main"></div>
         <?php
+            echo "heyo :D";
             //TODO @AdamrePL: implement :3
-
         ?>
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
 
