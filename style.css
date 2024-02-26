@@ -7,7 +7,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-    *{
+    * {
         --text: rgb(0, 0, 0);
         --background: rgb(255,255,255);
         --primary: rgb(65, 195, 100);
@@ -20,7 +20,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    *{
+    * {
         --text: rgb(255, 255, 255);
         --background: rgb(1, 31, 8);
         --primary: rgb(65, 195, 100);
@@ -31,15 +31,21 @@
         color: black;
     }
 }
-header{
-    text-shadow: none;
-    /* *let header get body bg, assign bg to menu lole */
-}
 
 body {
     color: var(--text);
-    font-size: 2em;
+    font-size: 1.5em;
     background: var(--background);
+}
+
+header {
+    text-align: center;
+    height: 100svh;
+}
+
+header > h1 {
+    padding: 2rem;
+    font-size: 2rem;
 }
 
 img {
