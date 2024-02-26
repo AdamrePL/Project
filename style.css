@@ -6,11 +6,23 @@
 }
 
 @media (prefers-color-scheme: light) {
-    
+    *{
+        --text: rgb(255, 255, 255);
+        --background: rgb(1, 30, 8);
+        --primary: rgb(65, 195, 100);
+        --secondary: rgb(61, 102, 79);
+        --accent: rgb(130, 171, 157);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-
+    *{
+        --text: rgb(0, 0, 0);
+        --background: rgb(0, 0, 0);
+        --primary: rgb(65, 195, 100);
+        --secondary: rgb(61, 102, 79);
+        --accent: rgb(130, 171, 157);
+    }
 }
 
 body {
