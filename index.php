@@ -23,7 +23,7 @@
         <img id="logo">
         <span id="search"></span> <!-- search listings by book offered -->
         <span id="theme_toggle"></span>
-        <span id="user_menu"></span>>
+        <span id="user_menu"></span>
     </header>
     <div id="main"></div>
         <?php
