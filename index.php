@@ -31,8 +31,26 @@
             <p>my_offer</p>
         </menu>
 
-    <div id="main">
+    <div id="offer_browse">
+    <?php
 
+
+    ?>
+    </div>
+
+    <div id="offer_create">
+    <form>
+        <input type="text" placeholder="book status"/><br>
+        <input type="date"/>
+    </form>
+    </div>
+
+    <div id="offer_ofUser">
+    <?php
+        // ** get number of listings created by user from previous form and display 2-3.
+        echo "<p>You've created offers</p>";
+        echo "<p>Recent offers</p>";
+    ?>
     </div>
 
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
