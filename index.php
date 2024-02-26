@@ -17,30 +17,24 @@
     
     <header>    
 
-        <nav id="menu">
-            <p class="menu_item">Main</p>
-            <p class="menu_item">offer_browse</p>
-            <p class="menu_item">offer_create</p>
-            <p class="menu_item">my_offer</p>
-        </nav>
-    
-        <img id="logo"> <!-- OPTIONAL -->
-        
-        <span id="search"></span> <!-- search listings by book offered -->
-        <span id="theme_toggle"></span>
-        <span id="user_menu"></span>
+        <menu>
+            <p>Main</p>
+            <p>offer_browse</p>
+            <p>offer_create</p>
+            <p>my_offer</p>
+        </menu>
 
     </header>
 
-    <div id="main"></div>
-        <?php
-            echo "heyo :D";
-            //TODO @AdamrePL: implement :3
-        ?>
+    <div id="main">
+
+    </div>
+
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
 
     <noscript>
         Please turn on scripts or your pc go kaput
     </noscript>
+
 </body>
 </html>

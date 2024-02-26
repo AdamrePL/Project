@@ -14,7 +14,7 @@
         --secondary: rgb(61, 102, 79);
         --accent: rgb(130, 171, 157);
     }
-    .menu_item:hover{
+    menu > p:hover{
         color: white;
     }
 }
@@ -27,7 +27,7 @@
         --secondary: rgb(61, 102, 79);
         --accent: rgb(130, 171, 157);
     }
-    .menu_item:hover{
+    menu > p:hover{
         color: black;
     }
 }
