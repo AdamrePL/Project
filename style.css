@@ -5,6 +5,14 @@
 
 }
 
+@media (prefers-color-scheme: light) {
+    
+}
+
+@media (prefers-color-scheme: dark) {
+
+}
+
 body {
     font-size: 2em;
 }
