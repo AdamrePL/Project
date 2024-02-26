@@ -24,9 +24,9 @@
         </search>    
     </header>
        
-        <menu aria-expanded="true"> 
+        <menu> 
             <p>Main</p>
-            <p>offer_browse</p>
+            <p>offesr_browse</p>
             <p>offer_create</p>
             <p>my_offer</p>
         </menu>
