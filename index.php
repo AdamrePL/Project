@@ -44,13 +44,24 @@
     <div id="offerCreate">
         <form>
             <h1>Testing</h1>
-            <input type="text" placeholder="Name Of Book">
-            <input type="text" placeholder="Description">
-            <input type="text" placeholder="Stan Książki">
+            <input type="text" placeholder="Name Of Book"/>
+            <input type="date"/> <!-- //*?replace with select tag? -->
 
-            <!-- //TODO: Add fields to offers table, form very empty! -->
-            <input type="submit" value="Create Offer">
-            <input type="reset" value="Reset form">
+            <select name="gatunki">
+                <option>J.Polski</option>
+                <option>J.Angielski</option>
+                <option>J.Niemiecki</option>
+                <option>Matematyka</option>
+                <option>Fizyka</option>
+                <option>Chemia</option>
+                <option>Geografia</option>
+                <option>Biologia</option>
+                <option>Historia</option>
+            </select>
+
+            <!-- <input type="text" placeholder="Stan Książki"/> -->
+            <input type="submit" value="Create Offer"/>
+            <input type="reset" value="Reset form"/>
         </form>
     </div>
 
@@ -61,7 +72,6 @@
     ?>
     </div>
 
-    <!-- // *? put owner info in footer?-->
     <footer></footer>
 
     <noscript>
