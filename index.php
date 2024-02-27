@@ -58,8 +58,6 @@
     <?php
         //$result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
         //$count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
-        //*? Is $count needed? cleanup later (i have no idea what im doing)
-
     ?>
     </div>
 
