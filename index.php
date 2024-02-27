@@ -25,6 +25,7 @@
     </header>
        
         <menu> 
+            <!-- //TODO: refer to corresponding divs on page using JS -->
             <p>Main</p>
             <p>offesr_browse</p>
             <p>offer_create</p>
@@ -33,26 +34,31 @@
 
     <div id="offer_browse">
     <?php
-
-
+        //*! Throws fatal error due to lack of data
+        $res= mysqli_query("SELECT * FROM offers LIMIT 3");
+        echo $result;
     ?>
     </div>
 
     <div id="offer_create">
-    <form>
-        <input type="text" placeholder="book status"/><br>
-        <input type="date"/>
-    </form>
+        <form>
+            <input type="text" placeholder="book status"/><br>
+            <!-- //TODO: Add fields to offers table, form very empty! -->
+        </form>
     </div>
 
     <div id="offer_ofUser">
     <?php
-        // ** get number of listings created by user from previous form and display 2-3.
-        echo "<p>You've created offers</p>";
+        $result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
+        $count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
+        //*? Is $count needed? cleanup later (i have no idea what im doing)
+        
+        echo "<p>You've created".[$count]."offers</p>";
         echo "<p>Recent offers</p>";
     ?>
     </div>
 
+    <!-- // *? put owner info in footer?-->
     <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
 
     <noscript>
