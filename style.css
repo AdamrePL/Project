@@ -3,6 +3,9 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     /* font-family: sans-serif; */
     box-sizing: border-box;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
     user-select: text;
 }
 
