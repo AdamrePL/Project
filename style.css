@@ -3,7 +3,16 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     /* font-family: sans-serif; */
     box-sizing: border-box;
+    user-select: text;
+}
 
+::placeholder {
+    user-select: none;
+}
+
+input {
+    outline-offset: 3px;
+    outline-color: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -63,11 +72,14 @@ header > p {
 
 header > search > form > input {
     padding: 0.7rem;
-    background: none;
-    border: none;
-    outline: none;
-    border-bottom: 0.1px solid black;
+    width: 50%;
     border-radius: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+header > search > form > input::placeholder {
+    text-align: center;
 }
 
 img {
