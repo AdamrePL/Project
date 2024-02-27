@@ -19,7 +19,7 @@ input {
 }
 
 @media (prefers-color-scheme: light) {
-    * {
+    :root {
         --text: rgb(0, 0, 0);
         --background: rgb(237, 255, 240);
         /* --background: rgb(255, 249, 226); */
@@ -34,7 +34,7 @@ input {
 /**light background revised*/
 
 @media (prefers-color-scheme: dark) {
-    * {
+    :root {
         --text: rgb(255, 255, 255);
         --background: rgb(1, 31, 8); 
         --primary: rgb(65, 195, 100);
@@ -104,7 +104,6 @@ menu > p {
     aspect-ratio: 1/1;
     background: white;
     flex-grow: 0;
-    color: black;
     word-break:break-all;
 }
 
