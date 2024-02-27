@@ -35,9 +35,10 @@
 
     <div id="offerBrowse">
     <?php
-        //*! Throws fatal error due to lack of data
+        echo 'Latest stuff/search result goes here ( i think )';
+        //*! Throws fatal error due to lack of data un-comment when database has stuff
         //$res= mysqli_query("SELECT * FROM offers LIMIT 3");
-        //echo $result;
+        //echo $res;
     ?>
     </div>
 
@@ -45,28 +46,29 @@
         <form>
             <h1>Testing</h1>
             <input type="text" placeholder="Name Of Book"/>
-            <input type="date"/> <!-- //*?replace with select tag? -->
 
             <select name="gatunki">
-                <option>J.Polski</option>
-                <option>J.Angielski</option>
-                <option>J.Niemiecki</option>
-                <option>Matematyka</option>
-                <option>Fizyka</option>
-                <option>Chemia</option>
-                <option>Geografia</option>
-                <option>Biologia</option>
-                <option>Historia</option>
+                <option value="polish">J.Polski</option>
+                <option value="english">J.Angielski</option>
+                <option value="german">J.Niemiecki</option>
+                <option value="math">Matematyka</option>
+                <option value="phyiscs">Fizyka</option>
+                <option value="chemistry">Chemia</option>
+                <option value="geography">Geografia</option>
+                <option value="biology">Biologia</option>
+                <option value="history">Historia</option>
             </select>
 
             <!-- <input type="text" placeholder="Stan Książki"/> -->
             <input type="submit" value="Create Offer"/>
-            <input type="reset" value="Reset form"/>
+            <input type="reset" value="Reset"/>
         </form>
     </div>
 
     <div id="offerOfUser">
     <?php
+        echo "You've created (variable) offers so far.";
+        //un-comment when database has stuff
         //$result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
         //$count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
     ?>
