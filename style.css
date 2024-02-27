@@ -18,6 +18,11 @@ input {
     outline-color: none;
 }
 
+input:focus{
+    font-weight: bold;
+    outline: none;
+    }
+
 @media (prefers-color-scheme: light) {
     :root {
         --text: rgb(0, 0, 0);
@@ -27,6 +32,13 @@ input {
         --primary: rgb(65, 195, 100);
         --secondary: rgb(61, 102, 79);
         --accent: rgb(76, 206, 132);
+    }
+    #offerCreate > form > input[type="text"]{
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 10px;
+        width: auto;
+        padding: 0.6rem;
     }
 }
 
@@ -40,6 +52,13 @@ input {
         --primary: rgb(65, 195, 100);
         --secondary: rgb(61, 102, 79); 
         --accent: rgb(130, 171, 157); 
+    }
+    #offerCreate > form >input[type="text"] { 
+        border: none;
+        border-radius: 10px;
+        width: auto;
+        padding: 0.6rem;
+        /* haha color go [UNASSIGNED] */
     }
 }
 
@@ -110,17 +129,5 @@ menu > p {
 
 
 /* TEST STYLES, WILL CHANGE FREQUENTLY*/
-
-#offerCreate > form > input[type="text"]{
-    border: none;
-    border-bottom: 1px solid black;
-    border-radius: 10px;
-    width: auto;
-    padding: 0.6rem;
-}
-
-input:focus{
-font-weight: bold;
-outline: none;
-}
+/*light mode playground*/
 
