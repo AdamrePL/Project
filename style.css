@@ -25,9 +25,6 @@ input {
         --secondary: rgb(61, 102, 79);
         --accent: rgb(76, 206, 132);
     }
-    menu:active > p:hover{
-        color: white;
-    }
 }
 
 /**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
@@ -40,9 +37,6 @@ input {
         --primary: rgb(65, 195, 100);
         --secondary: rgb(61, 102, 79); 
         --accent: rgb(130, 171, 157); 
-    }
-    menu:active > p:hover{
-        color: black;
     }
 }
 
@@ -119,9 +113,8 @@ menu > p {
     border: none;
     border-bottom: 1px solid black;
     border-radius: 10px;
-    width: 30%;
+    width: auto;
     padding: 0.6rem;
-    margin-bottom: 0.3rem;
 }
 
 input:focus{
