@@ -44,9 +44,9 @@
     <div id="offerCreate">
         <form>
             <h1>Testing</h1>
-            <input type="text" placeholder="Name Of Book"><br>
-            <input type="text" placeholder="Description"><br>
-            <input type="text" placeholder="Stan Książki"><br>
+            <input type="text" placeholder="Name Of Book">
+            <input type="text" placeholder="Description">
+            <input type="text" placeholder="Stan Książki">
 
             <!-- //TODO: Add fields to offers table, form very empty! -->
             <input type="submit" value="Create Offer">
@@ -59,14 +59,12 @@
         //$result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
         //$count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
         //*? Is $count needed? cleanup later (i have no idea what im doing)
-        
-        //echo "<p>You've created".[$count]."offers</p>";
-        //echo "<p>Recent offers</p>";
+
     ?>
     </div>
 
     <!-- // *? put owner info in footer?-->
-    <footer>Wymiana książek</footer>
+    <footer></footer>
 
     <noscript>
         Please turn on script handling!!!

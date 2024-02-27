@@ -18,23 +18,28 @@ input {
 @media (prefers-color-scheme: light) {
     * {
         --text: rgb(0, 0, 0);
-        --background: rgb(255,255,255);
+        --background: rgb(237, 255, 240);
+        /* --background: rgb(255, 249, 226); */
+        /* --background: rgb(255,255,255); */
         --primary: rgb(65, 195, 100);
         --secondary: rgb(61, 102, 79);
-        --accent: rgb(130, 171, 157);
+        --accent: rgb(76, 206, 132);
     }
     menu:active > p:hover{
         color: white;
     }
 }
 
+/**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
+/**light background revised*/
+
 @media (prefers-color-scheme: dark) {
     * {
         --text: rgb(255, 255, 255);
-        --background: rgb(1, 31, 8);
+        --background: rgb(1, 31, 8); 
         --primary: rgb(65, 195, 100);
-        --secondary: rgb(61, 102, 79);
-        --accent: rgb(130, 171, 157);
+        --secondary: rgb(61, 102, 79); 
+        --accent: rgb(130, 171, 157); 
     }
     menu:active > p:hover{
         color: black;
@@ -88,7 +93,8 @@ img {
 }
 
 footer{
-    background-color: var(--accent);
+    height: 20px;
+    background-color: var(--secondary);
 }
 
 menu {
@@ -99,12 +105,27 @@ menu {
 menu > p {
     height: 10rem; 
     aspect-ratio: 1/1;
-    background: white; /*round off corners*/
+    background: white;
     flex-grow: 0;
     color: black;
     word-break:break-all;
 }
 
+
+
+/* TEST STYLES, WILL CHANGE FREQUENTLY*/
+
 #offerCreate > form > input[type="text"]{
-    background: var(--accent);
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+    width: 30%;
+    padding: 0.6rem;
+    margin-bottom: 0.3rem;
 }
+
+input:focus{
+font-weight: bold;
+outline: none;
+}
+
