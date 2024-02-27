@@ -97,10 +97,14 @@ menu {
 }
 
 menu > p {
-    height: 10rem;
+    height: 10rem; 
     aspect-ratio: 1/1;
-    background: white;
+    background: white; /*round off corners*/
     flex-grow: 0;
     color: black;
     word-break:break-all;
+}
+
+#offerCreate > form > input[type="text"]{
+    background: var(--accent);
 }

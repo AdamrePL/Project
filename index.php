@@ -33,37 +33,43 @@
             <p>my_offer</p>
         </menu>
 
-    <div id="offer_browse">
+    <div id="offerBrowse">
     <?php
         //*! Throws fatal error due to lack of data
-        $res= mysqli_query("SELECT * FROM offers LIMIT 3");
-        echo $result;
+        //$res= mysqli_query("SELECT * FROM offers LIMIT 3");
+        //echo $result;
     ?>
     </div>
 
-    <div id="offer_create">
+    <div id="offerCreate">
         <form>
-            <input type="text" placeholder="book status"/><br>
+            <h1>Testing</h1>
+            <input type="text" placeholder="Name Of Book"><br>
+            <input type="text" placeholder="Description"><br>
+            <input type="text" placeholder="Stan Książki"><br>
+
             <!-- //TODO: Add fields to offers table, form very empty! -->
+            <input type="submit" value="Create Offer">
+            <input type="reset" value="Reset form">
         </form>
     </div>
 
-    <div id="offer_ofUser">
+    <div id="offerOfUser">
     <?php
-        $result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
-        $count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
+        //$result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
+        //$count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
         //*? Is $count needed? cleanup later (i have no idea what im doing)
         
-        echo "<p>You've created".[$count]."offers</p>";
-        echo "<p>Recent offers</p>";
+        //echo "<p>You've created".[$count]."offers</p>";
+        //echo "<p>Recent offers</p>";
     ?>
     </div>
 
     <!-- // *? put owner info in footer?-->
-    <footer>blah blah blah blah lorem ipsum blah blah blah blah.</footer>
+    <footer>Wymiana książek</footer>
 
     <noscript>
-        Please turn on scripts or your pc go kaput
+        Please turn on script handling!!!
     </noscript>
 
 </body>
