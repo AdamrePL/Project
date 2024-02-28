@@ -20,6 +20,9 @@
         <p>immediately weight separate lay wall view pupil report classroom especially smooth cage shoot structure fort hall bus blow note atom vertical fall cow cup<p>
         <search>
             <form action="" method="get">
+                <!-- //!filters here  -->
+                <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual purchase(Y/N) -->
+                <!-- //*Search by title/publisher/author-->
                 <input type="search" name="szukaj" id="" placeholder="Znajdz Produkt" />
             </form>
         </search>    
@@ -27,7 +30,8 @@
        
         <menu> 
             <!-- //TODO: refer to corresponding divs on page using JS -->
-            <p>Main</p>
+            <p>Giełda</p>
+            <p>Lista podręczników </p>
             <p>offesr_browse</p>
             <p>offer_create</p>
             <p>my_offer</p>
@@ -47,7 +51,7 @@
             <h1>Testing</h1>
             <input type="text" placeholder="Name Of Book"/>
 
-            <select name="gatunki">
+            <select name="przedmioty">
                 <option value="polish">J.Polski</option>
                 <option value="english">J.Angielski</option>
                 <option value="german">J.Niemiecki</option>
