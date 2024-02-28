@@ -1,0 +1,43 @@
+System logowania/rejestrowania użytkownika
+
+Profil użytkownika
+
+Przeglądanie ofert
+
+Tworzenie własnych ofert
+
+
+Wyszukaj książke po nazwie +\lub po gatunku
+jeżeli znajdzie podobną nazwe, przefiltruj wynik,
+inaczej leć po gatunku
+
+**Wyszukaj po użytkowniku
+
+
+
+//////////////////////////////////////////////////////////////////////
+- Przeszukiwanie ofert według kwerendy
+- Możliwość uzgodnienia z "sprzedającym" oferty
+- Wystawianie własnych ofert
+- 
+
+/////////////////////////////////////////////////////////////////////
+oprogramowanie:
+visual studio code
+git (bash[?])
+xampp
+
+
+/////////////////////////////////////////////////////////////////////
+platformy zewnętrzne 
+github
+discord
+
+	
+
+
+
+
+
+
+
