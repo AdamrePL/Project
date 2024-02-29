@@ -16,22 +16,25 @@
 <body>
     
     <header>
+        <?php include "controllers/account-controller.php"; 
+        echo create_user($conn, "marcin", "p", "tete"); ?>
         <h1>Giełda</h1>
-        <p>immediately weight separate lay wall view pupil report classroom especially smooth cage shoot structure fort hall bus blow note atom vertical fall cow cup<p>
+        <p>Wewnątrzszkolna wymiana podręczników<p>
         <search>
             <form action="" method="get">
                 <input type="search" name="szukaj" id="" placeholder="Znajdz Produkt" />
             </form>
-        </search>    
-    </header>
-       
-        <menu> 
+        </search>
+
+        <menu>
             <!-- //TODO: refer to corresponding divs on page using JS -->
             <p>Main</p>
             <p>offesr_browse</p>
             <p>offer_create</p>
             <p>my_offer</p>
         </menu>
+        
+    </header>
 
     <div id="offerBrowse">
     <?php

@@ -1,7 +1,5 @@
 <?php
 
-require "../config.php";
-
 function check_user_data($name, $surename, $password, $password_confirm): string {
     $x = 8;
     if (strlen($password) < $x) {
@@ -28,13 +26,22 @@ function check_user_data($name, $surename, $password, $password_confirm): string
     }
 }
 
-function create_user(mysqli $conn, string $name, string $surename, string $password): void {
-    $stmt = mysqli_stmt_init($conn);
-    $uid = ord(strtoupper('z')) . rand(0,9) . date("HmYd") . rand(0,9) . $user_count + 1 . rand(0,9);
-    $uid_count = 00001;
-    mysqli_query($conn, "SELECT COUNT(*) FROM `users` WHERE uuid LIKE $uid_count;");
-    $hashed = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO `users` VALUES($uid, ?, ?, " . $hashed . ", '[]', '');";
+function create_user(mysqli $conn, string $name, string $surename, string $password): string {
+    $chars = [];
+    for ($i=65; $i <= 90; $i++) { 
+        array_push($chars, chr($i));
+    } 
+    for ($i=97; $i <= 122; $i++) { 
+        array_push($chars, chr($i));
+    } 
+    for ($i=0; $i <= 9; $i++) { 
+        array_push($chars, $i);
+    }
+    $uid = generate_id($name);
+    // $query = mysqli_query($conn, "SELECT COUNT(*) FROM `users` WHERE uuid LIKE $uid;");
+    // $hashed = password_hash($password, PASSWORD_DEFAULT);
+    // $sql = "INSERT INTO `users` VALUES($uid, ?, ?, " . $hashed . ", '[]', '');";
+    return $uid;
 }
 
 function set_phone(mysqli $conn, string $uid, int $nr): void {
@@ -45,3 +52,18 @@ function set_phone(mysqli $conn, string $uid, int $nr): void {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 } 
+
+function generate_id(string $name): string {
+    $chars = [];
+    for ($i=65; $i < 90; $i++) { 
+        array_push($chars, chr($i));
+    } 
+    for ($i=97; $i < 122; $i++) { 
+        array_push($chars, chr($i));
+    } 
+    for ($i=0; $i < 9; $i++) { 
+        array_push($chars, $i);
+    }
+
+    return strtolower($name) . "#" . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)];
+}
