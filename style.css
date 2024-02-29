@@ -73,7 +73,7 @@ body {
 header {
     padding-top: 2rem;
     text-align: center;
-    height: 100svh;
+    height: 95svh;
     background: var(--primary);
     display: flex;
     justify-content: space-around;
@@ -119,7 +119,7 @@ menu {
 }
 
 menu > p {
-    height: 10rem; 
+    height: 5rem; 
     aspect-ratio: 1/1;
     background: white;
     flex-grow: 0;
