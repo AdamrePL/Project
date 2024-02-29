@@ -16,8 +16,6 @@
 <body>
     
     <header>
-        <?php include "controllers/account-controller.php"; 
-        echo create_user($conn, "marcin", "p", "tete"); ?>
         <h1>Giełda</h1>
         <p>Wewnątrzszkolna wymiana podręczników<p>
         <search>
