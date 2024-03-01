@@ -20,7 +20,7 @@
         border: 1px solid black;
         box-shadow: 0px 10px 40px gray;
         width: 100%;
-        height: 35%;
+        height: 30%;
     }
 
     #u1 {
@@ -33,8 +33,7 @@
     }
 
     #u1 > p{
-        border-bottom: 2px solid rgb(65, 195, 100);
-        border-radius: 10px;
+        padding-bottom: 1.1rem;
     }
     
 
@@ -65,7 +64,7 @@
         content: "c";
     }
 
-    #u1 > span, button{
+    #u1 > span, button {
         font-size: 1rem;
 
         /* & span {
@@ -77,40 +76,34 @@
         } */
     }
 </style>
-<div id="ui">
-    <?php
-        $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = 'tester#aA1'");
-        while ($result = mysqli_fetch_assoc($query)) {
-            //print_r( $result );
-            //TODO: style
-            
-            echo '<div id="u1">';
-                echo '<p id="uname">'.$result["username"].'</p>';
-                echo '<p id="ibox">'.$result["uuid"].'</p>'; // ** use ajax or something here
-                echo '<span id="si"> Show UID? <button type="button" id="SY">Yes</button> <button type="button" id="SN">No</button></span>';
+<section id="user-details">
+<?php
+    $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = 'tester#aA1'");
+    $result = mysqli_fetch_assoc($query);
+?>
+    <div class="user">
+        <h3 class="username"><?php echo $result["username"] ?></h3>
+        <div clas="user-id">
+            <span class="uid"><?php echo $result["uuid"]; ?></span>
+            <!-- <template> -->
+                <span>Are you sure you want to display sensitive information?</span>
+                <button type="button">tak</button>
+                <button type="button">Anuluj</button>
+            <!-- </template> -->
+        </div>
+    </div>
 
-                if($result["phone"]){
-                    echo '<p id="pn">'.$result["phone"];    
-                }
+    <div class="contact">
+        <p><?php echo !empty($result["phone"]) ? $result["phone"] : "Nr tel."; ?></p>
+        <p><span><?php echo $result["email"]; ?></span><input type="checkbox" name="" id="" /></p>
+        <p><?php echo !empty($result["discord"]) ? $result["discord"] : "Discord"; ?></p>
+    </div>
+</section>
 
-                if($result["email"]){
-                    echo '<p id="ea"">'.$result["email"].'<br>';
-                }
-            
-                if($result["discord"]){
-                    echo '<p id="dc">'.$result["discord"];
-                }
-            
-            echo '</div>';
-        }
-    ?>
-</div>
-<!--offers-->
+<section class="user-offers">
     <?php
-        //query throws error on 'AND' statement, black magic!
-        // $res = mysqli_query($conn,"SELECT * FROM `offers`,`users`,`products`
-        //                     WHERE users.uuid == offers.user-uuid AND 
-        //                     offers.product-id == products.id;"
-        //                    );
-        echo "krilling my shelf";
+        $sql = "SELECT * FROM `offers`,`users`,`products` WHERE 'users.uuid' = 'offers.user-uuid' AND 'offers.product-id' == 'products.id';";
+        $query = mysqli_query($conn, $sql);
+        while ($result = mysqli_fetch_assoc($query))
     ?>
+</section>
