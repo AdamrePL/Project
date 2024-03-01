@@ -3,5 +3,5 @@
 
 # To do
 - [x] Make project documenation
-- [] Make plan for application structure
-- [] Make plan for Back-end functionality of elements
+- [ ] Make plan for application structure
+- [ ] Make plan for Back-end functionality of elements
