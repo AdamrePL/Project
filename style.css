@@ -1,3 +1,13 @@
+:root {
+    --text: rgb(0, 0, 0);
+    --background: rgb(237, 255, 240);
+    /* --background: rgb(255, 249, 226); */
+    /* --background: rgb(255,255,255); */
+    --primary: rgb(65, 195, 100);
+    --secondary: rgb(61, 102, 79);
+    --accent: rgb(76, 206, 132);
+}
+
 * {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -9,37 +19,26 @@
     user-select: text;
 }
 
+html {
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+}
+
 ::placeholder {
     user-select: none;
 }
 
-input {
+input:focus {
     outline-offset: 3px;
-    outline-color: none;
+    outline-color: transparent;
 }
 
-input:focus{
-    font-weight: bold;
-    outline: none;
-    }
-
-@media (prefers-color-scheme: light) {
-    :root {
-        --text: rgb(0, 0, 0);
-        --background: rgb(237, 255, 240);
-        /* --background: rgb(255, 249, 226); */
-        /* --background: rgb(255,255,255); */
-        --primary: rgb(65, 195, 100);
-        --secondary: rgb(61, 102, 79);
-        --accent: rgb(76, 206, 132);
-    }
-    #offerCreate > form > input[type="text"]{
-        border: none;
-        border-bottom: 1px solid black;
-        border-radius: 10px;
-        width: auto;
-        padding: 0.6rem;
-    }
+#offerCreate > form > input[type="text"]{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+    width: auto;
+    padding: 0.6rem;
 }
 
 /**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
@@ -94,16 +93,37 @@ header > p {
     font-size: 1.75rem;
 }
 
-header > search > form > input {
-    padding: 0.7rem;
+header > search > form {
+    display: flex;
+    justify-content: center;
     width: 50%;
-    border-radius: 10px;
+    margin-inline: auto;
+}
+
+header > search > form > input[type="search"] {
+    padding: 0.7rem;
+    flex-basis: 100%;
     border: none;
     border-bottom: 1px solid black;
+    outline: none;
+}
+
+header > search > form > input[type="submit"] {
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    flex-basis: 1;
 }
 
 header > search > form > input::placeholder {
     text-align: center;
+}
+
+header > search > form:has(input:focus-within) {
+    outline: auto;
+    outline-color: transparent;
+    outline-width: 0.1px;
+    outline-offset: 3px;
 }
 
 img {
