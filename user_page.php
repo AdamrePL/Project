@@ -64,7 +64,7 @@
         content: "c";
     }
 
-    #u1 > span, button {
+    #u1 > span, button{
         font-size: 1rem;
 
         /* & span {
@@ -86,7 +86,7 @@
             echo '<div id="u1">';
                 echo '<p id="uname">'.$result["username"].'</p>';
                 echo '<p id="ibox">'.$result["uuid"].'</p>'; // ** use ajax or something here
-                echo '<span> Show UID? </span> <button type="button" id="SY">Yes</button> <button type="button" id="SN">No</button>';
+                echo '<span id="si"> Show UID? <button type="button" id="SY">Yes</button> <button type="button" id="SN">No</button></span>';
             echo '</div>';
 
             echo '<div id="u2">';
