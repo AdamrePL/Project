@@ -23,52 +23,41 @@
                 <!-- //!filters here  -->
                 <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual purchase(Y/N) -->
                 <!-- //*Search by title/publisher/author-->
+                <!-- no! not here, here basic single search, filters avaible after -->
                 <input type="search" name="szukaj" id="" placeholder="Znajdz Produkt" />
+                <input type="submit" value="&#x1F50D;">
             </form>
         </search>
 
         <menu>
-            <!-- //TODO: refer to corresponding divs on page using JS -->
-            <p>Giełda</p>
-            <p>Lista podręczników </p>
-            <p>offesr_browse</p>
-            <p>offer_create</p>
-            <p>my_offer</p>
+            <nav>
+                <a href="#przegladaj">Przeglądaj</a>
+                <p>Lista podręczników</p>
+                <a href="/terms-of-service.html">Polityka Prywatności</a>
+            </nav>
         </menu>
         
     </header>
 
-    <div id="offerBrowse">
+    <nav>
+        <p>Przeglądaj</p>
+        <p>Lista podręczników</p>
+        <p>Zaloguj się</p>
+        <p>moje oferty</p>
+        <p></p>
+        <a href="/terms-of-service.html">Polityka Prywatności</a>
+    </nav>
+
+    <section id="przegladaj">
+        <h1>Przeglądaj oferty</h1>
+        <div class="browse-wrapper"></div>
     <?php
         echo 'Latest stuff/search result goes here ( i think )';
         //*! Throws fatal error due to lack of data un-comment when database has stuff
         //$res= mysqli_query("SELECT * FROM offers LIMIT 3");
         //echo $res;
     ?>
-    </div>
-
-    <div id="offerCreate">
-        <form>
-            <h1>Testing</h1>
-            <input type="text" placeholder="Name Of Book"/>
-
-            <select name="przedmioty">
-                <option value="polish">J.Polski</option>
-                <option value="english">J.Angielski</option>
-                <option value="german">J.Niemiecki</option>
-                <option value="math">Matematyka</option>
-                <option value="phyiscs">Fizyka</option>
-                <option value="chemistry">Chemia</option>
-                <option value="geography">Geografia</option>
-                <option value="biology">Biologia</option>
-                <option value="history">Historia</option>
-            </select>
-
-            <!-- <input type="text" placeholder="Stan Książki"/> -->
-            <input type="submit" value="Create Offer"/>
-            <input type="reset" value="Reset"/>
-        </form>
-    </div>
+    </section>
 
     <div id="offerOfUser">
     <?php
