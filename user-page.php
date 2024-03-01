@@ -13,14 +13,28 @@
      user-select: text;
     }
 
-    #ui{
-        font-size: 2rem;
+    #user-details {
+        font-size: 1.5rem;
         display: flex;
         flex-direction: row;
-        border: 1px solid black;
-        box-shadow: 0px 10px 40px gray;
-        width: 100%;
-        height: 30%;
+        box-shadow: 0px 0px 20px 5px gray;
+        height: 15rem;
+    }
+
+    #user-details > * {
+        margin: 1rem;
+    }
+
+    .user {
+        flex-basis: 20%;
+    }
+
+    .contact {
+        flex: 1;
+    }
+
+    #user-offers {
+        margin: 1rem;
     }
 
     #u1 {
@@ -101,6 +115,9 @@
 </section>
 
 <section class="user-offers">
+    <div>
+
+    </div>
     <?php
         $sql = "SELECT * FROM `offers`,`users`,`products` WHERE 'users.uuid' = 'offers.user-uuid' AND 'offers.product-id' == 'products.id';";
         $query = mysqli_query($conn, $sql);
