@@ -47,11 +47,14 @@ input:focus{
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --text: rgb(255, 255, 255);
-        --background: rgb(1, 31, 8); 
+        --text: rgb(0,0,0);
+        /* --background: rgb(1, 31, 8);  */
+        --background: rgb(9, 16, 11);
         --primary: rgb(65, 195, 100);
-        --secondary: rgb(61, 102, 79); 
-        --accent: rgb(130, 171, 157); 
+        --secondary: rgb(21, 87, 39);
+        --accent: rgb(12, 48, 22);
+        /* --secondary: rgb(61, 102, 79);  */
+        /* --accent: rgb(130, 171, 157);  */
     }
     #offerCreate > form >input[type="text"] { 
         border: none;
@@ -110,7 +113,8 @@ img {
 
 footer{
     height: 20px;
-    background-color: var(--secondary);
+    border-top: 10px solid var(--accent);
+    background-color: black;
 }
 
 menu {
@@ -119,9 +123,12 @@ menu {
 }
 
 menu > p {
+
+    margin: 1rem;
+    height: 10rem; 
     height: 5rem; 
     aspect-ratio: 1/1;
-    background: white;
+    background: var(--secondary);
     flex-grow: 0;
     word-break:break-all;
 }
