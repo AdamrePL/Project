@@ -2,6 +2,12 @@
 
 //i have no idea what im doing :D
 // let A = document.querySelector("#ibox");
+// let B = document.querySelector("#si");
 // A.addEventListener("click", () => {
-//     A.blah blah blah show id then wait -> hide blah blah blah
+//     B.style.visibility = visible;
+//     () => {
+//     A.style.visibility = visible;
+//     }
+// hgnhhhhhhhhhhhhh i no want nesting () => and even listener hnghhhhhhhhh
+//     
 // })

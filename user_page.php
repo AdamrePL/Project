@@ -33,7 +33,8 @@
     }
 
     #u1 > p{
-        padding-bottom: 1.1rem;
+        border-bottom: 2px solid rgb(65, 195, 100);
+        border-radius: 10px;
     }
     
 
@@ -64,7 +65,7 @@
         content: "c";
     }
 
-    #u1 > span, button {
+    #u1 > span, button{
         font-size: 1rem;
 
         /* & span {
@@ -86,10 +87,8 @@
             echo '<div id="u1">';
                 echo '<p id="uname">'.$result["username"].'</p>';
                 echo '<p id="ibox">'.$result["uuid"].'</p>'; // ** use ajax or something here
-                echo '<span> Show UID? </span> <button type="button" id="SY">Yes</button> <button type="button" id="SN">No</button>';
-            echo '</div>';
+                echo '<span id="si"> Show UID? <button type="button" id="SY">Yes</button> <button type="button" id="SN">No</button></span>';
 
-            echo '<div id="u2">';
                 if($result["phone"]){
                     echo '<p id="pn">'.$result["phone"];    
                 }

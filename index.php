@@ -24,6 +24,7 @@
                 <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual purchase(Y/N) -->
                 <!-- //*Search by title/publisher/author-->
                 <!-- no! not here, here basic single search, filters avaible after -->
+                <!-- stupido zis comment was made like 2 days ago ! ! ! me know !!! -->
                 <input type="search" name="szukaj" id="" placeholder="Znajdz Produkt" />
                 <input type="submit" value="&#x1F50D;">
             </form>
