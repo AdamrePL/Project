@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 02:36 PM
+-- Generation Time: Mar 01, 2024 at 10:55 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -47,7 +47,10 @@ CREATE TABLE `offers` (
   `product-id` int(11) NOT NULL COMMENT 'informacje o produkcie bierze z tabeli product',
   `offer-cdate` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'czas utworzenia oferty',
   `offer-edate` datetime NOT NULL COMMENT 'czas wygasniecia oferty po uplywie czasu zdefiniowanego przez sprzedawce lub defaultowo przez server w ciagu 14dni, inaczej data kiedy oferta zostanie zdjeta',
-  `status` tinyint(4) NOT NULL COMMENT 'Status oferty'
+  `status` tinyint(4) NOT NULL COMMENT 'Status oferty',
+  `phone` int(9) DEFAULT NULL,
+  `email` varchar(320) DEFAULT NULL,
+  `discord` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -82,6 +85,13 @@ CREATE TABLE `users` (
   `last-login` datetime NOT NULL DEFAULT current_timestamp(),
   `email-flag` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`uuid`, `username`, `password`, `user-offers`, `phone`, `email`, `discord`, `last-login`, `email-flag`) VALUES
+('tester#aA1', 'tester', '', '\'[]\'', 123456789, 'example@example.com', NULL, '2024-03-01 09:40:19', 0);
 
 --
 -- Indeksy dla zrzutów tabel
