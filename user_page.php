@@ -4,13 +4,13 @@
     *{
      margin: 0px;
      padding: 0px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* font-family: sans-serif; */
-    box-sizing: border-box;
-    -webkit-user-select: text;
-    -moz-user-select: none;
-    -ms-user-select: text;
-    user-select: text;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     /* font-family: sans-serif; */
+     box-sizing: border-box;
+     -webkit-user-select: text;
+     -moz-user-select: none;
+     -ms-user-select: text;
+     user-select: text;
     }
 
     #ui{
@@ -20,7 +20,7 @@
         border: 1px solid black;
         box-shadow: 0px 10px 40px gray;
         width: 100%;
-        height: 30%;
+        height: 35%;
     }
 
     #u1 {
@@ -33,7 +33,7 @@
     }
 
     #u1 > p{
-        padding-bottom: 2rem;
+        padding-bottom: 1.1rem;
     }
     
 
@@ -64,6 +64,17 @@
         content: "c";
     }
 
+    #u1 > span, button {
+        font-size: 1rem;
+
+        /* & span {
+            color: red;
+        }
+        
+        & button {
+            color: red;
+        } */
+    }
 </style>
 <div id="ui">
     <?php
@@ -75,6 +86,7 @@
             echo '<div id="u1">';
                 echo '<p id="uname">'.$result["username"].'</p>';
                 echo '<p id="ibox">'.$result["uuid"].'</p>'; // ** use ajax or something here
+                echo '<span> Show UID? </span> <button type="button" id="SY">Yes</button> <button type="button" id="SN">No</button>';
             echo '</div>';
 
             echo '<div id="u2">';
