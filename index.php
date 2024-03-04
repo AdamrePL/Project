@@ -11,7 +11,7 @@
 
     <title>Giełda Książkowa</title>
 
-    <script src="../assets/js/script.js" type="text/javascript" defer></script>
+    <script src="./assets/js/script.js" type="text/javascript" defer></script>
 </head>
 <body>
     
