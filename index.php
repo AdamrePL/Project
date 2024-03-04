@@ -46,7 +46,7 @@
         <p>Zaloguj się</p>
         <p>moje oferty</p>
         <p></p>
-        <a href="/terms-of-service.html">Polityka Prywatności</a>
+        <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 
     <section id="przegladaj">
