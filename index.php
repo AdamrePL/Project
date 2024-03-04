@@ -32,8 +32,8 @@
 
         <menu>
             <nav>
-                <a href="#przegladaj">Przeglądaj</a>
-                <a href="">Lista podręczników</a>
+                <a href="#przegladaj">Przeglądaj Oferty</a>
+                <a href="">Lista Podręczników</a>
                 <a href="./src/terms-of-service.html">Polityka Prywatności</a>
             </nav>
         </menu>
@@ -41,32 +41,26 @@
     </header>
 
     <nav>
-        <p>Przeglądaj</p>
-        <p>Lista podręczników</p>
-        <p>Zaloguj się</p>
-        <p>moje oferty</p>
+        <!--//*? is this necessary?-->
+        <a href="#przegladaj">Przeglądaj</a>
+        <a href="">Lista podręczników</a>
+        <a href="./src/access.php">Zaloguj się</a>
+        <a href="./src/profile.php#offers">Moje oferty</a>
         <p></p>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 
     <section id="przegladaj">
         <h1>Przeglądaj oferty</h1>
-        <div class="browse-wrapper"></div>
-    <?php
-        echo 'Latest stuff/search result goes here ( i think )';
-        //*! Throws fatal error due to lack of data un-comment when database has stuff
-        //$res= mysqli_query("SELECT * FROM offers LIMIT 3");
-        //echo $res;
-    ?>
+        <div class="browse-wrapper">
+            <?php
+                echo "thingamajigs and maybe some hijinks go here";
+            ?>
+        </div>
     </section>
 
     <div id="offerOfUser">
-    <?php
-        echo "You've created (variable) offers so far.";
-        //un-comment when database has stuff
-        //$result = mysqli_query("SELECT * FROM offers, users WHERE offers.user-uuid==users.useruuid LIMIT 3");
-        //$count = mysqli_query("SELECT COUNT(user-offers) FROM offers, users WHERE offers.user-uuid==users.useruuid");
-    ?>
+        <p> You've created <?php echo "variable goes here"; ?> offers so far. </p>
     </div>
 
     <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?></footer>
