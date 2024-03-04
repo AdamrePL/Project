@@ -33,7 +33,7 @@
         <menu>
             <nav>
                 <a href="#przegladaj">Przeglądaj</a>
-                <p>Lista podręczników</p>
+                <a href="">Lista podręczników</a>
                 <a href="/terms-of-service.html">Polityka Prywatności</a>
             </nav>
         </menu>
@@ -69,7 +69,7 @@
     ?>
     </div>
 
-    <footer></footer>
+    <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?></footer>
 
     <noscript>
         Please turn on script handling!!!
