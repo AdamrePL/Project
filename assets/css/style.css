@@ -137,13 +137,26 @@ footer{
     background-color: black;
 }
 
-menu {
+menu > nav{
     /* change to grid */
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-menu > p {
+
+
+/** grid solution because i am inept at flexbox (ooga booga)
+    menu > nav{
+    width: 75%;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid black;
+}
+*/
+
+/* menu > p {
 
     margin: 1rem;
     height: 10rem; 
@@ -152,7 +165,7 @@ menu > p {
     background: var(--secondary);
     flex-grow: 0;
     word-break:break-all;
-}
+} */
 
 
 
