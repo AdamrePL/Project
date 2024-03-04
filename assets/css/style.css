@@ -3,7 +3,7 @@
     --background: rgb(237, 255, 240);
     /* --background: rgb(255, 249, 226); */
     /* --background: rgb(255,255,255); */
-    --primary: rgb(65, 195, 100);
+    --primary: rgb(91, 216, 124);
     --secondary: rgb(61, 102, 79);
     --accent: rgb(76, 206, 132);
 }
@@ -33,17 +33,9 @@ input:focus {
     outline-color: transparent;
 }
 
-#offerCreate > form > input[type="text"]{
-    border: none;
-    border-bottom: 1px solid black;
-    border-radius: 10px;
-    width: auto;
-    padding: 0.6rem;
-}
-
 /**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
 /**light background revised*/
-
+/**rgb(65, 195, 100); */
 @media (prefers-color-scheme: dark) {
     :root {
         --text: rgb(0,0,0);
@@ -54,13 +46,10 @@ input:focus {
         --accent: rgb(12, 48, 22);
         /* --secondary: rgb(61, 102, 79);  */
         /* --accent: rgb(130, 171, 157);  */
-    }
-    #offerCreate > form >input[type="text"] { 
-        border: none;
-        border-radius: 10px;
-        width: auto;
-        padding: 0.6rem;
-        /* haha color go [UNASSIGNED] */
+        /* color for menu item bg rgba(43, 42, 51,0.9); */
+    } 
+    body > section, nav, div, footer    {
+        color: white;
     }
 }
 
@@ -126,6 +115,34 @@ header > search > form:has(input:focus-within) {
     outline-offset: 3px;
 }
 
+header a {
+    color: black;
+    /*? decide if should use font-weight: bold; or leave as is  */
+    margin: 1rem;
+    padding: 2rem;
+    height: 8rem;  
+    aspect-ratio: 1/1;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    flex-grow: 0;
+    word-wrap: break-word;
+    word-spacing: 1rem;
+    border-radius: 0.3rem;
+    border-bottom: 5px solid var(--secondary);
+    transition: all 0.2s ease-in-out;
+}
+
+header a:hover{
+    color: var(--accent);
+    transform: translateY(-10px);
+    box-shadow: 0px 5px 10px black;
+}
+
+header a:link{
+    text-decoration: none;
+}
+/*! HEADER STYLES BASICALLY DONE, ONLY PERFORM SMALL ALTERATIONS */
+
 img {
     display: block;
     width: 100%;
@@ -134,7 +151,6 @@ img {
 footer{
     height: 20px;
     border-top: 10px solid var(--accent);
-    background-color: black;
 }
 
 menu > nav{
@@ -145,6 +161,13 @@ menu > nav{
     justify-content: space-evenly;
 }
 
+body > nav{
+    /* placeholder pls no ban */
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: repeat(1fr,6);
+    justify-items: center;
+}
 
 
 /** grid solution because i am inept at flexbox (ooga booga)
