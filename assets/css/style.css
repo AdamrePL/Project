@@ -138,8 +138,9 @@ footer{
 }
 
 menu {
-    display: flex;
-    justify-content: space-evenly;
+    /* change to grid */
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 menu > p {
