@@ -1,4 +1,4 @@
-<?php require_once "config.php"; ?>
+<?php require_once "conf/config.php"; ?>
 
 <head>
     <link rel="stylesheet" href="assets/css/profile.css">
