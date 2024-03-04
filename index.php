@@ -1,4 +1,4 @@
-<?php require_once "config.php"; ?>
+<?php require_once "conf/config.php"; ?>
 
 <!DOCTYPE html>
 <html lang="pl">
