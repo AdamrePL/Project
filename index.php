@@ -34,7 +34,7 @@
             <nav>
                 <a href="#przegladaj">Przeglądaj</a>
                 <a href="">Lista podręczników</a>
-                <a href="/terms-of-service.html">Polityka Prywatności</a>
+                <a href="./src/terms-of-service.html">Polityka Prywatności</a>
             </nav>
         </menu>
         
