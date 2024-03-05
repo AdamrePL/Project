@@ -21,6 +21,10 @@ article {
     line-height: 1.5;
 }
 
+h3::first-letter {
+    text-transform: capitalize;
+}
+
 p {
     max-width: 80%;
     padding-left: 1rem;
@@ -28,9 +32,9 @@ p {
 
 ::selection {
     color: black;
-    background: limegreen; 
+    background-color: mediumspringgreen; /* Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */
     /** 
        * TODO @PiwkoM choose better color than this, unless you like it already or think its good enough.
-       * ! Options that I tried/recommend: yellow, lime, aqua, yellowgreen.
+       * ! Options that I tried/recommend: yellow, lime, limegreen, aqua, greenyellow (not to be mistaken with yellowgreen).
     */       
 }
