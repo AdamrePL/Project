@@ -1,6 +1,7 @@
+@import "global.css";
+
 * {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-sizing: border-box;
+    margin: revert;
 }
 
 body {
