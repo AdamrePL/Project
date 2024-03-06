@@ -73,16 +73,16 @@ header > search > form:has(input:focus-within) {
 
 header a {
     color: black;
+    font-size: 1.3rem;
     /*? decide if should use font-weight: bold; or leave as is  */
-    margin: 1rem;
-    padding: 2rem;
-    height: 8rem;  
-    aspect-ratio: 1/1;
+    margin: 0rem;
+    padding: 1rem;
+    height: 5rem;  
+    aspect-ratio: 4/1;
     background: rgba(255,255,255,0.9);
     backdrop-filter: blur(10px);
     flex-grow: 0;
-    word-wrap: break-word;
-    word-spacing: 1rem;
+    word-break:break-word;
     border-radius: 0.3rem;
     border-bottom: 5px solid var(--secondary);
     transition: all 0.2s ease-in-out;
