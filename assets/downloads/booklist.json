@@ -1,0 +1,74 @@
+{
+    /* cyfra w tym miejscu oznacza klase, */
+    "1": [ 
+        {
+            "nazwa": "tytul",
+            "przedmiot": "matematyka", /* wielkosc znakow nie ma znaczenia */
+            "autorzy": "Autorow oddzielaj przecinkiem",
+            "wydawnictwo": "np. Nowa Era"
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+        /*ABY DODAĆ WIĘCEJ PODRĘCZNIKOW - SKOPIOWAĆ I WKLEIĆ WIECEJ KLAMR PO PRZECINKACH TAK JAK POWYŻEJ*/
+    ],
+    "2": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ],
+    "3": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ],
+    "4": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ],
+    "5": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ] // ABY DODAĆ WIECEJ KLAS WYSTARCZY PO PRZECINKU DODAĆ NUMER KLASY PODANY W "" I PO : W NAWIASIE KWADRATOWYM PODAWAC KSIAZKI
+}
