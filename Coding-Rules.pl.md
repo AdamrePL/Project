@@ -12,7 +12,7 @@
 -----------------
 # Utrzymywanie kodu w porządku
 ## Implementacja skryptów oraz stylizacji
-#### Jakikolwiek kod css oraz javascript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów
+#### Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów
 
 
 
