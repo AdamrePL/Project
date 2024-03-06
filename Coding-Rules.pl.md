@@ -1,6 +1,6 @@
 # Spis treści
 1. [Język](#język-ogólny)
-2. [Języki programowania](#języki-programowania)
+2. [Języki programowania](#języki-programowania-)
    - [HTML](#html)
        [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku)
        + []
