@@ -4,8 +4,8 @@
 > [!IMPORTANT]
 > ## Informacja dla osób kontynuujących projekt
 > ### Proszę trzymać się ustalonych zasad / stylizacji kodu ustalonego w poniższych plikach
-> ***[Code Guide - PL](Coding-Rules.en.md)***
-> ***[Code Guide - EN](Coding-Rules.pl.md)***
+> ***[Code Guide - PL](Coding-Rules.pl.md)***
+> ***[Code Guide - EN](Coding-Rules.en.md)***
 
 # To do
 - [x] Make project documenation
