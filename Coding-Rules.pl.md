@@ -2,7 +2,6 @@
 ### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
 
 # Nazewnictwo
-
 ## PHP:
 #### Każde zapytanie SQL wprowadzone w PHP-ie przed dodaniem do jakiejkolwiek funkcji MySQL powinno pozostać przypisane do zmiennej $sql.
 
@@ -20,11 +19,11 @@
 ## PHP:
 #### Jeżeli można to elementy dawać poza kodem PHP i wartości dodawać kodem wewnątrz elementu.
 ```PHP
-    - <div id="<?php echo $result["entryid"]; ?>"><?php echo $_$GET["page"]; ?></div>
+    <div id="<?php echo $result["entryid"]; ?>"><?php echo $_$GET["page"]; ?></div>
 ```
 ##### Zamiast:
 ```PHP
-    + echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
+    echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
 ```
 ##### Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.
 
