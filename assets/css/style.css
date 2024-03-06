@@ -89,6 +89,7 @@ header a {
 }
 
 header a:hover {
+    background: whitesmoke;
     color: var(--accent);
     transform: translateY(-10px);
     border-bottom:4px solid var(--secondary);
@@ -101,8 +102,8 @@ a:link {
 }
 
 /*
- header is fine, but feels off to me for some reason, cant pinpoint, probably because background is super bland
- ! add some fancy schmancy animation to it or sth, idfk.
+idea for background: get b-roll footage/images of some book activities (reading,handling,etc), set background to opaque,
+roll them mfs like a movie
 */
 
 img {
