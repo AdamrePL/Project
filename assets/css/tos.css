@@ -1,20 +1,24 @@
 @import "global.css";
 
 /**
-  * ? @PiwkoM Do we want all content to be centered within 80% width column.
-  * * Like to have spacing from both sides of the page just like you'd have an article on most of the websites, if you've ever seen one. I bet you did.
+  * * @AdamrePL Answer sheet:
+  * ! topic: content spacing ||| answer: @AdamrePL, Yes.
+  * ! topic: explaining the content spacing ||| answer: i do
+  * ? topic: font size, word&letter spacing ||| answer(s) {
+  * ?   font size: good, keep
+  * ?   word spacing: good, keep
+  * ?   letter spacing: PLEASE FOR THE LOVE OF GOD NO, ITS FINE AS IT IS
+  * ? }
 */
-
 * {
     margin: revert;
 }
 
 body {
-    font-size: 14pt; /* is font supposed to be this big? I mean any font size could look good at this point here. But we need to choose if we want to improve styling here. */
-
-    word-spacing: 0.3pt; /* ? also questionable? do we add? */
-    /* ? letter-spacing: ?; */
-}
+    font-size: 14pt; 
+    
+    word-spacing: 0.3pt;
+}   
 
 nav > ol > li {
     margin-block: 0.3rem;
@@ -35,10 +39,15 @@ p {
 }
 
 ::selection {
-    color: black;
-    background-color: mediumspringgreen; /* Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */
-    /** 
-       * TODO @PiwkoM choose better color than this, unless you like it already or think its good enough.
-       * ! Options that I tried/recommend: yellow, lime, limegreen, aqua, greenyellow (not to be mistaken with yellowgreen).
-    */       
+    color: white;
+    /* background-color: mediumspringgreen;  jesus christ that was horrible*/
+    background-color: rgba(25,25,25,0.7);
+    /* TODO @AdamrePL for some reason, the first letter of every paragraph in Definitions section keeps original highlight values, dark magic! */
 }
+
+/*! leaving comments as is, read if you want explanation from a guy who thinks he knows what he's doing. */
+    /*Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */
+    /*? why? if you really want to HIGHLIGHT user selection, use an eye burning color with black text(DONT) or dark&transparent selector with light text( :) )*/
+    /**correction: depending on the theme of the site, dark mode for eg should use light to contrast between the selection and untouched text
+    ** same reason as to why we're using dark & transparent for light mode, it naturally grabs the attention of the user */
+    
