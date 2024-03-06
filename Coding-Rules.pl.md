@@ -1,5 +1,5 @@
 # Język
-### W kodzie całe wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
+### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
 
 # Nazewnictwo
 
