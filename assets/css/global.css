@@ -1,18 +1,20 @@
 /*TODO @PiwkoM @AdamrePL Change colors to match school colors (blue,yellow) <== horrible color scheme btw????? who did this????? its disgusting?????*/
 
 :root {
-    --text: rgb(0, 0, 0);
-    --background: rgb(237, 255, 240);
-    /* --background: rgb(255, 249, 226); */
-    /* --background: rgb(255,255,255); */
+    
+    --text: #050315;
+    --background: #f2f0fe;
+    --primary: #5522a7;
+    --secondary: #f4eecb;
+    /* --accent: #fafe2a; */
+    --accent: #526BFE;
+    /* --text: rgb(0, 0, 0);
+    --background: rgb(237, 255, 240); 
     --primary: rgb(91, 216, 124);
     --secondary: rgb(61, 102, 79);
-    --accent: rgb(76, 206, 132); /* accent and primary are almost  the exact same lmfao i suck at this color picking thing */
+    --accent: rgb(76, 206, 132);  */
 }
 
-/**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
-/**light background revised*/
-/**rgb(65, 195, 100); */
 @media (prefers-color-scheme: dark) {
     :root {
         --text: rgb(0,0,0);
