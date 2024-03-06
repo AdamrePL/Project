@@ -42,7 +42,7 @@ p {
     color: white;
     /* background-color: mediumspringgreen;  jesus christ that was horrible*/
     background-color: rgba(25,25,25,0.7);
-    /*! @AdamrePL for some reason, the first letter of every paragraph in Definitions section keeps original highlight values, dark magic! */
+    /* TODO @AdamrePL for some reason, the first letter of every paragraph in Definitions section keeps original highlight values, dark magic! */
 }
 
 /*! leaving comments as is, read if you want explanation from a guy who thinks he knows what he's doing. */
