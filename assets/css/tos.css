@@ -10,10 +10,14 @@
 }
 
 body {
-    font-size: 14pt;
+    font-size: 14pt; /* is font supposed to be this big? I mean any font size could look good at this point here. But we need to choose if we want to improve styling here. */
 
-    word-spacing: 0.3pt; /* ? also questionable? */
+    word-spacing: 0.3pt; /* ? also questionable? do we add? */
     /* ? letter-spacing: ?; */
+}
+
+nav > ol > li {
+    margin-block: 0.3rem;
 }
 
 article {
