@@ -96,11 +96,14 @@ header a:hover {
     
 }
 
-/* gross underline go bye bye o/ */
 a:link {
     text-decoration: none;
 }
-/*! HEADER STYLES BASICALLY DONE, ONLY PERFORM SMALL ALTERATIONS */
+
+/*
+ header is fine, but feels off to me for some reason, cant pinpoint, probably because background is super bland
+ ! add some fancy schmancy animation to it or sth, idfk.
+*/
 
 img {
     display: block;
@@ -128,10 +131,13 @@ body > nav {
     height: 8rem;
 }
 
-/*spent an hour / two hours trying to style these in a normal way only to ultimately scrap them, redoing them entirely now */
+/*! PLEASE REVISE PLEASE REVISE PLEASE REVISE PLEASE REVISE*/
+/*TODO @PiwkoM HOLY HELL PLEASE FIND SOME INSPIRATION PLEASE PLEASE PLEASE I FEEL LIKE SISYPHUS RIGHT NOW*/
 body > nav > a {
-    --opaque: rgba(91, 216, 124, 0.3);
-    background: var(--opaque); 
+    --opaque: rgba(12, 59, 31, 0.85);
+
+    color: black;
+    background: whitesmoke; 
     justify-self: center;
     text-align:center;
     padding: 1.7rem;
@@ -144,7 +150,11 @@ body > nav > a {
     border: 1px solid black;
     border-bottom: 3px solid black;
     border-radius: 0.3rem;
-    color: black;
     box-shadow: 0px 0px 0px transparent;
     transition: all 0.2s ease;
+}
+
+body > nav > a:hover{
+    background: var(--accent);
+    color: black;
 }

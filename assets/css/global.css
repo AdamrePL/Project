@@ -5,7 +5,7 @@
     /* --background: rgb(255,255,255); */
     --primary: rgb(91, 216, 124);
     --secondary: rgb(61, 102, 79);
-    --accent: rgb(76, 206, 132);
+    --accent: rgb(76, 206, 132); /* accent and primary are almost  the exact same lmfao i suck at this color picking thing */
 }
 
 /**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
