@@ -1,0 +1,50 @@
+:root {
+    --text: rgb(0, 0, 0);
+    --background: rgb(237, 255, 240);
+    /* --background: rgb(255, 249, 226); */
+    /* --background: rgb(255,255,255); */
+    --primary: rgb(91, 216, 124);
+    --secondary: rgb(61, 102, 79);
+    --accent: rgb(76, 206, 132);
+}
+
+/**! @PiwkoM revise accent,background,secondary, kinda ugly tbh*/
+/**light background revised*/
+/**rgb(65, 195, 100); */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: rgb(0,0,0);
+        /* --background: rgb(1, 31, 8);  */
+        --background: rgb(9, 16, 11);
+        --primary: rgb(65, 195, 100);
+        --secondary: rgb(21, 87, 39);
+        --accent: rgb(12, 48, 22);
+        /* --secondary: rgb(61, 102, 79);  */
+        /* --accent: rgb(130, 171, 157);  */
+        /* color for menu item bg rgba(43, 42, 51,0.9); */
+    } 
+}
+
+* {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* ! Default font for this website: sans-serif */
+    box-sizing: border-box;
+
+    -webkit-user-select: text;
+    -moz-user-select: none;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+html {
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem;
+    
+    /* ? letter-spacing: 1pt; */
+}

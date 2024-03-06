@@ -1,0 +1,84 @@
+@import "global.css";
+
+* {
+    margin: revert;
+}
+
+body {
+    min-height: 100svh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    text-transform: capitalize;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    width: 90%;
+    height: 2px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    /* background: gray; */
+    background: linear-gradient(90deg, rgb(0, 0, 0, 0.01), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5), rgb(0, 0, 0, 0.01));
+}
+
+.access-wrapper {
+    --line-width: 2px;
+    height: max(400px, 85%);
+    width: 95%;
+    /* ! ADD MINIMUM WIDTH OF 600PX! */
+    margin-inline: auto;
+    background: whitesmoke;
+    display: flex;
+    box-shadow: 0px 0px 8px 0.1px gray;
+    align-items: center;
+}
+
+.access-wrapper > * {
+    height: 100%;
+    width: calc(50% - var(--line-width) / 2);
+}
+
+.user-form {
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-form > * {
+    margin-inline: auto;
+}
+
+.user-form > input:not([type="submit"]) {
+    border: none;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    position: absolute;
+}
+
+.user-form > input:not([type="submit"])::after {
+    content: '';
+    width: 100%;
+    height: 1.5px;
+    bottom: 3px;
+/*     left: 50%;
+    transform: translateX(-50%); */
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.line {
+    width: var(--line-width);
+    background: linear-gradient(transparent,rgba(0, 0, 0, 0.8), black, rgba(0, 0, 0, 0.8), transparent);
+    height: 95%;
+}

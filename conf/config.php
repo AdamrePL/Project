@@ -25,4 +25,5 @@
     $conn = mysqli_connect(SERVER, USER, PWD, DB);
 
     session_start();
+    define("SITENAME", "Giełda");
 ?>

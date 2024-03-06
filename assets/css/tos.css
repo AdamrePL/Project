@@ -1,3 +1,40 @@
-html {
-    scroll-behavior: smooth;
+@import "global.css";
+
+/**
+  * ? @PiwkoM Do we want all content to be centered within 80% width column.
+  * * Like to have spacing from both sides of the page just like you'd have an article on most of the websites, if you've ever seen one. I bet you did.
+*/
+
+* {
+    margin: revert;
+}
+
+body {
+    font-size: 14pt;
+
+    word-spacing: 0.3pt; /* ? also questionable? */
+    /* ? letter-spacing: ?; */
+}
+
+article {
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+h3::first-letter {
+    text-transform: capitalize;
+}
+
+p {
+    max-width: 80%;
+    padding-left: 1rem;
+}
+
+::selection {
+    color: black;
+    background-color: mediumspringgreen; /* Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */
+    /** 
+       * TODO @PiwkoM choose better color than this, unless you like it already or think its good enough.
+       * ! Options that I tried/recommend: yellow, lime, limegreen, aqua, greenyellow (not to be mistaken with yellowgreen).
+    */       
 }
