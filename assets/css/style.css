@@ -80,20 +80,20 @@ header a {
     height: 5rem;  
     aspect-ratio: 4/1;
     background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(10px);
     flex-grow: 0;
     word-break:break-word;
     border-radius: 0.3rem;
-    border-bottom: 3px solid var(--secondary);
+    border-bottom: 3px solid var(--accent);
     transition: all 0.2s ease-in-out;
 }
 
 header a:hover {
-    background: whitesmoke;
-    color: var(--accent);
+    background: var(--accent);
+    color: var(--primary);
     transform: translateY(-10px);
-    border-bottom:4px solid var(--secondary);
+    border-bottom:5px solid var(--secondary);
     box-shadow: 0px 5px 10px black;
+    text-shadow: 10px 0px 1px var(--accent);
     
 }
 
@@ -135,8 +135,6 @@ body > nav {
 /*! PLEASE REVISE PLEASE REVISE PLEASE REVISE PLEASE REVISE*/
 /*TODO @PiwkoM HOLY HELL PLEASE FIND SOME INSPIRATION PLEASE PLEASE PLEASE I FEEL LIKE SISYPHUS RIGHT NOW*/
 body > nav > a {
-    --opaque: rgba(12, 59, 31, 0.85);
-
     color: black;
     background: whitesmoke; 
     justify-self: center;
@@ -149,13 +147,17 @@ body > nav > a {
     font-size: 1.3rem;
     width: 200px;
     border: 1px solid black;
-    border-bottom: 3px solid black;
+    border-bottom: 1px solid black;
     border-radius: 0.3rem;
     box-shadow: 0px 0px 0px transparent;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease-in-out;
 }
 
 body > nav > a:hover{
-    background: var(--accent);
-    color: black;
+    color: var(--accent);
+    transform: translateY(-10px);
+    border: none;
+    border-bottom: 5px solid var(--primary);
+    background: var(--secondary);
+    box-shadow: 0px 3px 20px var(--accent);
 }
