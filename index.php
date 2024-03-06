@@ -41,7 +41,7 @@
 
     <nav>
         <!--//*? is this necessary?-->
-        <a href="#przegladaj"><span>Przeglądaj Oferty</span></a>
+        <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="">Lista podręczników</a>
         <a href="./src/access.php">Zaloguj się</a>
         <a href="./src/profile.php#offers">Moje oferty</a>
