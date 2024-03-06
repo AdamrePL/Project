@@ -41,11 +41,11 @@
 
     <nav>
         <!--//*? is this necessary?-->
-        <a href="#przegladaj">Przeglądaj</a>
+        <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="">Lista podręczników</a>
         <a href="./src/access.php">Zaloguj się</a>
         <a href="./src/profile.php#offers">Moje oferty</a>
-        <p></p>
+        <a>Placeholder Button</a>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 
@@ -59,6 +59,7 @@
     </section>
 
     <div id="offerOfUser">
+        <h1>Twoje oferty</h1>
         <p> You've created <?php echo "variable goes here"; ?> offers so far. </p>
     </div>
 

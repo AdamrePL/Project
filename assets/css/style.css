@@ -84,17 +84,20 @@ header a {
     flex-grow: 0;
     word-break:break-word;
     border-radius: 0.3rem;
-    border-bottom: 5px solid var(--secondary);
+    border-bottom: 3px solid var(--secondary);
     transition: all 0.2s ease-in-out;
 }
 
-header a:hover{
+header a:hover {
     color: var(--accent);
     transform: translateY(-10px);
+    border-bottom:4px solid var(--secondary);
     box-shadow: 0px 5px 10px black;
+    
 }
 
-header a:link{
+/* gross underline go bye bye o/ */
+a:link {
     text-decoration: none;
 }
 /*! HEADER STYLES BASICALLY DONE, ONLY PERFORM SMALL ALTERATIONS */
@@ -104,48 +107,44 @@ img {
     width: 100%;
 }
 
-footer{
+footer {
     height: 20px;
     border-top: 10px solid var(--accent);
 }
 
-menu > nav{
-    /* change to grid */
+menu > nav {
     margin: 0px;
     padding: 0px;
     display: flex;
     justify-content: space-evenly;
 }
 
-body > nav{
-    /* placeholder pls no ban */
+body > nav {
     width: 100%;
     display: inline-grid;
-    grid-template-columns: repeat(1fr,6);
-    justify-items: center;
+    grid-template-columns: repeat(6,1fr);
+    justify-self: center;
+    word-wrap:break-word;
+    height: 8rem;
 }
 
-
-/** grid solution because i am inept at flexbox (ooga booga)
-    menu > nav{
-    width: 75%;
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border: 1px solid black;
-}
-*/
-
-/* menu > p {
-
-    margin: 1rem;
-    height: 10rem; 
-    height: 5rem; 
+/*spent an hour / two hours trying to style these in a normal way only to ultimately scrap them, redoing them entirely now */
+body > nav > a {
+    --opaque: rgba(91, 216, 124, 0.3);
+    background: var(--opaque); 
+    justify-self: center;
+    text-align:center;
+    padding: 1.7rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 7rem;
     aspect-ratio: 1/1;
-    background: var(--secondary);
-    flex-grow: 0;
-    word-break:break-all;
-} */
-
-
-
-/* TEST STYLES, WILL CHANGE FREQUENTLY*/
+    font-size: 1.3rem;
+    width: 200px;
+    border: 1px solid black;
+    border-bottom: 3px solid black;
+    border-radius: 0.3rem;
+    color: black;
+    box-shadow: 0px 0px 0px transparent;
+    transition: all 0.2s ease;
+}
