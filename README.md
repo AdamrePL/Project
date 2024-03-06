@@ -6,6 +6,8 @@
 > ### Proszę trzymać się ustalonych zasad / stylizacji kodu ustalonego w poniższych plikach
 > ***[Code Guide - PL](Coding-Rules.pl.md)***
 > ***[Code Guide - EN](Coding-Rules.en.md)***
+> 
+> *- AdamrePL*
 
 # To do
 - [x] Make project documenation
