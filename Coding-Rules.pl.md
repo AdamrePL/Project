@@ -5,7 +5,12 @@
    - [CSS](#css)
    - [PHP](#php)
    - [JS](#js)
-3. 
+3. [Utrzymywanie kodu w porządku](#utrzymywanie-kodu-w-porządku)
+   - [HTML](#html-1)
+   - [CSS](#css-1)
+   - [PHP](#php-1)
+   - [JS](#js-1)
+4. [Inne](#pozostałe)
 
 # Język
 ### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
