@@ -1,3 +1,12 @@
+# Spis treści
+1. [Język](#język)
+2. [Nazewnictwo](#nazewnictwo)
+   - [HTML](#html)
+   - [CSS](#css)
+   - [PHP](#php)
+   - [JS](#js)
+3. 
+
 # Język
 ### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
 -----------------
