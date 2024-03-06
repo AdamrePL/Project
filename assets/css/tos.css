@@ -18,6 +18,7 @@ body {
     font-size: 14pt; 
     
     word-spacing: 0.3pt;
+
 }   
 
 nav > ol > li {
@@ -39,9 +40,9 @@ p {
 }
 
 ::selection {
-    color: white;
-    /* background-color: mediumspringgreen;  jesus christ that was horrible*/
-    background-color: rgba(25,25,25,0.7);
+    color: black;
+    background-color: mediumspringgreen; 
+    /* background-color: rgba(25,25,25,0.7); */
     /* TODO @AdamrePL for some reason, the first letter of every paragraph in Definitions section keeps original highlight values, dark magic! */
 }
 

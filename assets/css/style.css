@@ -154,10 +154,10 @@ body > nav > a {
 }
 
 body > nav > a:hover{
-    color: white;
+    color: var(--accent);
     transform: translateY(-10px);
-    border-bottom: 5px solid var(--secondary);
-    background: var(--accent);
-    color: black;
-    box-shadow: 0px 3px 20px var(--secondary);
+    border: none;
+    border-bottom: 5px solid var(--primary);
+    background: var(--secondary);
+    box-shadow: 0px 3px 20px var(--accent);
 }
