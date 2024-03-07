@@ -67,7 +67,7 @@
     content: "c";
 }
 
-#u1>span,
+#u1 >span,
 button {
     font-size: 1rem;
 
@@ -78,4 +78,14 @@ button {
     & button {
         color: red;
     } */
+}
+
+.agree {
+    background: rgb(47, 255, 54);
+    border: none;
+}
+
+.disagree {
+    border: none;
+    background: crimson;
 }

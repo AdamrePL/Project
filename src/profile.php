@@ -1,7 +1,7 @@
 <?php require_once "../conf/config.php"; ?>
 
 <head>
-    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 
 <section id="user-details">
@@ -15,8 +15,8 @@
             <span class="uid"><?php echo $result["uuid"]; ?></span>
             <!-- <template> -->
                 <span>Are you sure you want to display sensitive information?</span>
-                <button type="button">tak</button>
-                <button type="button">Anuluj</button>
+                <button type="button" class="agree">Pokaż</button>
+                <button type="button" class="disagree">Anuluj</button>
             <!-- </template> -->
         </div>
     </div>
