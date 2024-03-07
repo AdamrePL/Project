@@ -18,6 +18,13 @@
 
 .contact {
     flex: 1;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contact > * {
+    flex-basis: 50%;
 }
 
 #user-offers {
