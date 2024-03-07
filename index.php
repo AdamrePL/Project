@@ -41,7 +41,7 @@
         
     </header>
 
-    <nav>
+    <nav id="nawigacja">
         <!--//*? is this necessary?-->
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="">Lista podręczników</a>

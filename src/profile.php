@@ -33,7 +33,7 @@
 
     </div>
     <?php
-        $sql = "SELECT * FROM `offers`,`users`,`products` WHERE 'users.uuid' = 'offers.user-uuid' AND 'offers.product-id' == 'products.id';";
+        $sql = "SELECT * FROM `offers`,`users`,`products` WHERE 'users.uuid' = 'offers.user-uuid' AND 'offers.product-id' = 'products.id';";
         $query = mysqli_query($conn, $sql);
         while ($result = mysqli_fetch_assoc($query))
     ?>

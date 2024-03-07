@@ -1,30 +1,21 @@
-/*TODO @PiwkoM @AdamrePL Change colors to match school colors (blue,yellow) <== horrible color scheme btw????? who did this????? its disgusting?????*/
 
 :root {
     
-    --text: #050315;
-    --background: #f2f0fe;
-    --primary: #5522a7;
-    --secondary: #526BFE;
-    /* --accent: #fafe2a; */
-    --accent: #f4eecb;
-    /* --text: rgb(0, 0, 0);
-    --background: rgb(237, 255, 240); 
-    --primary: rgb(91, 216, 124);
-    --secondary: rgb(61, 102, 79);
-    --accent: rgb(76, 206, 132);  */
+    --text: #050315; /*--text: rgb(0,0,0)*/
+    --background: #f2f0fe; /*--background: rgb(237, 255, 240); */
+    --primary: #5522a7; /*--primary: rgb(91, 216, 124);*/
+    --secondary: #526BFE; /*--secondary: rgb(61, 102, 79);*/
+    --accent: #f4eecb; /* --accent: #fafe2a;     --accent: rgb(76, 206, 132);   */
+
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) { /*i am not doing this shit*/
     :root {
         --text: rgb(0,0,0);
-        /* --background: rgb(1, 31, 8);  */
-        --background: rgb(9, 16, 11);
+        --background: rgb(9, 16, 11); /* --background: rgb(1, 31, 8);  */
         --primary: rgb(65, 195, 100);
-        --secondary: rgb(21, 87, 39);
-        --accent: rgb(12, 48, 22);
-        /* --secondary: rgb(61, 102, 79);  */
-        /* --accent: rgb(130, 171, 157);  */
+        --secondary: rgb(21, 87, 39); /* --secondary: rgb(61, 102, 79);  */
+        --accent: rgb(12, 48, 22); /* --accent: rgb(130, 171, 157);  */
         /* color for menu item bg rgba(43, 42, 51,0.9); */
     } 
 }
