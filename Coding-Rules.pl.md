@@ -45,11 +45,11 @@
 ```PHP
 <div id="<?php echo $result["entryid"]; ?>"><?php echo $_$GET["page"]; ?></div>
 ```
-##### Zamiast:
+Zamiast:
 ```PHP
 echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
 ```
-##### Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.
+Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.
 
 ## CSS
 ### Nazewnictwo
