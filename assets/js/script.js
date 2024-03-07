@@ -11,3 +11,19 @@
 // hgnhhhhhhhhhhhhh i no want nesting () => and even listener hnghhhhhhhhh
 //     
 // })
+
+
+//check when user scrolled past/to legend -> append(?) navigate.php, or hide idfk
+
+//holy hell this is horrible
+// document.addEventListener("scroll", () => {
+//     var A = window.scrollY;
+//     if(A>=250){ //change to variables with sth like document.body.scrollheight/top/bottom whatevrlhtalrht
+//         document.querySelector("#test").style.visibility ="visible";
+//     } else if(A<=250) {
+//         document.querySelector("#test").style.visibility ="hidden";
+//     }
+// })
+
+
+// })
