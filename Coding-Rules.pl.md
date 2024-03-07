@@ -23,13 +23,17 @@
 # Język ogólny
 ### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
 -----------------
+# Pliki
+### Nazewnictwo Plików 
+**Pliki powinny być nazywane w języku angielskim.**
+Jeżeli plik składa się z kilku słow, powinny one być rozdzielone znakiem '-'.
 
 # Języki programowania
 <!-- TAK, WIEMY! ALE NAZWIJCIE TO INACZEJ ABY NAZWA BYLA OGOLNIE ROZPOZNAWANA -->
 
 ## HTML
 ### Implementacja skryptów oraz stylizacji[^1]
-#### Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów;
+Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów;
 ##### Przykład
 ```HTML
 <head>
@@ -38,12 +42,18 @@
 
 <script> DoSomething() </script>
 ```
+Elementy których nie trzeba zamykać, ale można np. <input>, mają być zamknięte ukośnikiem na końcu `<input />`
+
+Nazwy jakichkolwiek elementów formularza, (które wymagają/potrzebują atrybutu nazwy) jeżeli składają się z przynajmniej 2 słow to muszą być rozdzielone za pomocą znaku "-";
+
 
 ## PHP 
 ### Nazewnictwo
 Każde zapytanie SQL wprowadzone w PHP-ie przed dodaniem do jakiejkolwiek funkcji MySQL powinno pozostać przypisane do zmiennej `$sql`.
 
-Nazwa funkcji powinna być rozdzielana znakiem '_' jeżeli składa się z dwóch słów lub więcej.
+Zmienne przeznaczone dla "prepared statements" powinny nazywać się `$stmt`.
+
+Nazwa funkcji oraz zmiennej powinna być rozdzielana znakiem '_' jeżeli składa się z dwóch słów lub więcej.
 ### Utrzymywanie kodu w porządku
 **Jeżeli można to elementy dawać poza kodem PHP i wartości dodawać kodem wewnątrz elementu.**
 #### Przykład
@@ -91,6 +101,8 @@ function makeDiv() {
 
 const newtab = makeDiv()
 ```
+
+Zmienne przeznaczone dla ajax-a powinny nazywać się "xhr" (+ numer zmiennej jeżeli jest więcej niz 1).
 
 ### Utrzymanie kodu w porządku
 -----------------
