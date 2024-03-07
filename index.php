@@ -71,21 +71,6 @@
 
 
     <?php // ! TESTING ENV
-        $ksiazka = [];
-        $ksiazka["przedmiot"] = "Biologia";
-        $ksiazka["klasa"] = 4;
-        $ksiazka["autorzy"] = ",,";
-        $ksiazka["wydawnictwo"] = "nowa era";
-        $ksiazka2 = [];
-        $ksiazka2["przedmiot"] = "Biologia";
-        $ksiazka2["klasa"] = 4;
-        $ksiazka2["autorzy"] = ",,";
-        $ksiazka2["wydawnictwo"] = "nowa era";
-        $data = array($ksiazka, $ksiazka2);
-        $json = json_encode($data, JSON_PRETTY_PRINT);
-        file_put_contents("booklist.json", $json);
-        echo file_get_contents("booklist.json");
-        echo json_decode(file_get_contents("booklist.json"), true);
     ?>
 
 </body>

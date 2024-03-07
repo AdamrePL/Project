@@ -33,4 +33,4 @@
     ?>
 </table>
 
-<a href="booklist.json" download>Plik przygotowawczy dla wstawienia książek na stronę</a>
+<a href="../booklist.json" download>Plik przygotowawczy dla wstawienia książek na stronę</a>

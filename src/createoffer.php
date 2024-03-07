@@ -1,18 +1,16 @@
     <div id="offerCreate">
         <form>
             <h1>Testing</h1>
-            <input type="text" placeholder="Name Of Book"/>
+            <input type="text" placeholder="Book title"/>
 
             <select name="przedmioty">
-                <option value="polish">J.Polski</option>
-                <option value="english">J.Angielski</option>
-                <option value="german">J.Niemiecki</option>
-                <option value="math">Matematyka</option>
-                <option value="phyiscs">Fizyka</option>
-                <option value="chemistry">Chemia</option>
-                <option value="geography">Geografia</option>
-                <option value="biology">Biologia</option>
-                <option value="history">Historia</option>
+                <?php include_once "../conf/config.php"; ?>
+                <?php $sql = "SELECT DISTINCT `subject` FROM booklist;";
+                    $query = mysqli_query($conn, $sql);
+                    while ($result = mysqli_fetch_array($query)) {
+                        echo '<option value="' . $result["subject"] . '">' . $result["subject"] . '</option>';
+                    }
+                ?>
             </select>
 
             <!-- <input type="text" placeholder="Stan Książki"/> -->
