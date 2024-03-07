@@ -38,9 +38,10 @@
 ## PHP 
 ### Nazewnictwo
 **Każde zapytanie SQL wprowadzone w PHP-ie przed dodaniem do jakiejkolwiek funkcji MySQL powinno pozostać przypisane do zmiennej `$sql`.**
+
 **Nazwa funkcji powinna być rozdzielana znakiem '_' jeżeli składa się z dwóch słów lub więcej.**
 ### Utrzymywanie kodu w porządku
-#### Jeżeli można to elementy dawać poza kodem PHP i wartości dodawać kodem wewnątrz elementu.
+**Jeżeli można to elementy dawać poza kodem PHP i wartości dodawać kodem wewnątrz elementu.**
 ```PHP
 <div id="<?php echo $result["entryid"]; ?>"><?php echo $_$GET["page"]; ?></div>
 ```
