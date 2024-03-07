@@ -34,7 +34,7 @@ function check_user_data(string $name, string $email, string $password, string $
     if (preg_match("/\s/", $password)) {
         return "Hasło nie powinno zawierać spacji";
     }
-    
+
     return false;
 }
 
@@ -47,8 +47,12 @@ function create_user(mysqli $conn, string $name, string $email, string $password
         echo "tried $i times";
     }
 
-    $hashed = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO `users` VALUES($uid, $name, $hashed, '', '', $email, '', '', '');";
+    if ($password != "") {
+        $hashed = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO `users` VALUES($uid, $name, $hashed, '', '', $email, '', '', '', '');";
+    } else {
+        $sql = "INSERT INTO `users` VALUES($uid, $name, '', '', '', $email, '', '', '', '');";
+    }
 
     return true;
 }

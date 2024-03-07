@@ -12,7 +12,7 @@
             <form method="post" action="../controllers/process-data.php" class="user-form">
                 <input type="text" name="user-id" placeholder="ID użytkownika" />
                 <input type="password" name="password" placeholder="Hasło (Jeżeli jest)" />
-                <input type="submit" value="Zaloguj">
+                <input type="submit" name="logowanie" value="Zaloguj">
             </form>
         </div>
         <div class="line"></div>
