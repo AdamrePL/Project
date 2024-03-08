@@ -112,3 +112,5 @@ function generate_id(string $name): string {
 
     return strtolower($name) . "#" . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)];
 }
+
+// PHONE NR REGEX: /\+?\d{0,2}?\s?\d{3}\s?\d{3}\s?\d{3}\s?/g

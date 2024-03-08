@@ -68,7 +68,7 @@
     <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?></footer>
 
     <noscript>
-        Please turn on script handling!!!
+        <meta http-equiv="refresh" content="0; url=src/noscript.html">
     </noscript>
 
 
