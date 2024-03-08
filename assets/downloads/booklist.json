@@ -171,16 +171,58 @@
     ],
     "5": [
         {
-            "nazwa": "",
-            "przedmiot": "",
-            "autorzy": "",
-            "wydawnictwo": ""
+            "nazwa": "Ponad Słowami 3 Część 2",
+            "przedmiot": "język polski",
+            "autorzy": "Joanna Kościerzyńska, Anna Cisowska, Małgorzata Matecka, Aleksandra Wróblewska, Joanna Ginter, Anna Równy",
+            "wydawnictwo": "Nowa Era"
         },
         {
-            "nazwa": "",
-            "przedmiot": "",
-            "autorzy": "",
-            "wydawnictwo": ""
+            "nazwa": "Ponad Słowami 4",
+            "przedmiot": "język polski",
+            "autorzy": "Joanna Kościerzyńska, Aleksandra Wróblewska, Małgorzata Matecka, Anna Cisowska, Joanna Baczyńska-Wybrańska, Joanna Ginter",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "REPETYTORIUM Poziom Podstawowy",
+            "przedmiot": "język angielski podstawowy",
+            "autorzy": "M. Rosińska, L. Edwards",
+            "wydawnictwo": "Macmillan Education"
+        },
+        {
+            "nazwa": "REPETYTORIUM Poziom Rozszerzony",
+            "przedmiot": "język angielski rozszerzony",
+            "autorzy": "M. Rosińska, L. Edward",
+            "wydawnictwo": "Macmillan Education"
+        },
+        {
+            "nazwa": "Perfekt 4",
+            "przedmiot": "język niemiecki",
+            "autorzy": "Beata Jaroszewicz, Jan Szurmant, Anna Wojdat-Niklewska",
+            "wydawnictwo": "Pearson"
+        },
+        {
+            "nazwa": "MATeMAtyka 4 Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "Wojciech Babiański, Lech Chańko, Joanna Czarnowska, Jolanta Wesołowska",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 4 Zakres Podstawowy Karty Pracy",
+            "przedmiot": "matematyka",
+            "autorzy": "Dorota Ponczek, Karolina Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Historia 4 Zakres Podstawowy",
+            "przedmiot": "historia",
+            "autorzy": "J. Kłaczkow, S. Roszak",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Wiedza o społeczeństwie 1 Zakres Podstawowy",
+            "przedmiot": "wiedza o społeczeństwie",
+            "autorzy": "Zbigniew Smutek, Beata Surmacz, Jan Maleska",
+            "wydawnictwo": "OPERON"
         }
     ] 
 }
