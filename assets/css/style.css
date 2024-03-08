@@ -9,6 +9,17 @@ input:focus {
     outline-color: transparent;
 }
 
+input:not(:placeholder-shown) {
+    border-color: rgb(var(--old-infobar-dark));
+}   
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+}
+
+/* transition: box-shadow 350ms; */
+
+
 body {
     color: var(--text);
     font-size: 1.5em;
