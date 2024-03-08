@@ -60,7 +60,7 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 function user_exists(mysqli $conn, $uid) {
     $sql = "SELECT COUNT(*) FROM `users` WHERE uuid = $uid;";
     $query = mysqli_query($conn, $sql);
-    return mysqli_fetch_row($query) > 0;
+    return mysqli_num_rows($query) > 0;
 }
 
 function validate_phone(int $number): bool {
