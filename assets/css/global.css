@@ -1,3 +1,35 @@
+user-select: text; /* All */
+-moz-user-select: text; /* Firefox */
+-ms-user-select: text; /* Edge, Internet Explorer */
+-webkit-user-select: text; /* Chrome, Safari */
+
+-webkit-user-drag: none;
+
+box-sizing: border-box; /* All */
+-moz-box-sizing: border-box; /* Firefox */
+-webkit-box-sizing: border-box; /* Chrome, Safari */
+
+input:not(:placeholder-shown) {
+    border-color: rgb(var(--old-infobar-dark));
+}   
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+}
+
+transition: box-shadow 350ms;
+
+.overlay {
+    position: absolute;
+    display: block;
+    Height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    Bottom: 0;
+    Top: 0;
+    Right: 0;
+    Left: 0;
+    z-index: 10000;
+}
 
 :root {
     

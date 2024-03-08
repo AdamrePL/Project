@@ -114,3 +114,5 @@ function generate_id(string $name): string {
 }
 
 // PHONE NR REGEX: /\+?\d{0,2}?\s?\d{3}\s?\d{3}\s?\d{3}\s?/g
+// USERNAME REGEX: /^\w{1,30}$/im
+// EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";

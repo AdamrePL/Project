@@ -25,3 +25,5 @@ $file = $_FILES['image'];
                     $fileFolder = "book-covers/";
                     $fileDestination = $fileFolder . $fileNewName;
                     move_uploaded_file($fileTempName, $fileDestination);
+
+                    foreach (glob("paragraphs/*.txt") as $file) // odczyt plikow
