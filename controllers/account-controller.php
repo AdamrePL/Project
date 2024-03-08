@@ -60,7 +60,7 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 function user_exists(mysqli $conn, $uid) {
     $sql = "SELECT COUNT(*) FROM `users` WHERE uuid = $uid;";
     $query = mysqli_query($conn, $sql);
-    return mysqli_fetch_row($query) > 0;
+    return mysqli_num_rows($query) > 0;
 }
 
 function validate_phone(int $number): bool {
@@ -112,3 +112,5 @@ function generate_id(string $name): string {
 
     return strtolower($name) . "#" . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)];
 }
+
+// PHONE NR REGEX: /\+?\d{0,2}?\s?\d{3}\s?\d{3}\s?\d{3}\s?/g
