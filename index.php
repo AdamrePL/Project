@@ -59,6 +59,8 @@
             ?>
         </div>
     </section>
+    <i class="fa-brands fa-discord"></i>
+
 
     <div id="offerOfUser">
         <h1><?php echo !isset($_SESSION["uid"])? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
@@ -67,7 +69,12 @@
          <!--yeah no ive got no idea why this doesnt work-->
     </div>
 
-    <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?></footer>
+    <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?>
+    <Div class="footer">
+    <span title="Username: AdamrePL&#013;UID: 317347265398308864"><i class="fa-brands fa-discord"></i> AdamrePL</span>
+    <span title="Username: Adamre[PL]&#013;UID: adamre"><i class="fa-brands fa-steam"></i> <a target="_blank" href="https://steamcommunity.com/id/adamre">Adamre[PL]</a></span>
+    <P>&copy; Made by AdamrePL - <?php echo date("Y");?></P>
+</Div></footer>
 
     <noscript>
         <meta http-equiv="refresh" content="0; url=src/noscript.html">
