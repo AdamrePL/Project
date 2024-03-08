@@ -113,6 +113,9 @@ function generate_id(string $name): string {
     return strtolower($name) . "#" . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)];
 }
 
-// PHONE NR REGEX: /\+?\d{0,2}?\s?\d{3}\s?\d{3}\s?\d{3}\s?/g
+// PHONE NR REGEX: /\d{3}[-\s]?\d{3}[-\s]?\d{3}/
 // USERNAME REGEX: /^\w{1,30}$/im
 // EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+// FILE EXT REGEX: ^\w+\.(gif|png|jpg|jpeg)$
+
+// uhh.. slower regex for email but more precise? ^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$

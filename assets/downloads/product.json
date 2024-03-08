@@ -1,0 +1,24 @@
+[
+    {
+        "name": "",
+        "author": "",
+        "publisher": "",
+        "subject": "brane z listy podrecznikow, opcjonalne przy wlasnym dodawaniu ksiazki",
+        "class": "zapisywane jako int, klasa z wyboru select, ilosc klas brana z listy podrecznikow, nie bedzie w wlasnym tworzeniu",
+        "price": 0.00,
+        "quality": "wybrane z predefined listy",
+        "note": "",
+        "img": ["",""]
+    },
+    {
+        "name": "",
+        "author": "",
+        "publisher": "",
+        "subject": "",
+        "class": 1,
+        "price": 100.00,
+        "quality": "",
+        "note": "",
+        "img": ["",""]
+    }
+]
