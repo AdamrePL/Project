@@ -13,13 +13,7 @@
             "wydawnictwo": "Nowa Era"
         },
         {
-            "nazwa": "Checkpoint A2+",
-            "przedmiot": "język angielski podstawowy",
-            "autorzy": "David Spencer, Monika Cichmińska, Lynda Edwards",
-            "wydawnictwo": "Macmillan"
-        },
-        {
-            "nazwa": "Checkpoint B1",
+            "nazwa": "Checkpoint A2+/B1",
             "przedmiot": "język angielski podstawowy",
             "autorzy": "David Spencer, Monika Cichmińska, Lynda Edwards",
             "wydawnictwo": "Macmillan"
@@ -129,17 +123,126 @@
     ],
     "2": [
         {
-            "nazwa": "",
-            "przedmiot": "",
-            "autorzy": "",
-            "wydawnictwo": ""
+            "nazwa": "Ponad Słowami 1 Część 2",
+            "przedmiot": "język polski",
+            "autorzy": "Małgorzata Chmiel,Anna Cisowska,Joanna Kościerzyńska,Helena Kusy,Aleksandra Wróblewska",
+            "wydawnictwo": "Nowa Era"
         },
         {
-            "nazwa": "",
-            "przedmiot": "",
-            "autorzy": "",
-            "wydawnictwo": ""
+            "nazwa": "Ponad Słowami 2 Część 1",
+            "przedmiot": "język polski",
+            "autorzy": "Małgorzata Chmiel,Anna Cisowska,Joanna Kościerzyńska,Helena Kusy,Aleksandra Wróblewska",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Checkpoint A2+/B1",
+            "przedmiot": "język angielski podstawowy",
+            "autorzy": "David Spencer, Monika Cichmińska, Lynda Edwards",
+            "wydawnictwo": "Macmillan"
+        },
+        {
+            "nazwa": "Checkpoint A2+/B1 Ćwiczenia",
+            "przedmiot": "język angielski podstawowy",
+            "autorzy": "David Spencer, Monika Cichmińska, Lynda Edwards",
+            "wydawnictwo": "Macmillan"
+        },
+        {
+            "nazwa": "Pioneer Plus. Level B1+ Students Book",
+            "przedmiot": "język angielski rozszerzony",
+            "autorzy": "H.G. Mitchell, Marileni Malkogianni",
+            "wydawnictwo": "MM Publications"
+        },
+        {
+            "nazwa": "Perfekt 2",
+            "przedmiot": "język niemiecki",
+            "autorzy": "Beata Jaroszewicz, Jan Szurmant, Anna Wojdat-Niklewska",
+            "wydawnictwo": "Pearson"
+        },
+        {
+            "nazwa": "Perfekt 2 Ćwiczenia",
+            "przedmiot": "język niemiecki",
+            "autorzy": "Piotr Dudek, Danuta Kin, Monika Ostrowska-Polak",
+            "wydawnictwo": "Pearson"
+        },
+        {
+            "nazwa": "Historia 2 - Ślady czasu",
+            "przedmiot": "historia",
+            "autorzy": "Łukasz Kępski, Jacek Wijaczka",
+            "wydawnictwo": "GWO"
+        },
+        {
+            "nazwa": "HiT 2 Poziom Podstawowy",
+            "przedmiot": "historia",
+            "autorzy": "I. Modzelewska Rysak, K. Wilczyński, A. Cisek, M. Buczyński, T. Grochowski, W. Pelczar",
+            "wydawnictwo": "WSiP"
+        },
+        {
+            "nazwa": "Oblicza geografii 1 Zakres Podstawowy",
+            "przedmiot": "geografia",
+            "autorzy": "Roman Malarz, Marek Więckowski",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Biologia na czasie 2",
+            "przedmiot": "biologia",
+            "autorzy": "Anna Helmin, Jolanta Holeczek",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Biologia na czasie 3",
+            "przedmiot": "biologia",
+            "autorzy": "Anna Helmin, Jolanta Holeczek",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "To jest chemia 2 Zakres Podstawowy",
+            "przedmiot": "chemia",
+            "autorzy": "Romuald Hassa, Aleksandra Mrzigod, Janusz Mrzigog",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 1 Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "Wojciech Babiański, Lech Chańko, Karolina Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 2 Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "Wojciech Babiański, Lech Chańko, Joanna Czarnowska, Grzegorz Janocha, Dorota Ponczek",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 1 Karty pracy Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "Dorota Ponczek, Karolina Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 2 Karty pracy Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "Dorota Ponczek, Karolina Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Informatyka na czasie 2 Zakres Podstawowy",
+            "przedmiot": "informatyka",
+            "autorzy": "Janusz Mazur, Paweł Perekietka, Zbigniew Talaga, Janusz S. Wierzbicki",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Informatyka na czasie 1 Zakres Rozszerzony",
+            "przedmiot": "informatyka",
+            "autorzy": "Zbigniew Talaga, Janusz Mazur, Janusz Wierzbicki, Paweł Perekietka",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Krok w przedsiębiorczość",
+            "przedmiot": "podstawy przedsiębiorzczośći",
+            "autorzy": "Zbigniew Makieła, Tomasz Rachwał",
+            "wydawnictwo": "Nowa Era"
         }
+
     ],
     "3": [
         {
