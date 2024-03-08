@@ -46,7 +46,7 @@
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="">Lista podręczników</a>
         <a href="./src/access.php">Zaloguj się</a>
-        <a href="./src/profile.php#offers">Moje oferty</a>
+        <a href="./src/profile.php#offers"><?php echo !isset($_SESSION["uid"]) ? "placeholder" : "Moje oferty"; ?></a>
         <a>Placeholder Button</a>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
@@ -61,8 +61,10 @@
     </section>
 
     <div id="offerOfUser">
-        <h1>Twoje oferty</h1>
-        <p> You've created <?php echo "variable goes here"; ?> offers so far. </p>
+        <h1><?php echo !isset($_SESSION["uid"])? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
+
+        <p> You've created <?php echo "zero" ?> offers so far. </p>
+         <!--yeah no ive got no idea why this doesnt work-->
     </div>
 
     <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?></footer>
@@ -73,6 +75,14 @@
 
 
     <?php // ! TESTING ENV
+    // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
+    // $DisOf = mysqli_query($conn, $lol);
+    // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
+    //nah cause why the fuck arent you working lil bro this is just insane at this point
+        $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
+        echo $whynowork;
+
+    //logically, this should work, but, of course, it doesn't . . .
     ?>
 
 </body>
