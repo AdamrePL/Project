@@ -2,13 +2,32 @@
 
 <div class="offerCreate">
     <h1>Testing</h1>
-    <form>
-        <input type="text" placeholder="Book title"/>
-        <input type="checkbox">fone</input>
-        <input type="checkbox">mail</input>
-        <input type="checkbox">the cord</input>
-        <input type="date"/>
-        <select name="przedmioty">
+    <form action="../controllers/offer-controller.php" method="post">
+        <input type="file" name="image"/>
+        <input type="file" name="image1"/>
+        <select name="book">
+        <?php
+            $sql = "SELECT DISTINCT `name` FROM booklist";
+            $query = mysqli_query($conn,$sql);
+            while ($result = mysqli_fetch_array($query)) {
+                echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
+            }
+        ?>
+        </select>
+        <select name="quality">
+            <?php
+            $quality = ["Używana","Zniszczona","Nowa",];
+            foreach($quality as $A){
+                echo '<option value=" ' .$A. ' "> ' .$A. ' </option>'; //trying to format html embedded in php is a pain lmao
+            }
+            ?>
+        </select>
+        <input type="number" name="price"/>
+        <input type="text" name="note"/>
+        <input type="checkbox" name="phone">fone</input>
+        <input type="checkbox" name="email">mail</input>
+        <input type="checkbox" name="discord">the cord</input>
+        <select name="subjects">
             <?php $sql = "SELECT DISTINCT `subject` FROM booklist;";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_array($query)) {
@@ -16,8 +35,6 @@
                 }
             ?>
         </select>
-
-        <!-- <input type="text" placeholder="Stan Książki"/> -->
         <input type="submit" value="Create Offer" />
         <input type="reset" value="Reset" />
     </form>
