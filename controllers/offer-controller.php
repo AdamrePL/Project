@@ -16,24 +16,31 @@ $subject = $_POST["subjects"];
 
 $status = array("active","inactive","terminated");
 
+
+
+
 $file = $_FILES['image'];
-        $fileName = $file['name'];
-        $fileTempName = $file['tmp_name'];
-        $fileSize = $file['size'];
-        $fileError = $file['error'];
-        $fileType = $file['type'];
+$fileName = $file['name'];
+$fileTempName = $file['tmp_name'];
+$fileSize = $file['size'];
+$fileError = $file['error'];
+$fileType = $file['type'];
 
-        $FileExtVar = explode('.', $fileName);
-        $fileExt = strtolower(end($FileExtVar));
-        $allowed = array('png', 'jpg', 'jpeg');
+$fileExt = strtolower(end(explode('.', $fileName)));
+$allowed = array('png', 'jpg', 'jpeg');
 
-        file handling
-        if (in_array($fileExt, $allowed)) {
-            if ($fileError === 0) {
-                if ($fileSize < 1024 * 1024 * 50) {
-                    $fileNewName = $bookid . "." . $fileExt;
-                    $fileFolder = "book-covers/";
-                    $fileDestination = $fileFolder . $fileNewName;
-                    move_uploaded_file($fileTempName, $fileDestination);
+if (in_array($fileExt, $allowed)) {
+    if ($fileError === 0) {
+        if ($fileSize < 1024 * 1024 * 50) {
+            $fileNewName = $bookid . "." . $fileExt;
+            $fileFolder = "book-covers/";
+            $fileDestination = $fileFolder . $fileNewName;
+            move_uploaded_file($fileTempName, $fileDestination);
+        }
+    }
+}
 
-                    foreach (glob("paragraphs/*.txt") as $file) // odczyt plikow
+$ext = "png";
+foreach (glob("../assets/img/product-images/*.$ext") as $file) {
+
+} // odczyt plikow
