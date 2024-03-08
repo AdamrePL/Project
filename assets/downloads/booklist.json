@@ -1,19 +1,131 @@
 {
-    /* cyfra w tym miejscu oznacza klase, */
     "1": [ 
         {
-            "nazwa": "tytul",
-            "przedmiot": "matematyka", /* wielkosc znakow nie ma znaczenia */
-            "autorzy": "Autorow oddzielaj przecinkiem",
-            "wydawnictwo": "np. Nowa Era"
+            "nazwa": "Ponad Słowami 1 Część 1",
+            "przedmiot": "język polski",
+            "autorzy": "Małgorzata Chmiel,Anna Cisowska,Joanna Kościerzyńska,Helena Kusy,Aleksandra Wróblewska",
+            "wydawnictwo": "Nowa Era"
         },
         {
-            "nazwa": "",
-            "przedmiot": "",
-            "autorzy": "",
-            "wydawnictwo": ""
+            "nazwa": "Ponad Słowami 1 Część 2",
+            "przedmiot": "język polski",
+            "autorzy": "Małgorzata Chmiel,Anna Cisowska,Joanna Kościerzyńska,Helena Kusy,Aleksandra Wróblewska",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Checkpoint A2+",
+            "przedmiot": "język angielski podstawowy",
+            "autorzy": "David Spencer, Monika Cichmińska, Lynda Edwards",
+            "wydawnictwo": "Macmillan"
+        },
+        {
+            "nazwa": "Checkpoint B1",
+            "przedmiot": "język angielski podstawowy",
+            "autorzy": "David Spencer, Monika Cichmińska, Lynda Edwards",
+            "wydawnictwo": "Macmillan"
+        },
+        {
+            "nazwa": "Pioneer Plus. Level B1+ Students Book",
+            "przedmiot": "język angielski rozszerzony",
+            "autorzy": "H.G. Mitchell, Marileni Malkogianni",
+            "wydawnictwo": "MM Publications"
+        },
+        {
+            "nazwa": "Perfekt 1",
+            "przedmiot": "język niemiecki",
+            "autorzy": "Beata Jaroszewicz, Jan Szurmant, Anna Wojdat-Niklewska",
+            "wydawnictwo": "Pearson"
+        },
+        {
+            "nazwa": "Perfekt 1 Zeszyt Ćwiczeń",
+            "przedmiot": "język niemiecki",
+            "autorzy": "Piotr Dudek, Danuta Kin, Monika Ostrowska-Polak",
+            "wydawnictwo": "Pearson"
+        },
+        {
+            "nazwa": "Spotkania z filozofią",
+            "przedmiot": "filozofia",
+            "autorzy": "Monika Bokiniec, Sylwester Zielka",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Historia 1 - Ślady czasu Starożytność i Średniowiecze",
+            "przedmiot": "historia",
+            "autorzy": "Łukasz Kępski, Jakub Kufel, Przemysław Ruchlewski",
+            "wydawnictwo": "GWO"
+        },
+        {
+            "nazwa": "Historia i Teraźniejszość 1 Zakres Podstawowy",
+            "przedmiot": "historia",
+            "autorzy": "Izabella Modzelewska-Rysak, Leszek Rysak, Adam Cisek, Karol Wilczyński",
+            "wydawnictwo": "Wydawnictwa Szkolne i Pedagogiczne"
+        },
+        {
+            "nazwa": "Biologia na czasie 1",
+            "przedmiot": "biologia",
+            "autorzy": "Anna Helmin, Jolanta Holeczek",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Biologia na czasie 2",
+            "przedmiot": "biologia",
+            "autorzy": "Anna Helmin, Jolanta Holeczek",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "To jest chemia 1 Zakres Podstawowy",
+            "przedmiot": "chemia",
+            "autorzy": "Romuald Hassa, Aleksandra Mrzigod, Janusz Mrzigod",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 1 Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "W. Babiański, L. Chańko, K. Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 1 Zakres Rozszerzony",
+            "przedmiot": "matematyka",
+            "autorzy": "W. Babiański, L. Chańko, K. Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 1 Maturalne karty pracy Zakres Podstawowy",
+            "przedmiot": "matematyka",
+            "autorzy": "Dorota Ponczek, Karolina Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "MATeMAtyka 1 Maturalne karty pracy Zakres Rozszerzony",
+            "przedmiot": "matematyka",
+            "autorzy": "Dorota Ponczek, Karolina Wej",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Informatyka na czasie 1 Zakres Podstawowy",
+            "przedmiot": "informatyka",
+            "autorzy": "Janusz Mazur, Paweł Perekietka, Zbigniew Talaga, Janusz S. Wierzbick",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Edukacja dla bezpieczeństwa",
+            "przedmiot": "edukacja dla bezpieczeństwa",
+            "autorzy": "Bogusław Breitkopf, Mariusz Cieśla",
+            "wydawnictwo": "WSiP Nowa Edycja"
+        },
+        {
+            "nazwa": "Krok w biznes i zarządzanie Część 1 Zakres Podstawowy",
+            "przedmiot": "biznes i zarządzanie",
+            "autorzy": "Zbigniew Makieła, Tomasz Rachwał",
+            "wydawnictwo": "Nowa Era"
+        },
+        {
+            "nazwa": "Krok w biznes i zarządzanie Część 1 ćwiczenia",
+            "przedmiot": "biznes i zarządzanie",
+            "autorzy": "Zbigniew Makieła, Tomasz Rachwał",
+            "wydawnictwo": "Nowa Era"
         }
-        /*ABY DODAĆ WIĘCEJ PODRĘCZNIKOW - SKOPIOWAĆ I WKLEIĆ WIECEJ KLAMR PO PRZECINKACH TAK JAK POWYŻEJ*/
     ],
     "2": [
         {
@@ -70,5 +182,5 @@
             "autorzy": "",
             "wydawnictwo": ""
         }
-    ] // ABY DODAĆ WIECEJ KLAS WYSTARCZY PO PRZECINKU DODAĆ NUMER KLASY PODANY W "" I PO : W NAWIASIE KWADRATOWYM PODAWAC KSIAZKI
+    ] 
 }
