@@ -1,5 +1,9 @@
 <!-- TODO edycja formatowania tekstu - zmniejszenie ilości niepotrzebnych headingów; Psuje to listę headingów które powinny zostać wykorzystane jako sekcje -->
 
+# **Standardy kodowania dla tego projektu**
+Jeżeli myślicie, że to co tutaj jest wypisane to przesada i że jest tego dużo. To dla przykładu sprawdzcie sobie [te standardy kodowania php-a](https://www.php-fig.org/psr/psr-2/ "Link do standardu kodowania PHP").
+A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo wsumie on też i tutaj w tym projekcie się zalicza.
+
 # Spis treści
 1. [Język](#język-ogólny)
 2. [Języki programowania](#języki-programowania)
@@ -109,6 +113,9 @@ Zmienne przeznaczone dla ajax-a powinny nazywać się "xhr" (+ numer zmiennej je
 
 Pozostałe
 ------
+##### Wszystkie: 
+###### Wszędzie w każdych wcięciach powinny zostać użyte 4 spacje, nie tabulatory.
+
 ##### CSS:
 ###### Jako, że na stronie chcemy utrzymać resoponsywność mimo braku wsparcia dla urządzeń mobilnych na początek, zaleca się używania metod Flexbox czy Grid do ustawiania elementów na stronie oraz omijania inline-block czy pozycjonowania absolutnego/stałego.
 
