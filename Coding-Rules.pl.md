@@ -3,7 +3,7 @@
 # **Standardy kodowania dla tego projektu**
 Jeżeli myślicie, że to co tutaj jest wypisane to przesada i że jest tego dużo. To dla przykładu sprawdzcie sobie [te standardy kodowania php-a](https://www.php-fig.org/psr/psr-2/ "Link do standardu kodowania PHP").
 Nie wspominając o tym, że podany przykład jest przestarzały więc tam tego jest jeszcze mniej niż w nowszym.
-A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo wsumie on też i tutaj w tym projekcie się zalicza.
+A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie on też i tutaj w tym projekcie się zalicza.
 
 # Spis treści
 1. [Język](#język-ogólny)
