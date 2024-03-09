@@ -7,10 +7,11 @@ A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie o
 
 # Spis treści
 1. [Język](#język-ogólny)
-2. [Języki programowania](#języki-programowania)
+2. [Pliki](#pliki)
+3. [Języki programowania](#języki-programowania)
    - [HTML](#html)
+       + [Implementacja skryptów oraz stylizacji](#implementacja-skryptów-oraz-stylizacji1)
        + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku)
-       + []
    - [CSS](#css)
        + [Nazewnictwo](#nazewnictwo)
        + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-1)
@@ -23,7 +24,7 @@ A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie o
        + [Nazewnictwo](#nazewnictwo-2)
        + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku)
 
-3. [Inne](#pozostałe)
+4. [Inne](#pozostałe)
 
 # Język ogólny
 ### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
@@ -95,7 +96,7 @@ Klamry zawsze powinny mieć wcięcie do następnej lini, a w jednej lini powinna
 ### Nazewnictwo
 Nazwy funkcji powinny zaczynać się od małej litery.. o ile ta funckja będzie miała jakąś nazwe.
 
-Jeżeli nazwa funkcji ma zawierać 2 lub wiecej słow to nie są one rozdzielane, ale każde nowe słowo zaczynające wewnątrz nazwy powinno rozpoczynać się wielką literą.
+Jeżeli nazwa funkcji zawiera 2 lub wiecej słow to nie są one rozdzielane, ale każde nowe słowo zaczynające wewnątrz nazwy powinno rozpoczynać się wielką literą.[^2]
 #### Przykład
 ```Js
 function makeDiv() {
@@ -122,3 +123,4 @@ Pozostałe
 
 
 [^1]: Dotyczy również PHP-a
+[^2]: [camelCase](https://pl.wikipedia.org/wiki/CamelCase "Link do wikipedii")
