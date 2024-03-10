@@ -22,7 +22,7 @@ A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie o
        + []
    - [JS](#js)
        + [Nazewnictwo](#nazewnictwo-2)
-       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku)
+       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-3)
 
 4. [Inne](#pozostałe)
 
@@ -48,6 +48,8 @@ Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HT
 
 <script> DoSomething() </script>
 ```
+
+### Utrzymywanie kodu w porządku
 Elementy których nie trzeba zamykać, ale można np. <input>, mają być zamknięte ukośnikiem na końcu `<input />`
 
 Nazwy jakichkolwiek elementów formularza, (które wymagają/potrzebują atrybutu nazwy) jeżeli składają się z przynajmniej 2 słow to muszą być rozdzielone za pomocą znaku "-";
@@ -111,7 +113,7 @@ const newtab = makeDiv()
 
 Zmienne przeznaczone dla ajax-a powinny nazywać się "xhr" (+ numer zmiennej jeżeli jest więcej niz 1).
 
-### Utrzymanie kodu w porządku
+### Utrzymywanie kodu w porządku
 -----------------
 
 Pozostałe
