@@ -28,11 +28,13 @@ A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie o
 
 # Język ogólny
 ### W kodzie wszelkie nazwenictwo czy to klas czy zmiennych powinno być w języku angielskim.
+
 -----------------
 # Pliki
 ### Nazewnictwo Plików 
 **Pliki powinny być nazywane w języku angielskim.**
 Jeżeli plik składa się z kilku słow, powinny one być rozdzielone znakiem '-'.
+
 -----------------
 # Języki programowania
 <!-- TAK, WIEMY! ALE NAZWIJCIE TO INACZEJ ABY NAZWA BYLA OGOLNIE ROZPOZNAWANA -->
