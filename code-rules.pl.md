@@ -79,7 +79,8 @@ Klamry zawsze powinny mieć wcięcie do następnej lini, a w jednej lini powinna
 ### Nazewnictwo
 Każde zapytanie SQL wprowadzone w PHP-ie przed dodaniem do jakiejkolwiek funkcji MySQL powinno pozostać przypisane do zmiennej `$sql`.
 
-Zmienne przeznaczone dla "prepared statements" powinny nazywać się `$stmt`.
+> [!TIP]
+> Polecam używać zmiennej $query dla mysqli_query oraz $stmt dla mysqli_stmt_prepare
 
 Nazwa funkcji oraz zmiennej powinna być rozdzielana znakiem '_' jeżeli składa się z dwóch słów lub więcej.
 ### Utrzymywanie kodu w porządku
@@ -111,7 +112,8 @@ function makeDiv() {
 const newtab = makeDiv()
 ```
 
-Zmienne przeznaczone dla ajax-a powinny nazywać się "xhr" (+ numer zmiennej jeżeli jest więcej niz 1).
+> [!TIP]
+> Zmienne przeznaczone dla ajax-a zalecam nazywać się "xhr" (+ numer zmiennej, albo slowo znaczące jeżeli jest więcej niz 1 w kodzie).
 
 ### Utrzymywanie kodu w porządku
 -----------------
