@@ -52,6 +52,26 @@ Elementy których nie trzeba zamykać, ale można np. <input>, mają być zamkni
 
 Nazwy jakichkolwiek elementów formularza, (które wymagają/potrzebują atrybutu nazwy) jeżeli składają się z przynajmniej 2 słow to muszą być rozdzielone za pomocą znaku "-";
 
+## CSS
+### Nazewnictwo
+Wyrazy w nazwach klas powinny być rozdzielane znakiem '-' np. "centered-item".
+
+Wszelkiego nazwy klas dla pojemników powinny być mieć w nazwie "\*nazwa\*-wrapper" zamiast "\*nazwa\*-container", np. "content-wrapper".
+
+selektory elementow (np. klasy), właściwości oraz ich wartości powinny być pisane z małymi literami.
+
+### Utrzymywanie kodu w porządku
+Po podaniu Selector-a elementu pomiędzy selektor-em, a klamrą powinnien być odstęp jednej spacji.
+
+Klamry zawsze powinny mieć wcięcie do następnej lini, a w jednej lini powinna się znajdować maksymalnie jedna właściwość.
+#### Przykład:
+```CSS
+.content-wrapper,
+.details-wrapper {
+    display: flex;
+    gap: 2rem;
+}
+```
 
 ## PHP 
 ### Nazewnictwo
@@ -72,26 +92,7 @@ echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
 ```
 Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.
 
-## CSS
-### Nazewnictwo
-Wyrazy w nazwach klas powinny być rozdzielane znakiem '-' np. "centered-item".
 
-Wszelkiego nazwy klas dla pojemników powinny być mieć w nazwie "\*nazwa\*-wrapper" zamiast "\*nazwa\*-container", np. "content-wrapper".
-
-Właściwości oraz ich wartości powinny być pisane z małymi literami.
-
-### Utrzymywanie kodu w porządku
-Po podaniu Selector-a elementu pomiędzy selektor-em, a klamrą powinnien być odstęp jednej spacji.
-
-Klamry zawsze powinny mieć wcięcie do następnej lini, a w jednej lini powinna się znajdować maksymalnie jedna właściwość.
-#### Przykład:
-```CSS
-.content-wrapper,
-.details-wrapper {
-    display: flex;
-    gap: 2rem;
-}
-```
 ## JavaScript
 ### Nazewnictwo
 Nazwy funkcji powinny zaczynać się od małej litery.. o ile ta funckja będzie miała jakąś nazwe.
