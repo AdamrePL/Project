@@ -2,7 +2,7 @@
 
 # **Standardy kodowania dla tego projektu**
 Jeżeli myślicie, że to co tutaj jest wypisane to przesada i że jest tego dużo. To dla przykładu sprawdzcie sobie [te standardy kodowania php-a](https://www.php-fig.org/psr/psr-2/ "Link do standardu kodowania PHP").
-Nie wspominając o tym, że podany przykład jest przestarzały więc tam tego jest jeszcze mniej niż w nowszym. Poza tym to jest podstawowa wersja. Macie tutaj jeszcze [link do repo](https://github.com/php-fig/fig-standards/tree/c2eaf724e984671db5c352ec34883e72ab9d4e83/accepted) gdzie jest ich więcej.
+Nie wspominając o tym, że podany przykład jest przestarzały więc jest w nim jeszcze mniej rzeczy niż w nowszym. Poza tym to jest podstawowa wersja. Macie tutaj jeszcze [link do repo](https://github.com/php-fig/fig-standards/tree/c2eaf724e984671db5c352ec34883e72ab9d4e83/accepted) gdzie jest ich więcej.
 A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie on też się zalicza w tym projekcie.
 
 # Spis treści
@@ -123,7 +123,7 @@ Zamiast:
 ```PHP
 echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
 ```
-Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.
+**Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.**
 
 
 ## JavaScript
