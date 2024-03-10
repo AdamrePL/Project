@@ -2,28 +2,28 @@
 
 # **Standardy kodowania dla tego projektu**
 Jeżeli myślicie, że to co tutaj jest wypisane to przesada i że jest tego dużo. To dla przykładu sprawdzcie sobie [te standardy kodowania php-a](https://www.php-fig.org/psr/psr-2/ "Link do standardu kodowania PHP").
-Nie wspominając o tym, że podany przykład jest przestarzały więc tam tego jest jeszcze mniej niż w nowszym.
-A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie on też i tutaj w tym projekcie się zalicza.
+Nie wspominając o tym, że podany przykład jest przestarzały więc tam tego jest jeszcze mniej niż w nowszym. Poza tym to jest podstawowa wersja. Macie tutaj jeszcze [link do repo](https://github.com/php-fig/fig-standards/tree/c2eaf724e984671db5c352ec34883e72ab9d4e83/accepted) gdzie jest ich więcej.
+A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie on też się zalicza w tym projekcie.
 
 # Spis treści
 1. [Język](#język-ogólny)
 2. [Pliki](#pliki)
 3. [Języki programowania](#języki-programowania)
    - [HTML](#html)
-       + [Implementacja skryptów oraz stylizacji](#implementacja-skryptów-oraz-stylizacji1)
-       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku)
-   - [CSS](#css)
+       + [Implementacja skryptów oraz stylizacji](#implementacja-skryptów-oraz-stylizacji)
+       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku "Czytelność kodu HTML")
        + [Nazewnictwo](#nazewnictwo)
-       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-1)
-       + []
-   - [PHP](#php)
+   - [CSS](#css)
        + [Nazewnictwo](#nazewnictwo-1)
-       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-2)
+       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-1 "Czytelność kodu CSS")
+       + [Inne](#inne)
+   - [PHP](#php)
+       + [Nazewnictwo](#nazewnictwo-2)
+       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-2 "Czytelność kodu PHP")
        + []
    - [JS](#js)
-       + [Nazewnictwo](#nazewnictwo-2)
-       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-3)
-
+       + [Nazewnictwo](#nazewnictwo-3)
+       + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-3 "Czytelność kodu JS")
 4. [Inne](#pozostałe)
 
 # Język ogólny
@@ -38,7 +38,7 @@ Jeżeli plik składa się z kilku słow, powinny one być rozdzielone znakiem '-
 <!-- TAK, WIEMY! ALE NAZWIJCIE TO INACZEJ ABY NAZWA BYLA OGOLNIE ROZPOZNAWANA -->
 
 ## HTML
-### Implementacja skryptów oraz stylizacji[^1]
+### Implementacja skryptów oraz stylizacji
 Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów;
 ##### Przykład
 ```HTML
@@ -50,20 +50,47 @@ Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HT
 ```
 
 ### Utrzymywanie kodu w porządku
-Elementy których nie trzeba zamykać, ale można np. <input>, mają być zamknięte ukośnikiem na końcu `<input />`
+Kod powinien mieć 4 spacje wcięcia jeżeli element jest umieszczony w innym elemencie.
+##### Przykład
+```HTML
+<div class="wrapper">
+    <h1>lista</h1>
+    <ul>
+        <li>
+            <p>lorem ipsum</p>
+            <span>some very long desc</span>
+            <a>attached link</a>
+        </li>
+        <li></li>
+    </ul>
+</div>
+```
 
-Nazwy jakichkolwiek elementów formularza, (które wymagają/potrzebują atrybutu nazwy) jeżeli składają się z przynajmniej 2 słow to muszą być rozdzielone za pomocą znaku "-";
+Elementy których nie trzeba zamykać, ale można np. `<input>`, mają być zamknięte ukośnikiem na końcu: `<input />`.
+
+Skrypty powinny znajdować się w elemencie `<head>` i mieć atrybuty `defer` lub `async`, zależnie od tego jak mają się ładować.
+
+### Nazewnictwo
+Wszystkie elementy powinny być pisane małymi literami; wyjątkami są własne niestandardowo zdefiniowane elementy, ale wątpie, żeby jakiekolwiek miałyby być tutaj dodane.
+
+Nazwy jakichkolwiek elementów formularza, (które wymagają/potrzebują atrybutu nazwy) jeżeli składają się z przynajmniej 2 słow to muszą być rozdzielone za pomocą znaku "-".
+
+Wyrazy w nazwach klas powinny być rozdzielane znakiem '-' np. "centered-item".
+
+Wszelkiego nazwy klas dla pojemników powinny mieć w nazwie "-wrapper", "\*nazwa\*-wrapper" zamiast "\*nazwa\*-container", np. "content-wrapper".
 
 ## CSS
 ### Nazewnictwo
-Wyrazy w nazwach klas powinny być rozdzielane znakiem '-' np. "centered-item".
+Nazwy zmiennych nie mogą zaczynać się cyfrą, a z nazwy zmiennej ma być wiadomo do czego jest ta zmienna.
 
-Wszelkiego nazwy klas dla pojemników powinny być mieć w nazwie "\*nazwa\*-wrapper" zamiast "\*nazwa\*-container", np. "content-wrapper".
+Co do stylu pisania zmiennych w css-ie, możecie je pisać jakkolwiek chcecie, dopóki zmienna nie jest pisana na przemian z dużych i małych liter.
 
-selektory elementow (np. klasy), właściwości oraz ich wartości powinny być pisane z małymi literami.
+Selektory elementow (np. klasy), właściwości oraz ich wartości powinny być pisane z małymi literami.
 
 ### Utrzymywanie kodu w porządku
-Po podaniu Selector-a elementu pomiędzy selektor-em, a klamrą powinnien być odstęp jednej spacji.
+Po podaniu Selektora elementu pomiędzy selektorem, a klamrą powinnien być odstęp jednej spacji.
+
+Jeżeli
 
 Klamry zawsze powinny mieć wcięcie do następnej lini, a w jednej lini powinna się znajdować maksymalnie jedna właściwość.
 #### Przykład:
@@ -74,6 +101,9 @@ Klamry zawsze powinny mieć wcięcie do następnej lini, a w jednej lini powinna
     gap: 2rem;
 }
 ```
+
+### Inne
+###### Jako, że na stronie chcemy utrzymać resoponsywność mimo braku wsparcia dla urządzeń mobilnych na początek, zaleca się używania metod Flexbox czy Grid do ustawiania elementów na stronie oraz omijania inline-block czy pozycjonowania absolutnego/stałego.
 
 ## PHP 
 ### Nazewnictwo
@@ -116,16 +146,11 @@ const newtab = makeDiv()
 > Zmienne przeznaczone dla ajax-a zalecam nazywać się "xhr" (+ numer zmiennej, albo slowo znaczące jeżeli jest więcej niz 1 w kodzie).
 
 ### Utrzymywanie kodu w porządku
+
 -----------------
 
 Pozostałe
 ------
-##### Wszystkie: 
 ###### Wszędzie w każdych wcięciach powinny zostać użyte 4 spacje, nie tabulatory.
 
-##### CSS:
-###### Jako, że na stronie chcemy utrzymać resoponsywność mimo braku wsparcia dla urządzeń mobilnych na początek, zaleca się używania metod Flexbox czy Grid do ustawiania elementów na stronie oraz omijania inline-block czy pozycjonowania absolutnego/stałego.
-
-
-[^1]: Dotyczy również PHP-a
-[^2]: [camelCase](https://pl.wikipedia.org/wiki/CamelCase "Link do wikipedii")
+[^1]: [camelCase](https://pl.wikipedia.org/wiki/CamelCase "Link do wikipedii")
