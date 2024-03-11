@@ -13,32 +13,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/"> -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/settings.css">
 </head>
 <body>
-<a href="../src/profile.php">RETURNO</a>
+<h1><a href="../src/profile.php">&leftarrow;RETURNO</a></h1>   
 <h1> User Settings </h1>
 
 <form action="" type="">
 
-    <label for="new_password">Change password</label>
-    <input type="text" name="new_password" placeholder="New Password"/>
+    <label for="new_password">change password</label>
+    <input type="text" name="new_password" placeholder="new password"/>
     
-    <label for="con_password">Confirm New Password</label>
-    <input type="text" name="con_password" placeholder="Confirm New Password"/>
+    <label for="con_password">confirm password</label>
+    <input type="text" name="con_password" placeholder="confirm new password"/>
 
-    <label for="email_adress">Enter email:</label>
-    <input type="email" name="email_adress" placeholder="Email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
+    <label for="email_adress">enter email:</label>
+    <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
 
-    <label for="telephone_number">Enter phone number</label>
-    <input type="tel" name="telephone_number" placeholder="Phone Number" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
+    <label for="telephone_number">enter phone number</label>
+    <input type="tel" name="telephone_number" placeholder="phone number" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
     
-    <label for="discord_user">Enter discord username</span>
-    <input type="text" name="discord_user" placeholder="Discord Username"/>
+    <label for="discord_user">enter discord username</label>
+    <input type="text" name="discord_user" placeholder="discord username"/>
 
-    <button type="submit">Confirm</button>
-    <button type="button">Cancel</button>
-    
+    <label for="email_flag">give email? :pleading_face:</label>
+    <input type="checkbox" name="email_flag"/>
+
+    <span>
+        <button type="submit" id="confirm">confirm</button>
+        <button type="button" id="cancel">cancel</button>
+    </span>
+
 </form>
 
 </body>
