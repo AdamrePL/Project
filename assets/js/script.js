@@ -95,3 +95,4 @@ function createParagraphForm() {
         }
         xhr.send(content)
     }
+}

@@ -39,3 +39,7 @@
         <input type="reset" value="Reset" />
     </form>
 </div>
+
+
+<h2>Last login: <?php date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
+<h2>Joined: <?php date("d.m.Y", strtotime($row['join-date'])); ?></h2>

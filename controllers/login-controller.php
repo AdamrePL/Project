@@ -1,24 +1,34 @@
 <?php
 
-function log_out(): bool {
-    if (empty($_SESSION)) {
-        return false;
+require_once "functions.php";
+require_once "../conf/config.php";
+
+$uid = $_POST["user-id"];
+$path_to_form = "../src/access.php";
+
+if (!preg_match("/\w{3,30}#+[a-zA-Z0-9]{3}/", $uid)) {
+    header("Location: $path_to_form?error=incorrect-uid");
+}
+
+$uid = explode("#", $uid);
+
+$username = strtolower($uid[0]);
+$id = $uid[1];
+$uid = $username . '#' . $id;
+
+if (!user_exists($conn, $uid)) {
+    header("Location: $path_to_form?error=no-user-found");
+}
+
+if (get_user_password($conn, $uid)) {
+    if (!isset($_POST["l_password"])) {
+        header("Location: $path_to_form?error=password-required");
     }
-
-    session_unset();
-    session_destroy();
-    return true;
 }
 
-function update_last_login(mysqli $conn, string $username) {
-    $sql = "UPDATE `users` SET `last-login` = NOW() WHERE username = ?";
-    $stmt = mysqli_stmt_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $username);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    // dodać aby to robilo liste z ostatnimi logowaniami i dodawalo do tej listy ostatnie logowanie
-    // maksymalna ilosc ostatnich logowan = 3
-    // ostatnie logowanie dodawalo by na poczatek listy
-}
+
+$_POST["l_password"];
+
+
 
 $conn -> close();

@@ -1,4 +1,5 @@
 <?php
+require_once "functions.php";
 
 function check_user_data(string $name, string $email, string $password, string $password_confirm): string {
     $pass_len = 5;
@@ -57,12 +58,6 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     return true;
 }
 
-function user_exists(mysqli $conn, $uid) {
-    $sql = "SELECT COUNT(*) FROM `users` WHERE uuid = $uid;";
-    $query = mysqli_query($conn, $sql);
-    return mysqli_num_rows($query) > 0;
-}
-
 function validate_phone(int $number): bool {
     if (!preg_match("\+?[0-9]{0,2}?[0-9]{9}", $number)) {
         return false;
@@ -113,8 +108,10 @@ function generate_id(string $name): string {
     return strtolower($name) . "#" . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)];
 }
 
+
+
 // PHONE NR REGEX: /\d{3}[-\s]?\d{3}[-\s]?\d{3}/
-// USERNAME REGEX: /^\w{1,30}$/im
+// USERNAME REGEX: /\w{1,30}/g
 // EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 // FILE EXT REGEX: ^\w+\.(gif|png|jpg|jpeg)$
 
