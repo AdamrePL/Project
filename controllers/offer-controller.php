@@ -13,8 +13,10 @@ $dc = $_POST["discord"];
 $subject = $_POST["subjects"];
 $status = array("active","inactive","terminated");
 
-$dosomethingigidfkigot4hoursofsleep = "INSERT INTO `offers` VALUES()";
-mysqli_query($conn,"");
+//*!remember to add sesh uid, dont be a bozo
+//*leaving multiple blanks due to db uncertainty lole
+$sql = "INSERT INTO `offers` VALUES('','$_SESSION,'','','NOW()','DATE_ADD(NOW(),INTERVAL 14 DAY)','$status[1]','$phone','$email','$dc','','','')";
+mysqli_query($conn,"$sql");
 
 $file = $_FILES['image'];
 $fileName = $file['name'];

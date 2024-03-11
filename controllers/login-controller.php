@@ -20,5 +20,3 @@ function update_last_login(mysqli $conn, string $username) {
     // maksymalna ilosc ostatnich logowan = 3
     // ostatnie logowanie dodawalo by na poczatek listy
 }
-
-$conn -> close();
