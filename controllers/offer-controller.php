@@ -13,6 +13,9 @@ $dc = $_POST["discord"];
 $subject = $_POST["subjects"];
 $status = array("active","inactive","terminated");
 
+$dosomethingigidfkigot4hoursofsleep = "INSERT INTO `offers` VALUES()";
+mysqli_query($conn,"");
+
 $file = $_FILES['image'];
 $fileName = $file['name'];
 $fileTempName = $file['tmp_name'];
@@ -38,3 +41,4 @@ $ext = "png";
 foreach (glob("../assets/img/product-images/*.$ext") as $file) {
 
 } // odczyt plikow
+//*?this only handles one file, no?
