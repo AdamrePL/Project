@@ -1,7 +1,7 @@
 <?php
 
 function user_exists(mysqli $conn, $uid): bool {
-    $sql = "SELECT COUNT(*) FROM `users` WHERE uuid = ?;";
+    $sql = "SELECT * FROM `users` WHERE uuid = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "s", $uid);
@@ -28,10 +28,10 @@ function get_user_password(mysqli $conn, $uid): string|bool {
 }
 
 function update_last_login(mysqli $conn, string $uid) {
-    $sql = "UPDATE `users` SET `last-login` = NOW() WHERE uuid = $uid";
+    $sql = "UPDATE `users` SET `last-login` = NOW() WHERE uuid = ?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_bind_param($stmt, "s", $uid);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     // dodać aby to robilo liste z ostatnimi logowaniami i dodawalo do tej listy ostatnie logowanie
