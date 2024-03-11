@@ -31,62 +31,6 @@
     margin: 1rem;
 }
 
-#u1 {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    height: auto;
-    width: 40%;
-    border: 1px dotted black;
-}
-
-#u1 > p {
-    padding-bottom: 1.1rem;
-}
-
-#u2 {
-    display: flex;
-    margin: 1rem;
-    height: auto;
-    width: 60%;
-    border: 1px solid black;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 1.75rem;
-}
-
-#u2 > p {
-    padding-bottom: 0.5rem;
-}
-
-/* content: icon corresponding to contact thingamabob*/
-
-#pn:before {
-    content: "a";
-}
-
-#ea:before {
-    content: "b";
-}
-
-#dc:before {
-    content: "c";
-}
-
-#u1 >span,
-button {
-    font-size: 1rem;
-
-    /* & span {
-        color: red;
-    }
-    
-    & button {
-        color: red;
-    } */
-}
-
 .agree {
     background: rgb(47, 255, 54);
     border: none;
