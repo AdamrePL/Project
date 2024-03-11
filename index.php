@@ -59,7 +59,7 @@
             ?>
         </div>
     </section>
-    <i class="fa-brands fa-discord"></i>
+    <!-- <i class="fa-brands fa-discord"></i> -->
 
 
     <div id="offerOfUser">
@@ -86,9 +86,10 @@
     // $DisOf = mysqli_query($conn, $lol);
     // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
     //nah cause why the fuck arent you working lil bro this is just insane at this point
-        $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
-        echo $whynowork;
-
+        // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
+        // echo $whynowork;
+    $sql = mysqli_query($conn,"SELECT COUNT(`user-offers`) FROM `users`;");
+    echo $sql;
     //logically, this should work, but, of course, it doesn't . . .
     ?>
 
