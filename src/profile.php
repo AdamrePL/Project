@@ -6,7 +6,8 @@
 
 <section id="user-details">
 <?php
-    $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = 'tester#aA1'");
+    $uid = $_SESSION["uid"];
+    $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = '$uid'");
     $result = mysqli_fetch_assoc($query);
 ?>
     <div class="user">
@@ -46,8 +47,8 @@
     include_once "user-settings.php";
 } ?>
 
-<div class="overlay">
+<!-- <div class="overlay">
     <script src="../assets/js/script.js" defer></script>
     <div class="overlay-wrapper"></div>
     <p class="overlay-msg">Click anywhere outside of the box to close</p>
-</div>
+</div> -->
