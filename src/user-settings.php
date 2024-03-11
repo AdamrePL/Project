@@ -1,12 +1,3 @@
-<!-- 
-    
-    // ! TEMPORARY FILE
-    // ! TEMPORARY FILE
-    // ! TEMPORARY FILE
-
- -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
