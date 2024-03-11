@@ -18,6 +18,7 @@
 <body>
     <header>
         <h1>Giełda</h1>
+        <?php print_r($_SESSION); ?>
         <p>Wewnątrzszkolna wymiana podręczników<p>
         <search>
             <form action="" method="get">
@@ -42,11 +43,14 @@
     </header>
 
     <nav id="nawigacja">
-        <!--//*? is this necessary?-->
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="">Lista podręczników</a>
         <a href="./src/access.php">Zaloguj się</a>
-        <a href="./src/profile.php#offers"><?php echo !isset($_SESSION["uid"]) ? "placeholder" : "Moje oferty"; ?></a>
+        <?php 
+            if (isset($_SESSION["uid"])) {
+                echo '<a href="./src/profile.php#offers">Moje oferty</a>';
+            } 
+        ?>
         <a>Placeholder Button</a>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>

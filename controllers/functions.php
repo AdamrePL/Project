@@ -11,6 +11,11 @@ function user_exists(mysqli $conn, $uid): bool {
     return mysqli_num_rows($result) > 0;
 }
 
+/**
+ * 
+ * 
+ * @return string gets user's password
+ */
 function get_user_password(mysqli $conn, $uid): string|bool {
     $sql = "SELECT `password` FROM `users` WHERE uuid = ? LIMIT 1;";
     $stmt = mysqli_stmt_init($conn);
