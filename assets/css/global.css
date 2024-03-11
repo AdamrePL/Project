@@ -2,12 +2,12 @@
     --text: #050315; /*--text: rgb(0,0,0)*/
     --background: #f2f0fe; /*--background: rgb(237, 255, 240); */
     --primary: #5522a7; /*--primary: rgb(91, 216, 124);*/
-    --secondary: #526BFE; /*--secondary: rgb(61, 102, 79);*/
-    --accent: #f4eecb; /* --accent: #fafe2a;     --accent: rgb(76, 206, 132);   */
+    --secondary: rgb(82, 107, 254); /*--secondary: rgb(61, 102, 79);*/
+    --accent: rgb(244, 238, 203); /* --accent: #fafe2a;     --accent: rgb(76, 206, 132);   */
 
 }
 
-@media (prefers-color-scheme: dark) { /*i am not doing this shit*/
+@media (prefers-color-scheme: dark) {
     :root {
         --text: rgb(0,0,0);
         --background: rgb(9, 16, 11); /* --background: rgb(1, 31, 8);  */

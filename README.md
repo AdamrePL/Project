@@ -5,17 +5,12 @@
 > [!IMPORTANT]
 > ## Informacja dla osób kontynuujących projekt
 > ### Proszę trzymać się ustalonych zasad / stylizacji kodu ustalonego w poniższych plikach
-> ***[Code Guide - PL](Coding-Rules.pl.md)***
-> ***[Code Guide - EN](Coding-Rules.en.md)***
+> ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
+> ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
 > 
 > *- AdamrePL*
 
 > [!CAUTION]
 > ### Błagam wszystkich którzy będą uczestniczyć w tym projekcie, aby ***NIE UŻYWAĆ CHATGPT***
 > ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które umie conajwyżej podstawową stronę z stylami wziętymi z roku 1990?
->*- Browar*
-
-# To do
-- [x] Make project documenation
-- [ ] Make plan for application structure
-- [ ] Make plan for Back-end functionality of elements
+> *- Browar*
