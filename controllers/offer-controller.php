@@ -3,21 +3,35 @@
 require "../conf/config.php";
 $stmt = mysqli_stmt_init($conn);
 
-$title = $_POST["book"];
-$quality = $_POST["quality"];
-$price = $_POST["price"];
-$desc = $_POST["note"];
-$phone = $_POST["phone"];
-$email = $_POST["email"];
-$dc = $_POST["discord"];
-$subject = $_POST["subjects"];
+// $desc = $_POST["note"];
+// $phone = $_POST["phone"];
+// $email = $_POST["email"];
+// $dc = $_POST["discord"];
+
+$json_data = file_get_contents("../assets/downloads/booklist.json");
+$json_data = json_decode($json_data);
+$clarity = 0;
+foreach ($json_data as $klasa => $value) { //Classes
+    echo "Yippe!<br>";
+    foreach($value as $ksiazka => $dane){//OBJECT ITSELF!
+        $dane = json_decode(json_encode($dane), true);
+        echo"<br><br>"; //
+        // var_dump($dane);
+
+        //!THIS IS DEVILISH CODE, I HAVE NO IDEA HOW IM SUPPOSED TO FETCH ANYTHING MAN HOLY HELL
+        //TODO: IMPLEMENT . 
+        //title clarity check
+        // similar_text("ponad slowami 1 cz1",$dane["nazwa"],$percent);
+        // if($percent>30){
+        //     if($clarity<=$percent){
+        //         $clarity = $percent;
+        //     } 
+        // }
+    }
+}
+// echo $clarity;
 
 
-//get author,publisher, and class info from booklist.json(match book by title probably) -> if appears in multiple classes, set class to "multiple" (temp value)
-//-> when fetched, assign 
-
-// $json_data = file_get_contents("../assets/downloads/booklist.json");
-// json_decode($json_data,true); //*!THIS IS A RABBIT HOLE I AM VERY SCARED TO DIVE INTO.
 $status = array("active","inactive","terminated");
 
 
@@ -28,11 +42,7 @@ $fileSize = $file['size'];
 $fileError = $file['error'];
 $fileType = $file['type'];
 
-//! --INSERT THE FOLLOWING SOMEWHERE HERE--
-//!
-//! $tempSolution = [];
-//! array_push($tempSolution,fileName);
-//!
+$json_img_data = [];
 
 $fileExt = strtolower(end(explode('.', $fileName)));
 $allowed = array('png', 'jpg', 'jpeg');
@@ -41,6 +51,9 @@ if (in_array($fileExt, $allowed)) {
     if ($fileError === 0) {
         if ($fileSize < 1024 * 1024 * 50) {
             $fileNewName = $bookid . "." . $fileExt;
+            
+            array_push($tempSolution,$fileNewName);
+
             $fileFolder = "book-covers/";
             $fileDestination = $fileFolder . $fileNewName;
             move_uploaded_file($fileTempName, $fileDestination);
@@ -48,12 +61,12 @@ if (in_array($fileExt, $allowed)) {
     }
 }
 
-
-
 $ext = "png";
 foreach (glob("../_user/images/*.$ext") as $file) {
+
 } // odczyt 
 
+//!before encode, check for type clarity (if int is int etc.)
 //*!encode to json for db insert
 $Book = json_encode(array(
     "name"=>$title,
@@ -67,7 +80,7 @@ $Book = json_encode(array(
     "img"=>[$tempSolution[0],$tempSolution[1]]
     ), JSON_PRETTY_PRINT);
 
-var_dump($Book);
+var_dump($Book); //throws null due to lack of data
 
 
 //*!remember to add sesh uid, dont be a bozo

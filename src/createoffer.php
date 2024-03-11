@@ -16,7 +16,7 @@
         </select>
         <select name="quality">
             <?php
-            $quality = ["Używana","Zniszczona","Nowa",];
+            $quality = ["Używana","Uszkodzona","Nowa"];
             foreach($quality as $A){
                 echo '<option value=" ' .$A. ' "> ' .$A. ' </option>'; //trying to format html embedded in php is a pain lmao
             }
