@@ -10,10 +10,13 @@
         <div id="login-wrapper" aria-selected="true">
             <h1>Logowanie</h1>
             <form method="post" action="../controllers/login-controller.php" class="user-form">
-                <input type="text" name="user-id" pattern="/\w{3,30}\#[a-zA-Z0-9]{3}/g" minlength="7" maxlength="34" placeholder="ID użytkownika" autocomplete="off" autofocus />
+                <input type="text" name="user-id" pattern="\w{3,30}#[a-zA-Z0-9]{3}" minlength="7" maxlength="34" placeholder="ID użytkownika" autocomplete="off" autofocus />
                 <span class="error-msg"><?php if (isset($_GET["error"]) && in_array("incorrect-uid", explode(",", $_GET["error"]))) echo "niepoprawne uid"; ?></span>
                 <input type="password" name="l_password" placeholder="Hasło (Jeżeli jest)" />
-                <span class="error-msg"><?php if (isset($_GET["error"]) && in_array("wrong-password", explode(",", $_GET["error"]))) echo "błędne hasło"; ?></span>
+                <span class="error-msg">
+                    <?php if (isset($_GET["error"]) && in_array("wrong-password", explode(",", $_GET["error"]))) echo "błędne hasło"; ?>
+                    <?php if (isset($_GET["error"]) && in_array("password-required", explode(",", $_GET["error"]))) echo "wymagane hasło"; ?>
+                </span>
                 <input type="submit" name="logowanie" value="Zaloguj">
             </form>
         </div>
