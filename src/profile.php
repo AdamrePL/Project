@@ -70,12 +70,13 @@ if (!isset($_SESSION["uid"])) {
                 ';
                 
                 echo '<div class="contact">';
-                        echo '<p>'. !empty($result["phone"]) ? $result["phone"] : "Nr tel." . '</p>';
-                        echo '<p><span>'. $result["email"] .'</span><input type="checkbox" name="" id="" /></p>';
-                        echo '<p>'. !empty($result["discord"]) ? $result["discord"] : "Discord" .'</p>';
-                        echo '<a href="?page=settings"><button>Edytuj</button></a>';
-                    echo '</div>
-                ';
+                    echo '<p>';
+                    echo !empty($result["phone"]) ? $result["phone"] : "Nr tel.";
+                    echo '</p>';
+                    echo '<p><span>'. $result["email"] .'</span><input type="checkbox" name="" id="" /></p>';
+                    echo '<p><i class="fa-brands fa-discord"></i>'. !empty($result["discord"]) ? $result["discord"] : "Discord";
+                    echo '</p><a href="?page=settings"><button>Edytuj</button></a>';
+                echo '</div>';
             echo '</section>';
             
             echo '<section class="user-offers">';
@@ -91,7 +92,6 @@ if (!isset($_SESSION["uid"])) {
     }
 ?>
 </body>
-    <!-- <i class="fa-brands fa-discord"></i> -->
 <!-- <div class="overlay">
     <script src="../assets/js/script.js" defer></script>
     <div class="overlay-wrapper"></div>
