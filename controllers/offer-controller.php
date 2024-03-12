@@ -9,31 +9,26 @@ $stmt = mysqli_stmt_init($conn);
 // $dc = $_POST["discord"];
 $isCustom = false;
 
+//*this is `products` table insertion code my bad ^w^
+// $json_data = file_get_contents("../assets/downloads/booklist.json");
+// $json_data = json_decode($json_data);
+// $clarity = 0;
+// foreach ($json_data as $klasa => $value) { //Classes
+//     echo "Yippe!<br>";
+//     foreach($value as $ksiazka => $dane){//OBJECT ITSELF!
+//         $dane = json_decode(json_encode($dane), true);
+//         echo"<br><br>"; // var_dump($dane);
 
-$json_data = file_get_contents("../assets/downloads/booklist.json");
-$json_data = json_decode($json_data);
-$clarity = 0;
-foreach ($json_data as $klasa => $value) { //Classes
-    echo "Yippe!<br>";
-    foreach($value as $ksiazka => $dane){//OBJECT ITSELF!
-        $dane = json_decode(json_encode($dane), true);
-        echo"<br><br>"; // var_dump($dane);
-
-        //  this is `products` table insertion code my bad ^w^
-        // if($dane["nazwa"]==$_POST["book"]){
-        //     $title = $dane["nazwa"];
-        //     $author = $dane["autorzy"];
-        //     $publisher = $dane["wydawnictwo"];
-        //     $subject = $dane["przedmiot"];
-            
-        //     break;
-        // } else{
-        //     $isCustom = true;
-            
-        // } 
+//*         // if($dane["nazwa"]==$_POST["book"]){
+//*        //     $title = $dane["nazwa"];
+//*        //     $author = $dane["autorzy"];
+//*        //     $publisher = $dane["wydawnictwo"];
+//*        //     $subject = $dane["przedmiot"];         
+//*        //     break;
+//*        // }
     
-    }
-}
+//     }
+// }
 
 
 $status = array("active","inactive","terminated");
