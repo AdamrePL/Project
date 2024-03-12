@@ -1,9 +1,36 @@
 <?php require_once "../conf/config.php"; ?>
 
-<div class="offerCreate">
+<style> /*throw into seperate css file later*/
 
-    <a href="../"> << Powrót</a>
-    <h1>Stwórz ofertę</h1>
+/* //TODO: style */
+@import "../assets/css/global.css";
+.offerCreate {
+    text-align: center;
+}
+
+body {
+    color:red;
+}
+
+.offerCreate{
+    height: 80%;
+    width: 100%;
+    color: red;
+}
+
+form {
+    background: none;
+}
+
+
+
+
+</style>
+
+<a href="../"> << Powrót</a>
+<h1>Stwórz ofertę</h1>
+
+<div class="offerCreate">
     <form action="../controllers/offer-controller.php" method="post">
 
         <label for="book">Tytuł książki</label>
@@ -46,6 +73,14 @@
                 while ($result = mysqli_fetch_array($query)) {
                     echo '<option value="' . $result["subject"] . '">' . $result["subject"] . '</option>';
                 }
+                
+                // if($result["name"]!=$_GET["book"]){
+                //     code above goes here
+                // } else{
+                //     $sql = "SELECT DISTINCT `subject` FROM booklist WHERE `name`=?;";
+                //     $res = mysqli_fetch_array(mysqli_query($conn,$sql));
+                //     echo '<option value="'. $res["subject"] . '">' . $res["subject"] . '</option>';
+                // }
             ?>
         </select>
 
@@ -57,23 +92,5 @@
     </form>
 </div>
 
-<?php 
-// $titles = [];
-// $subjects = [];
-// $json_data = file_get_contents("../assets/downloads/booklist.json");
-// $json_data = json_decode($json_data);
-// $clarity = 0;
-// foreach ($json_data as $klasa => $value) { //Classes
-//     echo "Yippe!<br>";
-//     foreach($value as $ksiazka => $dane){//OBJECT ITSELF!
-//         $dane = json_decode(json_encode($dane), true);
-//         array_push($titles,$dane["nazwa"]);
-//         array_push($subjects,$dane["przedmiot"]);
-//     }
-// }
-// print_r($titles);
-// echo '<br>';
-// print_r($subjects);
-?>
 <h2>Last login: <?php date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
 <h2>Joined: <?php date("d.m.Y", strtotime($row['join-date'])); ?></h2>
