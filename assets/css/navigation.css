@@ -22,7 +22,7 @@ menu > a {
     text-align: center;
     width: 100%;
     padding-top: 1.5rem;
-    color: rgb(var(--accent));
+    color: rgb(var(--accent-200));
     text-shadow: 3px 3px 3px black;
     font-size: 1.5rem;
     border-bottom: 0px solid black;
@@ -31,8 +31,8 @@ menu > a {
 
 menu > a:hover{
     background: rgba(135, 135, 135, 0.9);
-    border-bottom: 5px solid rgb(var(--accent));
-    text-shadow: 0px 0px 5px rgb(var(--accent));
+    border-bottom: 5px solid rgb(var(--accent-100));
+    text-shadow: 0px 0px 5px rgb(var(--accent-100));
 }
 
 menu > span {
@@ -55,7 +55,7 @@ menu > span > a {
 }
 
 #log, #prof {
-    color: rgb(var(--accent));
+    
     -webkit-text-stroke: 1px black;
     -webkit-text-stroke-width: 1px;
     width: 100%;
@@ -65,6 +65,7 @@ menu > span > a {
 }
 
 #log {
+    color: rgba(244, 238, 203, 1);
     background: rgb(var(--accent));
     z-index: 1;
     border-radius: 200px;
@@ -72,6 +73,7 @@ menu > span > a {
 }
 
 #prof {
+    color: rgb(var(--accent));
     background:rgba(244, 238, 203, 0.903);
     transform: translateX(-20px);
 }
