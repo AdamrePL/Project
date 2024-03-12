@@ -12,8 +12,8 @@ menu {
     justify-items:center;
     grid-template-columns: repeat(5,1fr);
     height: 90px;
-    box-shadow: 1px 0px 50px #421787;
-    background: #421787; /*TODO: change bg color to sth else*/
+    box-shadow: 1px 0px 50px rgb(var(--primary-500));
+    background: rgb(var(--primary-400)); /*TODO: change bg color to sth else*/
     transition: all 0.5s ease-out;
 }
 
@@ -22,7 +22,7 @@ menu > a {
     text-align: center;
     width: 100%;
     padding-top: 1.5rem;
-    color: var(--accent);
+    color: rgb(var(--accent));
     text-shadow: 3px 3px 3px black;
     font-size: 1.5rem;
     border-bottom: 0px solid black;
@@ -31,8 +31,8 @@ menu > a {
 
 menu > a:hover{
     background: rgba(135, 135, 135, 0.9);
-    border-bottom: 5px solid var(--accent);
-    text-shadow: 0px 0px 5px var(--accent);
+    border-bottom: 5px solid rgb(var(--accent));
+    text-shadow: 0px 0px 5px rgb(var(--accent));
 }
 
 menu > span {
@@ -48,14 +48,14 @@ menu > span > a {
     text-align: center;
     width: 80%;
     padding-top: 0.5rem;
-    color: var(--accent);
+    color: rgb(var(--accent));
     text-shadow: 1px 0px 1px black;
     font-size: 1.5rem;
     border: none
 }
 
 #log, #prof {
-    color: var(--accent);
+    color: rgb(var(--accent));
     -webkit-text-stroke: 1px black;
     -webkit-text-stroke-width: 1px;
     width: 100%;
@@ -65,7 +65,7 @@ menu > span > a {
 }
 
 #log {
-    background: var(--accent);
+    background: rgb(var(--accent));
     z-index: 1;
     border-radius: 200px;
     transform: translateX(10px);
@@ -77,7 +77,7 @@ menu > span > a {
 }
 
 #log:hover,#prof:hover {
-    color: var(--secondary);
+    color: rgb(var(--secondary));
     width: 110%;
 }
 /* 

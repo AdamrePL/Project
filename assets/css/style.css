@@ -124,9 +124,9 @@ th {
 
 
 body {
-    color: var(--text);
+    color: rgb(var(--text));
     font-size: 1.5em;
-    background: var(--background);
+    background: rgb(var(--background));
     inset: 0;
     position: absolute;
 }
@@ -135,10 +135,11 @@ header {
     padding-top: 2rem;
     text-align: center;
     height: 95svh;
-    background: var(--primary);
+    background: rgb(var(--primary));
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    box-shadow: 0px 0px 10px 5px rgb(var(--primary));
 }
 
 header > h1 {
@@ -165,6 +166,8 @@ header > search > form > input[type="search"] {
     border: none;
     border-bottom: 1px solid black;
     outline: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 header > search > form > input[type="submit"] {
@@ -172,6 +175,8 @@ header > search > form > input[type="submit"] {
     border: none;
     border-bottom: 1px solid black;
     flex-basis: 1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 header > search > form > input::placeholder {
@@ -183,6 +188,7 @@ header > search > form:has(input:focus-within) {
     outline-color: transparent;
     outline-width: 0.1px;
     outline-offset: 3px;
+    border-radius: 10px;
 }
 
 header a {
@@ -197,18 +203,17 @@ header a {
     flex-grow: 0;
     word-break:break-word;
     border-radius: 0.3rem;
-    border-bottom: 3px solid var(--accent);
-    transition: all 0.2s ease-in-out;
+    border-bottom: 3px solid rgb(var(--secondary));
+    transition: all 0.175s ease-in-out;
 }
 
 header a:hover {
-    background: var(--accent);
-    color: var(--primary);
     transform: translateY(-10px);
-    border-bottom:5px solid var(--secondary);
-    box-shadow: 0px 5px 10px black;
-    text-shadow: 10px 0px 1px var(--accent);
-    
+    border-bottom:5px solid rgb(var(--secondary-300));
+    box-shadow: 0px 5px 10px 0.1px black;
+    background: white;
+    text-shadow: 0px 0px 4px rgb(var(--text-500));
+    color: white;
 }
 
 a:link {
@@ -227,7 +232,7 @@ img {
 
 footer {
     height: 20px;
-    border-top: 10px solid var(--accent);
+    border-top: 10px solid rgb(var(--accent));
 }
 
 menu > nav {
@@ -240,17 +245,18 @@ menu > nav {
 body > nav {
     width: 100%;
     display: inline-grid;
-    grid-template-columns: repeat(auto-fill,minmax(20%,1fr));
+    gap: 0;
+    grid-template-columns: repeat(auto-fit, minmax(25%,1fr));
     justify-self: center;
     word-wrap:break-word;
-    height: 8rem;
+    height: 25%;
 }
 
 /*! PLEASE REVISE PLEASE REVISE PLEASE REVISE PLEASE REVISE*/
 /*TODO @PiwkoM HOLY HELL PLEASE FIND SOME INSPIRATION PLEASE PLEASE PLEASE I FEEL LIKE SISYPHUS RIGHT NOW*/
 body > nav > a {
     color: black;
-    background: whitesmoke; 
+    background: rgba(var(--primary),0.5); 
     justify-self: center;
     text-align:center;
     padding: 1.7rem;
@@ -261,17 +267,12 @@ body > nav > a {
     font-size: 1.3rem;
     width: 200px;
     border: 1px solid black;
-    border-bottom: 1px solid black;
     border-radius: 0.3rem;
     box-shadow: 0px 0px 0px transparent;
     transition: all 0.2s ease-in-out;
 }
 
 body > nav > a:hover{
-    color: var(--accent);
-    transform: translateY(-10px);
     border: none;
-    border-bottom: 5px solid var(--primary);
-    background: var(--secondary);
-    box-shadow: 0px 3px 20px var(--accent);
+    border-bottom: 5px solid rgb(var(--primary));
 }
