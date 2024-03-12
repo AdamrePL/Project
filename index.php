@@ -75,24 +75,24 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-            $sql = "SELECT * FROM `offers` LIMIT 5";
-            $res = mysqli_query($conn,$sql);
-            $organized = mysqli_fetch_assoc($res); //fetch everything else from here
-            $bucher = json_decode($organized["products"]); //get product info from here
+            // $sql = "SELECT * FROM `offers` LIMIT 5";
+            // $res = mysqli_query($conn,$sql);
+            // $organized = mysqli_fetch_assoc($res); //fetch everything else from here
+            // $bucher = json_decode($organized["products"]); //get product info from here
 
-            //*? `products` column in `offers` needs revising?
+            // //*? `products` column in `offers` needs revising?
 
-            //!DISPLAY CHECK PURPOSES, DONT GET TRIGGERED
-            echo $organized["id"]."<br>";
-            echo $organized["user-uuid"]."<br>";
-            echo $organized["offer-cdate"]."<br>";
-            echo $organized["offer-edate"]."<br>";
-            echo $organized["status"]."<br>";
-            echo (!$organized["phone"]? "not set": $organized["phone"])."<br>";
-            echo (!$organized["email"]? "not set": $organized["email"])."<br>";
-            echo (!$organized["discord"]? "not set": $organized["discord"]);
+            // //!DISPLAY CHECK PURPOSES, DONT GET TRIGGERED
+            // echo $organized["id"]."<br>";
+            // echo $organized["user-uuid"]."<br>";
+            // echo $organized["offer-cdate"]."<br>";
+            // echo $organized["offer-edate"]."<br>";
+            // echo $organized["status"]."<br>";
+            // echo (!$organized["phone"]? "not set": $organized["phone"])."<br>";
+            // echo (!$organized["email"]? "not set": $organized["email"])."<br>";
+            // echo (!$organized["discord"]? "not set": $organized["discord"]);
 
-            ?>
+            // ?>
         </div>
     </section>
 
@@ -110,8 +110,8 @@
     //nah cause why the fuck arent you working lil bro this is just insane at this point
         // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
         // echo $whynowork;
-    $sql = mysqli_query($conn,"SELECT SUM(`user-offers`) FROM `users`;");
-    echo $sql;
+    $sql = mysqli_query($conn,"SELECT `user-offers` FROM `users` WHERE uuid = '". $_SESSION["uid"] ."';");
+    echo count(explode(",", mysqli_fetch_array($sql)["user-offers"]));
     //logically, this should work, but, of course, it doesn't . . .
     // no shit it doesn't work.. you used COUNT() function instead of SUM() @PiwkoM
     ?>
