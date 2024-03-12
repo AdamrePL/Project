@@ -3,11 +3,16 @@
 require "../conf/config.php";
 $stmt = mysqli_stmt_init($conn);
 
-// $desc = $_POST["note"];
-// $phone = $_POST["phone"];
-// $email = $_POST["email"];
-// $dc = $_POST["discord"];
-$isCustom = false;
+
+$desc = $_POST["note"];
+$quality = $_POST["quality"];
+$price = $_POST["price"];
+$phone = ;
+$email = ;
+$dc = ;
+
+
+    $isCustom = false;
 
 //*this is `products` table insertion code my bad ^w^
 // $json_data = file_get_contents("../assets/downloads/booklist.json");
