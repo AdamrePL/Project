@@ -11,10 +11,10 @@ input:focus {
     outline-color: transparent;
 }
 */
-input:not(:placeholder-shown) {
-    border-color: rgb(var(--old-infobar-dark));
-    border-color: rgb(255,0,255);
-}   
+/* input:not(:placeholder-shown) { */
+    /* border-color: rgb(var(--old-infobar-dark)); */
+    /* border-color: rgb(255,0,255); */
+/* }    */
 /*
 .cards {
     display: grid;
@@ -240,7 +240,7 @@ menu > nav {
 body > nav {
     width: 100%;
     display: inline-grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(auto-fill,minmax(20%,1fr));
     justify-self: center;
     word-wrap:break-word;
     height: 8rem;

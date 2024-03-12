@@ -46,11 +46,12 @@
     <nav id="nawigacja">
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="">Lista podręczników</a>
-        <a href="./src/access.php">Zaloguj się</a>
         <?php 
             if (isset($_SESSION["uid"])) {
                 echo '<a href="./src/profile.php#offers">Moje oferty</a>';
-            } 
+            } else{
+                echo '<a href="./src/access.php">Zaloguj się</a>';
+            }
         ?>
         <a>Placeholder Button</a>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>

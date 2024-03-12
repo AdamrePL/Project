@@ -47,8 +47,8 @@
     include_once "user-settings.php";
 } ?>
 
-<!-- <div class="overlay">
+<div class="overlay">
     <script src="../assets/js/script.js" defer></script>
     <div class="overlay-wrapper"></div>
     <p class="overlay-msg">Click anywhere outside of the box to close</p>
-</div> -->
+</div>
