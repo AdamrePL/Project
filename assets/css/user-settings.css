@@ -1,23 +1,6 @@
-@import "global.css";
-
-* {
-    font-variant: small-caps;
-    padding-left: 0.2rem;
-    padding-top: 0.2rem;
-}
-
-body {
+/* body {
     font-size: 1.5rem;
     background-color: var(--background);
-}
-
-h1 {
-    font-size: 2.2rem;
-    padding-bottom: 1rem;
-}
-
-.return-btn {
-    background: whitesmoke;
 }
 
 a {
@@ -79,4 +62,4 @@ button {
 
 #cancel:hover {
     background: red;
-}
+} */

@@ -95,11 +95,6 @@
         // echo $whynowork;
     $sql = mysqli_query($conn,"SELECT SUM(`user-offers`) FROM `users`;");
     echo $sql;
-
-    $json = json_encode(json_decode(file_get_contents("./assets/downloads/product.json")), JSON_PRETTY_PRINT);
-
-    $sql = "INSERT INTO `offers` (`user-uuid`, `products`) VALUES ('tester#aA1', '$json')";
-    mysqli_query($conn, $sql);
     //logically, this should work, but, of course, it doesn't . . .
     // no shit it doesn't work.. you used COUNT() function instead of SUM() @PiwkoM
     ?>
