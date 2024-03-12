@@ -1,6 +1,10 @@
 <?php
 require_once "functions.php";
 
+if (isset($_POST["show-uid"])) {
+    echo $_SESSION["uid"];
+}
+
 function check_user_data(string $name, string $email, string $password, string $password_confirm): string {
     $pass_len = 5;
     $name_len = 30;
