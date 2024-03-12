@@ -10,10 +10,12 @@ input:focus {
     outline-offset: 3px;
     outline-color: transparent;
 }
-
+*/
 input:not(:placeholder-shown) {
     border-color: rgb(var(--old-infobar-dark));
+    border-color: rgb(255,0,255);
 }   
+/*
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
