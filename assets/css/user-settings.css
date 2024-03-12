@@ -1,6 +1,6 @@
 /* body {
     font-size: 1.5rem;
-    background-color: var(--background);
+    background-color: rgb(var(--background));
 }
 
 a {
