@@ -7,6 +7,8 @@ $stmt = mysqli_stmt_init($conn);
 // $phone = $_POST["phone"];
 // $email = $_POST["email"];
 // $dc = $_POST["discord"];
+$isCustom = false;
+
 
 $json_data = file_get_contents("../assets/downloads/booklist.json");
 $json_data = json_decode($json_data);
@@ -15,21 +17,23 @@ foreach ($json_data as $klasa => $value) { //Classes
     echo "Yippe!<br>";
     foreach($value as $ksiazka => $dane){//OBJECT ITSELF!
         $dane = json_decode(json_encode($dane), true);
-        echo"<br><br>"; //
-        // var_dump($dane);
+        echo"<br><br>"; // var_dump($dane);
 
-        //!THIS IS DEVILISH CODE, I HAVE NO IDEA HOW IM SUPPOSED TO FETCH ANYTHING MAN HOLY HELL
-        //TODO: IMPLEMENT . 
-        //title clarity check
-        // similar_text("ponad slowami 1 cz1",$dane["nazwa"],$percent);
-        // if($percent>30){
-        //     if($clarity<=$percent){
-        //         $clarity = $percent;
-        //     } 
-        // }
+        //  this is `products` table insertion code my bad ^w^
+        // if($dane["nazwa"]==$_POST["book"]){
+        //     $title = $dane["nazwa"];
+        //     $author = $dane["autorzy"];
+        //     $publisher = $dane["wydawnictwo"];
+        //     $subject = $dane["przedmiot"];
+            
+        //     break;
+        // } else{
+        //     $isCustom = true;
+            
+        // } 
+    
     }
 }
-// echo $clarity;
 
 
 $status = array("active","inactive","terminated");
@@ -67,7 +71,7 @@ foreach (glob("../_user/images/*.$ext") as $file) {
 } // odczyt 
 
 //!before encode, check for type clarity (if int is int etc.)
-//*!encode to json for db insert
+//*!encode to json for offers db insert
 $Book = json_encode(array(
     "name"=>$title,
     "author"=>$author,
@@ -77,7 +81,8 @@ $Book = json_encode(array(
     "price"=>$price,
     "quality"=>$quality,
     "note"=>$desc,
-    "img"=>[$tempSolution[0],$tempSolution[1]]
+    "img"=>[$tempSolution[0],$tempSolution[1]],
+    "custom"=>$isCustom
     ), JSON_PRETTY_PRINT);
 
 var_dump($Book); //throws null due to lack of data
