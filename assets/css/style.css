@@ -136,6 +136,21 @@ body {
 */
 
 /* oh and just right now after I wrote this, found out we can add our custom comments formatting, like if we'd used $ for something within comment */
+/* $ go to file extensions, click cogwheel.. cogwheel? wasnt there a different word for that? anyway.. and then the setting at the bottom: tags
+open that up and then where the tags are, paste in this thing below, after you do that, return to this file and check out line above ^^^ @PiwkoM
+
+,
+        {
+            "tag": "$",
+            "color": "#b1ae17",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": true,
+            "italic": false
+        }
+
+*/
 
 header {
     padding-top: 2rem;
@@ -165,10 +180,12 @@ header > p {
     line-height: 1.5;
     font-size: 1.75rem;
     margin-bottom: 2rem;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
 }
 
 header > search {
-    margin-top: 15svh;
+    margin-top: 15%;
     margin-bottom: 2rem;
 }
 
@@ -217,37 +234,42 @@ header > menu > nav {
 }
 
 header a {
-    color: black;
+    color: rgb(var(--text-900));
     font-size: 1.3rem;
     font-weight: bold;
     margin: 0rem;
     padding: 1rem;
     height: 5rem;
     aspect-ratio: 4/1;
-    background: rgba(255,255,255,0.95);
+    background: rgb(var(--background-200));
     flex-grow: 0;
     word-break: break-word;
     border-radius: 0.3rem;
     border-bottom: 5px solid rgb(var(--secondary));
-    box-shadow: 0px 0px 5px 1px rgba(var(--primary-500),0.5);
+    box-shadow: 0px 0px 3px 0.5px rgba(var(--primary-500),0.5);
     transition: all 0.175s ease-in-out;
 }
 
 header a:hover {
     transform: translateY(-10px);
     border-bottom: 6px solid rgb(var(--secondary-300));
-    box-shadow: 0px 5px 10px 0.1px rgba(var(--primary-800),.9);
-    background: white;
+    box-shadow: 0px 4px 15px 0.1px rgba(var(--primary-600), 0.9);
+    background: rgb(var(--background-500));
     color: rgb(var(--secondary-500));
 }
 
-a:link {
+header a:link,
+nav a:link {
     text-decoration: none;
 }
 
 /*
 idea for background: get b-roll footage/images of some book activities (reading,handling,etc), set background to opaque,
 roll them mfs like a movie
+
+aight bet >:)
+get them images first tho
+we make it npc-ahh website
 */
 
 img {
