@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2024 at 10:57 AM
+-- Generation Time: Mar 12, 2024 at 09:07 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -58,7 +58,6 @@ INSERT INTO `booklist` (`id`, `name`, `subject`, `class`, `authors`, `publisher`
 CREATE TABLE `offers` (
   `id` int(11) NOT NULL,
   `user-uuid` tinytext NOT NULL COMMENT 'informacje o sprzedawcy bierze z tabeli user',
-  `product-id` int(11) NOT NULL COMMENT 'informacje o produkcie bierze z tabeli product',
   `products` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '{"productid": "self-defined": false, "price": 0, "quality": "", "note": ""}',
   `offer-cdate` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'czas utworzenia oferty',
   `offer-edate` datetime NOT NULL COMMENT 'czas wygasniecia oferty po uplywie czasu zdefiniowanego przez sprzedawce lub defaultowo przez server w ciagu 14dni, inaczej data kiedy oferta zostanie zdjeta',
@@ -72,23 +71,8 @@ CREATE TABLE `offers` (
 -- Dumping data for table `offers`
 --
 
-INSERT INTO `offers` (`id`, `user-uuid`, `product-id`, `products`, `offer-cdate`, `offer-edate`, `status`, `phone`, `email`, `discord`) VALUES
-(1, 'tester#aA1', 0, '[1,7]', '2024-03-07 13:40:30', '2024-03-07 13:38:54', 2, 123456789, NULL, 'tester');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `products`
---
-
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL COMMENT 'Produkt bedzie przypisany do osoby sprzedajacej',
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `price` decimal(5,2) NOT NULL,
-  `quality` tinytext NOT NULL,
-  `quantity` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `offers` (`id`, `user-uuid`, `products`, `offer-cdate`, `offer-edate`, `status`, `phone`, `email`, `discord`) VALUES
+(1, 'tester#aA1', '[1,7]', '2024-03-07 13:40:30', '2024-03-07 13:38:54', 2, 123456789, NULL, 'tester');
 
 -- --------------------------------------------------------
 
@@ -114,7 +98,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uuid`, `username`, `password`, `user-offers`, `phone`, `email`, `discord`, `last-login`, `email-flag`, `admin`) VALUES
-('tester#aA1', 'tester', '', '\'[]\'', 123456789, 'example@example.com', NULL, '2024-03-01 09:40:19', 0, 0);
+('tester#aA1', 'tester', 'tete', '\'[]\'', 123456789, 'example@example.com', NULL, '2024-03-11 14:45:55', 0, 0);
 
 --
 -- Indeksy dla zrzutów tabel
