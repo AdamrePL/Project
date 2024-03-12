@@ -2,7 +2,7 @@
 @import "user-settings.css";
 
 body {
-    background: var(--background-50);
+    background: rgb(var(--background-50));
 }
 
 #user-details {
@@ -32,8 +32,18 @@ body {
     flex-basis: 50%;
 }
 
-#user-offers {
-    margin: 1rem;
+.user-offers {
+    width: 90%;
+    background: rgb(var(--background-200), 0.5);
+    min-height: calc(100% - 18rem);
+    margin-top: 20px;
+    margin-inline: auto;
+}
+
+.offer {
+    display: flex;
+    height: 5rem;
+    background: rgb(var(--secondary));
 }
 
 .agree {

@@ -60,11 +60,11 @@ if (!isset($_SESSION["uid"])) {
                     <h3 class="username">'. $result["username"] .'</h3>
                     <div clas="user-id">
                         <span class="uid">'. $result["uuid"] .'</span>
-                        <!-- <template> -->
+                        <!-- <template>
                         <span>Are you sure you want to display sensitive information?</span>
                         <button type="button" class="agree">Pokaż</button>
                         <button type="button" class="disagree">Anuluj</button>
-                        <!-- </template> -->
+                        </template> -->
                     </div>
                 </div>
                 ';
@@ -79,7 +79,7 @@ if (!isset($_SESSION["uid"])) {
             echo '</section>';
             
             echo '<section class="user-offers">';
-                echo '<div></div>';
+                echo '<div class="offer"></div>';
                     // $_SESSION["uid"] = "tester#aA1";
                     // $sql = "SELECT offers.*, users.username, users.uuid FROM `offers`, `users` WHERE 'offers.user-uuid'='users.uuid' AND users.uuid = " . $_SESSION["uid"] . ";";
                     // $query = mysqli_query($conn, $sql);
@@ -91,9 +91,9 @@ if (!isset($_SESSION["uid"])) {
     }
 ?>
 </body>
-
-<div class="overlay">
+    <!-- <i class="fa-brands fa-discord"></i> -->
+<!-- <div class="overlay">
     <script src="../assets/js/script.js" defer></script>
     <div class="overlay-wrapper"></div>
     <p class="overlay-msg">Click anywhere outside of the box to close</p>
-</div>
+</div> -->
