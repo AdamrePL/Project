@@ -13,6 +13,10 @@
 
     <title><?php echo SITENAME; ?> Książkowa</title>
 
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=src/noscript.html">
+    </noscript>
+
     <script src="./assets/js/script.js" type="text/javascript" defer></script>
 </head>
 <body>
@@ -60,8 +64,15 @@
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 
+    <?php 
+        $sql = "SELECT COUNT(*) AS `ilosc-ofert` FROM `offers` WHERE `status` = 1";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_assoc($query)["ilosc-ofert"];
+    ?>
+
     <section id="przegladaj">
         <h1>Przeglądaj oferty</h1>
+        <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
             $sql = "SELECT * FROM `offers` LIMIT 5";
@@ -84,8 +95,6 @@
             ?>
         </div>
     </section>
-    <!-- <i class="fa-brands fa-discord"></i> -->
-
 
     <div id="offerOfUser">
         <h1><?php echo !isset($_SESSION["uid"])? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
@@ -93,18 +102,6 @@
         <p> You've created <?php echo "zero" ?> offers so far. </p>
          <!--yeah no ive got no idea why this doesnt work-->
     </div>
-
-    <footer>&copy;Made by Adam, Marcin, TLiMC&reg; <?php echo date("Y");?>
-    <Div class="footer">
-    <span title="Username: AdamrePL&#013;UID: 317347265398308864"><i class="fa-brands fa-discord"></i> AdamrePL</span>
-    <span title="Username: Adamre[PL]&#013;UID: adamre"><i class="fa-brands fa-steam"></i> <a target="_blank" href="https://steamcommunity.com/id/adamre">Adamre[PL]</a></span>
-    <P>&copy; Made by AdamrePL - <?php echo date("Y");?></P>
-</Div></footer>
-
-    <noscript>
-        <meta http-equiv="refresh" content="0; url=src/noscript.html">
-    </noscript>
-
 
     <?php // ! TESTING ENV
     // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
@@ -115,11 +112,6 @@
         // echo $whynowork;
     $sql = mysqli_query($conn,"SELECT SUM(`user-offers`) FROM `users`;");
     echo $sql;
-
-    $json = json_encode(json_decode(file_get_contents("./assets/downloads/product.json")), JSON_PRETTY_PRINT);
-
-    $sql = "INSERT INTO `offers` (`user-uuid`, `products`) VALUES ('tester#aA1', '$json')";
-    mysqli_query($conn, $sql);
     //logically, this should work, but, of course, it doesn't . . .
     // no shit it doesn't work.. you used COUNT() function instead of SUM() @PiwkoM
     ?>
