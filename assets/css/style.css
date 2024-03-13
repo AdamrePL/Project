@@ -127,8 +127,9 @@ body {
 
 /* ? okay hear me out, I found out now, how siblings selector work, so basicaly: 
     * if you were to use +; example: h1 + p {} - you'd have selected an element that is right after the h1
-    * whereas if you had used ~ it wouldn't matter where the sibling is, as long as its in the same parent, it would've selected it.
+    * whereas if you had used ~ it wouldn't matter where the sibling is, as long as its in the same parent, it would've selected it. 
     * so, if you want to choose sibling element there are atleast 2 "arguments" required: first - element off of which you want to choose next sibling '+' second - the sibling element you want to choose.
+    ? ^ too many words, '+' selects sibling after 1st arg, ~ selects any sibling of same type as 2nd arg when it appears after 1st arg
     * .. oh btw i dont even know if that sentence exists or if its atleast correct    -->   -->     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^, please correct me if im wrong (id like to know) and uhh I know I had milion different ways to say that but jsut felt like using this.
 
     oh and one more thing, if you'd want to choose parent of an element, lets say a parent element of something that has a class... toggled. and you dont want to create another class (Because you shouldnt or you atleast should minimize their amount) to select that element that has a child with that class,
