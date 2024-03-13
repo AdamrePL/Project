@@ -1,4 +1,8 @@
 <?php
+    // & 1 -> add product to products table
+    // & 2 -> add images to the local folder
+    // & 3 -> add image names to product in table
+    // & 4 -> create offer with list of product ids
 
 require "../conf/config.php";
 $stmt = mysqli_stmt_init($conn);
@@ -7,9 +11,9 @@ $stmt = mysqli_stmt_init($conn);
 $desc = $_POST["note"];
 $quality = $_POST["quality"];
 $price = $_POST["price"];
-$phone = ;
-$email = ;
-$dc = ;
+// $phone = ;
+// $email = ;
+// $dc = ;
 
 
     $isCustom = false;

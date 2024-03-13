@@ -1,5 +1,6 @@
-[
+
     {
+        "id": 0,
         "name": "",
         "author": "",
         "publisher": "",
@@ -12,15 +13,17 @@
         "custom": true
     },
     {
+        "id": 0,
         "name": "",
         "author": "",
         "publisher": "",
         "subject": "",
         "class": 1,
-        "price": 100.00,
+        "price": 100.00,                        
         "quality": "",
         "note": "",
         "img": ["",""],
         "custom": false
     }
-]
+
+

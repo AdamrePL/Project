@@ -14,30 +14,50 @@ body {
 }
 
 #user-details > * {
-    margin: 2rem;
+    margin: 1.5rem 2rem;
     text-align: center;
 }
 
 .user {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     flex-basis: 20%;
-    align-items: center;
-}
-
-.user > * {
-    flex-basis: 100%;
+    gap: 1.5rem;
 }
 
 .user-id {
-    background: repeating-linear-gradient(45deg, black 15px, white 20px);
-    height: 2rem;
+    font-size: 1.125rem;
+    text-wrap: balance;
+    height: 100%;
+    font-variant: all-small-caps;
+    line-height: 1.1;
+}
+
+.user-id > p {
+    font-size: 1rem;
+}
+
+.user-id > button {
+    padding: 0.25rem 1rem;
+    margin-inline: auto;
+    font-size: 1rem;
+    width: 40%;
 }
 
 .uid {
-    background: black;
+    display: block;
+    background: repeating-linear-gradient(45deg, black 15px, white 20px);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.uid::after {
+    content: "click to show uid";
+    display: block;
     color: white;
-    font-size: 50%;
+    background: rgb(0, 0, 0, 0.5);
+    padding: 0.25rem;
 }
 
 .contact {
@@ -72,9 +92,13 @@ body {
 .agree {
     background: rgb(47, 255, 54);
     border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 0.05px green;
 }
 
 .disagree {
     border: none;
     background: crimson;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 0.05px darkred;
 }

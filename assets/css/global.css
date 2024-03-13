@@ -165,6 +165,12 @@ html {
     scroll-behavior: smooth;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 footer {
     width: 100%;
     text-align: center;

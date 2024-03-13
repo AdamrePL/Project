@@ -132,7 +132,9 @@ echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
 ### Nazewnictwo
 Nazwy funkcji powinny zaczynać się od małej litery.. o ile ta funckja będzie miała jakąś nazwe.
 
-Jeżeli nazwa funkcji zawiera 2 lub wiecej słow to nie są one rozdzielane, ale każde nowe słowo zaczynające wewnątrz nazwy powinno rozpoczynać się wielką literą.[^2]
+Jeżeli nazwa funkcji zawiera 2 lub wiecej słow to nie są one rozdzielane, ale każde nowe słowo zaczynające wewnątrz nazwy powinno rozpoczynać się wielką literą.[^1]
+
+Zmienne w zależności od potrzeby czy typu (const/let/var) mogą być z dowolnych wielkości liter, **ALE** jeżeli składają się z dwóch lub więcej słow, muszą być oddzielone znakiem "_"
 #### Przykład
 ```Js
 function makeDiv() {
@@ -154,5 +156,6 @@ const newtab = makeDiv()
 Pozostałe
 ------
 ###### Wszędzie w każdych wcięciach powinny zostać użyte 4 spacje, nie tabulatory.
+###### **NIGDZIE NIE UŻYWAĆ EMOTEK W KODZIE** POZA IKONAMI / PRZYCISKAMI.
 
 [^1]: [camelCase](https://pl.wikipedia.org/wiki/CamelCase "Link do wikipedii")

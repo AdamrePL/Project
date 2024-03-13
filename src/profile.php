@@ -58,14 +58,9 @@ if (!isset($_SESSION["uid"])) {
                 $result = mysqli_fetch_assoc($query);
             echo '
                 <div class="user">
-                    <h3 class="username">'. $result["username"] .'</h3>
+                    <h3>'. $result["username"] .'</h3>
                     <div class="user-id">
-                        <span class="uid">click to show uid</span>
-                        <!-- <template>
-                        <span>Are you sure you want to display sensitive information?</span>
-                        <button type="button" class="agree">Pokaż</button>
-                        <button type="button" class="disagree">Anuluj</button>
-                        </template> -->
+                        <span class="uid"></span>
                     </div>
                 </div>
                 ';
