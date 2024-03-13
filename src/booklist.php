@@ -1,6 +1,6 @@
 <?php require_once "../conf/config.php"; ?>
 <head>
-    <title>Spis Książek<title>
+    <title>Spis Książek</title>
         <link href="../assets/css/booklist.css" type="text/css" rel="stylesheet">
 </head>
 
