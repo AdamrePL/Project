@@ -50,6 +50,8 @@
     </form>
 </div>
 
+
+
 <div class="custom_offerCreate" style="padding-top: 5rem;" id="formCustom">
     <form>
         <label for="book">Tytuł książki</label>
@@ -107,7 +109,7 @@
             <?php
                 $quality = ["Używana","Uszkodzona","Nowa"];
                 foreach($quality as $A){
-                    echo '<option value="' . $A . '">' . $A . '</option>'; //trying to format html embedded in php is a pain lmao
+                    echo '<option value="' . $A . '">' . $A . '</option>'; 
                 }
             ?>
         </select>

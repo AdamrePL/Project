@@ -1,124 +1,5 @@
 @import "global.css";
 
-/* ! TO CHECK OUT @Brouwar
-
-input:focus {
-    outline-offset: 3px;
-    outline-color: transparent;
-}
-*/
-/* input:not(:placeholder-shown) { */
-    /* border-color: rgb(var(--old-infobar-dark)); */
-    /* border-color: rgb(255,0,255); */
-/* }    */
-/*
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
-}
-
-nav > *:hover,
-nav > *:focus-visible {
-    outline-offset: 1.5px;
-    outline-color: transparent;
-    color: white;
-    text-decoration: underline;
-}
-input,
-select,
-textarea {
-    border: none;
-    outline: none;
-    background: rgb(var(--secondary-button));
-    color: rgb(var(--text));
-    padding: 0.2rem 0.5rem;
-    font-size: 1.5rem;
-    border-bottom: 3px solid rgb(80, 0, 0);
-    border-radius: 5px;
-}input[type="number"] {
-    width: fit-content;
-}
-input[type="submit"]:focus,
-input[type="button"]:focus {
-    outline: rgba(var(--primary-button), 0.8) solid 2px;
-    outline-offset: 1.5px;
-}
-input::placeholder,
-select::placeholder,
-textarea::placeholder {
-    text-transform: capitalize;
-    color: rgba(var(--text), 0.45);
-}
-input:focus::placeholder {
-    color: rgba(var(--text), 0.25);
-}
-
-input:not(:placeholder-shown) {
-    border-color: rgb(var(--accent));
-}
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    Padding: 0.5rem;
-    
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 1%;
-}
-
-.footer * {
-    text-align: center;
-    word-wrap: break-word;
-    font-size: 0.95rem;
-    padding: 0.2rem;
-}
-
-.footer p {
-    flex-basis: 100%;
-    padding: 0;
-}
-table {
-    text-align: center;
-    font-size: 1.5rem;
-    border-collapse: collapse;
-    width: 100%;
-}
-table tr:first-child {
-    background: rgb(var(--primary-button))
-}
-
-tr {
-    background: rgb(var(--primary-button), 0.95);
-}
-
-tr:nth-of-type(2n) {
-    background: rgb(var(--accent));
-}
-
-td,
-th {
-    padding: 0.2rem 1rem;
-}
-
-:read-only / :read-write
-:where
-:in-range
-:increment / :decrement
-::first-letter / ::first-line
-:any-link
-:default
-:empty / :blank
-::target-text
-
-
-! END OF THAT LIST */
-
-/* transition: box-shadow 350ms; */
-
-
 body {
     color: rgb(var(--text));
     font-size: 1.5em;
@@ -127,8 +8,9 @@ body {
 
 /* ? okay hear me out, I found out now, how siblings selector work, so basicaly: 
     * if you were to use +; example: h1 + p {} - you'd have selected an element that is right after the h1
-    * whereas if you had used ~ it wouldn't matter where the sibling is, as long as its in the same parent, it would've selected it.
+    * whereas if you had used ~ it wouldn't matter where the sibling is, as long as its in the same parent, it would've selected it. 
     * so, if you want to choose sibling element there are atleast 2 "arguments" required: first - element off of which you want to choose next sibling '+' second - the sibling element you want to choose.
+    ? ^ too many words, '+' selects sibling after 1st arg, ~ selects any sibling of same type as 2nd arg when it appears after 1st arg
     * .. oh btw i dont even know if that sentence exists or if its atleast correct    -->   -->     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^, please correct me if im wrong (id like to know) and uhh I know I had milion different ways to say that but jsut felt like using this.
 
     oh and one more thing, if you'd want to choose parent of an element, lets say a parent element of something that has a class... toggled. and you dont want to create another class (Because you shouldnt or you atleast should minimize their amount) to select that element that has a child with that class,

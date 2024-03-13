@@ -72,24 +72,24 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-            // $sql = "SELECT * FROM `offers` LIMIT 5";
-            // $res = mysqli_query($conn,$sql);
-            // $organized = mysqli_fetch_assoc($res); //fetch everything else from here
-            // $bucher = json_decode($organized["products"]); //get product info from here
+                $sql = "SELECT * FROM `offers` LIMIT 5";
+                $res = mysqli_query($conn,$sql);
+                $organized = mysqli_fetch_assoc($res); //fetch everything else from here
+                $bucher = json_decode($organized["products"]); //get product info from here
 
             // //*? `products` column in `offers` needs revising?
 
             // //!DISPLAY CHECK PURPOSES, DONT GET TRIGGERED
-            // echo $organized["id"]."<br>";
-            // echo $organized["user-uuid"]."<br>";
-            // echo $organized["offer-cdate"]."<br>";
-            // echo $organized["offer-edate"]."<br>";
-            // echo $organized["status"]."<br>";
-            // echo (!$organized["phone"]? "not set": $organized["phone"])."<br>";
-            // echo (!$organized["email"]? "not set": $organized["email"])."<br>";
-            // echo (!$organized["discord"]? "not set": $organized["discord"]);
+                echo $organized["id"]."<br>";
+                echo $organized["user-uuid"]."<br>";
+                echo $organized["offer-cdate"]."<br>";
+                echo $organized["offer-edate"]."<br>";
+                echo $organized["status"]."<br>";
+                echo (!$organized["phone"] ? "not set" : $organized["phone"])."<br>";
+                echo (!$organized["email"] ? "not set" : $organized["email"])."<br>";
+                echo (!$organized["discord"] ? "not set" : $organized["discord"]);
 
-            // ?>
+            ?>
         </div>
     </section>
 
