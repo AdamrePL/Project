@@ -17,12 +17,12 @@
 
 > [!TIP]
 > ## Lista zalecanych rozszerzeń do Visual Studio Code: 
-> - `Better Comments - Aaron Bond`
-> - `Path Intellisense` 
-> - `JavaScript(ES6) Code Snippets`
-> - `PHP Intelphense - `
-> - `HTML CSS Support`
-> #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik "&", którego trzeba samemu dodać.
+> - `Better Comments - :heavy_check_mark: Aaron Bond`
+> - `Path Intellisense - :heavy_check_mark: Christian Kohler` 
+> - `JavaScript(ES6) Code Snippets - charalampos karypidis`
+> - `PHP Intelphense - :heavy_check_mark: Ben Mewburn`
+> - `HTML CSS Support - ecmel`
+> #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik `&`, którego trzeba samemu dodać.
 > ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po znaczniku `*`.
 > ```javascript
 > {
