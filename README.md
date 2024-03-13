@@ -15,7 +15,7 @@
 > ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które umie conajwyżej podstawową stronę z stylami wziętymi z roku 1990?
 > *- Browar*
 
-> [!INFO]
+> [!TIP]
 > ## Lista zalecanych rozszerzeń do Visual Studio Code: `Better Comments - Aaron Bond`,`HTML CSS Support`,` JavaScript(ES6) Code Snippets`,`Path Intellisense`,`PHP Intelphense - `. 
 > #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik "&", którego trzeba samemu dodać.
 > ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po klamrze `}` znacznika `*` 
