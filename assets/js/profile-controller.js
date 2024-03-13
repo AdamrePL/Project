@@ -12,7 +12,9 @@ uid_element.addEventListener("click", function showConfirm() {
     confirm_btn.className = "disagree";
     confirm_btn.addEventListener("click", function cont() {
         fun();
-        this.remove();
+        while (uid_element.childElementCount > 1) {
+            uid_element.lastChild.remove();
+        }
     });
 
     const cancel_btn = document.createElement("button");
@@ -20,7 +22,6 @@ uid_element.addEventListener("click", function showConfirm() {
     cancel_btn.innerText = "anuluj";
     cancel_btn.className = "agree";
     cancel_btn.addEventListener("click", () => {
-        uid_element.addEventListener("click", showConfirm);
         while (uid_element.childElementCount > 1) {
             uid_element.lastChild.remove();
         }
@@ -33,12 +34,11 @@ uid_element.addEventListener("click", function showConfirm() {
 
 const fun = function() {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../controllers/account-controller.php", true);
+    xhr.open("POST", "../../controllers/profile-controller.php", true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
     if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-            console.log("test")
-            uid_element.querySelector("uid").innerHTML = this.responseText;
+            uid_element.querySelector(".uid").innerHTML = xhr.responseText;
         }
     }
 
