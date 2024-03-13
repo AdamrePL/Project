@@ -23,18 +23,17 @@
 > - `PHP Intelphense - `
 > - `HTML CSS Support`
 > #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik "&", którego trzeba samemu dodać.
-> ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po klamrze `}` znacznika `*` 
-> ```yaml
->  ,
->  {
->      "tag": "&",
->      "color": "#b1ae17",
->      "strikethrough": false,
->      "underline": false,
->      "backgroundColor": "transparent",
->      "bold": true,
->      "italic": false
->  }
+> ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po znaczniku `*`.
+> ```javascript
+> {
+>   "tag": "&",
+>   "color": "#b1ae17",
+>   "strikethrough": false,
+>   "underline": false,
+>   "backgroundColor": "transparent",
+>   "bold": true,
+>   "italic": false
+> }
 > ```
 >#### Aby dostać się do ustawień rozszerzenia, trzeba użyć skrótu `CRTL+SHIFT+X`, kliknąć na ikonę zębatki -> Extension Settings -> Edit in settings.json
 
