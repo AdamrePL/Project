@@ -1,0 +1,50 @@
+div {
+    background: rgba(175,100,225,0.3);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.45rem;
+    border: 5px solid black;
+    height: 40%;
+    width: 70%;
+    margin-bottom: 3rem;
+}   
+
+div *:not(span){
+    padding-left: 1rem;
+}
+
+ul {
+    margin-top: 2rem;
+    padding: 0;
+    list-style: none;
+    word-break: break-word;
+}
+
+li {
+    background: red;
+    width: 95%;
+    height: auto;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(150,100,200,0.4);
+    border-bottom: 5px solid rgba(150,100,200,0.9);
+}
+
+span > p{
+    width: 70%;
+    text-align: left;
+    text-wrap:balance;
+}
+
+span > p + p {
+    width: 20%;
+    text-align: right;
+    padding-right: 1rem;
+}
