@@ -22,7 +22,7 @@
 <body>
     <header>
         <h1>Giełda</h1>
-        <p>Wewnątrzszkolna wymiana podręczników<p>
+        <p>Wewnątrzszkolna wymiana podręczników</p>
         <search>
             <script src="./assets/js/search-controller.js" defer></script>
             <form action="" method="get">
@@ -56,9 +56,9 @@
             }
         ?>
         <a>Placeholder Button</a>
+        <!-- <a>Placeholder Button</a> -->
         <a>Placeholder Button</a>
-        <a>Placeholder Button</a>
-        <a>Placeholder Button</a>
+        <!-- <a>Placeholder Button</a> -->
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 

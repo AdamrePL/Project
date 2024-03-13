@@ -155,6 +155,11 @@
     -webkit-box-sizing: border-box; /* Chrome, Safari */
 }
 
+::placeholder {
+    user-select: none;
+}
+
+
 html {
     color-scheme: light dark;
     scroll-behavior: smooth;

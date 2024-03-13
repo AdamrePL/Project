@@ -7,6 +7,7 @@ if (!isset($_SESSION["uid"])) {
 ?>
 <head>
     <link rel="stylesheet" href="../assets/css/profile.css">
+    <script src="../assets/js/profile-controller.js" defer></script>
 </head>
 
 <body>
@@ -58,8 +59,8 @@ if (!isset($_SESSION["uid"])) {
             echo '
                 <div class="user">
                     <h3 class="username">'. $result["username"] .'</h3>
-                    <div clas="user-id">
-                        <span class="uid">'. $result["uuid"] .'</span>
+                    <div class="user-id">
+                        <span class="uid">click to show uid</span>
                         <!-- <template>
                         <span>Are you sure you want to display sensitive information?</span>
                         <button type="button" class="agree">Pokaż</button>

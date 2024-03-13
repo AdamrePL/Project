@@ -14,11 +14,30 @@ body {
 }
 
 #user-details > * {
-    margin: 1rem;
+    margin: 2rem;
+    text-align: center;
 }
 
 .user {
+    display: flex;
+    flex-wrap: wrap;
     flex-basis: 20%;
+    align-items: center;
+}
+
+.user > * {
+    flex-basis: 100%;
+}
+
+.user-id {
+    background: repeating-linear-gradient(45deg, black 15px, white 20px);
+    height: 2rem;
+}
+
+.uid {
+    background: black;
+    color: white;
+    font-size: 50%;
 }
 
 .contact {
@@ -27,6 +46,10 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+/* .contact ::first-letter {
+    text-transform: uppercase;
+} */
 
 .contact > * {
     flex-basis: 50%;

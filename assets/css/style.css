@@ -1,9 +1,5 @@
 @import "global.css";
 
-::placeholder {
-    user-select: none;
-}
-
 /* ! TO CHECK OUT @Brouwar
 
 input:focus {
@@ -129,19 +125,53 @@ body {
     background: rgb(var(--background));
 }
 
+/* ? okay hear me out, I found out now, how siblings selector work, so basicaly: 
+    * if you were to use +; example: h1 + p {} - you'd have selected an element that is right after the h1
+    * whereas if you had used ~ it wouldn't matter where the sibling is, as long as its in the same parent, it would've selected it.
+    * so, if you want to choose sibling element there are atleast 2 "arguments" required: first - element off of which you want to choose next sibling '+' second - the sibling element you want to choose.
+    * .. oh btw i dont even know if that sentence exists or if its atleast correct    -->   -->     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^, please correct me if im wrong (id like to know) and uhh I know I had milion different ways to say that but jsut felt like using this.
+
+    oh and one more thing, if you'd want to choose parent of an element, lets say a parent element of something that has a class... toggled. and you dont want to create another class (Because you shouldnt or you atleast should minimize their amount) to select that element that has a child with that class,
+    THEN you want to use something like this; parent:has(.toggled), you can even read it clearly out of syntax what it does, but be careful, accidently typing space between: parent :has(.toggled) - would select ALL CHILDREN from that parent that have 'toggled' class
+*/
+
+/* oh and just right now after I wrote this, found out we can add our custom comments formatting, like if we'd used $ for something within comment */
+/* $ go to file extensions, click cogwheel.. cogwheel? wasnt there a different word for that? anyway.. and then the setting at the bottom: tags
+open that up and then where the tags are, paste in this thing below, after you do that, return to this file and check out line above ^^^ @PiwkoM
+
+,
+        {
+            "tag": "$",
+            "color": "#b1ae17",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": true,
+            "italic": false
+        }
+
+*/
+
 header {
     padding-top: 2rem;
     text-align: center;
     height: 95svh;
     background: rgb(var(--primary));
     display: flex;
-    justify-content: space-around;
+    justify-content:center;
+    gap: 3rem;
     flex-direction: column;
-    box-shadow: 0px 0px 7px 4px rgb(var(--primary));
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    box-shadow: 0px 0px 5px 4px rgb(var(--primary));
 }
 
+/* header > * {
+    flex: 100%;
+} */
+
 header > h1 {
-    padding: 2rem;
+    /* padding: 2rem; */
     font-size: 4.5rem;
 }
 
@@ -149,6 +179,14 @@ header > p {
     text-wrap: balance;
     line-height: 1.5;
     font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+
+header > search {
+    margin-top: 15%;
+    margin-bottom: 2rem;
 }
 
 header > search > form {
@@ -181,7 +219,7 @@ header > search > form > input::placeholder {
     text-align: center;
 }
 
-header > search > form:has(input:focus-within) {
+header > search > form:has(input[type="search"]:focus-within) {
     outline: auto;
     outline-color: transparent;
     outline-width: 0.1px;
@@ -196,37 +234,42 @@ header > menu > nav {
 }
 
 header a {
-    color: black;
+    color: rgb(var(--text-900));
     font-size: 1.3rem;
-    /*? decide if should use font-weight: bold; or leave as is  */
+    font-weight: bold;
     margin: 0rem;
     padding: 1rem;
     height: 5rem;
     aspect-ratio: 4/1;
-    background: rgba(255,255,255,0.95);
+    background: rgb(var(--background-200));
     flex-grow: 0;
     word-break: break-word;
     border-radius: 0.3rem;
     border-bottom: 5px solid rgb(var(--secondary));
-    box-shadow: 0px 0px 5px 1px rgba(var(--primary-500),0.5);
+    box-shadow: 0px 0px 3px 0.5px rgba(var(--primary-500),0.5);
     transition: all 0.175s ease-in-out;
 }
 
 header a:hover {
     transform: translateY(-10px);
     border-bottom: 6px solid rgb(var(--secondary-300));
-    box-shadow: 0px 5px 10px 0.1px rgba(var(--primary-800),.9);
-    background: white;
+    box-shadow: 0px 4px 15px 0.1px rgba(var(--primary-600), 0.9);
+    background: rgb(var(--background-500));
     color: rgb(var(--secondary-500));
 }
 
-a:link {
+header a:link,
+nav a:link {
     text-decoration: none;
 }
 
 /*
 idea for background: get b-roll footage/images of some book activities (reading,handling,etc), set background to opaque,
 roll them mfs like a movie
+
+aight bet >:)
+get them images first tho
+we make it npc-ahh website
 */
 
 img {
