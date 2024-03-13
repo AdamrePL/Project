@@ -16,10 +16,15 @@
 > *- Browar*
 
 > [!TIP]
-> ## Lista zalecanych rozszerzeń do Visual Studio Code: `Better Comments - Aaron Bond`,`HTML CSS Support`,` JavaScript(ES6) Code Snippets`,`Path Intellisense`,`PHP Intelphense - `. 
+> ## Lista zalecanych rozszerzeń do Visual Studio Code: 
+> -`Better Comments - Aaron Bond`
+> -`Path Intellisense` 
+> -`JavaScript(ES6) Code Snippets`
+> -`PHP Intelphense - `
+> -`HTML CSS Support`
 > #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik "&", którego trzeba samemu dodać.
 > ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po klamrze `}` znacznika `*` 
-> ```JSON
+> ```json
 >  ,
 >  {
 >      "tag": "&",
