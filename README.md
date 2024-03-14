@@ -21,6 +21,7 @@
 > - `Path Intellisense - Christian Kohler` :heavy_check_mark:
 > - `PHP Intelphense - Ben Mewburn` :heavy_check_mark:
 > - `HTML CSS Support - ecmel`
+> - `Material Icon Theme - Philipp Kief` ✔️
 > ###### :heavy_check_mark: oznacza zweryfikowanego twórcę.
 > #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik `&`, którego trzeba samemu dodać.
 > ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po znaczniku `*`.
