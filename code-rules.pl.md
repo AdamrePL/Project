@@ -124,6 +124,8 @@ $a = "hasło"; //To jest niepoprawna nazwa zmiennej.
 $password = "hasło"; //To jest *poprawna* nazwa zmiennej.
 ```
 
+Zmienne typu CONST stworzone za pomocą słowa kluczowego `const` lub `define()` muszą składać się z samych dużych liter oraz być zgodne z dokumentacją PHP-a.
+
 ### Utrzymywanie kodu w porządku
 **Jeżeli można to elementy dawać poza kodem PHP i wartości dodawać kodem wewnątrz elementu.**
 #### Przykład
