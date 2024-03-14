@@ -23,7 +23,6 @@
     <header>
         <h1>Giełda</h1>
         <p>Wewnątrzszkolna wymiana podręczników</p>
-
         <menu>
             <nav>
                 <a href="#przegladaj">Przeglądaj Oferty</a>
@@ -36,8 +35,9 @@
     <nav id="nawigacja">
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="./src/booklist.php">Lista podręczników</a>
+        <a href="./src/profile.php#offers">Moje oferty</a>
         <?php 
-            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' :'<a href="./src/access.php">Zaloguj się</a>';
+            //echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' :'<a href="./src/access.php">Zaloguj się</a>';
         ?>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
