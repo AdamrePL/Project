@@ -1,6 +1,9 @@
 <?php
 require_once "functions.php";
 
+$pass_len = 5;
+$name_len = 30;
+
 if (isset($_POST["show-uid"])) {
     echo $_SESSION["uid"];
 }

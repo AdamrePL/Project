@@ -16,7 +16,7 @@ function user_exists(mysqli $conn, $uid): bool {
  * 
  * @return string gets user's password
  */
-function get_user_password(mysqli $conn, $uid): string|bool {
+function get_user_password(mysqli $conn, $uid): string {
     $sql = "SELECT `password` FROM `users` WHERE uuid = ? LIMIT 1;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
@@ -24,12 +24,8 @@ function get_user_password(mysqli $conn, $uid): string|bool {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        return $row["password"];
-    }
-
-    return false;
+    $row = mysqli_fetch_assoc($result);
+    return $row["password"];
 }
 
 function update_last_login(mysqli $conn, string $uid) {
