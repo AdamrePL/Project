@@ -11,7 +11,11 @@
             <h1>Logowanie</h1>
             <form method="post" action="../controllers/login-controller.php" class="user-form">
                 <input type="text" name="user-id"  minlength="7" maxlength="34" placeholder="ID użytkownika" autocomplete="off" autofocus />
-                <span class="error-msg"><?php if (isset($_GET["error"]) && $_GET["error"] == "incorrect-uid") echo "niepoprawne uid"; ?></span>
+                <span class="error-msg">
+                    <?php if (isset($_GET["error"]) && $_GET["error"] == "incorrect-uid") echo "niepoprawne uid"; ?>
+                    <?php if (isset($_GET["error"]) && $_GET["error"] == "incorrect-tag") echo "niepoprawny tag"; ?>
+                    <?php if (isset($_GET["error"]) && $_GET["error"] == "no-user-found") echo "użytkownik nie istnieje"; ?>
+                </span>
                 <input type="password" name="l_password" placeholder="Hasło (Jeżeli jest)" />
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "wrong-password") echo "błędne hasło"; ?>
