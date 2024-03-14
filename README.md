@@ -19,7 +19,6 @@
 > ## Lista zalecanych rozszerzeń do Visual Studio Code: 
 > - `Better Comments - Aaron Bond` :heavy_check_mark:
 > - `Path Intellisense - Christian Kohler` :heavy_check_mark:
-> - `JavaScript(ES6) Code Snippets - charalampos karypidis`
 > - `PHP Intelphense - Ben Mewburn` :heavy_check_mark:
 > - `HTML CSS Support - ecmel`
 > ###### :heavy_check_mark: oznacza zweryfikowanego twórcę.

@@ -46,6 +46,10 @@ h1::after {
     width: calc(50% - var(--line-width) / 2);
 }
 
+input:invalid {
+    color: red;
+}
+
 .user-form {
     width: 80%;
     margin-inline: auto;

@@ -4,9 +4,8 @@ require_once "functions.php";
 $pass_len = 5;
 $name_len = 30;
 
-if (isset($_POST["show-uid"])) {
-    echo $_SESSION["uid"];
-}
+const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
+
 
     // if (strlen($name) > $name_len) {
     //     return "Nazwa nie może przekraczać $name_len znaków";
@@ -118,7 +117,6 @@ function generate_id(string $name): string {
 
 
 // PHONE NR REGEX: /\d{3}[-\s]?\d{3}[-\s]?\d{3}/
-// USERNAME REGEX: /\w{1,30}/g
 // EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 // FILE EXT REGEX: ^\w+\.(gif|png|jpg|jpeg)$
 
