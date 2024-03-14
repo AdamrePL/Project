@@ -1,10 +1,7 @@
 <?php
 require_once "functions.php";
 
-$pass_len = 5;
-$name_len = 30;
 
-const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
 
 
     // if (strlen($name) > $name_len) {
