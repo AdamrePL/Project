@@ -56,9 +56,8 @@
             }
         ?>
         <a>Placeholder Button</a>
-        <!-- <a>Placeholder Button</a> -->
         <a>Placeholder Button</a>
-        <!-- <a>Placeholder Button</a> -->
+        <a>Placeholder Button</a>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 
