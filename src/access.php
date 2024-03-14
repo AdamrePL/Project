@@ -30,11 +30,12 @@
             <form method="post" action="../controllers/process-data.php" class="user-form">
                 <input type="text" name="username" pattern="[a-zA-Z]{1}\w{2,29}" minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" <?php if (isset($_GET["username"])) echo 'value="'. $_GET["username"] .'"'; ?> required />
                 <input type="email" name="email"  maxlength="320" placeholder="Adres e-mail" autocomplete="email" <?php if (isset($_GET["email"])) echo 'value="'. $_GET["email"] .'"'; ?> required />
-                <input type="password" name="r_password" placeholder="Hasło (Opcjonalne)" />
-                <input type="password" name="r_password-repeat" placeholder="Potwierdzenie hasła" />
-                <label for="accept_TOS">Akceptuję Regulamin oraz Politykę Prywatności</label><input type="checkbox" name="accept_TOS" required/> 
+                <input type="password" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" />
+                <input type="password" name="r_password-repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Potwierdzenie hasła" />
+                <span>Akceptuję Regulamin oraz Politykę Prywatności</span><input type="checkbox" name="accept_TOS" required /> 
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "password-does-not-match") echo "hasła się nie zgadzają"; ?>
+                    <?php if (isset($_GET["error"]) && $_GET["error"] == "agreement-rejected") echo "wymagana akceptacja tos-u"; ?>
                 
                 </span>
                 <input type="submit" value="Zarejestruj">

@@ -66,18 +66,18 @@ header > p {
     letter-spacing: 0.5px;
 }
 
-header > search {
+search {
     margin-bottom: 2rem;
 }
 
-header > search > form {
+search > form {
     display: flex;
     justify-content: center;
     width: 50%;
     margin-inline: auto;
 }
 
-header > search > form > input[type="search"] {
+search > form > input[type="search"] {
     padding: 0.7rem;
     flex-basis: 100%;
     border: none;
@@ -87,7 +87,7 @@ header > search > form > input[type="search"] {
     border-bottom-left-radius: 2px;
 }
 
-header > search > form > input[type="submit"] {
+search > form > input[type="submit"] {
     padding: 0.5rem;
     border: none;
     border-bottom: 1px solid black;
@@ -96,11 +96,11 @@ header > search > form > input[type="submit"] {
     border-bottom-right-radius: 2px;
 }
 
-header > search > form > input::placeholder {
+search > form > input::placeholder {
     text-align: center;
 }
 
-header > search > form:has(input[type="search"]:focus-within) {
+search > form:has(input[type="search"]:focus-within) {
     outline: auto;
     outline-color: transparent;
     outline-width: 0.1px;

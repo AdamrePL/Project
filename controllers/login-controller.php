@@ -53,6 +53,6 @@ if ($result = mysqli_fetch_assoc($result)) {
     $_SESSION["username"] = $result["username"];
 }
 update_last_login($conn, $uid);
-header("Location: $path_to_form?success");
+header("Location: ../src/profile.php?info=success");
 
 $conn -> close();
