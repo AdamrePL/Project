@@ -39,9 +39,6 @@
         <?php 
             echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' :'<a href="./src/access.php">Zaloguj się</a>';
         ?>
-        <a>Placeholder Button</a>
-        <a>Placeholder Button</a>
-        <a>Placeholder Button</a>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 

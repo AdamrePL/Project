@@ -27,7 +27,7 @@
         <div class="line"></div>
         <div id="register-wrapper" aria-selected="false">
             <h1>Rejestracja</h1>
-            <form method="post" action="../controllers/process-data.php" class="user-form">
+            <form method="post" action="../controllers/register-account.php" class="user-form">
                 <input type="text" name="username" pattern="[a-zA-Z]{1}\w{2,29}" minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" <?php if (isset($_GET["username"])) echo 'value="'. $_GET["username"] .'"'; ?> required />
                 <input type="email" name="email"  maxlength="320" placeholder="Adres e-mail" autocomplete="email" <?php if (isset($_GET["email"])) echo 'value="'. $_GET["email"] .'"'; ?> required />
                 <input type="password" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" />

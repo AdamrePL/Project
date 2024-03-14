@@ -1,7 +1,7 @@
 <?php
 
 function user_exists(mysqli $conn, $uid): bool {
-    $sql = "SELECT * FROM `users` WHERE BINARY uuid = ?;";
+    $sql = "SELECT * FROM `users` WHERE uuid = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "s", $uid);

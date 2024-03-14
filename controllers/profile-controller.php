@@ -33,44 +33,20 @@
         mysqli_stmt_close($stmt);
         echo $result;
     }
-
-
-    // ? so do we just straight up change the fucking email of the account?
-    // if($if_mail_set){
-    //     $sql = "UPDATE `users` SET `email` = $pass WHERE `uuid` = ?";
-    //     $stmt = mysqli_stmt_init($conn);
-    //     mysqli_stmt_prepare($stmt,$sql);
-    //     mysqli_stmt_bind_param($stmt,"s",$uid);
-    //     mysqli_stmt_execute($stmt);
-    //     $result = mysqli_stmt_get_result($stmt);
-    //     mysqli_stmt_close($stmt);
-    //     echo $result;
-    // }
     
-    if($if_phone_set){
-        $sql = "UPDATE `users` SET `phone` = $phone WHERE `uuid` = ?";
-        $stmt = mysqli_stmt_init($conn);
-        mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"s",$uid);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        mysqli_stmt_close($stmt);
-        echo $result;
+    if($if_mail_set) {
+        change_email($conn,$_SESSION["uid"],$mail);
+    }
+
+    if($if_phone_set && validate_phone($phone)){
+        //? is this correct?
+        set_phone($conn,$_SESSION["uid"],$phone);
     }
 
     if($if_discord_set){
-        $sql = "UPDATE `users` SET `discord` = $discord WHERE `uuid` = ?";
-        $stmt = mysqli_stmt_init($conn);
-        mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"s",$uid);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        mysqli_stmt_close($stmt);
-        echo $result;
+        set_discord($conn,$_SESSION["uid"],$discord);     
     }
-
-
-
+    
     if($mail_flag){
         $sql = "UPDATE `users` SET `email-flag` = 1 WHERE `uuid` = ?";
         $stmt = mysqli_stmt_init($conn);

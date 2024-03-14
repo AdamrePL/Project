@@ -1,10 +1,7 @@
 <?php
 require_once "functions.php";
 
-$pass_len = 5;
-$name_len = 30;
 
-const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
 
 
     // if (strlen($name) > $name_len) {
@@ -90,14 +87,15 @@ function set_discord(mysqli $conn, string $uid, string $discord_id) {
 }
 
 // ! Currently disabled as it requires 
-// function change_email($conn, string $uid, string $email) {
-//     $stmt = mysqli_stmt_init($conn);
-//     $sql = "UPDATE `users` SET `phone`= ? WHERE uuid = $uid;";
-//     mysqli_stmt_prepare($stmt, $sql);
-//     mysqli_stmt_bind_param($stmt, 's', $nr);
-//     mysqli_stmt_execute($stmt);
-//     mysqli_stmt_close($stmt);
-// }
+// @PiwkoM: enabled for profile-controller.php
+function change_email($conn, string $uid, string $email) {
+    $stmt = mysqli_stmt_init($conn);
+    $sql = "UPDATE `users` SET `phone`= ? WHERE uuid = $uid;";
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, 's', $nr);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
 
 function generate_id(string $name): string {
     $chars = [];
