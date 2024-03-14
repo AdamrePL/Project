@@ -122,6 +122,32 @@ header a {
     padding: 1rem;
     height: 5rem;
     aspect-ratio: 4/1;
+    background: rgb(var(--background-50));
+    flex-grow: 0;
+    word-break: break-word;
+    border-radius: 0.3rem;
+    border-bottom: 5px solid rgb(var(--secondary));
+    box-shadow: 0px 0px 3px 0.5px rgba(var(--primary-500),0.5);
+    transition: all 0.175s ease-in-out;
+}
+
+header a:hover {
+    transform: translateY(-10px);
+    border-bottom: 6px solid rgb(var(--accent-500));
+    box-shadow: 0px 4px 15px 0.1px rgba(var(--primary-600), 0.9);
+    background: rgb(var(--background-100));
+    color: rgb(var(--accent-500));
+}
+
+/*! testing different color scheme for button, recomment/uncomment below code to get old yellow version/
+/* header a {
+    color: rgb(var(--text-900));
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0rem;
+    padding: 1rem;
+    height: 5rem;
+    aspect-ratio: 4/1;
     background: rgb(var(--background-200));
     flex-grow: 0;
     word-break: break-word;
@@ -137,7 +163,7 @@ header a:hover {
     box-shadow: 0px 4px 15px 0.1px rgba(var(--primary-600), 0.9);
     background: rgb(var(--background-500));
     color: rgb(var(--secondary-500));
-}
+} */
 
 header a:link,
 nav a:link {

@@ -24,7 +24,8 @@ if(!user_exists($conn,generate_id($a))){
     echo $a,$b,$c,$cc;
     if(!in_array($a,$user_table)){
         echo "flare2";
-        create_user($conn,$a,$b,$c); //something's wrong with this idfk
+        create_user($conn,$a,$b,$c); //something's wrong with this
+        //&todo: FIX!!!! PLEASE!!!
         header("Location: ../src/profile.php");
     } else{
         echo "flare3";
