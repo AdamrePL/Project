@@ -116,11 +116,12 @@ Każde zapytanie SQL wprowadzone w PHP-ie przed dodaniem do jakiejkolwiek funkcj
 
 Nazwa funkcji oraz zmiennej powinna być rozdzielana znakiem '_' jeżeli składa się z dwóch słów lub więcej.
 
-Zmienne nie powinny zaczynać się cyframi, znakami specjalnymi.
-Powinny też być nazwane tak, aby można było się domyśleć, jaką wartość przechowują, np: 
+Zmienne/funkcje nie powinny zaczynać się cyframi, lub znakami specjalnymi.
+Powinny też być nazwane tak, aby można było się domyśleć, jaką wartość przechowują.
+#### Przykład
 ```php
-    $a = "hasło"; //To jest niepoprawna nazwa zmiennej. 
-    $password = "hasło"; //To jest *poprawna* nazwa zmiennej.
+$a = "hasło"; //To jest niepoprawna nazwa zmiennej. 
+$password = "hasło"; //To jest *poprawna* nazwa zmiennej.
 ```
 
 ### Utrzymywanie kodu w porządku
