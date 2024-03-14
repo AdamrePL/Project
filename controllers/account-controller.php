@@ -5,43 +5,37 @@ if (isset($_POST["show-uid"])) {
     echo $_SESSION["uid"];
 }
 
-function check_user_data(string $name, string $email, string $password, string $password_confirm): string {
-    $pass_len = 5;
-    $name_len = 30;
+    // if (strlen($name) > $name_len) {
+    //     return "Nazwa nie może przekraczać $name_len znaków";
+    // }
+    // if (!preg_match("/[a-zA-Z0-9]/", $name)) {
+    //     return "Nazwa może zawierać jedynie małe, duże litery i cyfry";
+    // }
+    // if (strlen($password) < $pass_len) {
+    //     return "Hasło powinno mieć przynajmniej $pass_len znaków";
+    // }
+    // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //     return "Niepoprawny email";
+    // }
+    // if ($password != $password_confirm) {
+    //     return "Hasła nie są identyczne";
+    // }
+    // if (!preg_match("/\d/", $password)) {
+    //     return "Hasło powinno zawierać przynajmniej jedna cyfre";
+    // }
+    // if (!preg_match("/[A-Z]/", $password)) {
+    //     return "Hasło powinno zawierać przynajmniej jedna dużą litere";
+    // }
+    // if (!preg_match("/[a-z]/", $password)) {
+    //     return "Hasło powinno zawierać przynajmniej jedna małą litere";
+    // }
+    // if (!preg_match("/\W/", $password)) {
+    //     return "Password should contain at least one special character";
+    // }
+    // if (preg_match("/\s/", $password)) {
+    //     return "Hasło nie powinno zawierać spacji";
+    // }
 
-    if (strlen($name) > $name_len) {
-        return "Nazwa nie może przekraczać $name_len znaków";
-    }
-    if (!preg_match("/[a-zA-Z0-9]/", $name)) {
-        return "Nazwa może zawierać jedynie małe, duże litery i cyfry";
-    }
-    if (strlen($password) < $pass_len) {
-        return "Hasło powinno mieć przynajmniej $pass_len znaków";
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return "Niepoprawny email";
-    }
-    if ($password != $password_confirm) {
-        return "Hasła nie są identyczne";
-    }
-    if (!preg_match("/\d/", $password)) {
-        return "Hasło powinno zawierać przynajmniej jedna cyfre";
-    }
-    if (!preg_match("/[A-Z]/", $password)) {
-        return "Hasło powinno zawierać przynajmniej jedna dużą litere";
-    }
-    if (!preg_match("/[a-z]/", $password)) {
-        return "Hasło powinno zawierać przynajmniej jedna małą litere";
-    }
-    if (!preg_match("/\W/", $password)) {
-        return "Password should contain at least one special character";
-    }
-    if (preg_match("/\s/", $password)) {
-        return "Hasło nie powinno zawierać spacji";
-    }
-
-    return false;
-}
 
 function create_user(mysqli $conn, string $name, string $email, string $password): bool {
     $i = 0;
@@ -52,12 +46,18 @@ function create_user(mysqli $conn, string $name, string $email, string $password
         echo "tried $i times";
     }
 
+    $stmt = mysqli_stmt_init($conn);
     if ($password != "") {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO `users` VALUES($uid, $name, $hashed, '', '', $email, '', '', '', '');";
+        $sql = "INSERT INTO `users` VALUES(?, $name, $hashed, '', '', $email, '', '', '', '');";
+        mysqli_stmt_prepare($stmt, $sql);
     } else {
-        $sql = "INSERT INTO `users` VALUES($uid, $name, '', '', '', $email, '', '', '', '');";
+        $sql = "INSERT INTO `users` VALUES(?, $name, '', '', '', $email, '', '', '', '');";
+        mysqli_stmt_prepare($stmt, $sql);
     }
+        mysqli_stmt_bind_param($stmt, "s", $uid);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
 
     return true;
 }
