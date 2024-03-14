@@ -28,11 +28,12 @@
         <div id="register-wrapper" aria-selected="false">
             <h1>Rejestracja</h1>
             <form method="post" action="../controllers/process-data.php" class="user-form">
-                <input type="text" name="username"  minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" <?php if (isset($_GET["username"])) echo 'value="'. $_GET["username"] .'"'; ?> />
-                <input type="email" name="email"  maxlength="320" placeholder="Adres e-mail" autocomplete="email" <?php if (isset($_GET["email"])) echo 'value="'. $_GET["email"] .'"'; ?> />
+                <input type="text" name="username"  minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" <?php if (isset($_GET["username"])) echo 'value="'. $_GET["username"] .'"'; ?> required />
+                <input type="email" name="email"  maxlength="320" placeholder="Adres e-mail" autocomplete="email" <?php if (isset($_GET["email"])) echo 'value="'. $_GET["email"] .'"'; ?> required />
                 <input type="password" name="r_password" placeholder="Hasło (Opcjonalne)" />
                 <input type="password" name="r_password-repeat" placeholder="Potwierdzenie hasła" />
                 <span class="error-msg"><?php if (isset($_GET["error"]) && $_GET["error"] == "password-does-not-match") echo "hasła się nie zgadzają"; ?></span>
+                <label for="accept_TOS">Akceptuję Regulamin oraz Politykę Prywatności</label><input type="checkbox" name="accept_TOS" required/> 
                 <input type="submit" value="Zarejestruj">
             </form>
         </div>
