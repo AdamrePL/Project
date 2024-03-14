@@ -176,7 +176,7 @@ we make it npc-ahh website
     margin: 2rem auto;
     display: grid;
     gap: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(max(15rem, 15%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(max(15rem, 15%), 1fr)); /* !!!! THIS HAS TO BE LEFT ON 'auto-fit' */
     word-wrap: break-word;
     /* place-items: center stretch; */
     /* justify-items: center; */
