@@ -115,6 +115,16 @@ Każde zapytanie SQL wprowadzone w PHP-ie przed dodaniem do jakiejkolwiek funkcj
 > Polecam używać zmiennej $query dla mysqli_query oraz $stmt dla mysqli_stmt_prepare
 
 Nazwa funkcji oraz zmiennej powinna być rozdzielana znakiem '_' jeżeli składa się z dwóch słów lub więcej.
+
+> [!WARN]
+> Nazwy zmiennych powinny mieć sens.
+> Np: 
+> ```PHP
+>   $a = "hasło" :x:  
+>   $password = "hasło" :heavy_check_mark:
+> ```
+>
+
 ### Utrzymywanie kodu w porządku
 **Jeżeli można to elementy dawać poza kodem PHP i wartości dodawać kodem wewnątrz elementu.**
 #### Przykład
