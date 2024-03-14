@@ -12,7 +12,7 @@
 
 > [!CAUTION]
 > ### Błagam wszystkich którzy będą uczestniczyć w tym projekcie, aby ***NIE UŻYWAĆ CHATGPT***
-> ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które umie conajwyżej podstawową stronę z stylami wziętymi z roku 1990?
+> ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które co najwyżej umie podstawową stronę z stylami wziętymi z roku 1990?
 > *- Browar*
 
 > [!TIP]
