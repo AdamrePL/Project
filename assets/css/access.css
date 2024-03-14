@@ -32,9 +32,8 @@ h1::after {
 
 .access-wrapper {
     --line-width: 2px;
-    height: max(400px, 85%);
-    width: 95%;
-    /* ! ADD MINIMUM WIDTH OF 600PX! */
+    height: max(400px, 85svh);
+    min-width: max(600px, 95svw);
     margin-inline: auto;
     background: whitesmoke;
     display: flex;

@@ -41,7 +41,7 @@ header {
     background: rgb(var(--primary));
     display: flex;
     justify-content:center;
-    gap: 3rem;
+    gap: 4rem;
     flex-direction: column;
     /* flex-direction: row;
     flex-wrap: wrap; */
@@ -67,7 +67,6 @@ header > p {
 }
 
 header > search {
-    margin-top: 15%;
     margin-bottom: 2rem;
 }
 
