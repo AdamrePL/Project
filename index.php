@@ -22,7 +22,7 @@
 <body>
     <header>
         <hgroup>
-            <h1>Giełda</h1>
+            <h1><?php echo SITENAME; ?> TLiMC</h1>
             <p>Wewnątrzszkolna wymiana podręczników</p>
         </hgroup>
         <menu>
