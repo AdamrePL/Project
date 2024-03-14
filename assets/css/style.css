@@ -171,10 +171,9 @@ menu > nav {
     width: 80%;
     margin: 2rem auto;
     display: grid;
-    gap: 1rem;
+    gap: 3rem;
     grid-template-columns: repeat(auto-fill, minmax(max(15rem, 20%), 1fr));
     /* flex-wrap: wrap; */
-    justify-self: center;
     word-wrap: break-word;
 }
 
@@ -183,11 +182,8 @@ menu > nav {
     border: 1px solid transparent;
     color: black;
     background: rgba(var(--primary-400),0.2); 
-    justify-self: center;
     text-align:center;
     padding: 1.7rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     aspect-ratio: 2/1;
     font-size: 1.3rem;
     border-radius: 0.3rem;

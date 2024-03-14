@@ -49,11 +49,7 @@
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="./src/booklist.php">Lista podręczników</a>
         <?php 
-            if (isset($_SESSION["uid"])) {
-                echo '<a href="./src/profile.php#offers">Moje oferty</a>';
-            } else{
-                echo '<a href="./src/access.php">Zaloguj się</a>';
-            }
+            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' :'<a href="./src/access.php">Zaloguj się</a>';
         ?>
         <a>Placeholder Button</a>
         <a>Placeholder Button</a>
@@ -101,6 +97,7 @@
     </section>
 
     <?php // ! TESTING ENV
+    include "./src/footer.php";
     // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
     // $DisOf = mysqli_query($conn, $lol);
     // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");

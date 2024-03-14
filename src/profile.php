@@ -22,7 +22,7 @@ if (!isset($_SESSION["uid"])) {
             <div class="user-settings-wrapper">
                 <h1> User Settings </h1>
             
-                <form action="" type="">
+                <form action="../controllers/profile-controller.php" method="post" type="">
                     <label for="new_password">change password</label>
                     <input type="text" name="new_password" placeholder="new password"/>
                     
