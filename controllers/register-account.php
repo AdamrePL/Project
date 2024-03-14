@@ -37,21 +37,25 @@ if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 //     exit(422);
 // }
 
-if (!preg_match("/\d/", $pass)) {
+if (!preg_match("/(?=.*\d)/", $pass)) {
     header("Location: $path_to_form?error=digit-required");
     exit(422);
 }
 
-if (!preg_match("/[A-Z]/", $password)) {    
+if (!preg_match("/(?=.*[A-Z])/", $pass)) {    
     header("Location: $path_to_form?error=capital-letter-required");
     exit(422);
 }
 
-if (!preg_match("/[a-z]/", $password)) {
+if (!preg_match("/(?=.*[a-z]/", $pass)) {
     header("Location: $path_to_form?error=lowercase-letter-required");
     exit(422);
 }
 
+if(strlen($pass) < $pass_len){
+    header("Location: $path_to_form?error=shit-too-small-men");
+    exit(422);
+}
 
 if (user_exists($conn, generate_id($name))) {
     header("Location: $path_to_form?error=user-exists");
