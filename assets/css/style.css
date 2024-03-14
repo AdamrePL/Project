@@ -39,41 +39,45 @@ header {
     height: 95svh;
     background: rgb(var(--primary));
     display: flex;
-    justify-content:center;
-    gap: 4rem;
+    gap: 0.5rem;
     flex-direction: column;
     /* flex-direction: row;
     flex-wrap: wrap; */
     box-shadow: 0px 0px 5px 4px rgb(var(--primary));
 }
 
-/* header > * {
-    flex: 100%;
-} */
+header > hgroup {
+    display: flex;
+    flex-basis: 1;
+    flex-grow: 3;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
-header > h1 {
-    /* padding: 2rem; */
+header > hgroup > h1 {
+    padding-bottom: 1rem;
     font-size: 4.5rem;
 }
 
-header > p {
+header > hgroup > p {
     text-wrap: balance;
     line-height: 1.5;
     font-size: 1.75rem;
-    margin-bottom: 2rem;
     text-transform: capitalize;
     letter-spacing: 0.5px;
 }
 
 header > menu {
     padding: 0;
+    flex-grow: 1;
 }
 
 header > menu > nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 header > menu > nav > a {
@@ -140,7 +144,8 @@ get them images first tho
 we make it npc-ahh website
 */
 
-/* #nawigacja { /* & Stara stylizacja
+/* & Stara stylizacja in case of backup or idk */
+/* #nawigacja { /* //nadal trzeba zmienić nową booooo wielkości są różne w zależności od ulozenia oraz wielkosci strony, mimo to i tak ledwo widoczne ale sa
     width: 80%;
     margin: 2rem auto;
     display: grid;
@@ -170,6 +175,8 @@ we make it npc-ahh website
     border-bottom: 5px solid rgb(var(--primary-400));   
     box-shadow: 0px 5px 5px 1px rgba(var(--accent-700),0.5);
 } */
+
+/* * Imo nawigacja teraz dziala idealnie idk bout you, niestety prostokatne przyciski ale it is what it is, lepiek wygladaja teraz bo nie ma za duzo niewykorzystanego miejsca */
 
 #nawigacja { /* ! BRO, idk how, but i commented the grid stuff right? all the 5 bottom lines in this selection + first one in next selection and go take a break, come back and it works as it should wtf. */
     width: 80%;
