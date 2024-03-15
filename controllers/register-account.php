@@ -18,7 +18,7 @@ $name_len = 30;
 const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
 
 $name = $_POST["username"];
-$mail = $_POST["email"];
+$email = $_POST["email"];
 $pass = $_POST["r_password"];
 $pass_check = $_POST["r_password-repeat"];
 
@@ -26,8 +26,9 @@ if (!preg_match(USERNAME_PATTERN, $name)) {
     header("Location: $path_to_form?error=incorrect-username");
     exit(422);
 }
-if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-    header("Location: $path_to_form?error=incorrect-username");
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: $path_to_form?error=incorrect-email");
     exit(422);
 }
 
@@ -61,8 +62,14 @@ if ($pass !== $pass_check) {
     exit(403);
 }
 
+if (!isset($_POST["accept_tos"])) {
+    header("Location: $path_to_form?error=tos-rejected");
+    exit();
+}
 
-// $hashed = password_hash($pass, PASSWORD_DEFAULT);
-// create_user($conn, $name, $mail, $hashed); 
-// header("Location: ../src/profile.php"); 
+$hashemail = convert_uuencode(base64_encode($email));
+$hashpass = password_hash($pass, PASSWORD_DEFAULT);
+create_user($conn, $name, $hashemail, $hashpass);
+
+header("Location: ../src/profile.php"); 
 ?>
