@@ -21,7 +21,7 @@
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "wrong-password") echo "błędne hasło"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "password-required") echo "wymagane hasło"; ?>
                 </span>
-                <input type="submit" name="logowanie" value="Zaloguj">
+                <input type="submit" name="log" value="Zaloguj">
             </form>
         </div>
         <div class="line"></div>
@@ -32,13 +32,13 @@
                 <input type="email" name="email"  maxlength="320" placeholder="Adres e-mail" autocomplete="email" <?php if (isset($_GET["email"])) echo 'value="'. $_GET["email"] .'"'; ?> required />
                 <input type="password" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" />
                 <input type="password" name="r_password-repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Potwierdzenie hasła" />
-                <span>Akceptuję Regulamin oraz Politykę Prywatności</span><input type="checkbox" name="accept_TOS" required /> 
+                <span>Akceptuję Regulamin oraz Politykę Prywatności</span><input type="checkbox" name="accept_tos" required /> 
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "password-does-not-match") echo "hasła się nie zgadzają"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "agreement-rejected") echo "wymagana akceptacja tos-u"; ?>
                 
                 </span>
-                <input type="submit" value="Zarejestruj">
+                <input type="submit" name="reg" value="Zarejestruj">
             </form>
         </div>
     </div>
