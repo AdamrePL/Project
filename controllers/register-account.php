@@ -40,7 +40,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit(422);
 }
 
-if (!preg_match("/(?=.*\s)/", $pass)) {
+if (preg_match("/(?=.*\s)/", $pass)) {
     header("Location: $path_to_form?error=processing-data-failure");
     exit(422);
 }
