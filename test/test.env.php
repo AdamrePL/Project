@@ -1,0 +1,1 @@
+<?php echo $_SERVER["REQUEST_URI"] . "<br>" . $_SERVER["DOCUMENT_ROOT"]; echo "<br>" . getcwd(); ?>
