@@ -2,27 +2,31 @@
 require_once "functions.php";
 
 function create_user(mysqli $conn, string $name, string $email, string $password): bool {
-    $i = 0;
     $uid = generate_id($name);
     while (user_exists($conn, $uid)) {
         $uid = generate_id($name);
-        $i++;
-        echo "tried $i times";
     }
 
-    $hashemail = convert_uuencode(base64_encode($email));
+    $hashed_email = convert_uuencode(base64_encode($email));
+
     $stmt = mysqli_stmt_init($conn);
-    if ($password != "") {
-        $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO `users` VALUES(?, $name, $hashed, '', '', $hashemail, '', '', '', '');";
-        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`password` , `users`.`email` VALUES(?, $name, $hashed, $hashemail);";
-        mysqli_stmt_prepare($stmt, $sql);
+    if (!empty($password) || $password != "") {
+        $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
+        
+        $sql = "INSERT INTO `users` VALUES(?, ?, ?, '', '', ?, '', '', '', '');";
+        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`password` , `users`.`email` VALUES(?, ?, ?, ?);";
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            return false;
+        }
+        mysqli_stmt_bind_param($stmt, "ssss", $uid, $name, $hashed_pass, $hashed_email);
     } else {
-        $sql = "INSERT INTO `users` VALUES(?, $name, '', '', '', $hashemail, '', '', '', '');";
-        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`email` VALUES(?, $name, $hashemail);";
-        mysqli_stmt_prepare($stmt, $sql);
+        $sql = "INSERT INTO `users` VALUES(?, ?, '', '', '', ?, '', '', '', '');";
+        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`email` VALUES(?, ?, ?);";
+        if (mysqli_stmt_prepare($stmt, $sql)) {
+            return false;
+        }
+        mysqli_stmt_bind_param($stmt, "sss", $uid, $name, $hashed_email);
     }
-        mysqli_stmt_bind_param($stmt, "s", $uid);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

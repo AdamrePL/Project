@@ -87,7 +87,12 @@ if (!isset($_POST["accept_tos"])) {
     exit(403);
 }
 
-create_user($conn, $name, $email, $pass);
-header("Location: ../src/profile.php");
+if (create_user($conn, $name, $email, $pass)) {
+    header("Location: ../src/profile.php");
+    exit(200);
+} else {
+    header("Location: $path_to_form?error=unexpected-error");
+    exit(500);
+}
 
 ?>
