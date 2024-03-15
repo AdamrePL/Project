@@ -64,6 +64,7 @@ if ($result = mysqli_fetch_assoc($result)) {
     $_SESSION["isadmin"] = $result["admin"];
     $_SESSION["username"] = $result["username"];
 }
+
 update_last_login($conn, $uid);
 header("Location: ../src/profile.php?info=success");
 
