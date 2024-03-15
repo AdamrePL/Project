@@ -13,15 +13,15 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     if (!empty($password) || $password != "") {
         $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
         
-        $sql = "INSERT INTO `users` VALUES(?, ?, ?, '', '', ?, '', '', '', '');";
-        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`password` , `users`.`email` VALUES(?, ?, ?, ?);";
+        // $sql = "INSERT INTO `users` VALUES(?, ?, ?, '', '', ?, '', '', '', '');";
+        $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`password` , `users`.`email` VALUES(?, ?, ?, ?);";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             return false;
         }
         mysqli_stmt_bind_param($stmt, "ssss", $uid, $name, $hashed_pass, $hashed_email);
     } else {
-        $sql = "INSERT INTO `users` VALUES(?, ?, '', '', '', ?, '', '', '', '');";
-        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`email` VALUES(?, ?, ?);";
+        // $sql = "INSERT INTO `users` VALUES(?, ?, '', '', '', ?, '', '', '', '');";
+        $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`email` VALUES(?, ?, ?);";
         if (mysqli_stmt_prepare($stmt, $sql)) {
             return false;
         }
