@@ -27,9 +27,11 @@
         </hgroup>
         <menu>
             <nav>
-                <a href="#przegladaj">Przeglądaj Oferty</a>
-                <a href="./src/booklist.php">Lista Podręczników</a>
-                <a href="./src/terms-of-service.html">Polityka Prywatności</a>
+                <a href="#przegladaj">przeglądaj oferty</a>
+                <a href="./src/booklist.php">lista podręczników</a>
+                <?php
+                    echo !isset($_SESSION["uid"]) ? '<a href="./src/access.php">Zaloguj</a>' : '<a href="./src/profile.php">moj profil</a>';
+                ?>
             </nav>
         </menu>
     </header>
@@ -38,7 +40,7 @@
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="./src/booklist.php">Lista podręczników</a>
         <?php 
-            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' :'<a href="./src/access.php">Zaloguj się</a>';
+            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' : '<a href="./src/access.php">Zaloguj się</a>';
         ?>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
@@ -88,7 +90,7 @@
     </section>
 
     <section id="offerOfUser">
-        <h1><?php echo !isset($_SESSION["uid"])? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
+        <h1><?php echo !isset($_SESSION["uid"]) ? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
 
         <p> You've created <?php echo "zero" ?> offers so far. </p>
          <!--yeah no ive got no idea why this doesnt work-->

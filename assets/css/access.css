@@ -68,6 +68,7 @@ input:invalid {
     padding: 0.5rem;
     margin: 0.2rem;
     position: relative;
+    width: 33.334%;
 }
 
 .user-form > input:not([type="submit"])::after {

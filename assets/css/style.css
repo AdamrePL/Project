@@ -93,6 +93,7 @@ header > menu > nav > a {
     border-bottom: 5px solid rgb(var(--secondary));
     box-shadow: 0px 0px 3px 0.5px rgba(var(--primary-500),0.5);
     transition: all 0.175s ease-in-out;
+    text-transform: capitalize;
 }
 
 header > menu > nav > a:hover,
