@@ -1,6 +1,13 @@
 <?php
 require_once "functions.php";
 
+/**
+ * @param mysqli $conn
+ * 
+ * A link identifier _markdown_.
+ * 
+ * @return bool -- return true on success, false on mysql error.
+ */
 function create_user(mysqli $conn, string $name, string $email, string $password): bool {
     $uid = generate_id($name);
     while (user_exists($conn, $uid)) {
@@ -27,14 +34,15 @@ function create_user(mysqli $conn, string $name, string $email, string $password
         }
         mysqli_stmt_bind_param($stmt, "sss", $uid, $name, $hashed_email);
     }
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+    
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
     return true;
 }
 
 function validate_phone(int $number): bool {
-    if (!preg_match("\+?[0-9]{0,2}?[0-9]{9}", $number)) {
+    if (!preg_match("/\d{3}[-\s]?\d{3}[-\s]?\d{3}/", $number)) {
         return false;
     }
     return true;
@@ -61,10 +69,11 @@ function set_discord(mysqli $conn, string $uid, string $discord_id) {
 // ! Currently disabled as it requires 
 // @PiwkoM: enabled for profile-controller.php
 function change_email($conn, string $uid, string $email) {
+    $hashed_email = convert_uuencode(base64_encode($email));
     $stmt = mysqli_stmt_init($conn);
-    $sql = "UPDATE `users` SET `phone`= ? WHERE uuid = $uid;";
+    $sql = "UPDATE `users` SET `email`= ? WHERE uuid = $uid;";
     mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $nr);
+    mysqli_stmt_bind_param($stmt, 's', $hashed_email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
