@@ -25,6 +25,11 @@ $email = trim($_POST["email"]);
 $pass = trim($_POST["r_password"]);
 $pass_check = trim($_POST["r_password-repeat"]);
 
+if (empty($name) || empty($email)) {
+    header("Location: $path_to_files?error=input-required");
+    exit(403);
+}
+
 if (!preg_match(USERNAME_PATTERN, $name)) {
     header("Location: $path_to_form?error=incorrect-username");
     exit(422);
@@ -40,34 +45,41 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit(422);
 }
 
-if (preg_match("/(?=.*\s)/", $pass)) {
-    header("Location: $path_to_form?error=processing-data-failure");
-    exit(422);
-}
+if (!empty($pass)) {
+    if (strlen($pass) < $pass_len) {
+        header("Location: $path_to_form?error=shit-too-small-men");
+        exit(422);
+    }
 
-if (!preg_match("/(?=.*\d)/", $pass)) {
-    header("Location: $path_to_form?error=digit-required");
-    exit(422);
-}
+    if (empty($pass_check)) {
+        header("Location: $path_to_form?error=reapeat-required");
+        exit(422);
+    }
 
-if (!preg_match("/(?=.*[A-Z])/", $pass)) {    
-    header("Location: $path_to_form?error=capital-letter-required");
-    exit(422);
-}
+    if ($pass !== $pass_check) {
+        header("Location: $path_to_form?error=passwords-dont-match");
+        exit(403);
+    }
 
-if (!preg_match("/(?=.*[a-z]/", $pass)) {
-    header("Location: $path_to_form?error=lowercase-letter-required");
-    exit(422);
-}
+    if (preg_match("/(?=.*\s)/", $pass)) {
+        header("Location: $path_to_form?error=processing-data-failure");
+        exit(422);
+    }
 
-if (strlen($pass) < $pass_len){
-    header("Location: $path_to_form?error=shit-too-small-men");
-    exit(422);
-}
+    if (!preg_match("/(?=.*\d)/", $pass)) {
+        header("Location: $path_to_form?error=digit-required");
+        exit(422);
+    }
 
-if ($pass !== $pass_check) {
-    header("Location: $path_to_form?error=passwords-dont-match");
-    exit(403);
+    if (!preg_match("/(?=.*[A-Z])/", $pass)) {    
+        header("Location: $path_to_form?error=capital-letter-required");
+        exit(422);
+    }
+
+    if (!preg_match("/(?=.*[a-z]/", $pass)) {
+        header("Location: $path_to_form?error=lowercase-letter-required");
+        exit(422);
+    }
 }
 
 if (!isset($_POST["accept_tos"])) {
@@ -75,8 +87,7 @@ if (!isset($_POST["accept_tos"])) {
     exit(403);
 }
 
-
 create_user($conn, $name, $email, $pass);
+header("Location: ../src/profile.php");
 
-header("Location: ../src/profile.php"); 
 ?>
