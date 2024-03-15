@@ -76,7 +76,7 @@ if (!empty($pass)) {
         exit(422);
     }
 
-    if (!preg_match("/(?=.*[a-z]/", $pass)) {
+    if (!preg_match("/(?=.*[a-z])/", $pass)) {
         header("Location: $path_to_form?error=lowercase-letter-required");
         exit(422);
     }
