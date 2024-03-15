@@ -5,6 +5,7 @@
 > [Więcej o dokumentacji PHP](https://docs.phpdoc.org/3.0/guide/references/phpdoc/basic-syntax.html "phpDocumentor")
 ```PHP
 /** 
+ * 
  * @api (method) defines the stable public methods, which won’t change their semantics up to the next major release.
  * 
  * @author (in any place) defines the name or an email of the author who wrote the following code.

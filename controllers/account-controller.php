@@ -3,12 +3,19 @@ require_once "functions.php";
 
 /**
  * @param mysqli $conn
+ * A database connection returned by mysqli_connect() or mysqli_init(). 
+ * Połączenie z bazą danych wzrócone przez mysqli_connect() lub mysqli_init().
+ * @param string $name
+ * Username, not person's name.
+ * @param string $email
+ * Not yet hashed, verified email adress
+ * @param string $password (Optional)
+ * Not yet hashed password. Set to an empty string by default.
  * 
- * A link identifier _markdown_.
- * 
- * @return bool -- return true on success, false on mysql error.
- */
-function create_user(mysqli $conn, string $name, string $email, string $password): bool {
+ * @return true returns true if user is successfuly added to a database table.
+ * @return false on mysql_stmt_prepare() error.
+*/
+function create_user(mysqli $conn, string $name, string $email, string $password = ""): bool {
     $uid = generate_id($name);
     while (user_exists($conn, $uid)) {
         $uid = generate_id($name);
@@ -41,6 +48,12 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     return true;
 }
 
+/**
+ * @param int $number phone number wheter with spaces or without
+ * 
+ * @return true returns true if phone number form is correct.
+ * @return false returns false if phone number doesn't match format.
+*/
 function validate_phone(int $number): bool {
     if (!preg_match("/\d{3}[-\s]?\d{3}[-\s]?\d{3}/", $number)) {
         return false;
@@ -78,7 +91,20 @@ function change_email($conn, string $uid, string $email) {
     mysqli_stmt_close($stmt);
 }
 
+/**
+ * @param string $name Username, not person's name.
+ * 
+ * @return string
+ * Returns Unique User Identifier.
+ * Sets username to lowercase and concatenates with '#' and 3 randomly generated characters.
+ * 
+ * Characters are taken from defined within a function list of specific ASCII characters.
+ */
+// Generates random string of 3 characters from specific ASCII characters.
 function generate_id(string $name): string {
+    /**
+     * @var array Contains digits 0-9, uppercase and lowercase english alphabet.
+    */
     $chars = [];
     for ($i=65; $i < 90; $i++) { 
         array_push($chars, chr($i));
