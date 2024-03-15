@@ -141,7 +141,7 @@
 
 * {
     margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /* ! Default font for this website: sans-serif */
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* & Default font for this website: sans-serif */
 
     user-select: text; /* All */
     -moz-user-select: text; /* Firefox */
@@ -159,7 +159,6 @@
     user-select: none;
 }
 
-
 html {
     color-scheme: light dark;
     scroll-behavior: smooth;
@@ -175,8 +174,10 @@ footer {
     width: 100%;
     text-align: center;
     padding: 1.5rem;
+    border-top: 2.5px solid rgb(var(--primary-400));
+    background: rgb(var(--primary-300));
     
-    /* ? letter-spacing: 1pt; */
+    letter-spacing: 0.3pt; /* & might need an update */
 }
 
 .overlay {

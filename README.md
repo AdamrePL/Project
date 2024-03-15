@@ -12,7 +12,7 @@
 
 > [!CAUTION]
 > ### Błagam wszystkich którzy będą uczestniczyć w tym projekcie, aby ***NIE UŻYWAĆ CHATGPT***
-> ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które umie conajwyżej podstawową stronę z stylami wziętymi z roku 1990?
+> ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które co najwyżej umie podstawową stronę z stylami wziętymi z roku 1990?
 > *- Browar*
 
 > [!TIP]
@@ -21,6 +21,7 @@
 > - `Path Intellisense - Christian Kohler` :heavy_check_mark:
 > - `PHP Intelphense - Ben Mewburn` :heavy_check_mark:
 > - `HTML CSS Support - ecmel`
+> - `Material Icon Theme - Philipp Kief` ✔️
 > ###### :heavy_check_mark: oznacza zweryfikowanego twórcę.
 > #### Oprócz podstawowych znaczników oraz fraz w `Better Comments`, jest w kodzie używany znacznik `&`, którego trzeba samemu dodać.
 > ###### Następujący wycinek kodu trzeba wkleić w plik `settings.json` po znaczniku `*`.

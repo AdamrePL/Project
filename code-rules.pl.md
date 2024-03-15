@@ -41,7 +41,7 @@ Jeżeli plik składa się z kilku słow, powinny one być rozdzielone znakiem '-
 
 ## HTML
 ### Implementacja skryptów oraz stylizacji
-Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów;
+Jakikolwiek kod CSS oraz JavaScript powinien być w odzielnym pliku. W kodzie HTML czy PHP nie powinno się znajdować żadnych wewnętrznych styli ani skryptów.
 ##### Przykład
 ```HTML
 <head>
@@ -71,6 +71,10 @@ Kod powinien mieć 4 spacje wcięcia jeżeli element jest umieszczony w innym el
 Elementy których nie trzeba zamykać, ale można np. `<input>`, mają być zamknięte ukośnikiem na końcu: `<input />`.
 
 Skrypty powinny znajdować się w elemencie `<head>` i mieć atrybuty `defer` lub `async`, zależnie od tego jak mają się ładować.
+
+> [!CAUTION]
+> Strona wykorzystuje elementy HTML5. Jeżeli można do czegoś użyć elementu HTML5, to proszę go wykorzystać.
+> Nie używać przestarzałych elementów HTML oraz atrybutów np. element `center` lub `small`/`big` czy `strike` oraz atrybutów jak np. `size` i `colspan`.
 
 ### Nazewnictwo
 Wszystkie elementy powinny być pisane małymi literami; wyjątkami są własne niestandardowo zdefiniowane elementy, ale wątpie, żeby jakiekolwiek miałyby być tutaj dodane.
@@ -136,7 +140,8 @@ Zamiast:
 ```PHP
 echo '<div id="' . $result["entryid"] . '">' . $_$GET["page"] . '</div>';
 ```
-**Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez pętle itd.**
+**Wyjątkiem jest oczywiście gdy element ma być kilkukrotnie tworzony przez
+  pętle lub gdy strona jest podzielona na strony za pomoca kodu php-a bez dodatkowych plikow itd.**
 
 
 ## JavaScript

@@ -21,14 +21,17 @@
 </head>
 <body>
     <header>
-        <h1>Giełda</h1>
-        <p>Wewnątrzszkolna wymiana podręczników</p>
-
+        <hgroup>
+            <h1><?php echo SITENAME; ?> TLiMC</h1>
+            <p>Wewnątrzszkolna wymiana podręczników</p>
+        </hgroup>
         <menu>
             <nav>
-                <a href="#przegladaj">Przeglądaj Oferty</a>
-                <a href="./src/booklist.php">Lista Podręczników</a>
-                <a href="./src/terms-of-service.html">Polityka Prywatności</a>
+                <a href="#przegladaj">przeglądaj oferty</a>
+                <a href="./src/booklist.php">lista podręczników</a>
+                <?php
+                    echo !isset($_SESSION["uid"]) ? '<a href="./src/access.php">Zaloguj</a>' : '<a href="./src/profile.php">moj profil</a>';
+                ?>
             </nav>
         </menu>
     </header>
@@ -37,7 +40,7 @@
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="./src/booklist.php">Lista podręczników</a>
         <?php 
-            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' :'<a href="./src/access.php">Zaloguj się</a>';
+            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' : '<a href="./src/access.php">Zaloguj się</a>';
         ?>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
@@ -54,7 +57,7 @@
             <script src="./assets/js/search-controller.js" defer></script>
             <form action="" method="get">
                 <!-- //!filters here  -->
-                <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual purchase(Y/N) -->
+                <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual item(Y/N) -->
                 <!-- //*Search by title/publisher/author-->
                 <!-- no! not here, here basic single search, filters avaible after -->
                 <!-- stupido zis comment was made like 2 days ago ! ! ! me know !!! -->
@@ -79,7 +82,7 @@
                 echo $organized["offer-edate"]."<br>";
                 echo $organized["status"]."<br>";
                 echo (!$organized["phone"] ? "not set" : $organized["phone"])."<br>";
-                echo (!$organized["email"] ? "not set" : $organized["email"])."<br>";
+                echo (!$organized["email"] ? "do not display any element, only display element if theres contact form" : $organized["email"])."<br>";
                 echo (!$organized["discord"] ? "not set" : $organized["discord"]);
 
             ?>
@@ -87,7 +90,7 @@
     </section>
 
     <section id="offerOfUser">
-        <h1><?php echo !isset($_SESSION["uid"])? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
+        <h1><?php echo !isset($_SESSION["uid"]) ? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
 
         <p> You've created <?php echo "zero" ?> offers so far. </p>
          <!--yeah no ive got no idea why this doesnt work-->
