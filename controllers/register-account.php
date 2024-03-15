@@ -26,7 +26,7 @@ $pass = trim($_POST["r_password"]);
 $pass_check = trim($_POST["r_password-repeat"]);
 
 if (empty($name) || empty($email)) {
-    header("Location: $path_to_files?error=input-required");
+    header("Location: $path_to_files?error=empty-fields");
     exit(403);
 }
 
