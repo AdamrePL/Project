@@ -29,6 +29,10 @@
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "password-required") echo "wymagane hasło"; ?>
                 </span>
                 <input type="submit" name="log" value="Zaloguj">
+                <span class="error-msg">
+                    <?php if (isset($_GET["error"]) && $_GET["error"] == "l_submit-error") echo "formularz nie został prawidłowo wysłany"; ?>
+                </span>
+                
             </form>
         </div>
 

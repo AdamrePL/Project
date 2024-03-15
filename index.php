@@ -113,3 +113,14 @@
 </body>
 </html>
 <?php $conn -> close(); ?>
+
+<!-- // ? Do we add:
+ // * 1
+        https://stackoverflow.com/questions/6534904/how-can-i-remove-file-extension-from-a-website-address
+        https://stackoverflow.com/questions/4026021/remove-php-extension-with-htaccess
+        https://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite/1992191#1992191
+        https://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite/1992191#1992191
+            https://httpd.apache.org/docs/current/mod/mod_rewrite.html
+ // * 2
+        etc
+-->

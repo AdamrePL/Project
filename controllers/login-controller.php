@@ -10,7 +10,7 @@ if (isset($_SESSION["uid"])) {
 }
 
 if (!isset($_POST["log"])) {
-    header("Location: $path_to_form?error=l_submit_error");
+    header("Location: $path_to_form?error=l_submit-error");
     exit(403);
 }
 

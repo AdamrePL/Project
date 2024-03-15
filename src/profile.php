@@ -20,14 +20,14 @@ if (!isset($_SESSION["uid"])) {
             echo '<a class="return-btn" href="profile.php">&NestedLessLess; Powrót</a>
 
             <div class="user-settings-wrapper">
-                <h1> User Settings </h1>
+                <h1>User Settings</h1>
             
                 <form action="../controllers/profile-controller.php" method="post" type="">
                     <label for="new_password">change password</label>
-                    <input type="text" name="new_password" placeholder="new password"/>
+                    <input type="text" name="new_password" placeholder="new password" />
                     
                     <label for="con_password">confirm password</label>
-                    <input type="text" name="con_password" placeholder="confirm new password"/>
+                    <input type="text" name="con_password" placeholder="confirm new password" />
             
                     <label for="email_adress">enter email:</label>
                     <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
@@ -36,10 +36,10 @@ if (!isset($_SESSION["uid"])) {
                     <input type="tel" name="telephone_number" placeholder="phone number" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
                     
                     <label for="discord_user">enter discord username</label>
-                    <input type="text" name="discord_user" placeholder="discord username"/>
+                    <input type="text" name="discord_user" placeholder="discord username" />
             
                     <label for="email_flag">Autocomplete email as contact form?</label>
-                    <input type="checkbox" name="email_flag"/>
+                    <input type="checkbox" name="email_flag" />
             
                     <span>
                         <button type="submit" id="confirm">confirm</button>
