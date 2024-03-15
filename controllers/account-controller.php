@@ -10,13 +10,16 @@ function create_user(mysqli $conn, string $name, string $email, string $password
         echo "tried $i times";
     }
 
+    $hashemail = convert_uuencode(base64_encode($email));
     $stmt = mysqli_stmt_init($conn);
     if ($password != "") {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO `users` VALUES(?, $name, $hashed, '', '', $email, '', '', '', '');";
+        $sql = "INSERT INTO `users` VALUES(?, $name, $hashed, '', '', $hashemail, '', '', '', '');";
+        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`password` , `users`.`email` VALUES(?, $name, $hashed, $email);";
         mysqli_stmt_prepare($stmt, $sql);
     } else {
-        $sql = "INSERT INTO `users` VALUES(?, $name, '', '', '', $email, '', '', '', '');";
+        $sql = "INSERT INTO `users` VALUES(?, $name, '', '', '', $hashemail, '', '', '', '');";
+        //? $sql = "INSERT INTO `users`.`uuid`,`users`.`username`, `users`.`email` VALUES(?, $name, $email);";
         mysqli_stmt_prepare($stmt, $sql);
     }
         mysqli_stmt_bind_param($stmt, "s", $uid);
