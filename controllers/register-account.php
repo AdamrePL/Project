@@ -62,9 +62,8 @@ if (!isset($_POST["accept_tos"])) {
     exit();
 }
 
-$hashemail = convert_uuencode(base64_encode($email));
-$hashpass = password_hash($pass, PASSWORD_DEFAULT);
-create_user($conn, $name, $hashemail, $hashpass);
+
+create_user($conn, $name, $email, $pass);
 
 header("Location: ../src/profile.php"); 
 ?>
