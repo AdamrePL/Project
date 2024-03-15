@@ -16,7 +16,7 @@ $price = $_POST["price"];
 // $dc = ;
 
 
-    $isCustom = false;
+$isCustom = false;
 
 //*this is `products` table insertion code my bad ^w^
 // $json_data = file_get_contents("../assets/downloads/booklist.json");

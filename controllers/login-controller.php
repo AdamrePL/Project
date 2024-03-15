@@ -1,10 +1,22 @@
 <?php
 
-require_once "functions.php";
 require_once "../conf/config.php";
 
-$uid = $_POST["user-id"];
 $path_to_form = "../src/access.php";
+
+if (isset($_SESSION["uid"])) {
+    header("Location: / ");
+    exit(403);
+}
+
+if (!isset($_POST["reg"])) {
+    header("Location: $path_to_form?error=l_submit_error");
+    exit(403);
+}
+
+require_once "functions.php";
+
+$uid = trim($_POST["user-id"]);
 
 const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
 
@@ -26,7 +38,7 @@ if (strlen($id) > 3) {
 
 if (!user_exists($conn, $uid)) {
     header("Location: $path_to_form?error=no-user-found");
-    // exit()
+    exit(403);
 }
 
 $pwd = get_user_password($conn, $uid);

@@ -1,41 +1,6 @@
 <?php
 require_once "functions.php";
 
-
-
-
-    // if (strlen($name) > $name_len) {
-    //     return "Nazwa nie może przekraczać $name_len znaków";
-    // }
-    // if (!preg_match("/[a-zA-Z0-9]/", $name)) {
-    //     return "Nazwa może zawierać jedynie małe, duże litery i cyfry";
-    // }
-    // if (strlen($password) < $pass_len) {
-    //     return "Hasło powinno mieć przynajmniej $pass_len znaków";
-    // }
-    // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //     return "Niepoprawny email";
-    // }
-    // if ($password != $password_confirm) {
-    //     return "Hasła nie są identyczne";
-    // }
-    // if (!preg_match("/\d/", $password)) {
-    //     return "Hasło powinno zawierać przynajmniej jedna cyfre";
-    // }
-    // if (!preg_match("/[A-Z]/", $password)) {
-    //     return "Hasło powinno zawierać przynajmniej jedna dużą litere";
-    // }
-    // if (!preg_match("/[a-z]/", $password)) {
-    //     return "Hasło powinno zawierać przynajmniej jedna małą litere";
-    // }
-    // if (!preg_match("/\W/", $password)) {
-    //     return "Password should contain at least one special character";
-    // }
-    // if (preg_match("/\s/", $password)) {
-    //     return "Hasło nie powinno zawierać spacji";
-    // }
-
-
 function create_user(mysqli $conn, string $name, string $email, string $password): bool {
     $i = 0;
     $uid = generate_id($name);

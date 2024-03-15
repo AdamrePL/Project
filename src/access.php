@@ -1,5 +1,12 @@
 <?php require_once "../conf/config.php"; ?>
 
+<?php
+    if (isset($_SESSION["uid"])) {
+        header("Location: / ");
+        exit(403);
+    }
+?>
+
 <head>
     <link rel="stylesheet" href="../assets/css/access.css">
     <title><?php echo SITENAME; ?> - Zaloguj / Zarejestruj</title>
