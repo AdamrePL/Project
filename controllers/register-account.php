@@ -7,10 +7,9 @@ if (isset($_SESSION["uuid"])) {
     header("Location: ");
 }
 
-//? whuh? there doesn't even exist a single field named "log" or "reg" . . . ?
-// if (!isset($_POST["log"]) || !isset($_POST["reg"])) {
-//     header("Location: ../src/access.php?error=brakdanych");
-// }
+if (!isset($_POST["reg"])) {
+    header("Location: $path_to_form?error=submit-error");
+}
 
 $pass_len = 5;
 $name_len = 30;
@@ -19,7 +18,7 @@ $path_to_form = "../src/access.php";
 const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
 
 $name = $_POST["username"];
-$mail = $_POST["email"];
+$email = $_POST["email"];
 $pass = $_POST["r_password"];
 $pass_check = $_POST["r_password-repeat"];
 
@@ -27,15 +26,11 @@ if (!preg_match(USERNAME_PATTERN, $name)) {
     header("Location: $path_to_form?error=incorrect-username");
     exit(422);
 }
-if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-    header("Location: $path_to_form?error=incorrect-username");
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: $path_to_form?error=incorrect-email");
     exit(422);
 }
-
-// if (!preg_match(USERNAME_PATTERN, $pass)) {
-//     header("Location: $path_to_form?error=incorrect-username");
-//     exit(422);
-// }
 
 if (!preg_match("/(?=.*\d)/", $pass)) {
     header("Location: $path_to_form?error=digit-required");
@@ -66,9 +61,15 @@ if ($pass !== $pass_check) {
     header("Location: $path_to_form?error=passwords-dont-match");
     exit(403);
 }
-echo "yippee :)";
-// $hashed = password_hash($pass, PASSWORD_DEFAULT);
-// create_user($conn, $name, $mail, $hashed); //something's wrong with this
-// //&todo: FIX!!!! PLEASE!!!
-// header("Location: ../src/profile.php"); 
+
+if (!isset($_POST["accept_tos"])) {
+    header("Location: $path_to_form?error=tos-rejected");
+    exit();
+}
+
+$hashemail = convert_uuencode(base64_encode($email));
+$hashpass = password_hash($pass, PASSWORD_DEFAULT);
+create_user($conn, $name, $hashemail, $hashpass); //something's wrong with this
+//&todo: FIX!!!! PLEASE!!!
+header("Location: ../src/profile.php"); 
 ?>
