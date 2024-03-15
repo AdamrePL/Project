@@ -52,11 +52,6 @@ if(strlen($pass) < $pass_len){
     exit(422);
 }
 
-if (user_exists($conn, generate_id($name))) {
-    header("Location: $path_to_form?error=user-exists");
-    exit(409);
-}
-
 if ($pass !== $pass_check) {
     header("Location: $path_to_form?error=passwords-dont-match");
     exit(403);
