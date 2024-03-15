@@ -69,7 +69,7 @@ if (!isset($_SESSION["uid"])) {
                     echo '<p>';
                     echo !empty($result["phone"]) ? $result["phone"] : "Nr tel.";
                     echo '</p>';
-                    echo '<p><span>'. $result["email"] .'</span><input type="checkbox" name="" id="" /></p>';
+                    echo '<p><span>'. base64_decode(convert_uudecode($result["email"])) .'</span><input type="checkbox" name="" id="" /></p>';
                     echo '<p><i class="fa-brands fa-discord"></i>'. !empty($result["discord"]) ? $result["discord"] : "Discord";
                     echo '</p><a href="?page=settings"><button>Edytuj</button></a>';
                 echo '</div>';
