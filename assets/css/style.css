@@ -257,3 +257,20 @@ search > form:has(input[type="search"]:focus-visible) {
     outline-offset: 3px;
     border-radius: 2px;
 }
+
+/**
+ * @see 
+ * https://reference.codeproject.com/css/:any 
+ * 
+ * :read-only / :read-write
+ * :where
+ * :in-range
+ * :increment / :decrement
+ * ::first-letter / ::first-line
+ * :any-link
+ * :default
+ * :empty / :blank
+ * ::target-text
+ * 
+
+*/
