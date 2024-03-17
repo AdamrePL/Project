@@ -91,27 +91,9 @@
         </div>
     </section>
 
-    <section id="offerOfUser">
-        <h1><?php echo !isset($_SESSION["uid"]) ? "Zaloguj się aby zobaczyć swoje oferty!" : "Twoje oferty"; ?></h1>
-
-        <p> You've created <?php echo "zero" ?> offers so far. </p>
-         <!--yeah no ive got no idea why this doesnt work-->
-    </section>
-
-    <?php // ! TESTING ENV
-    include "./src/footer.php";
-    // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
-    // $DisOf = mysqli_query($conn, $lol);
-    // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
-    //nah cause why the fuck arent you working lil bro this is just insane at this point
-        // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
-        // echo $whynowork;
-    // $sql = mysqli_query($conn,"SELECT `user-offers` FROM `users` WHERE uuid = '". $_SESSION["uid"] ."';");
-    // echo count(explode(",", mysqli_fetch_array($sql)["user-offers"]));
-    //logically, this should work, but, of course, it doesn't . . .
-    // no shit it doesn't work.. you used COUNT() function instead of SUM() @PiwkoM
+    <?php
+        include "./src/footer.php";
     ?>
-
 </body>
 </html>
 <?php $conn -> close(); ?>

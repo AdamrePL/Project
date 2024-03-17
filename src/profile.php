@@ -87,6 +87,14 @@ if (!isset($_SESSION["uid"])) {
             
             echo '<section class="user-offers">';
                 echo '<div class="offer"></div>';
+                    // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
+                    // $DisOf = mysqli_query($conn, $lol);
+                    // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
+                    //nah cause why the fuck arent you working lil bro this is just insane at this point
+                        // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
+                        // echo $whynowork;
+                    // $sql = mysqli_query($conn,"SELECT `user-offers` FROM `users` WHERE uuid = '". $_SESSION["uid"] ."';");
+                    // echo count(explode(",", mysqli_fetch_array($sql)["user-offers"]));
                     // $_SESSION["uid"] = "tester#aA1";
                     // $sql = "SELECT offers.*, users.username, users.uuid FROM `offers`, `users` WHERE 'offers.user-uuid'='users.uuid' AND users.uuid = " . $_SESSION["uid"] . ";";
                     // $query = mysqli_query($conn, $sql);
