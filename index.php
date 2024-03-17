@@ -68,23 +68,25 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-                $sql = "SELECT * FROM `offers` LIMIT 5";
-                $res = mysqli_query($conn,$sql);
-                $organized = mysqli_fetch_assoc($res); //fetch everything else from here
-                $bucher = json_decode($organized["products"]); //get product info from here
+                $sql = "SELECT * FROM `offers` LIMIT 20";
+                $query = mysqli_query($conn, $sql);
+                while ($result = mysqli_fetch_assoc($query)) {
+                    echo $result["id"]."<br>";
+                    echo 'oferta utworzona: ' . $result["offer-cdate"]."<br>";
+                    echo 'oferta wygasa: ' . $result["offer-edate"]."<br>";
+                    echo $result["phone"];
+                    echo $result["email"];
+                    echo $result["discord"];
+                    $prod = explode(",", $result["products"]);
 
-            // //*? `products` column in `offers` needs revising?
-
-            // //!DISPLAY CHECK PURPOSES, DONT GET TRIGGERED
-                echo $organized["id"]."<br>";
-                echo $organized["user-uuid"]."<br>";
-                echo $organized["offer-cdate"]."<br>";
-                echo $organized["offer-edate"]."<br>";
-                echo $organized["status"]."<br>";
-                echo (!$organized["phone"] ? "not set" : $organized["phone"])."<br>";
-                echo (!$organized["email"] ? "do not display any element, only display element if theres contact form" : $organized["email"])."<br>";
-                echo (!$organized["discord"] ? "not set" : $organized["discord"]);
-
+                    for ($iterator = 0; $iterator < count($prod); $iterator++) {
+                        $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$iterator]";
+                        $query2 = mysqli_query($conn, $sql2);
+                        while ($result2 = mysqli_fetch_assoc($query2)) {
+                            echo '<br>' . $result2["name"];
+                        }
+                    }
+                }
             ?>
         </div>
     </section>
