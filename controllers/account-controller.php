@@ -12,10 +12,10 @@ require_once "functions.php";
  * @param string $password (Optional)
  * Not yet hashed password. Set to an empty string by default.
  * 
- * @return true returns true if user is successfuly added to a database table.
+ * @return string returns user's uid if user is successfuly added to a database table. You can also say it returns true.
  * @return false on mysql_stmt_prepare() error.
 */
-function create_user(mysqli $conn, string $name, string $email, string $password = ""): bool {
+function create_user(mysqli $conn, string $name, string $email, string $password = ""): string|false {
     $uid = generate_id($name);
     while (user_exists($conn, $uid)) {
         $uid = generate_id($name);
@@ -45,7 +45,7 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    return true;
+    return $uid;
 }
 
 /**

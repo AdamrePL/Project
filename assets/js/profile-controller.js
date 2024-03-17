@@ -9,7 +9,7 @@ uid_element.addEventListener("click", function showConfirm() {
     const confirm_btn = document.createElement("button");
     confirm_btn.type = "button";
     confirm_btn.innerText = "pokaż";
-    confirm_btn.className = "disagree";
+    confirm_btn.className = "agree";
     confirm_btn.addEventListener("click", function cont() {
         fun();
         while (uid_element.childElementCount > 1) {
@@ -20,7 +20,7 @@ uid_element.addEventListener("click", function showConfirm() {
     const cancel_btn = document.createElement("button");
     cancel_btn.type = "button";
     cancel_btn.innerText = "anuluj";
-    cancel_btn.className = "agree";
+    cancel_btn.className = "disagree";
     cancel_btn.addEventListener("click", () => {
         while (uid_element.childElementCount > 1) {
             uid_element.lastChild.remove();
@@ -36,9 +36,11 @@ const fun = function() {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "../../controllers/profile-controller.php", true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            uid_element.querySelector(".uid").innerHTML = xhr.responseText;
+    xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                uid_element.querySelector(".uid").innerHTML = xhr.responseText;
+            }
         }
     }
 

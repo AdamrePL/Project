@@ -4,6 +4,8 @@
     --primary: 188, 164, 244;
     --secondary: 170, 200, 238;
     --accent: 238, 220, 119;
+    --deny-error: 242, 38, 38;
+    --confirm-success: 40, 226, 49;
 
     --text-50: 234, 233, 252;
     --text-100: 212, 210, 249;
@@ -64,6 +66,30 @@
     --accent-800: 91, 79, 11;
     --accent-900: 45, 39, 6;
     --accent-950: 23, 20, 3;
+
+    --deny-error-50: 254, 231, 231;
+    --deny-error-100: 252, 207, 207;
+    --deny-error-200: 249, 159, 159;
+    --deny-error-300: 247, 110, 110;
+    --deny-error-400: 244, 62, 62;
+    --deny-error-500: 241, 14, 14;
+    --deny-error-600: 193, 11, 11;
+    --deny-error-700: 145, 8, 8;
+    --deny-error-800: 96, 6, 6;
+    --deny-error-900: 48, 3, 3;
+    --deny-error-950: 24, 1, 1;
+
+    --confirm-success-50: 233, 252, 234;
+    --confirm-success-100: 210, 249, 212;
+    --confirm-success-200: 165, 243, 169;
+    --confirm-success-300: 120, 237, 126;
+    --confirm-success-400: 75, 231, 83;
+    --confirm-success-500: 31, 224, 40;
+    --confirm-success-600: 24, 180, 32;
+    --confirm-success-700: 18, 135, 24;
+    --confirm-success-800: 12, 90, 16;
+    --confirm-success-900: 6, 45, 8;
+    --confirm-success-950: 3, 22, 4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -73,6 +99,8 @@
         --primary: 50, 14, 97;
         --secondary: 16, 31, 85;
         --accent: 76, 66, 9;
+        --deny-error: 217, 13, 13;
+        --confirm-succes: 29, 215, 39;
 
         --text-50: 2, 2, 24;
         --text-100: 3, 3, 48;
@@ -133,6 +161,30 @@
         --accent-800: 244, 232, 164;
         --accent-900: 250, 244, 209;
         --accent-950: 252, 249, 232;
+
+        --deny-error-50: 24, 1, 1;
+        --deny-error-100: 48, 3, 3;
+        --deny-error-200: 96, 6, 6;
+        --deny-error-300: 145, 8, 8;
+        --deny-error-400: 193, 11, 11;
+        --deny-error-500: 241, 14, 14;
+        --deny-error-600: 244, 62, 62;
+        --deny-error-700: 247, 110, 110;
+        --deny-error-800: 249, 159, 159;
+        --deny-error-900: 252, 207, 207;
+        --deny-error-950: 254, 231, 231;
+    
+        --confirm-success-50: 3, 22, 4;
+        --confirm-success-100: 6, 45, 8;
+        --confirm-success-200: 12, 90, 16;
+        --confirm-success-300: 18, 135, 24;
+        --confirm-success-400: 24, 180, 32;
+        --confirm-success-500: 31, 224, 40;
+        --confirm-success-600: 75, 231, 83;
+        --confirm-success-700: 120, 237, 126;
+        --confirm-success-800: 165, 243, 169;
+        --confirm-success-900: 210, 249, 212;
+        --confirm-success-950: 233, 252, 234;
     }
 }
 

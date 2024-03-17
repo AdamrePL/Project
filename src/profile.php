@@ -22,32 +22,42 @@ if (!isset($_SESSION["uid"])) {
             <div class="user-settings-wrapper">
                 <h1>User Settings</h1>
             
-                <form action="../controllers/profile-controller.php" method="post" type="">
-                    <label for="new_password">change password</label>
+                <form action="../controllers/profile-controller.php" method="post">
+                    <label for="new_password">nowe hasło</label>
                     <input type="text" name="new_password" placeholder="new password" />
-                    
-                    <label for="con_password">confirm password</label>
-                    <input type="text" name="con_password" placeholder="confirm new password" />
+                    <input type="submit" value="ustaw nowe hasło" name="set-new-password" />
+                </form>
+
+                <form action="../controllers/profile-controller.php">
+                    <label for="con_password">potwierdź hasło</label>
+                    <input type="text" name="nowe hasło" placeholder="potwierdź hasło" />
             
-                    <label for="email_adress">enter email:</label>
+                    <label for="email_adress">podaj email</label>
                     <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
             
-                    <label for="telephone_number">enter phone number</label>
-                    <input type="tel" name="telephone_number" placeholder="phone number" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
+                    <label for="phone_number">enter phone number</label>
+                    <input type="tel" name="phone_number" placeholder="podaj numer" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
                     
-                    <label for="discord_user">enter discord username</label>
-                    <input type="text" name="discord_user" placeholder="discord username" />
+                    <label for="discord_user">podaj nazwe użytkownika discord-a</label>
+                    <input type="text" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
             
-                    <label for="email_flag">Autocomplete email as contact form?</label>
+                    <label for="email_flag">Użyć emaila do automatycznego wypełniania formy kontaktu?</label>
                     <input type="checkbox" name="email_flag" />
             
                     <span>
-                        <button type="submit" id="confirm">confirm</button>
-                        <button type="button" id="cancel">cancel</button>
+                        <button type="submit" id="confirm" name="save">Zapisz</button>
+                        <button type="reset" id="reset" name="remove-all-contacts">Usuń formy kontaktu</button>
                     </span>
-                <form>
+                </form>
+
+
             </div>';
-            
+            echo '<div>
+                <form method="post" action="../controllers/profile-controller.php">
+                    <input class="" type="submit" name="remove-account" value="Usuń konto" />
+                </form>
+            </div>';
+
             //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             //? uhh.. slower regex for email but more precise? ^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$
         break;
@@ -84,12 +94,27 @@ if (!isset($_SESSION["uid"])) {
                     //     echo '<div>' . $result["products"] . '<br>' . $result["offer-cdate"] . '</div>';
                     // }
             echo '</section>';
+            if (isset($_SESSION["first-login"]) && ($_SESSION["first-login"] > 0)) {
+                if ($_SESSION["first-login"] > 2) {
+                    $message = 'Ta wiadomość pokaże się jeszcze '. $_SESSION["first-login"] .' razy po odświeżeniu strony lub po ponownym wejsciu na profil';
+                } else if ($_SESSION["first-login"] > 1) {
+                    $message = 'Ta wiadomość pokaże się po raz ostatni po odświeżeniu strony lub po ponownym wejsciu na profil';
+                } else {
+                    $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
+                }
+                $_SESSION["first-login"] = $_SESSION["first-login"] - 1;
+                echo '
+                    <div class="overlay">
+                        <script src="../assets/js/script.js" defer></script>
+                        <div class="overlay-wrapper">
+                            Twoje uid: '. $_SESSION["uid"] .'. Zapisz, lub zapamiętaj swoje uid ponieważ służy ono do logowania się na konto! ' . $message . '
+                        </div>
+                        <p class="overlay-msg">Click anywhere outside of the box to close</p>
+                    </div>
+                ';
+            }
+
         break;
     }
 ?>
 </body>
-<!-- <div class="overlay">
-    <script src="../assets/js/script.js" defer></script>
-    <div class="overlay-wrapper"></div>
-    <p class="overlay-msg">Click anywhere outside of the box to close</p>
-</div> -->

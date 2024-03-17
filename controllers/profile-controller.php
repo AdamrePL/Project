@@ -12,8 +12,6 @@
     $discord = $_POST["discord_user"];
         $if_discord_set = isset($discord);
 
-    //7 morbillion variables because im too lazy to type isset($variable) in every statement :skull:
-
     $mail_flag = isset($_POST["email_flag"]);
 
     //!!!!!!!!!! HARDCODING EVERY CHANGE YYYYYEEEAAAAAAAAHHHHH WOOOHOOOOO!!!!

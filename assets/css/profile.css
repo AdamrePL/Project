@@ -90,15 +90,15 @@ body {
 }
 
 .agree {
-    background: rgb(47, 255, 54);
+    background: rgb(var(--confirm-success-400));
     border: none;
     border-radius: 3px;
-    box-shadow: 2px 2px 3px 0.05px green;
+    box-shadow: 2px 2px 3px 0.05px rgb(var(--confirm-success-200));
 }
 
 .disagree {
     border: none;
-    background: crimson;
+    background: rgb(var(--deny-error-400));
     border-radius: 3px;
-    box-shadow: 2px 2px 3px 0.05px darkred;
+    box-shadow: 2px 2px 3px 0.05px rgb(var(--deny-error-200));
 }
