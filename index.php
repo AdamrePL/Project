@@ -79,8 +79,8 @@
                     echo $result["discord"];
                     $prod = explode(",", $result["products"]);
 
-                    for ($iterator = 0; $iterator < count($prod); $iterator++) {
-                        $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$iterator]";
+                    for ($i = 0; $i < count($prod); $i++) {
+                        $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
                         $query2 = mysqli_query($conn, $sql2);
                         while ($result2 = mysqli_fetch_assoc($query2)) {
                             echo '<br>' . $result2["name"];

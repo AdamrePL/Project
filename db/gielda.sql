@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 09:07 AM
+-- Generation Time: Mar 18, 2024 at 09:44 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -57,8 +57,8 @@ INSERT INTO `booklist` (`id`, `name`, `subject`, `class`, `authors`, `publisher`
 
 CREATE TABLE `offers` (
   `id` int(11) NOT NULL,
-  `user-uuid` tinytext NOT NULL COMMENT 'informacje o sprzedawcy bierze z tabeli user',
-  `products` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '{"productid": "self-defined": false, "price": 0, "quality": "", "note": ""}',
+  `user-uuid` varchar(34) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `products` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'lista zawierajaca id produktow oferty',
   `offer-cdate` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'czas utworzenia oferty',
   `offer-edate` datetime NOT NULL COMMENT 'czas wygasniecia oferty po uplywie czasu zdefiniowanego przez sprzedawce lub defaultowo przez server w ciagu 14dni, inaczej data kiedy oferta zostanie zdjeta',
   `status` tinyint(4) NOT NULL COMMENT 'Status oferty',
@@ -72,7 +72,36 @@ CREATE TABLE `offers` (
 --
 
 INSERT INTO `offers` (`id`, `user-uuid`, `products`, `offer-cdate`, `offer-edate`, `status`, `phone`, `email`, `discord`) VALUES
-(1, 'tester#aA1', '[1,7]', '2024-03-07 13:40:30', '2024-03-07 13:38:54', 2, 123456789, NULL, 'tester');
+(15, 'tester#aA1', '3', '2024-03-18 09:32:20', '2024-03-21 09:31:12', 1, NULL, NULL, 'adamre'),
+(16, 'tester#aA1', '3,4', '2024-03-18 09:33:27', '2024-03-18 09:32:38', 2, 994211045, 'federowicza@teams.tlimc.szczecin.pl', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` tinytext NOT NULL,
+  `author` text NOT NULL,
+  `publisher` tinytext NOT NULL,
+  `subject` tinytext NOT NULL,
+  `class` smallint(6) NOT NULL,
+  `price` decimal(5,2) NOT NULL,
+  `quality` tinytext NOT NULL,
+  `note` tinytext DEFAULT NULL,
+  `img` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `custom` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `author`, `publisher`, `subject`, `class`, `price`, `quality`, `note`, `img`, `custom`) VALUES
+(3, 'Ponad Słowami 1 Część 2', 'nie wiem, browar', 'GWO', 'Język polski', 2, 19.99, 'Używana', 'Na okładce widocznych jest widocznych kilka zgięć. Na niektórych stronach mogą być pozaznaczane długopisem informację.', '\"a2-1ab86@mnbz.jpg\"', 0),
+(4, 'Biologia na czasie 1', 'Zibi', 'Nowa Era', 'Biologia', 1, 20.00, 'Nowa', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -81,10 +110,10 @@ INSERT INTO `offers` (`id`, `user-uuid`, `products`, `offer-cdate`, `offer-edate
 --
 
 CREATE TABLE `users` (
-  `uuid` varchar(34) NOT NULL,
+  `uuid` varchar(34) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` text NOT NULL,
-  `user-offers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '\'[]\'' COMMENT 'oferty uzytkownika przechowywane w liscie\r\nprzyklad: [ID offerty, ID]',
+  `user-offers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'lista id ofert',
   `phone` int(9) DEFAULT NULL COMMENT 'dane kontaktowe - nr tel',
   `email` varchar(320) NOT NULL,
   `discord` tinytext DEFAULT NULL,
@@ -98,7 +127,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uuid`, `username`, `password`, `user-offers`, `phone`, `email`, `discord`, `last-login`, `email-flag`, `admin`) VALUES
-('tester#aA1', 'tester', 'tete', '\'[]\'', 123456789, 'example@example.com', NULL, '2024-03-11 14:45:55', 0, 0);
+('tester#aA1', 'itworksnoway', 'password', '1,2,5', 123456789, 'example@example.com', NULL, '2024-03-15 11:08:35', 0, 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -114,7 +143,15 @@ ALTER TABLE `booklist`
 -- Indeksy dla tabeli `offers`
 --
 ALTER TABLE `offers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user-uuid` (`user-uuid`);
+
+--
+-- Indeksy dla tabeli `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indeksy dla tabeli `users`
@@ -136,7 +173,13 @@ ALTER TABLE `booklist`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
