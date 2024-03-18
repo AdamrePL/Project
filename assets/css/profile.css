@@ -6,6 +6,7 @@ body {
 }
 
 #user-details {
+    background: rgb(var(--primary-300));
     font-size: 1.5rem;
     display: flex;
     flex-direction: row;
@@ -75,18 +76,66 @@ body {
     flex-basis: 50%;
 }
 
-.user-offers {
+.no-offers{
+    text-align: center;
     width: 90%;
-    background: rgb(var(--background-200), 0.5);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(var(--accent-50),0.7);
+    height: 30%;
+    margin-top: 5%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-wrap: balance;
+    font-size: 5rem;
+}
+.no-offers > a:link{
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.no-offers > a:hover{
+    color: rgb(var(--confirm-success-400));
+}
+
+.user-offers {
+    width: 95%;
+    /* background: rgb(var(--background-200), 0.5); */
+    background: rgba(var(--accent-50),0.7);
+    max-height: calc(100% - 17rem);
     min-height: calc(100% - 18rem);
+    overflow-y: scroll;
     margin-top: 20px;
     margin-inline: auto;
 }
 
+/*& womp womp no scrollbar :( */
+/* .user-offers::-webkit-scrollbar {
+    width: 2rem;
+    height: 10px;
+    border: none;
+    border-radius: 1rem;
+    background-color: rgba(var(--secondary-300),0.3);
+    transition: all 0.2s ease;
+}
+  
+.user-offers::-webkit-scrollbar-thumb {
+    border: none;
+    border-radius: 1rem;
+    background: rgba(var(--secondary-400),0.6);
+} */
+
 .offer {
     display: flex;
-    height: 5rem;
-    background: rgb(var(--secondary));
+    height: 6rem;
+    background: rgb(var(--accent-200));
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    width: 97.5%;
+    padding: 1%;
 }
 
 .agree {

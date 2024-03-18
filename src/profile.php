@@ -86,23 +86,83 @@ if (!isset($_SESSION["uid"])) {
                 echo '</div>';
             echo '</section>';
             
-            echo '<section class="user-offers">';
-                echo '<div class="offer"></div>';
-                    // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
-                    // $DisOf = mysqli_query($conn, $lol);
-                    // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
-                    //nah cause why the fuck arent you working lil bro this is just insane at this point
-                        // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
-                        // echo $whynowork;
-                    // $sql = mysqli_query($conn,"SELECT `user-offers` FROM `users` WHERE uuid = '". $_SESSION["uid"] ."';");
-                    // echo count(explode(",", mysqli_fetch_array($sql)["user-offers"]));
-                    // $_SESSION["uid"] = "tester#aA1";
-                    // $sql = "SELECT offers.*, users.username, users.uuid FROM `offers`, `users` WHERE 'offers.user-uuid'='users.uuid' AND users.uuid = " . $_SESSION["uid"] . ";";
-                    // $query = mysqli_query($conn, $sql);
-                    // while ($result = mysqli_fetch_assoc($query)) {
-                    //     echo '<div>' . $result["products"] . '<br>' . $result["offer-cdate"] . '</div>';
+            $selection_sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
+            $selection_query = mysqli_query($conn,$selection_sql);
+            if(empty(mysqli_fetch_assoc($selection_query))){
+                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
+            } else {
+                echo '<section class="user-offers">';
+
+                for($i = 0;$i<10;$i++){
+                    echo '<div class="offer"></div>';
+                }
+                    
+                    //added a bunch of divs on top for scłolbał
+                    $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
+                    $query = mysqli_query($conn,$sql);
+
+                    while ($result = mysqli_fetch_assoc($query)) {
+                        echo '<div class="offer">'; 
+
+                        //& copied selector from index ( ,,,= w =,,, )
+                        // real shit tho gotta align these mfs properly :muscle:
+
+                        $prod = explode(",", $result["products"]); // i've got no idea what this does, but it's working so yippee
+                        if (count($prod) > 1) {
+                            echo '<p>Pakiet</p>';
+                            echo '<details>';
+                            echo '<summary>Pakiet zawiera</summary>';
+                            for ($i = 0; $i < count($prod); $i++) {
+                                $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
+                                $query2 = mysqli_query($conn, $sql2);
+                                $result2 = mysqli_fetch_assoc($query2);
+
+                                echo $result2["name"] . '<br>';
+                            }
+                            echo '</details>';
+
+                        } else {
+                            $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[0]";
+                            $query2 = mysqli_query($conn, $sql2);
+                            $result2 = mysqli_fetch_assoc($query2);
+
+                            echo $result2["name"];
+                        }
+                        
+                        echo '<details>';
+                            echo '<summary>Dane kontaktowe</summary>';
+                            echo $result["phone"];
+                            echo $result["email"];
+                            echo $result["discord"];
+                        echo '</details>';
+                        
+                        echo '<span class="offer-date">';
+                        echo '<span>Oferta wygasa: ' . $result["offer-edate"] . '</span>';
+                        echo '</span>'; 
+                        
+                        echo '</div>';    
+                    }
+                    // while($selection_result = $selection_array){ // this CANT be right :sob: //&update: this was, in fact, NOT right
+                    //     echo '<div class="offer">' .$selection_result["id"]. '</div>';    
                     // }
-            echo '</section>';
+
+                        // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
+                        // $DisOf = mysqli_query($conn, $lol);
+                        // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
+                        //nah cause why the fuck arent you working lil bro this is just insane at this point
+                            // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
+                            // echo $whynowork;
+                        // $sql = mysqli_query($conn,"SELECT `user-offers` FROM `users` WHERE uuid = '". $_SESSION["uid"] ."';");
+                        // echo count(explode(",", mysqli_fetch_array($sql)["user-offers"]));
+                        // $_SESSION["uid"] = "tester#aA1";
+                        // $sql = "SELECT offers.*, users.username, users.uuid FROM `offers`, `users` WHERE 'offers.user-uuid'='users.uuid' AND users.uuid = " . $_SESSION["uid"] . ";";
+                        // $query = mysqli_query($conn, $sql);
+                        // while ($result = mysqli_fetch_assoc($query)) {
+                        //     echo '<div>' . $result["products"] . '<br>' . $result["offer-cdate"] . '</div>';
+                        // }
+                echo '</section>';
+            }
+
             if (isset($_SESSION["first-login"]) && ($_SESSION["first-login"] > 0)) {
                 if ($_SESSION["first-login"] > 2) {
                     $message = 'Ta wiadomość pokaże się jeszcze '. $_SESSION["first-login"] .' razy po odświeżeniu strony lub po ponownym wejsciu na profil';
