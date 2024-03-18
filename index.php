@@ -71,7 +71,7 @@
                 $sql = "SELECT * FROM `offers` LIMIT 20";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) {
-                    echo $result["id"]."<br>";
+                    // echo $result["id"]."<br>";
                     echo 'oferta utworzona: ' . $result["offer-cdate"]."<br>";
                     echo 'oferta wygasa: ' . $result["offer-edate"]."<br>";
                     echo $result["phone"];
