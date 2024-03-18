@@ -39,14 +39,4 @@ function update_last_login(mysqli $conn, string $uid) {
     mysqli_stmt_close($stmt);
 }
 
-function log_out(): bool {
-    if (empty($_SESSION)) {
-        return false;
-    }
-
-    session_unset();
-    session_destroy();
-    return true;
-}
-
 ?>

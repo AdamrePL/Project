@@ -220,7 +220,7 @@ search > form {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 0.5rem;
+    margin: 1rem;
     margin-inline: auto;
 }
 
@@ -282,6 +282,7 @@ main {
 
 .offer details summary {
     list-style-type: circle;
+    cursor: pointer;
 }
 
 .offer details[open] summary {
