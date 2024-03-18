@@ -103,7 +103,8 @@ body {
     /* background: rgb(var(--background-200), 0.5); */
     background: rgba(var(--accent-50),0.7);
     max-height: calc(100% - 17rem);
-    min-height: calc(100% - 18rem);
+    height: 100%;
+    /* min-height: calc(100% - 18rem); */
     overflow-y: scroll;
     margin-top: 20px;
     margin-inline: auto;
@@ -127,15 +128,26 @@ body {
 
 .offer {
     display: flex;
-    height: 6rem;
+    flex-direction: row;
+    flex-wrap: wrap;
     background: rgb(var(--accent-200));
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1%;
-    margin-top: 1%;
+    height: 9rem;
     width: 97.5%;
     padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    transition: all 0.2s ease-out;
+}
+.offer > *{
+    width: 100%;
+}
+
+.offer:hover{
+    background: rgb(var(--accent-400));
 }
 
 .agree {
@@ -150,4 +162,8 @@ body {
     background: rgb(var(--deny-error-400));
     border-radius: 3px;
     box-shadow: 2px 2px 3px 0.05px rgb(var(--deny-error-200));
+}
+
+summary{
+    list-style: circle;
 }
