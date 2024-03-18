@@ -1,0 +1,58 @@
+{
+    "1": [ 
+        {
+            "nazwa": "pełna nazwa książki",
+            "przedmiot": "",
+            "autorzy": "autorzy są oddzielani przecinkami WEWNĄTRZ CUDZYSŁOWIE",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ],
+    "2": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ],
+    "3": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ],
+    "4": [
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        },
+        {
+            "nazwa": "",
+            "przedmiot": "",
+            "autorzy": "",
+            "wydawnictwo": ""
+        }
+    ]
+}
