@@ -15,6 +15,7 @@ if (!isset($_SESSION["uid"])) {
     if (!isset($_GET["page"])) {
         $_GET["page"]="profile";
     }
+    
     switch ($_GET["page"]) {
         case "settings":
             echo '<a class="return-btn" href="profile.php">&NestedLessLess; Powrót</a>
