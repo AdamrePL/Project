@@ -98,8 +98,9 @@ if (!isset($_SESSION["uid"])) {
                         echo '<div class="offer">'; 
 
                         //& copied selector from index ( ,,,= w =,,, )
-                        //* real shit tho gotta align these mfs properly :muscle:
-                        $prod = explode(",", $result["products"]);
+                        // real shit tho gotta align these mfs properly :muscle:
+
+                        $prod = explode(",", $result["products"]); // i've got no idea what this does, but it's working so yippee
                         if (count($prod) > 1) {
                             echo '<p>Pakiet</p>';
                             echo '<details>';
