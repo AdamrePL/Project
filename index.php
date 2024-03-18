@@ -16,8 +16,6 @@
     <noscript>
         <meta http-equiv="refresh" content="0; url=src/noscript.html">
     </noscript>
-
-    <script src="./assets/js/script.js" type="text/javascript" defer></script>
 </head>
 <body>
     <header>
@@ -61,7 +59,7 @@
                 <!-- //*Search by title/publisher/author-->
                 <!-- no! not here, here basic single search, filters avaible after -->
                 <!-- stupido zis comment was made like 2 days ago ! ! ! me know !!! -->
-                <input type="search" name="search" id="searchbar" placeholder="Znajdz Produkt" />
+                <input type="search" name="search" id="searchbar" placeholder="Znajdź Produkt" />
                 <input type="submit" value="&#x1F50D;" />
             </form>
         </search>
@@ -71,11 +69,11 @@
                 $sql = "SELECT * FROM `offers` LIMIT 20";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) {
+                    // echo '<a href="?offer='.$result["id"].'">';
                     echo '<div class="offer">';
-                    // echo $result["id"];
                         $prod = explode(",", $result["products"]);
                         if (count($prod) > 1) {
-                            echo '<div class="offer-title">Pakiet</div>';
+                            echo '<h4 class="offer-title">Pakiet</h4>';
                             echo '<details>';
                             echo '<summary>Pakiet zawiera: </summary>';
                             for ($i = 0; $i < count($prod); $i++) {
@@ -92,7 +90,7 @@
                             $query2 = mysqli_query($conn, $sql2);
                             $result2 = mysqli_fetch_assoc($query2);
 
-                            echo '<div class="offer-title">'. $result2["name"] .'</div>';
+                            echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
 
                         }
                         
@@ -104,10 +102,11 @@
                         echo '</details>';
                         
                         echo '<span class="offer-date">';
-                        echo '<span>oferta utworzona: ' . $result["offer-cdate"] . '</span>';
-                        echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
+                            echo '<span>oferta utworzona: ' . $result["offer-cdate"] . '</span>';
+                            echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
                         echo '</span>';
                     echo '</div>';
+                    echo '</a>';
                 }
             ?>
         </div>
@@ -115,6 +114,26 @@
 
     <?php
         include "./src/footer.php";
+    ?>
+
+    <?php /* if (isset($_GET["offer"]) && $_GET["offer"] != null) {
+        $sql = "SELECT * FROM `offers` WHERE `offers`.`id` = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'i', $_GET["offer"]);
+        mysqli_stmt_execute($stmt);
+        $query = mysqli_stmt_get_result($stmt);
+        mysqli_stmt_close($stmt);
+
+        $result = mysqli_fetch_assoc($query);
+
+        echo '<div class="overlay">';
+            echo '<script src="../assets/js/script.js" defer></script>';
+            echo '<div class="overlay-wrapper">';
+                echo $result["user-uuid"];
+            echo '</div>';
+            echo '<p class="overlay-msg">Click anywhere outside of the box to close</p>';
+        echo '</div>';
+    } */ // ! idk if we want that or not
     ?>
 </body>
 </html>
