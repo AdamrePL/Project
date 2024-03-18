@@ -35,9 +35,6 @@ function update_last_login(mysqli $conn, string $uid) {
     mysqli_stmt_bind_param($stmt, "s", $uid);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    // dodać aby to robilo liste z ostatnimi logowaniami i dodawalo do tej listy ostatnie logowanie
-    // maksymalna ilosc ostatnich logowan = 3
-    // ostatnie logowanie dodawalo by na poczatek listy
 }
 
 function log_out(): bool {
