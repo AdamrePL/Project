@@ -51,7 +51,7 @@
         $result = mysqli_fetch_assoc($query)["ilosc-ofert"];
     ?>
 
-    <section id="przegladaj">
+    <main id="przegladaj">
         <h1>Przeglądaj oferty</h1>
         <search>
             <script src="./assets/js/search-controller.js" defer></script>
@@ -71,25 +71,47 @@
                 $sql = "SELECT * FROM `offers` LIMIT 20";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) {
-                    // echo $result["id"]."<br>";
-                    echo 'oferta utworzona: ' . $result["offer-cdate"]."<br>";
-                    echo 'oferta wygasa: ' . $result["offer-edate"]."<br>";
-                    echo $result["phone"];
-                    echo $result["email"];
-                    echo $result["discord"];
-                    $prod = explode(",", $result["products"]);
+                    echo '<div class="offer">';
+                    // echo $result["id"];
+                        $prod = explode(",", $result["products"]);
+                        if (count($prod) > 1) {
+                            echo '<div class="offer-title">Pakiet</div>';
+                            echo '<details>';
+                            echo '<summary>Pakiet zawiera: </summary>';
+                            for ($i = 0; $i < count($prod); $i++) {
+                                $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
+                                $query2 = mysqli_query($conn, $sql2);
+                                $result2 = mysqli_fetch_assoc($query2);
 
-                    for ($i = 0; $i < count($prod); $i++) {
-                        $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
-                        $query2 = mysqli_query($conn, $sql2);
-                        while ($result2 = mysqli_fetch_assoc($query2)) {
-                            echo '<br>' . $result2["name"];
+                                echo $result2["name"] . '<br>';
+                            }
+                            echo '</details>';
+
+                        } else {
+                            $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[0]";
+                            $query2 = mysqli_query($conn, $sql2);
+                            $result2 = mysqli_fetch_assoc($query2);
+
+                            echo '<div class="offer-title">'. $result2["name"] .'</div>';
+
                         }
-                    }
+                        
+                        echo '<details>';
+                        echo '<summary>Dane kontaktowe</summary>';
+                        echo $result["phone"];
+                        echo $result["email"];
+                        echo $result["discord"];
+                        echo '</details>';
+                        
+                        echo '<span class="offer-date">';
+                        echo '<span>oferta utworzona: ' . $result["offer-cdate"] . '</span>';
+                        echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
+                        echo '</span>';
+                    echo '</div>';
                 }
             ?>
         </div>
-    </section>
+    </main>
 
     <?php
         include "./src/footer.php";

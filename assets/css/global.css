@@ -222,14 +222,28 @@ img {
     height: auto;
 }
 
+/* Chrome / Safari */
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Firefox */
+/* input[type=number] {
+    -moz-appearance:textfield;
+} */
+
 footer {
     width: 100%;
     text-align: center;
-    padding: 1.5rem;
+    padding-block: 1.5rem;
     border-top: 2.5px solid rgb(var(--primary-400));
     background: rgb(var(--primary-300));
     
     letter-spacing: 0.3pt; /* & might need an update */
+}
+
+footer > p {
+    margin-inline: auto;
 }
 
 .overlay {

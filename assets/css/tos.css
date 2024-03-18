@@ -20,18 +20,22 @@ nav > ol > li {
     margin-block: 0.3rem;
 }
 
-/* TODO: @AdamrePL implement max width of website for content to be centered within */
+main {
+    width: min(1200px, 100% - 4rem);
+    margin-inline: auto;
+}
 
 article {
     margin-bottom: 2.5rem;
     line-height: 1.5;
+    text-wrap: pretty;
 }
 
 h3::first-letter {
     text-transform: capitalize;
 }
 
-p {
+article > p {
     max-width: 80%;
     padding-left: 1rem;
 }
@@ -42,4 +46,8 @@ p {
     /** 
        * ! Options that I tried/recommend: yellow, lime, limegreen, aqua, greenyellow (not to be mistaken with yellowgreen).
     */       
+}
+
+footer > * {
+    margin: 0;
 }

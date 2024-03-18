@@ -12,7 +12,9 @@ function user_exists(mysqli $conn, $uid): bool {
 }
 
 /**
+ * @param mysqli $conn connection to a database
  * 
+ * @param string $uid user uuid
  * 
  * @return string gets user's password
  */

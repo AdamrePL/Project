@@ -223,7 +223,8 @@ search {
 search > form {
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 100%;
+    margin: 0.5rem;
     margin-inline: auto;
 }
 
@@ -257,6 +258,37 @@ search > form:has(input[type="search"]:focus-visible) {
     outline-offset: 3px;
     border-radius: 2px;
 }
+
+main {
+    margin-inline: auto;
+    max-width: calc(100% - 4rem);
+}
+
+main * {
+    outline: 1px solid ;
+}
+
+.browse-wrapper {
+    display: flex;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.offer {
+    flex-basis: 100%;
+    /* max-width: calc(100% - 2rem); */
+    margin-inline: auto;
+    word-break: break-word;
+}
+
+.offer-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .offer * {
+    text-wrap: wrap;
+} */
 
 /**
  * @see 

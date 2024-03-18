@@ -108,7 +108,4 @@ if ($uid = create_user($conn, $name, $email, $pass)) {
     header("Location: $path_to_form?error=unexpected-error");
     exit(500);
 }
-
-// TODO dodać opcje opcjonalnego zalogowania przy rejestracji (1 checkbox)
-
 ?>
