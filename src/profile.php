@@ -91,6 +91,12 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
             } else {
                 echo '<section class="user-offers">';
+
+                for($i = 0;$i<10;$i++){
+                    echo '<div class="offer"></div>';
+                }
+                    
+                    //added a bunch of divs on top for scłolbał
                     $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
                     $query = mysqli_query($conn,$sql);
 

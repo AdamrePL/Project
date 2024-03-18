@@ -109,19 +109,21 @@ body {
     margin-inline: auto;
 }
 
-.user-offers::-webkit-scrollbar {
-    width: 0.7rem;
+/*& womp womp no scrollbar :( */
+/* .user-offers::-webkit-scrollbar {
+    width: 2rem;
     height: 10px;
     border: none;
     border-radius: 1rem;
-    background-color: #aaa;
-  }
+    background-color: rgba(var(--secondary-300),0.3);
+    transition: all 0.2s ease;
+}
   
-  .user-offers::-webkit-scrollbar-thumb {
+.user-offers::-webkit-scrollbar-thumb {
     border: none;
     border-radius: 1rem;
-    background: #000;
-  }
+    background: rgba(var(--secondary-400),0.6);
+} */
 
 .offer {
     display: flex;
