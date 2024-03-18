@@ -70,8 +70,9 @@
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "r_submit-error") echo "formularz nie został prawidłowo wysłany"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "unexpected-error") echo "wystąpił niespodziewany błąd :("; ?>
                 </span>
-                <span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>
-                <input type="submit" name="reg" value="Zarejestruj">
+                <!--//!hello yes please tell user UID after creation *WITHOUT* pressing this f&$*@!g button-->
+                <!-- <span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>
+                <input type="submit" name="reg" value="Zarejestruj"> -->
             </form>
         </div>
     </div>

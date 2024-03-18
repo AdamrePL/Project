@@ -106,7 +106,6 @@ if (!isset($_SESSION["uid"])) {
 
                         //& copied selector from index ( ,,,= w =,,, )
                         // real shit tho gotta align these mfs properly :muscle:
-
                         $prod = explode(",", $result["products"]); // i've got no idea what this does, but it's working so yippee
                         if (count($prod) > 1) {
                             echo '<p>Pakiet</p>';
@@ -126,7 +125,7 @@ if (!isset($_SESSION["uid"])) {
                             $query2 = mysqli_query($conn, $sql2);
                             $result2 = mysqli_fetch_assoc($query2);
 
-                            echo $result2["name"];
+                            echo '<p>' . $result2["name"] . '</p>';
                         }
                         
                         echo '<details>';
