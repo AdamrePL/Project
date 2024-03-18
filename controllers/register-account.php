@@ -24,7 +24,6 @@ $name = trim($_POST["username"]);
 $email = trim($_POST["email"]);
 $pass = trim($_POST["r_password"]);
 $pass_check = trim($_POST["r_password-repeat"]);
-// $login_after_signup = $_POST[""]
 
 if (empty($name) || empty($email)) {
     header("Location: $path_to_files?error=empty-fields");
@@ -92,18 +91,17 @@ if (!isset($_POST["accept_tos"])) {
 if ($uid = create_user($conn, $name, $email, $pass)) {
 // do formularza oraz tutaj dodac wybor czy logowac po zarejestrowaniu czy nie,
 // jezeli nie to:
-// if (!$logowac) {
-//     header("Location: ../src/profile.php");
-//     exit(200);
-// }
-// else {
-    $_SESSION["uid"] = $uid;
-    $_SESSION["isadmin"] = 0;
-    $_SESSION["username"] = $name;
-    $_SESSION["first-login"] = 2;
-    header("Location: ../src/profile.php");
-    exit(200);
-// }
+    if (!isset($_POST["login_after_register"])) {
+        header("Location: ../src/profile.php");
+        exit(200);
+    } else {
+        $_SESSION["uid"] = $uid;
+        $_SESSION["isadmin"] = 0;
+        $_SESSION["username"] = $name;
+        $_SESSION["first-login"] = 2;
+        header("Location: ../src/profile.php");
+        exit(200);
+    }
 } else {
     header("Location: $path_to_form?error=unexpected-error");
     exit(500);
