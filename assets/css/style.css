@@ -269,6 +269,7 @@ main {
 
 /* a:has(.offer) { */
 .offer {
+    /* ! Dwie linie poniżej oraz jedna powyżej selektora jest na wypadek gdyby oferta miala byc zamknięta w <a> tagu
     /* color: inherit;
     text-decoration: none; */
     flex-basis: 100%;

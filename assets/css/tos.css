@@ -21,7 +21,7 @@ nav > ol > li {
 }
 
 main {
-    width: min(1200px, 100% - 4rem);
+    width: min(1400px, 100% - 4rem);
     margin-inline: auto;
 }
 
