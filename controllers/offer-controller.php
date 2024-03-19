@@ -7,7 +7,6 @@
 require "../conf/config.php";
 $stmt = mysqli_stmt_init($conn);
 
-
 $desc = $_POST["note"];
 $quality = $_POST["quality"];
 $price = $_POST["price"];
@@ -18,30 +17,7 @@ $price = $_POST["price"];
 
 $isCustom = false;
 
-//*this is `products` table insertion code my bad ^w^
-// $json_data = file_get_contents("../assets/downloads/booklist.json");
-// $json_data = json_decode($json_data);
-// $clarity = 0;
-// foreach ($json_data as $klasa => $value) { //Classes
-//     echo "Yippe!<br>";
-//     foreach($value as $ksiazka => $dane){//OBJECT ITSELF!
-//         $dane = json_decode(json_encode($dane), true);
-//         echo"<br><br>"; // var_dump($dane);
-
-//*         // if($dane["nazwa"]==$_POST["book"]){
-//*        //     $title = $dane["nazwa"];
-//*        //     $author = $dane["autorzy"];
-//*        //     $publisher = $dane["wydawnictwo"];
-//*        //     $subject = $dane["przedmiot"];         
-//*        //     break;
-//*        // }
-    
-//     }
-// }
-
-
 $status = array("active","inactive","terminated");
-
 
 $file = $_FILES['image'];
 $fileName = $file['name'];
@@ -75,7 +51,7 @@ foreach (glob("../_user/images/*.$ext") as $file) {
 } // odczyt 
 
 //!before encode, check for type clarity (if int is int etc.)
-//*!encode to json for offers db insert
+//& encode to json for `offers` db insert
 $Book = json_encode(array(
     "name"=>$title,
     "author"=>$author,
@@ -89,10 +65,6 @@ $Book = json_encode(array(
     "custom"=>$isCustom
     ), JSON_PRETTY_PRINT);
 
-var_dump($Book); //throws null due to lack of data
+var_dump($Book);
 
-
-//*!remember to add sesh uid, dont be a bozo
-//*leaving multiple blanks due to db uncertainty lole, also commented because i am SCARED to insert anything for now
-//*! $sql = "INSERT INTO `offers` VALUES('','$_SESSION,'','','NOW()','DATE_ADD(NOW(),INTERVAL 14 DAY)','$status[0]','$phone','$email','$dc')";
-//*! mysqli_query($conn,"$sql");
+//*!remember to add user uid, dont be a bozo

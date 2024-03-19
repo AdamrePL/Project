@@ -14,13 +14,6 @@
 
     $mail_flag = isset($_POST["email_flag"]);
 
-    //!!!!!!!!!! HARDCODING EVERY CHANGE YYYYYEEEAAAAAAAAHHHHH WOOOHOOOOO!!!!
-    //? check if thing set 
-    //? if yes, put into array of vars
-    //? don forget to add corresponding column
-    //? throw one big update statement at the end
-    //? @Piwkom: i can do this, but im just too fucking lazy :D 
-
     if($if_pass_set && ($pass === $passCheck)){
         $sql = "UPDATE `users` SET `password` = $pass WHERE `uuid` = ?";
         $stmt = mysqli_stmt_init($conn);
