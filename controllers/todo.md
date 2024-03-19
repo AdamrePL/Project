@@ -1,1 +1,0 @@
-- [] Dodać więcej znaków do regexa emaila
