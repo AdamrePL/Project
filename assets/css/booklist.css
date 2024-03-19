@@ -1,10 +1,12 @@
 @import "./global.css";
 
+/* TODO @AdamrePL - Make it responsive 💀, it looks horrible on mobile devices */
+
 #booklist,
 #booklist-files {
     max-width: min(1400px, 100% - 4rem);
     margin-inline: auto;
-    /* padding: 2rem; */
+    padding: 2rem;
 }
 
 #booklist-files {
@@ -13,8 +15,8 @@
 
 #booklist-files > a {
     display: block;
-    margin: 0.5rem;
-    padding: 0.2rem;
+    margin: 1rem;
+    padding: 0.5rem;
     font-size: 1.2rem;
 }
 
@@ -40,21 +42,26 @@ h1 {
 }
 
 .card > span > p:first-child {
-    flex-grow: 1;
+    flex-grow: 2;
+    flex-shrink: 1;
     text-align: left;
+    word-break: break-word;
     text-wrap: wrap;
 }
 
 .card > span > p:last-child {
     text-align: right;
-    flex-grow: 0;
+    flex-grow: 1;
+    flex-basis: 20%;
 }
 
 ul {
-    word-break: break-word;
+    list-style: inside;
+    list-style-type: square;
+    padding: 0;
 }
 
 li {
     padding: 0.75rem;
-    font-size: 1rem;
+    word-break: break-word;
 }
