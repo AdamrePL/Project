@@ -97,6 +97,7 @@ $Book = array(
     "img"=>[$tempSolution[0],$tempSolution[1]],
     "custom"=>$isCustom
 );
+//? json_encode(^^^^^^, JSON_PRETTY_PRINT);
 
 // $sql = "INSERT INTO `offers` VALUES('','$_SESSION,'','','NOW()','DATE_ADD(NOW(),INTERVAL 14 DAY)','$status[0]','$phone','$email','$dc')";
 // mysqli_query($conn,"$sql");
