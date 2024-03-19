@@ -5,20 +5,16 @@
     // & 4 -> create offer with list of product ids
 
 require "../conf/config.php";
-$stmt = mysqli_stmt_init($conn);
-
 
 $desc = $_POST["note"];
 $quality = $_POST["quality"];
 $price = $_POST["price"];
-// $phone = ;
-// $email = ;
-// $dc = ;
-
-
+$phone = $_POST[""];
+$email = $_POST[""];
+$dc = $_POST[""];
 $isCustom = false;
 
-//*this is `products` table insertion code my bad ^w^
+//*this is `booklist` table insertion code my bad ^w^
 // $json_data = file_get_contents("../assets/downloads/booklist.json");
 // $json_data = json_decode($json_data);
 // $clarity = 0;
@@ -39,8 +35,24 @@ $isCustom = false;
 //     }
 // }
 
-
-$status = array("active","inactive","terminated");
+/**
+ * @var string[] $status
+ * 
+ * "active" - Aktywna
+ * 
+ * "expired" - Wygasła
+ * 
+ * "cancelled" - Anulowana
+ * 
+ * "ended" - Zakończona
+ * 
+ * "removed" - Usunięta przez administratora
+ * 
+ * "archived" - [experimental] opcjonalne na wypadek zostawiania ofert w bazie danych po miesiącu od zakończenia/wygasniecia oferty
+ * 
+ * "hidden" - [experimental] Ukryta, aby sprzedawca nie widział jej na swoim profilu
+*/
+$status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
 
 
 $file = $_FILES['image'];
@@ -72,27 +84,11 @@ if (in_array($fileExt, $allowed)) {
 $ext = "png";
 foreach (glob("../_user/images/*.$ext") as $file) {
 
-} // odczyt 
-
-//!before encode, check for type clarity (if int is int etc.)
-//*!encode to json for offers db insert
-$Book = json_encode(array(
-    "name"=>$title,
-    "author"=>$author,
-    "publisher"=>$publisher,
-    "subject"=>$subject,
-    "class"=>$class,
-    "price"=>$price,
-    "quality"=>$quality,
-    "note"=>$desc,
-    "img"=>[$tempSolution[0],$tempSolution[1]],
-    "custom"=>$isCustom
-    ), JSON_PRETTY_PRINT);
+}
 
 var_dump($Book); //throws null due to lack of data
 
 
-//*!remember to add sesh uid, dont be a bozo
-//*leaving multiple blanks due to db uncertainty lole, also commented because i am SCARED to insert anything for now
+
 //*! $sql = "INSERT INTO `offers` VALUES('','$_SESSION,'','','NOW()','DATE_ADD(NOW(),INTERVAL 14 DAY)','$status[0]','$phone','$email','$dc')";
 //*! mysqli_query($conn,"$sql");

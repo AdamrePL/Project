@@ -41,7 +41,7 @@
         <div id="register-wrapper" aria-selected="false">
             <h1>Rejestracja</h1>
             <form method="post" action="../controllers/register-account.php" class="user-form">
-                <input type="text" name="username" pattern="[a-zA-Z]{1}\w{2,29}" minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" <?php if (isset($_GET["username"])) echo 'value="'. $_GET["username"] .'"'; ?> required />
+                <input type="text" name="username" title="Nazwa musi zaczynać się od litery&#013;jedyny dozwolony znak specjalny to _&#013;Maksymalnie 30 znaków" pattern="[a-zA-Z]{1}\w{2,29}" minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" <?php if (isset($_GET["username"])) echo 'value="'. $_GET["username"] .'"'; ?> required />
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "incorrect-username") echo "nieprawidłowa nazwa użytkownika"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "name-too-short") echo "Nazwa musi składać się z minimum 3 znaków"; ?>
@@ -50,7 +50,7 @@
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "incorrect-email") echo "nieprawidłowy adres e-mail"; ?>
                 </span>
-                <input type="password" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" />
+                <input type="password" title="Wymagane są:&#013;1 duża litera&#013;1 mała litera&#013;1 cyfra&#013;minimum 5 znaków" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" />
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "shit-too-small-men") echo "hasło musi mieć długość minimum 5 znaków"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "processing-data-failure") echo "hasło nie może zawierać spacji"; ?>
@@ -71,8 +71,8 @@
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "unexpected-error") echo "wystąpił niespodziewany błąd :("; ?>
                 </span>
                 <!--//!hello yes please tell user UID after creation *WITHOUT* pressing this f&$*@!g button-->
-                <!-- <span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>
-                <input type="submit" name="reg" value="Zarejestruj"> -->
+                <!-- <span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>-->
+                <input type="submit" name="reg" value="Zarejestruj">
             </form>
         </div>
     </div>

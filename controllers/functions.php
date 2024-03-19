@@ -1,5 +1,7 @@
 <?php
 
+// ? do we move this into account-controller.php
+
 function user_exists(mysqli $conn, $uid): bool {
     $sql = "SELECT * FROM `users` WHERE uuid = ?;";
     $stmt = mysqli_stmt_init($conn);

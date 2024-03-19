@@ -1,8 +1,8 @@
 <?php require_once "../conf/config.php"; ?>
 
-<style> /*throw into seperate css file later*/
-@import "../assets/css/global.css";
-</style>
+<head>
+    <link rel="stylesheet" href="../assets/css/global.css">
+</head>
 
 <a href="../"> << Powrót</a>
 <h1>Stwórz ofertę</h1>
