@@ -50,7 +50,7 @@
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "incorrect-email") echo "nieprawidłowy adres e-mail"; ?>
                 </span>
-                <input type="password" title="Wymagane są:&#013;1 duża litera&#013;1 mała litera&#013;1 cyfra&#013;minimum 5 znaków" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" />
+                <input type="password" title="Wymagane są:&#013;1 duża litera&#013;1 mała litera&#013;1 cyfra&#013;minimum 5 znaków" name="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Hasło (Opcjonalne)" minlength="5" />
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "shit-too-small-men") echo "hasło musi mieć długość minimum 5 znaków"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "processing-data-failure") echo "hasło nie może zawierać spacji"; ?>
@@ -58,7 +58,7 @@
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "capital-letter-required") echo "hasło musi zawierać przynajmniej 1 dużą literę"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "lowercase-letter-required") echo "hasło musi zawierać przynajmniej 1 małą literę"; ?>
                 </span>
-                <input type="password" name="r_password-repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Potwierdzenie hasła" />
+                <input type="password" name="r_password-repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Potwierdzenie hasła" minlength="5" />
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "reapeat-required") echo "wymagane powtórzenie hasła"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "passwords-dont-match") echo "hasła się nie zgadzają"; ?>

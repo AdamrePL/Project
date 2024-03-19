@@ -14,6 +14,8 @@ $email = $_POST[""];
 $dc = $_POST[""];
 $isCustom = false;
 
+const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/";
+
 //*this is `booklist` table insertion code my bad ^w^
 // $json_data = file_get_contents("../assets/downloads/booklist.json");
 // $json_data = json_decode($json_data);

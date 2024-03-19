@@ -27,22 +27,22 @@
             
             <div class="products-list" data-selected="1">
                 <div class="product">
-                    <select name="book">
+                    <select name="book" multiple>
                         <?php
                             $sql = "SELECT DISTINCT `name` FROM booklist";
                             $query = mysqli_query($conn,$sql);
                             while ($result = mysqli_fetch_array($query)) {
-                                echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
+                                echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
                             }
-                            ?>
+                        ?>
                     </select>
                     
-                    <input type="number" name="price" maxlength="5" max="999.99" />
+                    <input type="number" name="price" pattern="^\d*\.?\d*$" min="0" max="999.99" />
                     
                     <select name="quality">
                         <?php
                             $quality = ["Used", "Damaged", "New"];
-                            for ($q = 0; $q < count($quality) - 1; $q++){
+                            for ($q = 0; $q < count($quality); $q++){
                                 echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
                             }
                             ?>
@@ -53,8 +53,8 @@
                     
                     <button>Dodaj pole</button>
 
-                    <input type="file" name="image"/>
-                    <input type="file" name="image1"/>
+                    <input type="image" name="image"/>
+                    <input type="image" name="image1"/>
                 </div>
 
                 <input type="submit" value="Create Offer" name="standard" />
@@ -65,14 +65,13 @@
                     <input type="text" name="" id="">
                     <input type="text" name="" id="">
                     <input type="text" name="" id="">
-                    <input type="text" name="" id="">
 
-                    <input type="number" name="price" maxlength="5" max="999.99" />
+                    <input type="number" name="price" pattern="^\d*\.?\d*$" min="0" max="999.99" />
                     
                     <select name="quality">
                         <?php
                             $quality = ["Used", "Damaged", "New"];
-                            for ($q = 0; $q < count($quality) - 1; $q++){
+                            for ($q = 0; $q < count($quality); $q++){
                                 echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
                             }
                             ?>
@@ -83,8 +82,8 @@
                     
                     <button>Dodaj pole</button>
 
-                    <input type="file" name="image"/>
-                    <input type="file" name="image1"/>
+                    <input type="image" name="image"/>
+                    <input type="image" name="image1"/>
                 </div>
 
                 <input type="submit" value="Create Offer" />
