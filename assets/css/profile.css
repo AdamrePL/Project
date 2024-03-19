@@ -76,7 +76,7 @@ body {
     flex-basis: 50%;
 }
 
-.no-offers{
+.no-offers {
     text-align: center;
     width: 90%;
     display: block;
@@ -89,12 +89,13 @@ body {
     text-wrap: balance;
     font-size: 5rem;
 }
-.no-offers > a:link{
+
+.no-offers > a:link {
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
-.no-offers > a:hover{
+.no-offers > a:hover {
     color: rgb(var(--confirm-success-400));
 }
 
@@ -109,22 +110,6 @@ body {
     margin-top: 20px;
     margin-inline: auto;
 }
-
-/*& womp womp no scrollbar :( */
-/* .user-offers::-webkit-scrollbar {
-    width: 2rem;
-    height: 10px;
-    border: none;
-    border-radius: 1rem;
-    background-color: rgba(var(--secondary-300),0.3);
-    transition: all 0.2s ease;
-}
-  
-.user-offers::-webkit-scrollbar-thumb {
-    border: none;
-    border-radius: 1rem;
-    background: rgba(var(--secondary-400),0.6);
-} */
 
 .offer {
     display: flex;
@@ -142,11 +127,12 @@ body {
     font-size: 1.4rem;
     transition: all 0.2s ease-out;
 }
+
 .offer > *{
     width: 100%;
 }
 
-.offer:hover{
+.offer:hover {
     background: rgb(var(--accent-400));
 }
 
@@ -164,6 +150,6 @@ body {
     box-shadow: 2px 2px 3px 0.05px rgb(var(--deny-error-200));
 }
 
-summary{
+summary {
     list-style: circle;
 }

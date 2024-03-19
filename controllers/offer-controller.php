@@ -54,7 +54,6 @@ $isCustom = false;
 */
 $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
 
-
 $file = $_FILES['image'];
 $fileName = $file['name'];
 $fileTempName = $file['tmp_name'];
@@ -84,11 +83,20 @@ if (in_array($fileExt, $allowed)) {
 $ext = "png";
 foreach (glob("../_user/images/*.$ext") as $file) {
 
-}
+} 
 
-var_dump($Book); //throws null due to lack of data
+$Book = array(
+    "name"=>$title,
+    "author"=>$author,
+    "publisher"=>$publisher,
+    "subject"=>$subject,
+    "class"=>$class,
+    "price"=>$price,
+    "quality"=>$quality,
+    "note"=>$desc,
+    "img"=>[$tempSolution[0],$tempSolution[1]],
+    "custom"=>$isCustom
+);
 
-
-
-//*! $sql = "INSERT INTO `offers` VALUES('','$_SESSION,'','','NOW()','DATE_ADD(NOW(),INTERVAL 14 DAY)','$status[0]','$phone','$email','$dc')";
-//*! mysqli_query($conn,"$sql");
+// $sql = "INSERT INTO `offers` VALUES('','$_SESSION,'','','NOW()','DATE_ADD(NOW(),INTERVAL 14 DAY)','$status[0]','$phone','$email','$dc')";
+// mysqli_query($conn,"$sql");

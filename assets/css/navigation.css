@@ -13,7 +13,7 @@ menu {
     grid-template-columns: repeat(5,1fr);
     height: 90px;
     box-shadow: 1px 0px 50px rgb(var(--primary-500));
-    background: rgb(var(--primary-400)); /*TODO: change bg color to sth else*/
+    background: rgb(var(--primary-400));
     transition: all 0.5s ease-out;
 }
 
@@ -29,7 +29,7 @@ menu > a {
     transition: all 0.2s ease-out;
 }
 
-menu > a:hover{
+menu > a:hover {
     background: rgba(135, 135, 135, 0.9);
     border-bottom: 5px solid rgb(var(--accent-100));
     text-shadow: 0px 0px 5px rgb(var(--accent-100));
@@ -82,8 +82,3 @@ menu > span > a {
     color: rgb(var(--secondary));
     width: 110%;
 }
-/* 
-#prof:hover{
-    z-index: 3;
-} 
-commented because having a z index change on hover is apparently a fucking astronomical concept to the language*/

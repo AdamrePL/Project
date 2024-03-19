@@ -77,13 +77,3 @@
         </div>
     </div>
 </body>
-
-
-<!--//*! @AdamrePL current regex patterns dont work as intended!!!!-->
-<!--patterns:
-log userid: pattern="\w{3,30}#[a-zA-Z0-9]{3}"
-
-reg username: pattern="/\w{3,30}/g"
-reg email: blank param
-
--->

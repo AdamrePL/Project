@@ -1,10 +1,11 @@
 <?php require_once "../conf/config.php"; ?>
+
 <?php 
 if (!isset($_SESSION["uid"])) {
     header("Location: /");
 }
-
 ?>
+
 <head>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <script src="../assets/js/profile-controller.js" defer></script>
@@ -59,8 +60,7 @@ if (!isset($_SESSION["uid"])) {
                 </form>
             </div>';
 
-            //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            //? uhh.. slower regex for email but more precise? ^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$
+            //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
         break;
 
         default:
@@ -93,11 +93,6 @@ if (!isset($_SESSION["uid"])) {
             } else {
                 echo '<section class="user-offers">';
 
-                for($i = 0;$i<10;$i++){
-                    echo '<div class="offer"></div>';
-                }
-                    
-                    //added a bunch of divs on top for scłolbał
                     $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
                     $query = mysqli_query($conn,$sql);
 
@@ -105,8 +100,7 @@ if (!isset($_SESSION["uid"])) {
                         echo '<div class="offer">'; 
 
                         //& copied selector from index ( ,,,= w =,,, )
-                        // real shit tho gotta align these mfs properly :muscle:
-                        $prod = explode(",", $result["products"]); // i've got no idea what this does, but it's working so yippee
+                        $prod = explode(",", $result["products"]);
                         if (count($prod) > 1) {
                             echo '<p>Pakiet</p>';
                             echo '<details>';
@@ -141,24 +135,7 @@ if (!isset($_SESSION["uid"])) {
                         
                         echo '</div>';    
                     }
-                    // while($selection_result = $selection_array){ // this CANT be right :sob: //&update: this was, in fact, NOT right
-                    //     echo '<div class="offer">' .$selection_result["id"]. '</div>';    
-                    // }
 
-                        // $lol = "SELECT COUNT(*) FROM `offers`,`users` WHERE `offers.user-uuid` = `users.uuid`;";
-                        // $DisOf = mysqli_query($conn, $lol);
-                        // $whynowork = mysqli_query($conn,"SELECT COUNT(*) FROM `users`,`offers` WHERE `users.uuid`=`offers.user-uuid`;");
-                        //nah cause why the fuck arent you working lil bro this is just insane at this point
-                            // $whynowork = mysqli_query($conn,"SELECT * FROM `users`;");
-                            // echo $whynowork;
-                        // $sql = mysqli_query($conn,"SELECT `user-offers` FROM `users` WHERE uuid = '". $_SESSION["uid"] ."';");
-                        // echo count(explode(",", mysqli_fetch_array($sql)["user-offers"]));
-                        // $_SESSION["uid"] = "tester#aA1";
-                        // $sql = "SELECT offers.*, users.username, users.uuid FROM `offers`, `users` WHERE 'offers.user-uuid'='users.uuid' AND users.uuid = " . $_SESSION["uid"] . ";";
-                        // $query = mysqli_query($conn, $sql);
-                        // while ($result = mysqli_fetch_assoc($query)) {
-                        //     echo '<div>' . $result["products"] . '<br>' . $result["offer-cdate"] . '</div>';
-                        // }
                 echo '</section>';
             }
 

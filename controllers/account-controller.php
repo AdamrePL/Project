@@ -79,8 +79,6 @@ function set_discord(mysqli $conn, string $uid, string $discord_id) {
     mysqli_stmt_close($stmt);
 }
 
-// ! Currently disabled as it requires 
-// @PiwkoM: enabled for profile-controller.php
 function change_email($conn, string $uid, string $email) {
     $hashed_email = convert_uuencode(base64_encode($email));
     $stmt = mysqli_stmt_init($conn);
