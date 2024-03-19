@@ -5,26 +5,38 @@
 </head>
 
 <a href="../"> << Powrót</a>
-<h1>Stwórz ofertę</h1>
 
-<div class="offerCreateFromDB">
-    <form action="../controllers/offer-controller.php" method="post" id="formDB">
+<section id="offer-creation">
+    <h1>Stwórz ofertę</h1>
 
-        <label for="book">Tytuł książki</label>
-        <select name="book">
-            <?php
-                $sql = "SELECT DISTINCT `name` FROM booklist";
-                $query = mysqli_query($conn,$sql);
-                while ($result = mysqli_fetch_array($query)) {
-                    echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
-                }
-            ?>
-        </select>
+    <div class="create-offer-wrapper">
+        <div class="create-list" data-selected="1">
+            <form action="../controllers/offer-controller.php" method="post">
+            <select name="book">
+                <?php
+                    $sql = "SELECT DISTINCT `name` FROM booklist";
+                    $query = mysqli_query($conn,$sql);
+                    while ($result = mysqli_fetch_array($query)) {
+                        echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
+                    }
+                ?>
+            </select>
+
+            </form>
+        </div>
+        <div class="create-custom" data-selected="0">
+
+        </div>
+    </div>
+
+
+</section>
+
 
         <label for="quality">Stan książki</label>
         <select name="quality">
             <?php
-                $quality = ["Używana","Uszkodzona","Nowa"];
+                $quality = ["Used", "Damaged", "New"];
                 foreach($quality as $A){
                     echo '<option value="' . $A . '">' . $A . '</option>'; //trying to format html embedded in php is a pain lmao
                 }
@@ -32,10 +44,10 @@
         </select>
 
         <label for="price">Cena</label>
-        <input type="number" name="price" minlength="1" maxlength="2" aria-multiline="false"/>
+        <input type="number" name="price" maxlength="5" max="999.99" />
 
         <label for="note">Krótki opis</label>
-        <input type="text" name="note" maxlength="125" aria-multiline="true"/>
+        <input type="text" name="note" maxlength="125" multiline="true" />
             
         <label for="phone email discord">Test</label>
         <input type="checkbox" name="phone">Numer telefonu</input>
@@ -131,7 +143,4 @@
         <input type="submit" value="Create Offer" />
         <input type="reset" value="Reset" />
     </form>
-</div> -->
-
-<h2>Last login: <?php date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
-<h2>Joined: <?php date("d.m.Y", strtotime($row['join-date'])); ?></h2>
+</div>
