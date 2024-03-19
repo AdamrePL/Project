@@ -14,7 +14,6 @@ $price = $_POST["price"];
 // $email = ;
 // $dc = ;
 
-
 $isCustom = false;
 
 $status = array("active","inactive","terminated");
@@ -52,7 +51,7 @@ foreach (glob("../_user/images/*.$ext") as $file) {
 
 //!before encode, check for type clarity (if int is int etc.)
 //& encode to json for `offers` db insert
-$Book = json_encode(array(
+$Book = array(
     "name"=>$title,
     "author"=>$author,
     "publisher"=>$publisher,
@@ -63,7 +62,8 @@ $Book = json_encode(array(
     "note"=>$desc,
     "img"=>[$tempSolution[0],$tempSolution[1]],
     "custom"=>$isCustom
-    ), JSON_PRETTY_PRINT);
+);
+//? json_encode(^^^^^^, JSON_PRETTY_PRINT);
 
 var_dump($Book);
 
