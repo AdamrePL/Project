@@ -18,6 +18,8 @@ body > a:hover{
     -webkit-text-stroke: 1px rgb(var(--secondary-500));
 }
 
-#offer-creation{
+#offer-creation {
     font-size: 1.5rem;
 }
+
+#offer-creation > 
