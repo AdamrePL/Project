@@ -8,66 +8,91 @@
 
 <section id="offer-creation">
     <h1>Stwórz ofertę</h1>
+    <div class="offer-wrapper">
+        <form action="../controllers/offer-controller.php" method="post">
+            <div class="offer-info">
+                <div class="offer-options">
+                    <div class="offer-expiration">
+                        <h3>Oferta ma wygasnąć po:</h3>
+                        <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni" min="5" max="91" />
+                        <input type="number" name="exp_hours" inputmode="numeric" placeholder="Godziny" min="0" max="23" />
+                    </div>
+                </div>
+                <div class="offer-contact">
+                    <input type="text" name="phone" />
+                    <input type="text" name="email" />
+                    <input type="text" name="discord" />
+                </div>
+            </div>
+            
+            <div class="products-list" data-selected="1">
+                <div class="product">
+                    <select name="book">
+                        <?php
+                            $sql = "SELECT DISTINCT `name` FROM booklist";
+                            $query = mysqli_query($conn,$sql);
+                            while ($result = mysqli_fetch_array($query)) {
+                                echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
+                            }
+                            ?>
+                    </select>
+                    
+                    <input type="number" name="price" maxlength="5" max="999.99" />
+                    
+                    <select name="quality">
+                        <?php
+                            $quality = ["Used", "Damaged", "New"];
+                            for ($q = 0; $q < count($quality) - 1; $q++){
+                                echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                            }
+                            ?>
+                    </select>
+                    
+                    <input type="text" name="note" maxlength="80" multiline="true" />
+                    
+                    
+                    <button>Dodaj pole</button>
 
-    <div class="create-offer-wrapper">
-        <div class="create-list" data-selected="1">
-            <form action="../controllers/offer-controller.php" method="post">
-                <div class="offer-info">
-                    <label for="phone">Numer telefonu</label>
-                    <input type="text" name="phone">
-                    
-                    <label for="email">E-mail</label>
-                    <input type="text" name="email">
-                    
-                    <label for="discord">Discord</label>
-                    <input type="text" name="discord">
+                    <input type="file" name="image"/>
+                    <input type="file" name="image1"/>
                 </div>
 
-                <div class="books">
+                <input type="submit" value="Create Offer" name="standard" />
+                <input type="reset" value="Reset" />
+            </div>
+            <div class="products-custom" data-selected="0">
+                <div class="product">
+                    <input type="text" name="" id="">
+                    <input type="text" name="" id="">
+                    <input type="text" name="" id="">
+                    <input type="text" name="" id="">
+
+                    <input type="number" name="price" maxlength="5" max="999.99" />
                     
+                    <select name="quality">
+                        <?php
+                            $quality = ["Used", "Damaged", "New"];
+                            for ($q = 0; $q < count($quality) - 1; $q++){
+                                echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                            }
+                            ?>
+                    </select>
+                    
+                    <input type="text" name="note" maxlength="80" multiline="true" />
+                    
+                    
+                    <button>Dodaj pole</button>
+
+                    <input type="file" name="image"/>
+                    <input type="file" name="image1"/>
                 </div>
-                <select name="book">
-                    <?php
-                        $sql = "SELECT DISTINCT `name` FROM booklist";
-                        $query = mysqli_query($conn,$sql);
-                        while ($result = mysqli_fetch_array($query)) {
-                            echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
-                        }
-                    ?>
-                </select>
-                
-                <input type="number" name="price" maxlength="5" max="999.99" />
 
-                <select name="quality">
-                    <?php
-                        $quality = ["Used", "Damaged", "New"];
-                        for ($q = 0; $q < count($quality) - 1; $q++){
-                            echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                        }
-                    ?>
-                </select>
-                
-                <input type="text" name="note" maxlength="80" multiline="true" />
-
-                
-            </form>
-        </div>
-        <div class="create-custom" data-selected="0">
-
-        </div>
+                <input type="submit" value="Create Offer" />
+                <input type="reset" value="Reset" />
+            </div>
+        </form>
     </div>
-
-
 </section>
-
-
-        <input type="file" name="image"/>
-        <input type="file" name="image1"/>
-
-        <input type="submit" value="Create Offer" />
-        <input type="reset" value="Reset" />
-    </form>
-</div>
 
 
 
