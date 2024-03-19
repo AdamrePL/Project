@@ -96,6 +96,7 @@ if ($uid = create_user($conn, $name, $email, $pass)) {
     //     header("Location: ../src/profile.php");
     //     exit(200);
     // } else {
+        session_regenerate_id(true);
         $_SESSION["uid"] = $uid;
         $_SESSION["isadmin"] = 0;
         $_SESSION["username"] = $name;
