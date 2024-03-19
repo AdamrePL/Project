@@ -1,7 +1,7 @@
 <?php require_once "../conf/config.php"; ?>
 
 <head>
-    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/createoffer.css">
 </head>
 
 <a href="../"> << Powrót</a>
@@ -66,7 +66,7 @@
 
 
 
-<div class="custom_offerCreate" style="padding-top: 5rem;" id="formCustom">
+<!-- <div class="custom_offerCreate" style="padding-top: 5rem;" id="formCustom">
     <form>
         <label for="book">Tytuł książki</label>
         <input type="text" name="book" maxlength="" placeholder="Tytuł książki"/>
@@ -74,11 +74,11 @@
         <label for="class">Klasa</label>
         <select name="class">
             <?php 
-                $sql = "SELECT DISTINCT `class` FROM booklist;";
-                $query = mysqli_query($conn, $sql);
-                while ($result = mysqli_fetch_array($query)) {
-                    echo '<option value="' . $result["class"] . '">' . $result["class"] . '</option>';
-                }
+                // $sql = "SELECT DISTINCT `class` FROM booklist;";
+                // $query = mysqli_query($conn, $sql);
+                // while ($result = mysqli_fetch_array($query)) {
+                //     echo '<option value="' . $result["class"] . '">' . $result["class"] . '</option>';
+                // }
                 
             ?>
         </select>
@@ -89,11 +89,11 @@
         <label for="publisher">Wydawnictwo</label>
         <select name="publisher">
             <?php 
-                $sql = "SELECT DISTINCT `publisher` FROM booklist;";
-                $query = mysqli_query($conn, $sql);
-                while ($result = mysqli_fetch_array($query)) {
-                    echo '<option value="' . $result["publisher"] . '">' . $result["publisher"] . '</option>';
-                }
+                // $sql = "SELECT DISTINCT `publisher` FROM booklist;";
+                // $query = mysqli_query($conn, $sql);
+                // while ($result = mysqli_fetch_array($query)) {
+                //     echo '<option value="' . $result["publisher"] . '">' . $result["publisher"] . '</option>';
+                // }
                 
             ?>
         </select>
@@ -102,11 +102,11 @@
         <label for="subjects">Przedmiot</label>
         <select name="subjects">
             <?php 
-                $sql = "SELECT DISTINCT `subject` FROM booklist;";
-                $query = mysqli_query($conn, $sql);
-                while ($result = mysqli_fetch_array($query)) {
-                    echo '<option value="' . $result["subject"] . '">' . $result["subject"] . '</option>';
-                }
+                // $sql = "SELECT DISTINCT `subject` FROM booklist;";
+                // $query = mysqli_query($conn, $sql);
+                // while ($result = mysqli_fetch_array($query)) {
+                //     echo '<option value="' . $result["subject"] . '">' . $result["subject"] . '</option>';
+                // }
                 
                 // if($result["name"]!=$_GET["book"]){
                 //     code above goes here
@@ -121,10 +121,10 @@
         <label for="quality">Stan książki</label>
         <select name="quality">
             <?php
-                $quality = ["Używana","Uszkodzona","Nowa"];
-                foreach($quality as $A){
-                    echo '<option value="' . $A . '">' . $A . '</option>'; 
-                }
+                // $quality = ["Używana","Uszkodzona","Nowa"];
+                // foreach($quality as $A){
+                //     echo '<option value="' . $A . '">' . $A . '</option>'; 
+                // }
             ?>
         </select>
 
