@@ -6,6 +6,9 @@ if (!isset($_SESSION["uid"])) {
 }
 ?>
 
+<!-- <h2>Last login: <?php date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
+<h2>Joined: <?php date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
+
 <head>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <script src="../assets/js/profile-controller.js" defer></script>
