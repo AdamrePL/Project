@@ -12,16 +12,39 @@
     <div class="create-offer-wrapper">
         <div class="create-list" data-selected="1">
             <form action="../controllers/offer-controller.php" method="post">
-            <select name="book">
-                <?php
-                    $sql = "SELECT DISTINCT `name` FROM booklist";
-                    $query = mysqli_query($conn,$sql);
-                    while ($result = mysqli_fetch_array($query)) {
-                        echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
-                    }
-                ?>
-            </select>
+                <div class="offer-info">
+                    <input type="text" name="phone">Numer telefonu</input>
+                    <input type="text" name="email">E-mail</input>
+                    <input type="text" name="discord">Discord</input>
+                </div>
 
+                <div class="books">
+                    
+                </div>
+                <select name="book">
+                    <?php
+                        $sql = "SELECT DISTINCT `name` FROM booklist";
+                        $query = mysqli_query($conn,$sql);
+                        while ($result = mysqli_fetch_array($query)) {
+                            echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
+                        }
+                    ?>
+                </select>
+                
+                <input type="number" name="price" maxlength="5" max="999.99" />
+
+                <select name="quality">
+                    <?php
+                        $quality = ["Used", "Damaged", "New"];
+                        for ($q = 0; $q < count($quality) - 1; $q++){
+                            echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                        }
+                    ?>
+                </select>
+                
+                <input type="text" name="note" maxlength="80" multiline="true" />
+
+                
             </form>
         </div>
         <div class="create-custom" data-selected="0">
@@ -32,27 +55,6 @@
 
 </section>
 
-
-        <label for="quality">Stan książki</label>
-        <select name="quality">
-            <?php
-                $quality = ["Used", "Damaged", "New"];
-                foreach($quality as $A){
-                    echo '<option value="' . $A . '">' . $A . '</option>'; //trying to format html embedded in php is a pain lmao
-                }
-            ?>
-        </select>
-
-        <label for="price">Cena</label>
-        <input type="number" name="price" maxlength="5" max="999.99" />
-
-        <label for="note">Krótki opis</label>
-        <input type="text" name="note" maxlength="125" multiline="true" />
-            
-        <label for="phone email discord">Test</label>
-        <input type="checkbox" name="phone">Numer telefonu</input>
-        <input type="checkbox" name="email">E-mail</input>
-        <input type="checkbox" name="discord">Discord</input>
 
         <input type="file" name="image"/>
         <input type="file" name="image1"/>
