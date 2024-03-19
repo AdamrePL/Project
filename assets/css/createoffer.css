@@ -7,19 +7,13 @@ body {
 body > a {
     color: rgb(var(--text));
     -webkit-text-stroke: 1px rgb(var(--text));
-    font-size: 2rem;
-    background: linear-gradient(90deg,rgb(var(--secondary)),20%,rgb(var(--background)));
+    font-size: 2.25rem;
+    background: linear-gradient(90deg,rgb(var(--secondary)),rgb(var(--background)));
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease-out;
 }
 
 body > a:hover{
     color: white;
     -webkit-text-stroke: 1px rgb(var(--secondary-500));
 }
-
-#offer-creation {
-    font-size: 1.5rem;
-}
-
-#offer-creation > 

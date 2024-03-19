@@ -13,9 +13,14 @@
         <div class="create-list" data-selected="1">
             <form action="../controllers/offer-controller.php" method="post">
                 <div class="offer-info">
-                    <input type="text" name="phone">Numer telefonu</input>
-                    <input type="text" name="email">E-mail</input>
-                    <input type="text" name="discord">Discord</input>
+                    <label for="phone">Numer telefonu</label>
+                    <input type="text" name="phone">
+                    
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email">
+                    
+                    <label for="discord">Discord</label>
+                    <input type="text" name="discord">
                 </div>
 
                 <div class="books">
