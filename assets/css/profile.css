@@ -4,6 +4,11 @@
 body {
     background: rgb(var(--background-50));
 }
+a {
+    text-decoration: none;
+}
+
+/*#region User Profile */
 
 #user-details {
     background: rgb(var(--primary-300));
@@ -48,7 +53,7 @@ body {
 
 .uid {
     display: block;
-    background: repeating-linear-gradient(45deg, black 15px, white 20px);
+    background: repeating-linear-gradient(45deg, black 15px, white 25px);
     font-size: 1.5rem;
     text-align: center;
 }
@@ -68,72 +73,55 @@ body {
     flex-wrap: wrap;
 }
 
+div ~ span{
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    width: 20%;
+    margin: 0;
+    padding: 0.5rem;
+    margin-left: auto;
+    
+    a[name="user_edit"], a[name="logout"] {
+        font-size: 1.2rem;
+        padding: 2%;
+        /* display: block; */
+        height: auto;
+        width: 8rem;
+        overflow:hidden;
+        border: none;
+        border-radius: 5px;
+        text-shadow: 0px 0px 3px gray;
+        transition: all 0.2s ease-in-out;
+    }
+
+    a[name="user_edit"] {   
+        background: rgb(var(--primary-400));
+        color: white;
+        z-index: 0;
+        transform:translateX(2%);
+    }
+
+    a[name="logout"] {
+        --primary-450: 115, 95, 230;
+        background: rgb(var(--primary-450));
+        color: white; 
+        z-index: 1;
+        transform:translateX(-2%);
+    }
+
+    a[name="user_edit"]:hover, a[name="logout"]:hover {
+        width: 10.5rem;
+    }   
+
+}
+
 /* .contact ::first-letter {
     text-transform: uppercase;
 } */
 
 .contact > * {
     flex-basis: 50%;
-}
-
-.no-offers {
-    text-align: center;
-    width: 90%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background: rgba(var(--accent-50),0.7);
-    height: 30%;
-    margin-top: 5%;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-wrap: balance;
-    font-size: 5rem;
-}
-
-.no-offers > a:link {
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.no-offers > a:hover {
-    color: rgb(var(--confirm-success-400));
-}
-
-.user-offers {
-    width: 95%;
-    /* background: rgb(var(--background-200), 0.5); */
-    background: rgba(var(--accent-50),0.7);
-    max-height: calc(100% - 17rem);
-    height: 100%;
-    /* min-height: calc(100% - 18rem); */
-    overflow-y: scroll;
-    margin-top: 20px;
-    margin-inline: auto;
-}
-
-.offer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background: rgb(var(--accent-200));
-    height: 9rem;
-    width: 97.5%;
-    padding: 1%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    font-size: 1.4rem;
-    transition: all 0.2s ease-out;
-}
-
-.offer > *{
-    width: 100%;
-}
-
-.offer:hover {
-    background: rgb(var(--accent-400));
 }
 
 .agree {
@@ -150,6 +138,102 @@ body {
     box-shadow: 2px 2px 3px 0.05px rgb(var(--deny-error-200));
 }
 
-summary {
-    list-style: circle;
+/* #endregion User Profile*/
+
+/*#region User Offers */
+.no-offers {
+    text-align: center;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(var(--accent-50),0.7);
+    height: 30%;
+    margin-top: 5%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-wrap: balance;
+    font-size: 5rem;
 }
+
+.no-offers > a{
+    transition: all 0.2s ease;
+}
+
+.no-offers > a:hover {
+    color: rgb(var(--confirm-success-400));
+}
+
+.user-offers {
+    width: 95%;
+    /* background: rgb(var(--background-200), 0.5); */
+    max-height: calc(100% - 17rem);
+    height: 100%;
+    /* min-height: calc(100% - 18rem); */
+    overflow-y: scroll;
+    margin-inline: auto;
+}
+
+.offer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: rgb(var(--accent-200));
+    height: auto;
+    min-height: (9rem);
+    width: 97%;
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    transition: all 0.2s ease-out;
+}
+
+.offer > * {
+    width: 100%;
+}
+
+.offer:hover {
+    background: rgb(var(--background-200));
+}
+
+.offer details {
+    padding-left: 1.5rem;
+}
+
+.offer details summary {
+    list-style: circle;
+    cursor: pointer;
+}
+
+.offer details[open] summary {
+    list-style: disc;
+}
+
+.offer p {
+    font-weight: bold;
+}
+
+.offer_management {
+    font-variant:small-caps;
+    transition: all 0.2s ease-in-out;    
+    color: rgb(var(--secondary-500));
+    -webkit-text-stroke: 1px rgb(var(--secondary-500));
+}
+
+.offer_management:hover{
+    font-size: 1.1rem;
+    -webkit-text-stroke: 1px red; /*?change later */
+    color: red;
+}
+
+.misc{
+    font-size: 0.9rem;
+    display: flex;
+    justify-content:space-between;
+    margin: 0;
+    padding: 0;
+}
+/* #endregion User Offers */

@@ -60,6 +60,7 @@ mysqli_stmt_bind_param($stmt, 's', $uid);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 if ($result = mysqli_fetch_assoc($result)) {
+    session_regenerate_id(true);
     $_SESSION["uid"] = $result["uuid"];
     $_SESSION["isadmin"] = $result["admin"];
     $_SESSION["username"] = $result["username"];
