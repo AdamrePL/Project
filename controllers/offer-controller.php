@@ -6,6 +6,7 @@
 
 require "../conf/config.php";
 
+
 $desc = $_POST["note"];
 $quality = $_POST["quality"];
 $price = $_POST["price"];

@@ -2,34 +2,41 @@
 
 <head>
     <link rel="stylesheet" href="../assets/css/createoffer.css">
+
+    <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script>
 </head>
 
-<a href="../"> << Powrót</a>
+<a class="return-btn" href="/">&NestedLessLess;&nbsp;Powrót</a>
+
+<?php 
+    $quality = ["Used", "Damaged", "New"];
+
+?>
 
 <section id="offer-creation">
     <h1>Stwórz ofertę</h1>
     <div class="offer-wrapper">
-        <form action="../controllers/offer-controller.php" method="post">
+        <form action="../test/test.env.php" method="post" enctype="multipart/form-data">
             <div class="offer-info">
-                <div class="offer-options">
-                    <div class="offer-expiration">
-                        <h3>Oferta ma wygasnąć po:</h3>
-                        <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni" min="5" max="91" />
-                        <input type="number" name="exp_hours" inputmode="numeric" placeholder="Godziny" min="0" max="23" />
-                    </div>
-                </div>
                 <div class="offer-contact">
-                    <input type="text" name="phone" />
-                    <input type="text" name="email" />
-                    <input type="text" name="discord" />
+                    <h3>Dane kontaktowe</h3>
+                    <input type="text" name="phone" placeholder="numer telefonu" />
+                    <input type="text" name="email" placeholder="e-mail" />
+                    <input type="text" name="discord" placeholder="discord tag" /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
+                </div>
+                <div class="offer-options">
+                    <h3>Oferta ma wygasnąć po:</h3>
+                    <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni" min="5" max="91" />
+                    <input type="number" name="exp_hours" inputmode="numeric" placeholder="Godziny" min="0" max="23" />
                 </div>
             </div>
             
-            <div class="products-list" data-selected="1">
+            <div class="product-list">
+                <h3>Produkty</h3>
                 <div class="product">
-                    <select name="book" multiple>
+                    <select name="book[]">
                         <?php
-                            $sql = "SELECT DISTINCT `name` FROM booklist";
+                            $sql = "SELECT `id`, `name` FROM `booklist`";
                             $query = mysqli_query($conn,$sql);
                             while ($result = mysqli_fetch_array($query)) {
                                 echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
@@ -37,59 +44,58 @@
                         ?>
                     </select>
                     
-                    <input type="number" name="price" pattern="^\d*\.?\d*$" min="0" max="999.99" />
+                    <input type="number" name="price[]" pattern="^\d*\.?\d*$" min="0" max="999.99" />
                     
-                    <select name="quality">
+                    <select name="quality[]">
                         <?php
-                            $quality = ["Used", "Damaged", "New"];
                             for ($q = 0; $q < count($quality); $q++){
                                 echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
                             }
-                            ?>
+                        ?>
                     </select>
                     
-                    <input type="text" name="note" maxlength="80" multiline="true" />
-                    
-                    
-                    <button>Dodaj pole</button>
-
-                    <input type="image" name="image"/>
-                    <input type="image" name="image1"/>
+                    <input type="text" name="note[]" maxlength="80" multiline="true" />
+                    <input type="file" name="first_img"  accept="image/png, image/jpg, image/jpeg" />
+                    <input type="file" name="second_img" accept="image/png, image/jpg, image/jpeg" />
                 </div>
-
-                <input type="submit" value="Create Offer" name="standard" />
-                <input type="reset" value="Reset" />
+                
+                <button type="button">Dodaj pole</button>
             </div>
-            <div class="products-custom" data-selected="0">
-                <div class="product">
-                    <input type="text" name="" id="">
-                    <input type="text" name="" id="">
-                    <input type="text" name="" id="">
-
-                    <input type="number" name="price" pattern="^\d*\.?\d*$" min="0" max="999.99" />
-                    
-                    <select name="quality">
-                        <?php
-                            $quality = ["Used", "Damaged", "New"];
-                            for ($q = 0; $q < count($quality); $q++){
-                                echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                            }
-                            ?>
-                    </select>
-                    
-                    <input type="text" name="note" maxlength="80" multiline="true" />
-                    
-                    
-                    <button>Dodaj pole</button>
-
-                    <input type="image" name="image"/>
-                    <input type="image" name="image1"/>
-                </div>
-
-                <input type="submit" value="Create Offer" />
-                <input type="reset" value="Reset" />
-            </div>
+            <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
+            <input type="submit" value="Create Offer" name="standard" />
+            <input type="reset" value="Reset" />
         </form>
+
+        <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego
+                <div class="products-list" data-selected="0">
+                    <div class="product">
+                        <input type="text" name="" id="">
+                        <input type="text" name="" id="">
+                        <input type="text" name="" id="">
+
+                        <input type="number" name="price" pattern="^\d*\.?\d*$" min="0" max="999.99" />
+                        
+                        <select name="quality">
+                            <?php
+                                for ($q = 0; $q < count($quality); $q++){
+                                    echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                                }
+                                ?>
+                        </select>
+                        
+                        <input type="text" name="note" maxlength="80" multiline="true" />
+                        
+                        
+                        
+                        <input type="image" name="image"/>
+                        <input type="image" name="image1"/>
+                    </div>
+                    <button>Dodaj pole</button>
+
+                    <input type="submit" value="Create Offer" name="custom" />
+                    <input type="reset" value="Reset" />
+                </div>
+        </form> -->
     </div>
 </section>
 
