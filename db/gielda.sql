@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 02:39 PM
+-- Generation Time: Mar 20, 2024 at 02:45 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -155,12 +155,6 @@ ALTER TABLE `products`
 --
 ALTER TABLE `offers`
   ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`uuid`) REFERENCES `offers` (`user-uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
