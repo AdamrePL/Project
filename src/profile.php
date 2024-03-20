@@ -79,14 +79,18 @@ if (!isset($_SESSION["uid"])) {
                 </div>
                 ';
                 
+                //& 20.03 sorry for fucking up `contact` layout, will fix !!! (hopefully)
                 echo '<div class="contact">';
-                    echo '<p>';
-                    echo !empty($result["phone"]) ? $result["phone"] : "Nr tel.";
-                    echo '</p>';
+                    echo '<p>'. (!empty($result["phone"]) ? $result["phone"] : "Nr tel.") .'</p>';
                     echo '<p><span>'. base64_decode(convert_uudecode($result["email"])) .'</span><input type="checkbox" name="" id="" /></p>';
-                    echo '<p><i class="fa-brands fa-discord"></i>'. !empty($result["discord"]) ? $result["discord"] : "Discord";
-                    echo '</p><a href="?page=settings"><button>Edytuj</button></a>';
+                    echo '<p><i class="fa-brands fa-discord"></i>'. (!empty($result["discord"]) ? $result["discord"] : "Discord") . '</p>';
                 echo '</div>';
+                
+                echo '<span>';
+                echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
+                echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
+                echo '</span>';
+
             echo '</section>';
             
             $selection_sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
@@ -96,6 +100,9 @@ if (!isset($_SESSION["uid"])) {
             } else {
                 echo '<section class="user-offers">';
 
+                for($i=0;$i<15;$i++){
+                    echo '<div class="offer"></div>';
+                }
                     $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
                     $query = mysqli_query($conn,$sql);
 
@@ -131,11 +138,12 @@ if (!isset($_SESSION["uid"])) {
                             echo $result["email"];
                             echo $result["discord"];
                         echo '</details>';
-                        
-                        echo '<span class="offer-date">';
+            
+                        echo '<span class="misc">';
                         echo '<span>Oferta wygasa: ' . $result["offer-edate"] . '</span>';
+                        echo '<span><a href="" class="offer_management edit">edytuj</a> <a href="" class="offer_management change">zmień status</a></span>';
                         echo '</span>'; 
-                        
+
                         echo '</div>';    
                     }
 
