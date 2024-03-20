@@ -21,6 +21,9 @@ if (!isset($_SESSION["uid"])) {
     }
     
     switch ($_GET["page"]) {
+        // W ustawieniach profilu oraz tworzeniu ofert, zabezpieczyć aby osoba nie mogła podawać linków do stron, np. discord.gg/discord.com, oraz zadnych zaproszen na serwery oraz nieodpowiednich stron
+        // ^ może to być zrobione REGEX'em 
+        // dodatkowo zabezpieczyc te pola z htmlspecialchars po stronie php'a przy dodawaniu/wyciaganiu z bazy danych (? chyba jak dobrze pamietam), aby zabezpieczyć strone przed XSS i Javascript/html/css injection
         case "settings":
             echo '<a class="return-btn" href="profile.php">&NestedLessLess; Powrót</a>
 
