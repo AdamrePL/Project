@@ -1,8 +1,11 @@
 <?php
+
 if (!isset($_SESSION["isadmin"]) && $_SESSION["admin"]!=true) {
     header('Location: /');
     exit(403);
 }
+
+mysqli_query($conn,"TRUNCATE TABLE `booklist`;");
 
 $json_data = file_get_contents("../assets/downloads/booklist.json");
 $json_data = json_decode($json_data);
