@@ -55,8 +55,8 @@
                     </select>
                     
                     <input type="text" name="note[]" maxlength="80" multiline="true" />
-                    <input type="file" name="first_img"  accept="image/png, image/jpg, image/jpeg" />
-                    <input type="file" name="second_img" accept="image/png, image/jpg, image/jpeg" />
+                    <input type="file" name="first_img[]" accept="image/png, image/jpg, image/jpeg" />
+                    <input type="file" name="second_img[]" accept="image/png, image/jpg, image/jpeg" />
                 </div>
                 
                 <button type="button">Dodaj pole</button>

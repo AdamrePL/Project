@@ -1,13 +1,15 @@
 <head><link rel="stylesheet" href="../assets/css/test.env.css"></head>
 
-<?php include_once "../conf/test.php" ?>
 
 <?php
     echo '<a href="'.ltrim(dirname(str_replace("\\", "/", __DIR__)), $_SERVER["DOCUMENT_ROOT"]) . '">test</a>';
     echo '<a href="../">etete</a>';
-?>
+    ?>
 
 <?php
+
+include_once $_SERVER["DOCUMENT_ROOT"] . "/conf/test.php";
+
 echo '<a href=/'.ltrim(str_replace("\\", "/", __DIR__), $_SERVER["DOCUMENT_ROOT"]).'>wewe</a>';
 echo ltrim(dirname(dirname(str_replace("\\", "/", $_SERVER["SCRIPT_FILENAME"]))), $_SERVER["DOCUMENT_ROOT"]);
 
@@ -51,7 +53,7 @@ echo $cnt;
 echo "<h1>Overview:</h1>";
 
 echo "<br> " . getcwd();
-echo '<br>';
+echo '<br><a href="/conf/config.php">base</a>';
 // echo '<br>' . $_SERVER["SERVER_NAME"];
 echo '<br>';
 echo '<br>' . $_SERVER["DOCUMENT_ROOT"];
@@ -65,11 +67,27 @@ echo '<br>' . __FILE__;
 echo '<br>' .  str_replace("\\", "/", __DIR__);
 echo '<br>' .  dirname(str_replace("\\", "/", __DIR__));
 
-echo '<br><br><br>';
+echo '<table>';
+echo '<h5>';
 print_r($_POST);
-echo str_replace(" ", "", $_POST["phone"]);
-echo '<br><br><br>';
-print_r($_FILES);
+echo '</h5>';
+echo '<tr>
+    <th>'.str_replace(" ", "", $_POST["phone"]).'</th>
+    <th>'.str_replace(" ", "", $_POST["discord"]).'</th>
+    <th>'.str_replace(" ", "", $_POST["email"]).'</th>
+    </tr>';
+for($i = 0; $i < count($_POST["book"]); $i++) {
+    echo '<tr>
+        <td>Book name: '.str_replace(" ", "", $_POST["book"][$i]).'</td>
+            <td>'.str_replace(" ", "", $_POST["book"][$i]).'</td>
+            <td>'.str_replace(" ", "", $_POST["price"][$i]).'</td>
+            <td>'.str_replace(" ", "", $_POST["quality"][$i]).'</td>
+            <td>'.str_replace(" ", "", $_POST["note"][$i]).'</td>
+        </tr>';
+}
+
+echo '<h5>';print_r($_FILES); echo '</h5>';
+echo '</table>';
 ?>
 
 <p>

@@ -20,8 +20,8 @@ $name_len = 30;
 
 const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
 
-$name = trim($_POST["username"]);
-$email = trim($_POST["email"]);
+$name = str_replace(" ", "", trim($_POST["username"]));
+$email = str_replace(" ", "", trim($_POST["email"]));
 $pass = trim($_POST["r_password"]);
 $pass_check = trim($_POST["r_password-repeat"]);
 

@@ -216,6 +216,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    min-height: 100svh;
+}
+
 img {
     display: block;
     max-width: 100%;
