@@ -19,9 +19,6 @@ $result_url = "";
 for ($i = 0; $i < $slash_count; $i++) {
     $result_url = $result_url . "../";
 }
-
-echo $result_url;
-echo '<a href="' . $result_url . '">test</a>';
 ?>
 
 <!-- OOHOHOHO!??!?? IT WORKS???! -->
@@ -53,7 +50,6 @@ echo $cnt;
 
 echo "<h1>Overview:</h1>";
 
-//echo $_SERVER['PHP_SELF'];;
 echo "<br> " . getcwd();
 echo '<br>';
 // echo '<br>' . $_SERVER["SERVER_NAME"];

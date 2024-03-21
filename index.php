@@ -51,10 +51,6 @@
     ?>
 
     <main id="przegladaj">
-        <?php 
-        echo ltrim(dirname(str_replace("\\", "/", $_SERVER["SCRIPT_FILENAME"])), $_SERVER["DOCUMENT_ROOT"]);
-        echo '<a href=/'.ltrim(str_replace("\\", "/", __DIR__), $_SERVER["DOCUMENT_ROOT"]).'>tete</a>';
-        ?>
         <h1>Przeglądaj oferty</h1>
         <search>
             <script src="./assets/js/search-controller.js" defer></script>
