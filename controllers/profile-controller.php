@@ -1,9 +1,9 @@
 <?php
     require_once "../conf/config.php";
         
+    $if_pass_set = isset($_POST["new_password"]);
     $pass = $_POST["new_password"];
     $passCheck = $_POST["con_password"];
-        $if_pass_set = isset($pass);
 
     $mail = $_POST["email_adress"];
         $if_mail_set = isset($mail);
