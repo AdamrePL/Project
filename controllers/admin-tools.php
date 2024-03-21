@@ -6,6 +6,8 @@ if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] == false) {
     exit(403);
 }
 
+mysqli_query($conn,"TRUNCATE TABLE `booklist`;");
+
 $json_data = file_get_contents("../assets/downloads/booklist.json");
 $json_data = json_decode($json_data);
 foreach ($json_data as $klasa => $value) { // class loop
@@ -20,7 +22,7 @@ foreach ($json_data as $klasa => $value) { // class loop
         $subject = $dane["przedmiot"];
 
         //& note to self: set record count to 500 in phpMyAdmin to avoid 30 minutes of debugging perfectly fine code
-        if (!empty($dane["nazwa"])) {
+        if (!empty($title)) {
             $sql = "INSERT INTO `booklist` VALUES('',?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql);

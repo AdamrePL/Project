@@ -9,7 +9,6 @@
 <?php
 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/conf/test.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/conf/config.php";
 
 echo '<a href=/'.ltrim(str_replace("\\", "/", __DIR__), $_SERVER["DOCUMENT_ROOT"]).'>wewe</a>';
 echo ltrim(dirname(dirname(str_replace("\\", "/", $_SERVER["SCRIPT_FILENAME"]))), $_SERVER["DOCUMENT_ROOT"]);
