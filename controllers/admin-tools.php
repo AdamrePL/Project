@@ -21,7 +21,7 @@ foreach ($json_data as $klasa => $value) { // class loop
         $subject = $dane["przedmiot"];
 
         //& note to self: set record count to 500 in phpMyAdmin to avoid 30 minutes of debugging perfectly fine code
-        if (!empty($dane["nazwa"])) {
+        if (!empty($title)) {
             $sql = "INSERT INTO `booklist` VALUES('',?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql);
