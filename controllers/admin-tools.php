@@ -1,6 +1,8 @@
 <?php
-if (!isset($_SESSION["isadmin"]) && $_SESSION["admin"]!=true) {
-    header('Location: /');
+require_once $_SERVER["DOCUMENT_ROOT"] . '/conf/config.php';
+
+if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] == false) {
+    header("Location: /");
     exit(403);
 }
 

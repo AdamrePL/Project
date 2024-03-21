@@ -1,5 +1,5 @@
 <?php
-    require_once "conf.php";
+    require_once "../conf/conf.php";
         
     $pass = $_POST["new_password"];
     $passCheck = $_POST["con_password"];
