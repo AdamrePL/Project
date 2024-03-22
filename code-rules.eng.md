@@ -165,7 +165,7 @@ const newtab = makeDiv()
 
 ----------------->
 
-## Other
+Other
 ------
 ###### All indents should be made using 4 whitespaces, not tab.
 ###### **DO NOT USE EMOJIS ANYWHERE INSIDE THE CODE** APART FROM ICONS / BUTTONS.
