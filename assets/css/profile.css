@@ -59,7 +59,7 @@ a {
 }
 
 .uid::after {
-    content: "click to show uid";
+    content: attr(data-content);
     display: block;
     color: white;
     background: rgb(0, 0, 0, 0.5);
@@ -71,6 +71,14 @@ a {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+/* .contact ::first-letter {
+    text-transform: uppercase;
+} */
+
+.contact > * {
+    flex-basis: 50%;
 }
 
 div ~ span{
@@ -114,13 +122,6 @@ div ~ span{
 
 }
 
-/* .contact ::first-letter {
-    text-transform: uppercase;
-} */
-
-.contact > * {
-    flex-basis: 50%;
-}
 
 .agree {
     background: rgb(var(--confirm-success-400));
