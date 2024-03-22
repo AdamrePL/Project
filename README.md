@@ -46,7 +46,7 @@
 
 > [!IMPORTANT]
 > ## Info for people continuing the project
-> ### Please follow the coding guidelines specified in the following files
+> ### Please follow the coding guidelines specified in the files below
 > ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
 > ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
 > 
