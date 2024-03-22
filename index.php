@@ -84,8 +84,7 @@
                                 $result2 = mysqli_fetch_assoc($query2);
 
                                 echo $result2["name"] . '<br>';
-                            }
-                            echo '</details>';
+                            for ($i = 0; $i < $prod; $i++) {
 
                         } else {
                             $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[0]";
