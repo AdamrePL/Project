@@ -48,6 +48,17 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     return $uid;
 }
 
+//! call after SOMETHING(???) in profile.php/profile-controller happens
+//probably like a checkbox with confirmation or sth
+function delete_user(mysqli $conn, string $uid): void {
+    $sql = "DELETE FROM `users` WHERE uuid = ?";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt,$sql);
+    mysqli_stmt_bind_param($stmt,"s",$uid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
 /**
  * @param int $number phone number wheter with spaces or without
  * 
