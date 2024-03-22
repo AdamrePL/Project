@@ -35,12 +35,16 @@
     </header>
     
     <nav id="nawigacja">
+        <?php 
+            if (isset($_SESSION["uid"])) {
+                echo '<a href="/controllers/logout.php">Wyloguj</a>';
+                echo '<a href="/src/profile.php#offers">Moje oferty</a>';
+            } else {
+                echo '<a href="./src/access.php">Zaloguj się</a>';
+            }
+        ?>
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="./src/booklist.php">Lista podręczników</a>
-        <?php 
-            echo isset($_SESSION["uid"]) ? '<a href="./src/profile.php#offers">Moje oferty</a>' : '<a href="./src/access.php">Zaloguj się</a>';
-            if (isset($_SESSION["uid"])) echo '<a href="/controllers/logout.php">Wyloguj</a>';
-        ?>
         <a href="./src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 
@@ -53,46 +57,54 @@
     <main id="przegladaj">
         <h1>Przeglądaj oferty</h1>
         <search>
-            <script src="./assets/js/search-controller.js" defer></script>
             <form action="" method="get">
                 <!-- //!filters here  -->
                 <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual item(Y/N) -->
                 <!-- //*Search by title/publisher/author-->
                 <!-- no! not here, here basic single search, filters avaible after -->
                 <!-- stupido zis comment was made like 2 days ago ! ! ! me know !!! -->
-                <input type="search" name="search" id="searchbar" placeholder="Znajdź Produkt" />
+                <input type="search" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
                 <input type="submit" value="&#x1F50D;" />
+                <datalist id="books-search-list">
+                    <?php 
+                        // $sql = "SELECT DISTINCT `name` FROM `booklist`"; /* Wszystkie */
+                        $sql = "SELECT DISTINCT `id`, `name` FROM `products`"; /* Dostępne */
+                        $query = mysqli_query($conn,$sql);
+                        while ($result = mysqli_fetch_array($query)) {
+                            echo '<option value="' . $result["name"] . '">' . $result["name"] . '</option>';
+                        }
+                    ?>
+                </datalist>
             </form>
         </search>
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-                // $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20"; //finalne zapytanie
-                $sql = "SELECT * FROM `offers` LIMIT 20";
+                $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20"; //finalne zapytanie
+                // $sql = "SELECT * FROM `offers` LIMIT 20";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) {
                     // echo '<a href="?offer='.$result["id"].'">';
                     echo '<div class="offer">';
-                        $prod = explode(",", $result["products"]);
-                        if (count($prod) > 1) {
+                        $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
+                        $query2 = mysqli_query($conn, $sql2);
+                        $prod = mysqli_num_rows($query2);
+                        
+                        if ($prod > 1) {
                             echo '<h4 class="offer-title">Pakiet</h4>';
                             echo '<details>';
                             echo '<summary>Pakiet zawiera: </summary>';
-                            for ($i = 0; $i < count($prod); $i++) {
-                                $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
-                                $query2 = mysqli_query($conn, $sql2);
-                                $result2 = mysqli_fetch_assoc($query2);
-
-                                echo $result2["name"] . '<br>';
                             for ($i = 0; $i < $prod; $i++) {
+                                
+                            }
+                            while ($result2 = mysqli_fetch_assoc($query2)) {
+                                echo $result2["name"] . '<br>';
+                            }
+                            echo '</details>';
 
                         } else {
-                            $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[0]";
-                            $query2 = mysqli_query($conn, $sql2);
                             $result2 = mysqli_fetch_assoc($query2);
-
                             echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
-
                         }
                         
                         echo '<details>';

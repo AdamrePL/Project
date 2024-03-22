@@ -22,7 +22,8 @@
      * & In case you don't know how this timeout works, because I also forgot while im typing this, then check out 
      * @link https://www.php.net/manual/en/ref.session.php
     */
-    session_set_cookie_params(3600);
+    session_set_cookie_params(3600 /2 ); # 1 Godz / 2, zostawcie default na 1 godzine i po prostu matmy używajcie, np 3600 * 1.5 = 1godz 30min
+    // print_r( session_get_cookie_params() );
     session_start();
     
     #endregion Session Settings

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 02:45 PM
+-- Generation Time: Mar 22, 2024 at 01:57 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `gielda`
 --
+CREATE DATABASE IF NOT EXISTS `gielda` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `gielda`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Struktura tabeli dla tabeli `booklist`
 --
 
+DROP TABLE IF EXISTS `booklist`;
 CREATE TABLE `booklist` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -42,6 +45,7 @@ CREATE TABLE `booklist` (
 -- Struktura tabeli dla tabeli `offers`
 --
 
+DROP TABLE IF EXISTS `offers`;
 CREATE TABLE `offers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user-uuid` varchar(34) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -59,6 +63,7 @@ CREATE TABLE `offers` (
 -- Struktura tabeli dla tabeli `products`
 --
 
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `offer-id` bigint(20) UNSIGNED NOT NULL,
@@ -80,11 +85,12 @@ CREATE TABLE `products` (
 -- Struktura tabeli dla tabeli `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `uuid` varchar(34) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` text NOT NULL,
-  `phone` int(9) DEFAULT NULL COMMENT 'dane kontaktowe - nr tel',
+  `phone` int(9) DEFAULT NULL,
   `email` varchar(320) NOT NULL,
   `discord` tinytext DEFAULT NULL,
   `last-login` datetime NOT NULL DEFAULT current_timestamp(),
@@ -154,7 +160,14 @@ ALTER TABLE `products`
 -- Constraints for table `offers`
 --
 ALTER TABLE `offers`
-  ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `offers_ibfk_2` FOREIGN KEY (`id`) REFERENCES `products` (`offer-id`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`offer-id`) REFERENCES `offers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

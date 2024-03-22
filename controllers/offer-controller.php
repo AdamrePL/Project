@@ -30,14 +30,14 @@ $discord = str_replace(" ", "", $_POST["discord"]);
 $email = str_replace(" ", "", $_POST["email"]);
 $phone = str_replace(" ", "", $_POST["phone"]);
 
-$days = $_POST["days"];
+$days = $_POST["exp_days"];
 if (empty($days) || $days < 5) {
     $days = 14;
 } else if ($days > 91) {
     $days = 91;
 }
 
-$hours = $_POST["hours"];
+$hours = $_POST["exp_hours"];
 if (empty($hours) || $hours < 0) {
     $hours = 0;
 } else if ($hours > 23) {
@@ -72,43 +72,54 @@ for ($i = 0; $i < $book_count; $i++) {
         $book_authors = str_replace(" ", "", $_POST["authors"][$i]);
     }
 
-    $book_price = str_replace(" ", "", $_POST["price"][$i]);
+    $book_price = doubleval(str_replace(" ", "", $_POST["price"][$i]));
     $book_qual = str_replace(" ", "", $_POST["quality"][$i]);
-    $book_note = str_replace(" ", "", $_POST["note"][$i]);
+    $book_note = $_POST["note"][$i];
 
+    // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', intval($isCustom))";
+    $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, '', ?)";
+    
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+
+    $custom = intval($isCustom);
+    
+    mysqli_stmt_bind_param($stmt, 'issssidssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual,$book_note, $custom);
+    // mysqli_query($conn, $sql);
+    mysqli_stmt_execute($stmt);
 
     // TODO below here implement file handling
 }
 
-$file = $_FILES['image'];
-$fileName = $file['name'];
-$fileTempName = $file['tmp_name'];
-$fileSize = $file['size'];
-$fileError = $file['error'];
-$fileType = $file['type'];
+// $file = $_FILES['image'];
+// $fileName = $file['name'];
+// $fileTempName = $file['tmp_name'];
+// $fileSize = $file['size'];
+// $fileError = $file['error'];
+// $fileType = $file['type'];
 
-$fileExt = strtolower(end(explode('.', $fileName)));
-// found new, better way to extract file extensions but aint working on file handling now.
-$allowed = array('png', 'jpg', 'jpeg');
+// $fileExt = strtolower(end(explode('.', $fileName)));
+// // found new, better way to extract file extensions but aint working on file handling now.
+// $allowed = array('png', 'jpg', 'jpeg');
 
-if (in_array($fileExt, $allowed)) {
-    if ($fileError === 0) {
-        if ($fileSize < 1024 * 1024 * 10) {
-            $fileNewName = $bookid . "." . $fileExt;
+// if (in_array($fileExt, $allowed)) {
+//     if ($fileError === 0) {
+//         if ($fileSize < 1024 * 1024 * 10) {
+//             $fileNewName = $bookid . "." . $fileExt;
             
-            array_push($tempSolution, $fileNewName);
+//             array_push($tempSolution, $fileNewName);
 
-            $fileFolder = $_SERVER["DOCUMENT_ROOT"] . "/_user/";
-            $fileDestination = $fileFolder . $fileNewName;
-            move_uploaded_file($fileTempName, $fileDestination);
-        }
-    }
-}
+//             $fileFolder = $_SERVER["DOCUMENT_ROOT"] . "/_user/";
+//             $fileDestination = $fileFolder . $fileNewName;
+//             move_uploaded_file($fileTempName, $fileDestination);
+//         }
+//     }
+// }
 
-$ext = "png";
-foreach (glob("../_user/images/*.$ext") as $file) {
+// $ext = "png";
+// foreach (glob("../_user/images/*.$ext") as $file) {
 
-} 
+// } 
 
 // $Book = array(
 //     "name"=>$title,
