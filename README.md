@@ -1,4 +1,4 @@
-
+# PL:
 > [!NOTE]
 > ### Strona utworzona w ramach projektu na praktyki zawodowe 2023/2024
 
@@ -11,8 +11,8 @@
 > *- AdamrePL*
 
 > [!CAUTION]
-> ### Błagam wszystkich którzy będą uczestniczyć w tym projekcie, aby ***NIE UŻYWAĆ CHATGPT***
-> ###### Na serio stary? Czy ty naprawdę jesteś taki słaby w HTML'u i CSS'ie że potrzebujesz AI które co najwyżej umie podstawową stronę z stylami wziętymi z roku 1990?
+> ### Błagam wszystkich którzy będą uczestniczyć w tym projekcie aby ***NIE UŻYWAĆ CHATGPT***
+> ###### tak... na serio stary? naprawde potrzebujesz pomocy AI do HTML-a?
 > *- Browar*
 
 > [!TIP]
@@ -38,6 +38,44 @@
 > ```
 >#### Aby dostać się do ustawień rozszerzenia, trzeba użyć skrótu `CRTL+SHIFT+X`, kliknąć na ikonę zębatki -> Extension Settings -> Edit in settings.json
 
+------
 
-@PiwkoM ffs keep damn code clean!
-YOU'RE NOT MY MOM, YOU CAN'T TELL ME WHAT TO DO!!!
+# ENG:
+> [!NOTE]
+> ### Site created as part of professional apprenticeships 2023/2024
+
+> [!IMPORTANT]
+> ## Info for people continuing the project
+> ### Please follow the coding guidelines specified in the following files
+> ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
+> ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
+> 
+> *- AdamrePL*
+
+> [!CAUTION]
+> ### I beg everyone who's going to be a part of this project to ***NOT USE CHATGPT***
+> ###### like... really dude? you need an AIs help for HTML?
+> *- Browar*
+
+> [!TIP] 
+> ## List of recommended Visual Studio Code extensions:
+> - `Better Comments - Aaron Bond` :heavy_check_mark:
+> - `Path Intellisense - Christian Kohler` :heavy_check_mark:
+> - `PHP Intelphense - Ben Mewburn` :heavy_check_mark:
+> - `HTML CSS Support - ecmel`
+> - `Material Icon Theme - Philipp Kief` ✔️
+> ###### :heavy_check_mark: marks a verified author.
+> #### With the exclusion of default markers and phrases in `Better Comments`, an additional `&` marker is used in the code, which has to be added manually.
+> ###### The following code snippet should be pasted in the `settings.json` file after the `*` marker.
+> ```javascript
+> {
+>   "tag": "&",
+>   "color": "#b1ae17",
+>   "strikethrough": false,
+>   "underline": false,
+>   "backgroundColor": "transparent",
+>   "bold": true,
+>   "italic": false
+> }
+> ```
+>#### To access the extension's settings, use the shortcut `CRTL+SHIFT+X`, click the cogwheel icon -> Extension Settings -> Edit in settings.json
