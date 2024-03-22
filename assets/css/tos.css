@@ -40,6 +40,10 @@ article > p {
     padding-left: 1rem;
 }
 
+#definitions > span > p {
+    padding-left: 1rem;
+}
+
 ::-moz-selection {
     color: black;
     background-color: mediumspringgreen; /* Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */

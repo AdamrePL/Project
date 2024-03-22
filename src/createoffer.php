@@ -15,7 +15,7 @@
 <section id="offer-creation">
     <h1>Stwórz ofertę</h1>
     <div class="offer-wrapper">
-        <form action="../test/test.env.php" method="post" enctype="multipart/form-data">
+        <form action="../controllers/offer-controller.php" method="post" enctype="multipart/form-data">
             <div class="offer-info">
                 <div class="offer-contact">
                     <h3>Dane kontaktowe</h3>
