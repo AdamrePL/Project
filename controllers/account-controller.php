@@ -50,6 +50,10 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 
 //! call after SOMETHING(???) in profile.php/profile-controller happens
 //probably like a checkbox with confirmation or sth
+/**
+ * @param string $uid users uuid
+ * @return void well the function has nothing to return, so it voids.
+ */
 function delete_user(mysqli $conn, string $uid): void {
     $sql = "DELETE FROM `users` WHERE uuid = ?";
     $stmt = mysqli_stmt_init($conn);
