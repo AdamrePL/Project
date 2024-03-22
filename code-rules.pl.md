@@ -20,7 +20,6 @@ A skoro już mowa o tym pliku, to polecam zobaczyć piąty podpunkt bo w sumie o
    - [PHP](#php)
        + [Nazewnictwo](#nazewnictwo-2)
        + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-2 "Czytelność kodu PHP")
-       + []
    - [JS](#js)
        + [Nazewnictwo](#nazewnictwo-3)
        + [Utrzymanie kodu w porządku](#utrzymywanie-kodu-w-porządku-3 "Czytelność kodu JS")
