@@ -168,7 +168,7 @@ const newtab = makeDiv()
 
 ----------------->
 
-Pozostałe
+## Pozostałe
 ------
 ###### Wszędzie w każdych wcięciach powinny zostać użyte 4 spacje, nie tabulatory.
 ###### **NIGDZIE NIE UŻYWAĆ EMOTEK W KODZIE** POZA IKONAMI / PRZYCISKAMI.
