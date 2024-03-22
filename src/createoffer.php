@@ -10,7 +10,6 @@
 
 <?php 
     $quality = ["Used", "Damaged", "New"];
-
 ?>
 
 <section id="offer-creation">

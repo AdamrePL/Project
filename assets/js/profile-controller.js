@@ -34,12 +34,15 @@ uid_element.addEventListener("click", function showConfirm() {
 
 const fun = function() {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../controllers/profile-controller.php", true);
+    xhr.open("POST", "../../controllers/get_user_uid.test.php", true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                uid_element.querySelector(".uid").innerHTML = xhr.responseText;
+                uid_element.querySelector(".uid").dataset.content = xhr.responseText;
+                setTimeout(() => {
+                    uid_element.querySelector(".uid").dataset.content = "Click to reveal UID";
+                }, 10000)
             }
         }
     }

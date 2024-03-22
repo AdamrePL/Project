@@ -6,8 +6,8 @@ if (!isset($_SESSION["uid"])) {
 }
 ?>
 
-<!-- <h2>Last login: <?php date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
-<h2>Joined: <?php date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
+<!-- <h2>Last login: <?php // date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
+<h2>Joined: <?php //date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
 
 <head>
     <link rel="stylesheet" href="../assets/css/profile.css">
@@ -77,12 +77,13 @@ if (!isset($_SESSION["uid"])) {
                 <div class="user">
                     <h3>'. $result["username"] .'</h3>
                     <div class="user-id">
-                        <span class="uid"></span>
+                        <span class="uid" data-content="click to show uid"></span>
                     </div>
                 </div>
                 ';
                 
                 //& 20.03 sorry for fucking up `contact` layout, will fix !!! (hopefully)
+                //! Man you did not ruin it as there was no layout, although you did in fact fuck up how the buttons look, CSS STYLING and NAMING ELEMENTS
                 echo '<div class="contact">';
                     echo '<p>'. (!empty($result["phone"]) ? $result["phone"] : "Nr tel.") .'</p>';
                     echo '<p><span>'. base64_decode(convert_uudecode($result["email"])) .'</span><input type="checkbox" name="" id="" /></p>';
