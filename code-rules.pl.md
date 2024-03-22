@@ -164,9 +164,9 @@ const newtab = makeDiv()
 > [!TIP]
 > Zmienne przeznaczone dla ajax-a zalecam nazywać się "xhr" (+ numer zmiennej, albo slowo znaczące jeżeli jest więcej niz 1 w kodzie).
 
-### Utrzymywanie kodu w porządku
+<!--### Utrzymywanie kodu w porządku
 
------------------
+----------------->
 
 Pozostałe
 ------

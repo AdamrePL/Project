@@ -161,13 +161,13 @@ const newtab = makeDiv()
 > [!TIP]
 > Variables dedicated to AJAX are to begin with "xhr" (+ number/meaningful word if there are multiple instances)
 
-### Keeping the code clean
+<!--### Keeping the code clean
 
------------------
+----------------->
 
 Other
 ------
 ###### All indents should be made using 4 whitespaces, not tab.
-###### **DO NOT USE EMOTES ANYWHERE INSIDE THE CODE** APART FROM ICONS / BUTTONS.
+###### **DO NOT USE EMOJIS ANYWHERE INSIDE THE CODE** APART FROM ICONS / BUTTONS.
 
 [^1]: [camelCase](https://en.wikipedia.org/wiki/Camel_case "Wikipedia link")
