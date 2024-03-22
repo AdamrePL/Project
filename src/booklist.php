@@ -24,9 +24,10 @@
                     echo '<li> Przedmiot: '. $result["subject"] .'</li>';
                     echo '<li> Wydawnictwo: '. $result["publisher"] .'</li>';
                     echo '<li> Autorzy: ';
-                        $authors = explode(",", $result["authors"]);
-                        for ($index = 0; $index < count($authors); $index++) {
-                            if ($index != count($authors) - 1) {
+                    $authors = explode(",", $result["authors"]);
+                    $authors_count = count($authors);
+                        for ($index = 0; $index < $authors_count; $index++) {
+                            if ($index != $authors_count - 1) {
                                 echo $authors[$index] . ", ";
                             } else {
                                 echo $authors[$index];

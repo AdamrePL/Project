@@ -57,12 +57,10 @@
     <main id="przegladaj">
         <h1>Przeglądaj oferty</h1>
         <search>
-            <form action="" method="get">
+            <form method="get">
                 <!-- //!filters here  -->
-                <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), Individual item(Y/N) -->
+                <!-- //*Przedmiot(polski,angielski,etc.), Klasa(1-5[?]), Pakiet(Y/N), singular/invidual item(Y/N) -->
                 <!-- //*Search by title/publisher/author-->
-                <!-- no! not here, here basic single search, filters avaible after -->
-                <!-- stupido zis comment was made like 2 days ago ! ! ! me know !!! -->
                 <input type="search" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
                 <input type="submit" value="&#x1F50D;" />
                 <datalist id="books-search-list">
@@ -159,6 +157,3 @@
         https://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite/1992191#1992191
         https://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite/1992191#1992191
             https://httpd.apache.org/docs/current/mod/mod_rewrite.html
- // * 2
-        etc
--->
