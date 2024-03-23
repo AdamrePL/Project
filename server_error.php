@@ -1,10 +1,10 @@
 <?php
-    $code = $_GET["error-code"];
+    $code = http_response_code();
     switch ($code) {
-        case 404:
+        case $code:
             header("Location: $_SERVER[BASE]?error=$code");
             break;
-        
+
         default:
             header("Location: $_SERVER[BASE]?error=418");
             break;

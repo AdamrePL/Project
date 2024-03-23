@@ -66,10 +66,14 @@ RewriteRule "(^|/)\." - [F]
 # RewriteCond %{REQUEST_URI} !^http://(www\.)?localhost/(.*)\.(webp|gif|jpg|png|jpeg|mp4)$ [NC] 
 # RewriteRule . - [F]
 
-# https://stackoverflow.com/questions/19962787/rewrite-url-after-redirecting-404-error-htaccess
+# https://stackoverflow.com/questions/13121297/apache-mod-rewrite-redirect-status-condition-causing-directory-listing
+## Internal Redirect Loop Protection
+# RewriteCond %{ENV:REDIRECT_STATUS} 200
+# RewriteRule ^ - [L]
 
+# https://stackoverflow.com/questions/19962787/rewrite-url-after-redirecting-404-error-htaccess
 # on access denied to any page/resource, - "redirect"/open up file 'server_error' in project's root dir that redirects back to index
 ErrorDocument 403 /%{ENV:BASE}/server_error.php
 # on http error 404 - "redirect"/open up file 'server_error' in project's root dir that redirects back to index
-ErrorDocument 404 /%{ENV:BASE}/server_error.php?error\-code\=404
+ErrorDocument 404 /%{ENV:BASE}/server_error.php
 # ^ redirect on error 403 if we ever needed to display something on access denied
