@@ -1,11 +1,3 @@
-<head><link rel="stylesheet" href="../assets/css/test.env.css"></head>
-
-
-<?php
-    echo '<a href="'.ltrim(dirname(str_replace("\\", "/", __DIR__)), $_SERVER["DOCUMENT_ROOT"]) . '">test</a>';
-    echo '<a href="../">etete</a>';
-    ?>
-
 <?php
 
 echo '<a href=' . $_SERVER["BASE"] .'>mamamia</a>';
@@ -55,19 +47,8 @@ echo $cnt;
 echo "<h1>Overview:</h1>";
 
 echo "<br> " . getcwd();
-echo '<br><a href="/conf/config.php">base</a>';
-// echo '<br>' . $_SERVER["SERVER_NAME"];
-echo '<br>';
-echo '<br>' . $_SERVER["DOCUMENT_ROOT"];
-echo ' + ';
-echo $_SERVER["REQUEST_URI"];
-echo '<br> = '. $_SERVER['SCRIPT_FILENAME'];
-echo '<br>';
-
-
+echo $_SERVER["DOCUMENT_ROOT"].' + '.$_SERVER["REQUEST_URI"];
+echo '  = '. $_SERVER['SCRIPT_FILENAME'];
 echo '<br>' . __FILE__;
 echo '<br>' .  str_replace("\\", "/", __DIR__);
 echo '<br>' .  dirname(str_replace("\\", "/", __DIR__));
-
-
-?>

@@ -32,7 +32,7 @@
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "l_submit-error") echo "formularz nie został prawidłowo wysłany"; ?>
                 </span>
-                
+                <span>Nie posiadasz konta? <a href="?register">Zarejestruj się</a></span>
             </form>
         </div>
 
@@ -73,6 +73,7 @@
                 <!--//!hello yes please tell user UID after creation *WITHOUT* pressing this f&$*@!g button-->
                 <!-- <span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>-->
                 <input type="submit" name="reg" value="Zarejestruj">
+                <span>Posiadasz już konto? <a href="?register">Zaloguj się</a></span>
             </form>
         </div>
     </div>
