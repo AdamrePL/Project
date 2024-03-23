@@ -1,5 +1,4 @@
 <?php require_once "conf/config.php"; ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta name="author" content="AdamrePL, Brouwar"> -->
     <meta name="keywords" content="giełda książek,giełda">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- <link rel="favicon" type="png/image" href="icon.ico"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 

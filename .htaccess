@@ -1,2 +1,70 @@
 RewriteEngine On
-RewriteRule ^$ /index.php [L]
+
+# NOTE TO SELF - DO NOT COMMENT IN THE SAME LINE AS THE RULE
+
+# Set path to root folder of project
+RewriteCond $0#%{REQUEST_URI} ^([^#]*)#(.*)\1$
+RewriteRule ^.*$ - [E=BASE:%2]
+
+# Forbid access to folders
+RewriteRule ^db/$ - [F,L]
+RewriteRule ^src/$ - [F,L]
+RewriteRule ^controllers/$ - [F,L]
+RewriteRule ^conf/$ - [F,L]
+# Block access from assets folder
+RewriteRule ^assets/$ - [F,L]
+# Block access from all subfolders within access
+RewriteRule ^assets/.*/$ - [F,L]
+
+# Forbid access to json files
+RewriteCond %{REQUEST_URI} \.json$
+RewriteRule ^(.*)$ - [F,L]
+# # Another way to forbid access to file
+# <Files ~ "\.(json|)$">
+#     Order allow,deny
+#     Deny from all
+# </Files>
+
+# Blocks entering media through link
+# this works perfectly, but it doesnt - problem is you can enter image but it blocks only if you refresh the site
+# RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/.*  
+# RewriteRule \.(gif|jpg|jpeg|png|webp|tif|pdf|wav|wmv|wma|avi|mov|mp4|m4v|mp3|zip?)$ - [F]
+
+# Forbid access to assets with start with dot "."
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+# this cond doesnt do shit http://(www\.)?localhost/.*/
+# RewriteCond %{HTTP_REFERER} !^localhost/.*/$ [NC] 
+RewriteRule "(^|/)\." - [F]
+
+# # admin content, when admin panel is prepared
+# RewriteCond %{REQUEST_URI} admin/.*$
+# RewriteRule admin/.*$ authorize.php
+
+# if request is not for a file
+RewriteCond %{REQUEST_FILENAME} !-d
+# if request is not for a directory
+RewriteCond %{REQUEST_FILENAME} !-f
+# forward it to index.php in current directory
+RewriteRule . %{ENV:BASE}/index.php [L]
+
+
+# Block users from entering resources through URL
+
+# Okay at this point I can't be bothered anymore with these:
+# ain't gonna research about .htaccess like i did for regex.
+
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost/.*$ [NC]
+# RewriteRule \.php|$ - [F]
+
+# RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost$ [NC] 
+# RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC] 
+# RewriteRule \.(gif|jpg)$ - [F]
+
+# RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC] 
+# RewriteCond %{REQUEST_URI} !^http://(www\.)?localhost/(.*)\.(webp|gif|jpg|png|jpeg|mp4)$ [NC] 
+# RewriteRule . - [F]
+
+# ErrorDocument 403  /%{ENV:BASE}/errors/error403.php
+# ^ redirect on error 403 if we ever needed to display something on access denied
