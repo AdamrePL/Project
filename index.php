@@ -1,7 +1,6 @@
 <?php require_once "conf/config.php"; 
 // echo exec("whoami");
 ?>
-<!-- tempnam php -->
 <!DOCTYPE html>
 <html lang="pl">
 <head>
