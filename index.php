@@ -1,6 +1,4 @@
-<?php require_once "conf/config.php"; 
-// echo exec("whoami");
-?>
+<?php require_once "conf/config.php"; ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
