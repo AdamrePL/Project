@@ -1,5 +1,6 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . '/conf/config.php';
+$abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
+require_once $abspath . 'conf/config.php';
 
 if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] == false) {
     header("Location: /");
@@ -8,7 +9,7 @@ if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] == false) {
 
 mysqli_query($conn,"TRUNCATE TABLE `booklist`;");
 
-$json_data = file_get_contents("../assets/downloads/booklist.json");
+$json_data = file_get_contents("$abspath.assets/downloads/booklist.json");
 $json_data = json_decode($json_data);
 foreach ($json_data as $klasa => $value) { // class loop
     $class = $klasa;
