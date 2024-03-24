@@ -1,4 +1,7 @@
-<?php require_once "conf/config.php"; ?>
+<?php require_once "conf/config.php"; 
+// echo exec("whoami");
+?>
+<!-- tempnam php -->
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -68,6 +71,8 @@
             <fieldset class="filters">
                 <legend>&nbsp;Przedmiot&nbsp;</legend>
                 <select name="klasa" multiple>
+                <!-- <optgroup><option disabled>Wybierz klase</option></optgroup> -->
+                
                 <?php
                 $sql = "SELECT DISTINCT `subject` FROM `booklist`;";
                     $query = mysqli_query($conn, $sql);
@@ -77,10 +82,13 @@
                 ?>
                 </select>
             </fieldset>
-            <form method="get">
-                <!-- //* Przedmiot(polski,angielski,etc.), Klasa(1-5[?]) -->
-                <!-- //* Sort by title/publisher/author -->
+            <!-- <fieldset class="filters">
+                <legend>&nbsp;Sortuj przez&nbsp;</legend>
+                <label>Cene - rosnąco <input type="radio" name="sort_price" value="desc" /></label>
+                <label>Cene - malejąco <input type="radio" name="sort_price" value="desc" /></label>
 
+            </fieldset> -->
+            <form method="get">
                 <input type="search" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
                 <input type="submit" value="&#x1F50D;" />
                 <datalist id="books-search-list">
@@ -152,10 +160,11 @@
         include "src/footer.php";
     ?>
 
-    <?php /* if (isset($_GET["offer"]) && $_GET["offer"] != null) {
+    <?php 
+    if (isset($_GET["offer-id"]) && $_GET["offer-id"] != null) {
         $sql = "SELECT * FROM `offers` WHERE `offers`.`id` = ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, 'i', $_GET["offer"]);
+        mysqli_stmt_bind_param($stmt, 'i', $_GET["offer-id"]);
         mysqli_stmt_execute($stmt);
         $query = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
@@ -165,20 +174,12 @@
         echo '<div class="overlay">';
             echo '<script src="../assets/js/script.js" defer></script>';
             echo '<div class="overlay-wrapper">';
-                echo $result["user-uuid"];
+                print_r( $result );
             echo '</div>';
             echo '<p class="overlay-msg">Click anywhere outside of the box to close</p>';
         echo '</div>';
-    } */ // ! idk if we want that or not
+    }
     ?>
 </body>
 </html>
 <?php $conn -> close(); ?>
-
-<!-- // ? Do we add:
- // * 1
-        https://stackoverflow.com/questions/6534904/how-can-i-remove-file-extension-from-a-website-address
-        https://stackoverflow.com/questions/4026021/remove-php-extension-with-htaccess
-        https://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite/1992191#1992191
-        https://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite/1992191#1992191
-            https://httpd.apache.org/docs/current/mod/mod_rewrite.html

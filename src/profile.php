@@ -1,4 +1,6 @@
-<?php require_once "../conf/config.php"; ?>
+<?php 
+// $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
+require_once "../conf/config.php"; ?>
 
 <?php 
 if (!isset($_SESSION["uid"])) {
