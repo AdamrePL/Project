@@ -8,6 +8,8 @@
 > ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
 > ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
 > 
+> A i.. jak narazie w kodzie mogą być problemy z ścieżkami, więc jeżeli coś nie będzie działać, to ścieżki mogą być powodem...
+> 
 > *- AdamrePL*
 
 > [!CAUTION]
