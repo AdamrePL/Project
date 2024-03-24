@@ -8,14 +8,19 @@
 > ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
 > ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
 > 
-> A i.. jak narazie w kodzie mogą być problemy z ścieżkami, więc jeżeli coś nie będzie działać, to ścieżki mogą być powodem...
-> 
 > *- AdamrePL*
 
 > [!CAUTION]
 > ### Błagam wszystkich którzy będą uczestniczyć w tym projekcie aby ***NIE UŻYWAĆ CHATGPT***
 > ###### tak... na serio stary? naprawde potrzebujesz pomocy AI do HTML-a?
 > *- Browar*
+
+> [!NOTE]
+> A i.. jak narazie w kodzie mogą być problemy z ścieżkami, więc jeżeli coś nie będzie działać, to ścieżki mogą być powodem...
+> Jeżeli chcecie, to możecie przepisać cały kod na obiektowe podejscie (tak jak od początku miało być).. ale ostrzegam jest tego bardzo dużo, a po przejściu bedzie przynajmniej 3 razy więcej.
+> Poza tym, obiektowy PHP nie jest przyjemny do pisania.
+> 
+>  *- AdamrePL*
 
 > [!TIP]
 > ## Lista zalecanych rozszerzeń do Visual Studio Code: 
