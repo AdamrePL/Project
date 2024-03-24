@@ -1,4 +1,5 @@
 <?php
+echo exec("whoami");
 
 echo '<a href=' . $_SERVER["BASE"] .'>mamamia</a>';
 include_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"] . "conf/test.php";
