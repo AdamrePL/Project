@@ -1,4 +1,3 @@
-setup absolute path for a project - did and it worked? but then it didnt? and yet it did? and idk... so just .htaccess hope it works
 make better working session - advanced.
 inform user whenever session ends so they're not just logged out and don't know what happend.. might also just add that in QA in tos page tho..
 Styling for profile page

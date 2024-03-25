@@ -2,11 +2,11 @@
     $code = http_response_code();
     switch ($code) {
         case $code:
-            header("Location: $_SERVER[BASE]?error=$code");
+            header("Location: $_SERVER[BASE]?error-code=$code");
             break;
 
         default:
-            header("Location: $_SERVER[BASE]?error=418");
+            header("Location: $_SERVER[BASE]?error-code=418");
             break;
     }
 ?>
