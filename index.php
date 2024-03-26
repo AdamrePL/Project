@@ -26,7 +26,7 @@
                 <a href="#przegladaj">przeglądaj oferty</a>
                 <a href="src/booklist.php">lista podręczników</a>
                 <?php
-                    echo !isset($_SESSION["uid"]) ? '<a href="./src/access.php">Zaloguj</a>' : '<a href="./src/profile.php">moj profil</a>';
+                    echo !isset($_SESSION["uid"]) ? '<a href="src/access.php">Zaloguj</a>' : '<a href="src/profile.php">moj profil</a>';
                 ?>
             </nav>
         </menu>
@@ -35,10 +35,10 @@
     <nav id="nawigacja">
         <?php
             if (isset($_SESSION["uid"])) {
-                echo '<a href="/controllers/logout.php">Wyloguj</a>';
-                echo '<a href="/src/profile.php#offers">Moje oferty</a>';
+                echo '<a href="controllers/logout.php">Wyloguj</a>';
+                echo '<a href="src/profile.php#offers">Moje oferty</a>';
             } else {
-                echo '<a href="./src/access.php">Zaloguj się</a>';
+                echo '<a href="src/access.php">Zaloguj się</a>';
             }
         ?>
         <a href="#przegladaj">Przeglądaj Oferty</a>
@@ -108,6 +108,7 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
+                // $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8');
                 $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20"; //finalne zapytanie
                 // $sql = "SELECT * FROM `offers` LIMIT 20";
                 $query = mysqli_query($conn, $sql);
@@ -147,7 +148,7 @@
                             echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
                         echo '</span>';
                     echo '</div>';
-                    echo '</a>';
+                    // echo '</a>';
                 }
             ?>
         </div>

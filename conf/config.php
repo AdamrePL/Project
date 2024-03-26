@@ -5,6 +5,18 @@
     define('DB_PWD', '');
     define('DB', 'gielda');
 
+    /**
+     * ! The constants above will be removed when we're done with project
+     * ! Database credentials will be taken from a configuration file outside of the project's folder once on a school server
+     * ! But we'll still be performing database connection through this file the same way, just with different way of setting information due to security reasons.
+     *
+     * * Check link below for details
+     * @link https://docs.php.earth/security/configuration/#formats
+     * 
+     * And unfortunately because of that we'll probably also have to change the file structure a bit
+     * @link https://docs.php.earth/security/intro/#public-files
+    */ 
+
     try {
         $conn = mysqli_connect(SERVER, DB_USER, DB_PWD, DB);
     } catch (Exception $err) {
@@ -16,6 +28,30 @@
 
     #endregion Database Connection
     
+    #region General Settings
+    
+    // & Link for the 2 following settings: https://docs.php.earth/security/intro/#remote-files
+    // ini_set("allow_url_fopen", 0); # Ughhh, this has to be set in php.ini that's default one. No, we can not create ours, I tried. - allow_url_fopen = off
+    // * There's also ini_set("allow_url_include", 0), but if the one above is set, then it's not required.
+    // ini_set("expose_php", 0); # expose_php = off - in php.ini
+
+    // ! Turn this on when we're done with developement - when the site is ready to be published
+    // error_reporting(0); # Equal to display_errors = off - in php.ini
+
+    // & Link for the following if statement - https://docs.php.earth/security/intro/#session-settings
+    if (ini_get("session.use_only_cookies") !== 1) {
+        ini_set("session.use_only_cookies", 1);
+    }
+    if (ini_get("session.use_trans_sid") !== 0) {
+        ini_set("session.use_trans_sid", 0);
+    }
+    // & The other settings are set in `Session Settings`
+
+    // We've got what we need, I think so I ain't adding more - @AdamrePL
+    // you do you, https://www.php.net/manual/en/ini.list.php
+
+    #endregion General Settings
+
     #region Session Settings
 
     /**
@@ -24,9 +60,11 @@
      * & In case you don't know how this timeout works, because I also forgot while im typing this, then check out 
      * @link https://www.php.net/manual/en/ref.session.php
     */
-    session_set_cookie_params(3600 /2 ); # 1 Godz / 2, zostawcie default na 1 godzine i po prostu matmy używajcie, np 3600 * 1.5 = 1godz 30min
-    // print_r( session_get_cookie_params() );
+    session_set_cookie_params(3600 /2, $_SERVER["BASE"], "localhost", true, true); # 1 Godz / 2, zostawcie default na 1 godzine i po prostu matmy używajcie, np 3600 * 1.5 = 1godz 30min
     session_start();
+
+    // print_r( session_get_cookie_params() );
+    // print_r( $_SESSION );
     
     #endregion Session Settings
     

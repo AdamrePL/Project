@@ -90,6 +90,7 @@ for ($i = 0; $i < $book_count; $i++) {
 
     // TODO below here implement file handling
 }
+// $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8');
 
 // $file = $_FILES['image'];
 // $fileName = $file['name'];
