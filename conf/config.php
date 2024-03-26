@@ -32,23 +32,32 @@
     
     // & Link for the 2 following settings: https://docs.php.earth/security/intro/#remote-files
     // ini_set("allow_url_fopen", 0); # Ughhh, this has to be set in php.ini that's default one. No, we can not create ours, I tried. - allow_url_fopen = off
-    // * There's also ini_set("allow_url_include", 0), but if the one above is set, then it's not required.
+    // * There's also ini_set("allow_url_include", 0), but if the one above is set, then this one's not required - still would be coll to be set in case of future changes in PHP versions to avoid errors/incompatibility or sum idk.
     // ini_set("expose_php", 0); # expose_php = off - in php.ini
 
     // ! Turn this on when we're done with developement - when the site is ready to be published
     // error_reporting(0); # Equal to display_errors = off - in php.ini
 
-    // & Link for the following if statement - https://docs.php.earth/security/intro/#session-settings
+    // & Link for the explanation and source of the following if statement - https://docs.php.earth/security/intro/#session-settings
     if (ini_get("session.use_only_cookies") !== 1) {
         ini_set("session.use_only_cookies", 1);
     }
     if (ini_get("session.use_trans_sid") !== 0) {
         ini_set("session.use_trans_sid", 0);
     }
-    // & The other settings are set in `Session Settings`
+    // & The other settings are set in `Session Settings`.. atleast for now.
 
-    // We've got what we need, I think so I ain't adding more - @AdamrePL
-    // you do you, https://www.php.net/manual/en/ini.list.php
+    /**
+     * We've got what we need, I think so I ain't adding more - @AdamrePL
+     * you do you 
+     * 
+     * & General:
+     * https://www.php.net/manual/en/ini.list.php
+     * 
+     * & Session Related:
+     * https://www.php.net/manual/en/session.security.ini.php
+     * https://www.php.net/manual/en/session.configuration.php#ini.session.cookie-samesite
+    */
 
     #endregion General Settings
 
