@@ -54,6 +54,10 @@
      * & General:
      * https://www.php.net/manual/en/ini.list.php
      * 
+     * ! Uhh, and this link may actually contain everything we'd be interested in - I think.. anyway: 
+     * https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html
+     * Todo @AdamrePL Check this, for now im too tired/lazy to do so.
+     * 
      * & Session Related:
      * https://www.php.net/manual/en/session.security.ini.php
      * https://www.php.net/manual/en/session.configuration.php#ini.session.cookie-samesite
