@@ -5,7 +5,15 @@
     
 require "../conf/config.php";
 
-const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/";
+$abspath = $_SERVER["BASE"];
+
+if (!isset($_SESSION["uid"])) {
+    header("Location: $abspath/src/access.php?error=access-denied-login-required");
+    exit(403);
+}
+
+
+const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/"; // or ^\d*(\.\d{0,2})?$
 
 /**
  * @var string[] $status
@@ -26,7 +34,7 @@ const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/";
  */
 $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
     
-$discord = str_replace(" ", "", $_POST["discord"]);
+$discord = mysqli_real_escape_string($conn, str_replace(" ", "", $_POST["discord"]));
 $email = str_replace(" ", "", $_POST["email"]);
 $phone = str_replace(" ", "", $_POST["phone"]);
 
@@ -54,6 +62,11 @@ $book_count = count($_POST["book"]);
 
 $isCustom = false; // change when we add handling for custom creation
 
+$sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, '', ?)";
+    
+$stmt = mysqli_stmt_init($conn);
+mysqli_stmt_prepare($stmt, $sql);
+
 for ($i = 0; $i < $book_count; $i++) {
     if (!$isCustom) {
         $sql = "SELECT * FROM `booklist` WHERE id = ".$_POST["book"][$i];
@@ -70,17 +83,15 @@ for ($i = 0; $i < $book_count; $i++) {
         $book_name = str_replace(" ", "", $_POST["name"][$i]);
         $book_pub = str_replace(" ", "", $_POST["publisher"][$i]);
         $book_authors = str_replace(" ", "", $_POST["authors"][$i]);
+        $book_subj = "";
+        $book_class = "";
     }
 
     $book_price = doubleval(str_replace(" ", "", $_POST["price"][$i]));
     $book_qual = str_replace(" ", "", $_POST["quality"][$i]);
-    $book_note = $_POST["note"][$i];
+    $book_note = mysqli_real_escape_string($conn, $_POST["note"][$i]);
 
     // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', intval($isCustom))";
-    $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, '', ?)";
-    
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
 
     $custom = intval($isCustom);
     

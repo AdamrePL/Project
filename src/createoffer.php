@@ -1,12 +1,23 @@
 <?php require_once "../conf/config.php"; ?>
 
-<head>
-    <link rel="stylesheet" href="../assets/css/createoffer.css">
+<!-- /**
+* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
+    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
 
+* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
+    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
+
+* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
+    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
+*/ -->
+
+<head>
+
+    <link rel="stylesheet" href="../assets/css/createoffer.css">
     <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script>
 </head>
 
-<a class="return-btn" href="/">&NestedLessLess;&nbsp;Powrót</a>
+<a class="return-btn" href="<?php echo $_SERVER["BASE"]; ?>">&NestedLessLess;&nbsp;Powrót</a>
 
 <?php 
     $quality = ["Used", "Damaged", "New"];
@@ -43,7 +54,7 @@
                         ?>
                     </select>
                     
-                    <input type="number" name="price[]" pattern="^\d*\.?\d*$" min="0" max="999.99" />
+                    <input type="number" name="price[]" pattern="^\d*\.?\d*$" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
                     
                     <select name="quality[]">
                         <?php

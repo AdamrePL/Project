@@ -248,6 +248,7 @@ footer {
 
 footer > p {
     margin-inline: auto;
+    text-wrap: pretty;
 }
 
 .overlay {
