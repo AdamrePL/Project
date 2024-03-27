@@ -54,7 +54,7 @@
                         ?>
                     </select>
                     
-                    <input type="number" name="price[]" pattern="^\d*\.?\d*$" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
+                    <input type="number" name="price[]" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
                     
                     <select name="quality[]">
                         <?php
