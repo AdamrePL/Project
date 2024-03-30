@@ -8,12 +8,14 @@ require "../conf/config.php";
 $abspath = $_SERVER["BASE"];
 
 if (!isset($_SESSION["uid"])) {
-    header("Location: $abspath/src/access.php?error=access-denied-login-required");
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: $abspath"."src/access.php?error=access-denied-login-required");
     exit(403);
 }
 
-
 const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/"; // or ^\d*(\.\d{0,2})?$
+const CUSTOM_ARRAY_SEPARATOR = "&#x37E;";
+const MAX_IMG_PER_ENTRY = 2;
 
 /**
  * @var string[] $status
@@ -33,79 +35,121 @@ const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/"; // or ^\d*(\.\d{0,2})?$
  * "hidden" - [experimental] Ukryta, aby sprzedawca nie widział jej na swoim profilu
  */
 $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
-    
-$discord = mysqli_real_escape_string($conn, str_replace(" ", "", $_POST["discord"]));
-$email = str_replace(" ", "", $_POST["email"]);
-$phone = str_replace(" ", "", $_POST["phone"]);
 
-$days = $_POST["exp_days"];
-if (empty($days) || $days < 5) {
-    $days = 14;
-} else if ($days > 91) {
-    $days = 91;
-}
+// $discord = mysqli_real_escape_string($conn, str_replace(" ", "", $_POST["discord"]));
+// $email = str_replace(" ", "", $_POST["email"]);
+// $phone = str_replace(" ", "", $_POST["phone"]);
 
-$hours = $_POST["exp_hours"];
-if (empty($hours) || $hours < 0) {
-    $hours = 0;
-} else if ($hours > 23) {
-    $hours = 23;
-}
+// $days = $_POST["exp_days"];
+// if (empty($days) || $days < 5) {
+//     $days = 14;
+// } else if ($days > 91) {
+//     $days = 91;
+// }
 
-$user_uid = $_SESSION["uid"];
+// $hours = $_POST["exp_hours"];
+// if (empty($hours) || $hours < 0) {
+//     $hours = 0;
+// } else if ($hours > 23) {
+//     $hours = 23;
+// }
 
-$sql = "INSERT INTO `offers` VALUES('', '$user_uid', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $days DAY), INTERVAL $hours HOUR), '1', '$phone', '$email', '$discord')";
-$query = mysqli_query($conn, $sql);
-$offer_id = mysqli_insert_id($conn);
+// $user_uid = $_SESSION["uid"];
+
+// $sql = "INSERT INTO `offers` VALUES('', '$user_uid', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $days DAY), INTERVAL $hours HOUR), '1', '$phone', '$email', '$discord')";
+// $query = mysqli_query($conn, $sql);
+// $offer_id = mysqli_insert_id($conn);
 
 $book_count = count($_POST["book"]);
 
-$isCustom = false; // change when we add handling for custom creation
+$file = $_FILES['first_img'];
 
-$sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, '', ?)";
-    
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
-
-for ($i = 0; $i < $book_count; $i++) {
-    if (!$isCustom) {
-        $sql = "SELECT * FROM `booklist` WHERE id = ".$_POST["book"][$i];
-        // I know this is slow, BUT - first of all, its easier to find specific entry (row) this way, and if we were to take out everything out of database just once to look for the right entry, then we'd have to loop through all unwanted results
-        $query = mysqli_query($conn, $sql);
-        while ($result = mysqli_fetch_assoc($query)) {
-            $book_name = $result["name"];
-            $book_subj = $result["subject"];
-            $book_class = $result["class"];
-            $book_authors = $result["authors"];
-            $book_pub = $result["publisher"];  
-        }
-    } else {
-        $book_name = str_replace(" ", "", $_POST["name"][$i]);
-        $book_pub = str_replace(" ", "", $_POST["publisher"][$i]);
-        $book_authors = str_replace(" ", "", $_POST["authors"][$i]);
-        $book_subj = "";
-        $book_class = "";
-    }
-
-    $book_price = doubleval(str_replace(" ", "", $_POST["price"][$i]));
-    $book_qual = str_replace(" ", "", $_POST["quality"][$i]);
-    $book_note = mysqli_real_escape_string($conn, $_POST["note"][$i]);
-
-    // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', intval($isCustom))";
-
-    $custom = intval($isCustom);
-    
-    mysqli_stmt_bind_param($stmt, 'issssidssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual,$book_note, $custom);
-    // mysqli_query($conn, $sql);
-    mysqli_stmt_execute($stmt);
-
-    // TODO below here implement file handling
+if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: ". $_SERVER["BASE"] ."src/createoffer.php?error=wtf-man");
+    exit(403);
 }
-// $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8');
 
-// $file = $_FILES['image'];
-// $fileName = $file['name'];
-// $fileTempName = $file['tmp_name'];
+// $isCustom = false; // change when we add handling for custom creation
+
+// $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+// $stmt = mysqli_stmt_init($conn);
+// mysqli_stmt_prepare($stmt, $sql);
+
+// for ($i = 0; $i < $book_count; $i++) {
+//     if (!$isCustom) {
+//         $sql = "SELECT * FROM `booklist` WHERE id = ".mysqli_real_escape_string($conn, $_POST["book"][$i]);
+//         // I know this is slow, BUT - first of all, its easier to find specific entry (row) this way, and if we were to take out everything out of database just once to look for the right entry, then we'd have to loop through all unwanted results
+//         $query = mysqli_query($conn, $sql);
+//         while ($result = mysqli_fetch_assoc($query)) {
+//             $book_name = $result["name"];
+//             $book_subj = $result["subject"];
+//             $book_class = $result["class"];
+//             $book_authors = $result["authors"];
+//             $book_pub = $result["publisher"];  
+//         }
+//     } else {
+//         $book_name = str_replace(" ", "", $_POST["name"][$i]);
+//         $book_pub = str_replace(" ", "", $_POST["publisher"][$i]);
+//         $book_authors = str_replace(" ", "", $_POST["authors"][$i]);
+//         $book_subj = "";
+//         $book_class = "";
+//     }
+
+//     $book_price = doubleval(str_replace(" ", "", $_POST["price"][$i]));
+//     $book_qual = str_replace(" ", "", $_POST["quality"][$i]);
+//     $book_note = mysqli_real_escape_string($conn, $_POST["note"][$i]);
+//uniqid unlink ucfirst
+//     // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', intval($isCustom))";
+//     $custom = intval($isCustom);
+    #// TODO below here implement file handling
+        for ($i = 0; $i < $book_count * MAX_IMG_PER_ENTRY; $i += MAX_IMG_PER_ENTRY) {
+            $file_names = [];
+            // fucking hyper secure name generation, maybe should've used it in account generation aswell.
+            // you can edit it however you want, shit is crazy, so many ways to setup.
+            if ($file["name"][$i] != null) {
+                $ext = pathinfo($file["name"][$i], PATHINFO_EXTENSION);
+                $fileName = $file['name'][$i] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . strtolower($ext);
+                array_push($file_names, $fileName);
+                move_uploaded_file($file["tmp_name"][$i], $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."_users/$fileName");
+            }
+
+            if ($file["name"][$i+1] != null) {
+                $ext = pathinfo($file["name"][$i+1], PATHINFO_EXTENSION);
+                $fileName = $file['name'][$i+1] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . strtolower($ext);
+                array_push($file_names, $fileName);
+                move_uploaded_file($file["tmp_name"][$i+1], $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."_users/$fileName");
+            }
+            echo $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names); echo '<br>';
+        }
+        // $fileTempName = $file['tmp_name'];
+        // $file = $_FILES['second_img'];
+        // $fileTempName = $file['tmp_name'];
+        // array_push($filelist, $fileName);
+        print_r(explode(CUSTOM_ARRAY_SEPARATOR, $book_images));
+    
+        // $_FILE = array();
+        // foreach($_FILES as $name => $file) {
+        //     foreach($file as $property => $keys) {
+        //         foreach($keys as $key => $value) {
+        //             $_FILE[$name][$key][$property] = $value;
+        //         }
+        //     }
+        // }
+        file_put_contents("files.test.json", json_encode($_FILES, JSON_PRETTY_PRINT));
+        
+
+//     mysqli_stmt_bind_param($stmt, 'issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
+//     // mysqli_query($conn, $sql);
+//     mysqli_stmt_execute($stmt);
+
+// }
+// htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+
+
+
+
 // $fileSize = $file['size'];
 // $fileError = $file['error'];
 // $fileType = $file['type'];
@@ -116,7 +160,7 @@ for ($i = 0; $i < $book_count; $i++) {
 
 // if (in_array($fileExt, $allowed)) {
 //     if ($fileError === 0) {
-//         if ($fileSize < 1024 * 1024 * 10) {
+//         if ($fileSize < 1024 * 1024 * 20) { // 3rd multiplication is number of megabytes
 //             $fileNewName = $bookid . "." . $fileExt;
             
 //             array_push($tempSolution, $fileNewName);
@@ -130,7 +174,6 @@ for ($i = 0; $i < $book_count; $i++) {
 
 // $ext = "png";
 // foreach (glob("../_user/images/*.$ext") as $file) {
-
 // } 
 
 // $Book = array(
@@ -144,5 +187,5 @@ for ($i = 0; $i < $book_count; $i++) {
 //     "note"=>$desc,
 //     "img"=>[$tempSolution[0],$tempSolution[1]],
 //     "custom"=>$isCustom
-// ); # DIS FOR LATER, WHEN WE ADVANCED CURRENT HACK
+// ); # DIS FOR LATER, WHEN WE ADVANCED
 //? json_encode(^^^^^^, JSON_PRETTY_PRINT);
