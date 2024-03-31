@@ -160,7 +160,7 @@ function generate_id(string $name): string {
         array_push($chars, $i);
     }
 
-    return strtolower($name) . "#" . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)] . $chars[rand(0, count($chars)-1)];
+    return strtolower($name) . "#" . array_rand($chars, 3);
 }
 
 

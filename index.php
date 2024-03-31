@@ -67,11 +67,11 @@
             </fieldset>
             <fieldset class="filters">
                 <legend>&nbsp;Przedmiot&nbsp;</legend>
-                <select name="klasa" multiple>
+                <select name="klasa"> <!-- multiple -->
                 <!-- <optgroup><option disabled>Wybierz klase</option></optgroup> -->
                 
                 <?php
-                $sql = "SELECT DISTINCT `subject` FROM `booklist`;";
+                    $sql = "SELECT DISTINCT `subject` FROM `booklist`;";
                     $query = mysqli_query($conn, $sql);
                     while ($result = mysqli_fetch_assoc($query)) {
                         echo sprintf('<option value="%1$s">%1$s</option> ', $result["subject"]);

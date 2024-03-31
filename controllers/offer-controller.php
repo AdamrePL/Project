@@ -16,6 +16,11 @@ if (!isset($_SESSION["uid"])) {
 const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/"; // or ^\d*(\.\d{0,2})?$
 const CUSTOM_ARRAY_SEPARATOR = "&#x37E;";
 const MAX_IMG_PER_ENTRY = 2;
+/**
+ * defines max file size in megabytes
+ * @var int
+*/ 
+const CUSTOM_MAX_FILE_SIZE = 20;
 
 /**
  * @var string[] $status
@@ -36,25 +41,34 @@ const MAX_IMG_PER_ENTRY = 2;
  */
 $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
 
-// $discord = mysqli_real_escape_string($conn, str_replace(" ", "", $_POST["discord"]));
-// $email = str_replace(" ", "", $_POST["email"]);
-// $phone = str_replace(" ", "", $_POST["phone"]);
+$discord = htmlspecialchars(mysqli_real_escape_string($conn, str_replace(" ", "", $_POST["discord"])), ENT_QUOTES, 'UTF-8');
+$email = str_replace(" ", "", $_POST["email"]);
+$phone = str_replace(" ", "", $_POST["phone"]);
 
-// $days = $_POST["exp_days"];
-// if (empty($days) || $days < 5) {
-//     $days = 14;
-// } else if ($days > 91) {
-//     $days = 91;
-// }
+$offer_errors = [];
 
-// $hours = $_POST["exp_hours"];
-// if (empty($hours) || $hours < 0) {
-//     $hours = 0;
-// } else if ($hours > 23) {
-//     $hours = 23;
-// }
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: $path_to_form?error=incorrect-email");
+    exit(422);
+}
 
-// $user_uid = $_SESSION["uid"];
+$days = $_POST["exp_days"];
+if (empty($days) || $days < 5) {
+    $days = 14;
+} else if ($days > 91) {
+    $days = 91;
+}
+
+$hours = $_POST["exp_hours"];
+if (empty($hours) || $hours < 0) {
+    $hours = 0;
+} else if ($hours > 23) {
+    $hours = 23;
+}
+
+$user_uid = $_SESSION["uid"];
+
+# //*Inserting offer to database
 
 // $sql = "INSERT INTO `offers` VALUES('', '$user_uid', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $days DAY), INTERVAL $hours HOUR), '1', '$phone', '$email', '$discord')";
 // $query = mysqli_query($conn, $sql);
@@ -66,15 +80,15 @@ $file = $_FILES['first_img'];
 
 if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
     header("HTTP/1.0 403 Forbidden");
-    header("Location: ". $_SERVER["BASE"] ."src/createoffer.php?error=wtf-man");
+    header("Location: ". $_SERVER["BASE"] ."src/createoffer.php?error=too-many-files");
     exit(403);
 }
 
-// $isCustom = false; // change when we add handling for custom creation
+$isCustom = false; // change when we add handling for custom creation
 
-// $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
-// $stmt = mysqli_stmt_init($conn);
+$sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = mysqli_stmt_init($conn);
 // mysqli_stmt_prepare($stmt, $sql);
 
 // for ($i = 0; $i < $book_count; $i++) {
@@ -100,26 +114,49 @@ if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
 //     $book_price = doubleval(str_replace(" ", "", $_POST["price"][$i]));
 //     $book_qual = str_replace(" ", "", $_POST["quality"][$i]);
 //     $book_note = mysqli_real_escape_string($conn, $_POST["note"][$i]);
-//uniqid unlink ucfirst
+
 //     // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', intval($isCustom))";
 //     $custom = intval($isCustom);
     #// TODO below here implement file handling
+    // TODO FILES: add mime type check, integrity with with product creation itself.
+        $allowed = array('png', 'jpg', 'jpeg', 'webp', 'gif', 'jif', 'jfif', 'jpe', 'pjp', 'pjpeg'); // the 'jif', 'jpe' and next extensions in array are technicaly for 'jpg' file aswell
+        
         for ($i = 0; $i < $book_count * MAX_IMG_PER_ENTRY; $i += MAX_IMG_PER_ENTRY) {
             $file_names = [];
             // fucking hyper secure name generation, maybe should've used it in account generation aswell.
             // you can edit it however you want, shit is crazy, so many ways to setup.
             if ($file["name"][$i] != null) {
-                $ext = pathinfo($file["name"][$i], PATHINFO_EXTENSION);
-                $fileName = $file['name'][$i] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . strtolower($ext);
-                array_push($file_names, $fileName);
-                move_uploaded_file($file["tmp_name"][$i], $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."_users/$fileName");
+                if ($file["error"] === 0) {
+                    if ($file["size"][$i] < (1024 * 1024 * 20)) { // 3rd multiplication is number of megabytes
+                        $ext = strtolower(pathinfo($file["name"][$i], PATHINFO_EXTENSION));
+                        if (in_array($ext, $allowed_files)) {
+                            $fileName = $file['name'][$i] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
+                            array_push($file_names, $fileName);
+                            move_uploaded_file($file["tmp_name"][$i], $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."_users/$fileName");
+                        } else {
+                            array_push($offer_errors, "wrong-file-type&input-nr=".$i);
+                        }
+                    } else {
+                        array_push($offer_errors, "file-too-big&input-nr=".$i);
+                    }
+                }
             }
 
-            if ($file["name"][$i+1] != null) {
-                $ext = pathinfo($file["name"][$i+1], PATHINFO_EXTENSION);
-                $fileName = $file['name'][$i+1] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . strtolower($ext);
-                array_push($file_names, $fileName);
-                move_uploaded_file($file["tmp_name"][$i+1], $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."_users/$fileName");
+            if ($file["error"] === 0) {
+                if ($file["size"][$i+1] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
+                    if ($file["name"][$i+1] != null) {
+                        $ext = strtolower(pathinfo($file["name"][$i+1], PATHINFO_EXTENSION));
+                        if (in_array($ext, $allowed_files)) {
+                            $fileName = $file['name'][$i+1] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
+                            array_push($file_names, $fileName);
+                            move_uploaded_file($file["tmp_name"][$i+1], $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."_users/$fileName");
+                        } else {
+                            array_push($offer_errors, "wrong-file-type&input-nr=".$i+1);
+                        }
+                    } else {
+                        array_push($offer_errors, "file-too-big&input-nr=".$i+1);
+                    }
+                }
             }
             echo $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names); echo '<br>';
         }
@@ -145,9 +182,6 @@ if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
 //     mysqli_stmt_execute($stmt);
 
 // }
-// htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
-
-
 
 
 // $fileSize = $file['size'];
@@ -156,20 +190,13 @@ if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
 
 // $fileExt = strtolower(end(explode('.', $fileName)));
 // // found new, better way to extract file extensions but aint working on file handling now.
-// $allowed = array('png', 'jpg', 'jpeg');
 
 // if (in_array($fileExt, $allowed)) {
-//     if ($fileError === 0) {
-//         if ($fileSize < 1024 * 1024 * 20) { // 3rd multiplication is number of megabytes
-//             $fileNewName = $bookid . "." . $fileExt;
-            
-//             array_push($tempSolution, $fileNewName);
-
-//             $fileFolder = $_SERVER["DOCUMENT_ROOT"] . "/_user/";
-//             $fileDestination = $fileFolder . $fileNewName;
-//             move_uploaded_file($fileTempName, $fileDestination);
-//         }
-//     }
+//     $fileNewName = $bookid . "." . $fileExt;
+//     array_push($tempSolution, $fileNewName);
+//     $fileFolder = $_SERVER["DOCUMENT_ROOT"] . "/_user/";
+//     $fileDestination = $fileFolder . $fileNewName;
+//     move_uploaded_file($fileTempName, $fileDestination);
 // }
 
 // $ext = "png";
