@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), with a little twist.
 
-------------------------------
+- - - - -
 
 ## 31.03.2024
 
@@ -34,7 +34,7 @@ Updated offer-controller
   + Removed unsupported MIME type `image/jpg`.
 + UID generation now uses a built-in function to select characters from array.
 
------
+- - - - -
 
 <!-- TEMPLATES AND ORDER
 
@@ -66,4 +66,4 @@ Updated offer-controller
 -
 -
 
-- - -
+- - - - -
