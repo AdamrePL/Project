@@ -127,7 +127,7 @@ $stmt = mysqli_stmt_init($conn);
             // you can edit it however you want, shit is crazy, so many ways to setup.
             if ($file["name"][$i] != null) {
                 if ($file["error"] === 0) {
-                    if ($file["size"][$i] < (1024 * 1024 * 20)) { // 3rd multiplication is number of megabytes
+                    if ($file["size"][$i] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
                         $ext = strtolower(pathinfo($file["name"][$i], PATHINFO_EXTENSION));
                         if (in_array($ext, $allowed_files)) {
                             $fileName = $file['name'][$i] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
@@ -141,6 +141,10 @@ $stmt = mysqli_stmt_init($conn);
                     }
                 }
             }
+
+            // ! Ugh.. optimize this shit's repeating, but we need to .. wait do we? idk yet, but it was supposed to work with 2 files per uploaded product
+            // * well ye loop has to go only through files per product added and then go for next ones
+            // actually its easy, just loop it twice, and start from current $i and $i++, but at the same time this $i is only iterated by 1.. whatever ill do it tmr but i do have plan.. unless ill forget till tmr
 
             if ($file["error"] === 0) {
                 if ($file["size"][$i+1] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
