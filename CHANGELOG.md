@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## 31.03.2024
 
-#### Update - TL;DR
+### Update - TL;DR
 
 Added Changelog to project
 
@@ -29,9 +29,10 @@ Updated offer-controller
 
 ### Changed
 
-* Changed accepted MIME types in 'create offer' form
++ Changed accepted MIME types in 'create offer' form
   + Added webp MIME type to inputs.
   + Removed unsupported MIME type `image/jpg`.
+
 + UID generation now uses a built-in function to select characters from array.
 
 - - - - -
