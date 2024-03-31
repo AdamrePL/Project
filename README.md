@@ -8,7 +8,7 @@
 >
 > ## Informacja dla osób kontynuujących projekt
 >
-> ### Proszę trzymać się ustalonych zasad / stylizacji kodu ustalonego w poniższych plikach,<br>oraz zapisywać zmiany w changelog-u
+> ### Proszę trzymać się ustalonych zasad / stylizacji kodu ustalonego w poniższych plikach,<br>oraz zapisywać zmiany w changelog-u.
 >
 > ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
 > ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
@@ -76,11 +76,13 @@
 >
 > ## Info for people continuing the project
 >
-> ### Please follow the coding guidelines specified in the files below
+> ### Please follow the coding guidelines specified in the files below,<br>moreover, write down the changes you've made in a changelog.
 >
 > ***[Code Guide - PL](code-rules.pl.md "Standard kodowania tego projektu")***
 > ***[Code Guide - EN](code-rules.en.md "This projects coding standard")***
 >
+> ***[Change Logs](CHANGELOG.md "Changes and updates in the project")***
+> 
 > *- AdamrePL*
 
 > [!CAUTION]
