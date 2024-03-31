@@ -1,3 +1,36 @@
+<!-- TEMPLATES AND ORDER
+
+## UPDATE DATE
+
+#### Update
+
+**Optional notes here, that are technicaly tl;dr of changelog**
+
+### Added
++ new stuff/functionality
++
++
+
+### Fixed
++ Positive fixes, ex. something was not working as intended/necessary was missing within a code (throwing an error or not) and got added.
++
+- Negative fixes, ex. bugs, deprecated stuff breaking functionality, typos etc.
+-
+
+### Changed
+* ex. way how function works/processes data
+* update of deprecated code, that still worked, but got changed
+* neutral changes - just stuff that really wasn't broken/bugged nor needed fixing
+*
+
+### Removed
+- removed stuff/functionality
+-
+-
+
+- - - - -
+-->
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -34,37 +67,5 @@ Updated offer-controller
   + Removed unsupported MIME type `image/jpg`.
 
 + UID generation now uses a built-in function to select characters from array.
-
-- - - - -
-
-<!-- TEMPLATES AND ORDER
-
-## UPDATE DATE
-
-#### Update
-
-**Optional notes here, that are technicaly tl;dr of changelog**
-
-### Added
-+ new stuff/functionality
-+
-+
-
-### Fixed
-+ Positive fixes, ex. something was not working as intended/necessary was missing within a code (throwing an error or not) and got added.
-+
-- Negative fixes, ex. bugs, deprecated stuff breaking functionality, typos etc.
--
-
-### Changed
-* ex. way how function works/processes data
-* update of deprecated code, that still worked, but got changed
-* neutral changes - just stuff that really wasn't broken/bugged nor needed fixing
-*
-
-### Removed
-- removed stuff/functionality
--
--
 
 - - - - -
