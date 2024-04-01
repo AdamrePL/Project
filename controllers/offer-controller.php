@@ -143,8 +143,8 @@ for ($i = 0; $i < $book_count; $i++) {
                 }
             }
         }
-        echo $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names); echo '<br>';
     }
+    $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names); echo '<br>';
     print_r(explode(CUSTOM_ARRAY_SEPARATOR, $book_images));
 
     // $_FILE = array(); # We might want to use this if we were to make this ... advanced, for now it has to work
