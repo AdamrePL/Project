@@ -39,6 +39,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - - - - -
 
+## 01.04.2024
+
+Changed file handling in offer-controller
+
+### Update - TL;DR
+
+Updated offer-controller
+
+### Changed
+
++ Images for each entry (Files) are now processed together with that entry, not all at once - Integrity with product creation.
+
+- - - - -
+
 ## 31.03.2024
 
 ### Update - TL;DR
@@ -49,7 +63,7 @@ Updated offer-controller
 
 ### Added
 
-+ Added e-mail validation.
++ Added e-mail validation to offer-controller.
 + Added constant for max size of uploaded file.
 + Added limit to file size of uploaded files.
 + Added restrictions for image types - **Allowed types**:
@@ -62,10 +76,9 @@ Updated offer-controller
 
 ### Changed
 
++ UID generation now uses a built-in function to select characters from array.
 + Changed accepted MIME types in 'create offer' form
   + Added webp MIME type to inputs.
   + Removed unsupported MIME type `image/jpg`.
-
-+ UID generation now uses a built-in function to select characters from array.
 
 - - - - -

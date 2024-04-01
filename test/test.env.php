@@ -8,8 +8,6 @@
 // exit();
 
 echo '<a href=' . $_SERVER["BASE"] .'>mamamia</a>';
-include_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"] . "conf/test.php";
-
 
 echo '<a href=/'.ltrim(str_replace("\\", "/", __DIR__), $_SERVER["DOCUMENT_ROOT"]).'>wewe</a>';
 echo ltrim(dirname(dirname(str_replace("\\", "/", $_SERVER["SCRIPT_FILENAME"]))), $_SERVER["DOCUMENT_ROOT"]);
@@ -54,8 +52,19 @@ echo $cnt;
 echo "<h1>Overview:</h1>";
 
 echo "<br> " . getcwd();
-echo $_SERVER["DOCUMENT_ROOT"].' + '.$_SERVER["REQUEST_URI"];
+echo "<br>" . $_SERVER["DOCUMENT_ROOT"].' + '.$_SERVER["REQUEST_URI"];
 echo '  = '. $_SERVER['SCRIPT_FILENAME'];
 echo '<br>' . __FILE__;
 echo '<br>' .  str_replace("\\", "/", __DIR__);
 echo '<br>' .  dirname(str_replace("\\", "/", __DIR__));
+echo '<br>';
+
+const MAX_C = 4;
+
+for ($i = 0; $i < 5; $i++) {
+    echo "<br>BOOK: = $i<br>";
+    for ($j = 0; $j < MAX_C; $j++) {
+        echo "zd =" . $i * MAX_C + $j . "<br>";
+    }
+}
+
