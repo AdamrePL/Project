@@ -30,7 +30,7 @@
 > Jeżeli chcecie, to możecie przepisać cały kod na obiektowe podejscie (tak jak od początku miało być).. ale ostrzegam jest tego bardzo dużo, a po przejściu bedzie przynajmniej 3 razy więcej.
 > Poza tym, obiektowy PHP nie jest przyjemny do pisania.
 >
-> Ta wiadomość zniknie 10.04.2024
+> Ta wiadomość zniknie 06.04.2024
 >
 > *- AdamrePL*
 
