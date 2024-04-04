@@ -27,15 +27,18 @@
 // zamiast z folderu .. eee.. o! 'classes', aby wziasc coz z 'controllers', to zamiast wpisywania ../../controllers/account-controller.php
 // wystarczy ze wpiszecie $_SERVER["BASE"] . "controllers/account-controller.php"
 
+// a i jeszcze co do tej klasy, wydaje mi się, że mozna ja zmienic pod sama klase dla obslugi rejestracji
+
 class IDGenerator {
     private $length;
     private $name;
+    private $chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
     private string $split_character = '#';
     
     public function __construct(int $length = 3, string $name)
     {
         $this->length = $length;
-        $this->name = strtolower($name);
+        $this->name = $name;
     }
     
     public function get_length(): int
@@ -59,11 +62,8 @@ class IDGenerator {
     }
 
 
-    public function generate_ID(): string
+    public function generate_uid(): string
     {
-        $chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
-        $result = array_rand($chars, $this->length);
-
-        return $this->name . $this->split_character . $result;
+        return strtolower($this->name) . $this->split_character . array_rand($this->chars, $this->length);
     }
 }
