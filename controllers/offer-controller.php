@@ -72,9 +72,9 @@ $user_uid = $_SESSION["uid"];
 
 # // * Inserting offer to database
 
-// $sql = "INSERT INTO `offers` VALUES('', '$user_uid', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $days DAY), INTERVAL $hours HOUR), '1', '$phone', '$email', '$discord')";
-// $query = mysqli_query($conn, $sql);
-// $offer_id = mysqli_insert_id($conn);
+$sql = "INSERT INTO `offers` VALUES('', '$user_uid', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $days DAY), INTERVAL $hours HOUR), '1', '$phone', '$email', '$discord')";
+$query = mysqli_query($conn, $sql);
+$offer_id = mysqli_insert_id($conn);
 
 $book_count = count($_POST["book"]);
 
@@ -126,22 +126,20 @@ for ($i = 0; $i < $book_count; $i++) {
         $pic_index = $i * MAX_IMG_PER_ENTRY + $j;
         $file_names = [];
         // you can edit it however you want, shit is crazy, so many ways to setup.
-        if ($file["name"][$pic_index] != null) {
-            if ($file["error"] === 0) {
-                if ($file["size"][$pic_index] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
-                    
-                    $ext = strtolower(pathinfo($file["name"][$pic_index], PATHINFO_EXTENSION)); // $ext = strtolower(end(explode('.', $fileName)));
-                    if (in_array($ext, $allowed_files)) {
-                        $fileName = $file['name'][$pic_index] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
-                        array_push($file_names, $fileName);
-                        move_uploaded_file($file["tmp_name"][$pic_index], $file_folder . $fileName);
-                    } else {
-                        array_push($offer_errors, "wrong-file-type&input-nr=".$pic_index);
-                    }
-                } else {
-                    array_push($offer_errors, "file-too-big&input-nr=".$pic_index);
-                }
+        if ($file["name"][$pic_index] == null || $file["error"] !== 0) {
+            continue;
+        }
+        if ($file["size"][$pic_index] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
+            $ext = strtolower(pathinfo($file["name"][$pic_index], PATHINFO_EXTENSION)); // $ext = strtolower(end(explode('.', $fileName)));
+            if (in_array($ext, $allowed_files)) {
+                $fileName = $file['name'][$pic_index] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
+                array_push($file_names, $fileName);
+                move_uploaded_file($file["tmp_name"][$pic_index], $file_folder . $fileName);
+            } else {
+                array_push($offer_errors, "wrong-file-type&input-nr=".$pic_index);
             }
+        } else {
+            array_push($offer_errors, "file-too-big&input-nr=".$pic_index);
         }
     }
     $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names); echo '<br>';
@@ -160,10 +158,10 @@ for ($i = 0; $i < $book_count; $i++) {
 // ? Now here's question.. do we store status as a number that represents a status, like a flag, or as a string (word), my guess is number cuz then we can do bitmask operations.. but then, why would we want that?
     $custom = intval($isCustom);
     
-    // mysqli_stmt_bind_param($stmt, 'issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
-    // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', $isCustom)";
-    // mysqli_query($conn, $sql);
-    // mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_param($stmt, 'issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
+    $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', $isCustom)";
+    mysqli_query($conn, $sql);
+    mysqli_stmt_execute($stmt);
 }
 
 // $ext = "png";
