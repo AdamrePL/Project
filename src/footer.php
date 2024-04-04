@@ -1,6 +1,6 @@
 <?php
 require_once "classes/Footer.php";
-ob_start();
+ob_start(); // Footer content is to be pasted below, between the ending php tag and and the starting tag
 ?>
 
 <span title="TLiMC&#013;Technikum Łączności i Multimediów Cyfrowych"><a target="_blank" href="https://tlimc.szczecin.pl/">TLiMC</a></span>
