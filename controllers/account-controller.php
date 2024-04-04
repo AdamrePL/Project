@@ -109,7 +109,7 @@ function generate_id(string $name): string {
     // return strtolower($name) . "#" . array_rand($chars, 3);
     require_once "../src/classes/IDGenerator.php";
     $idgenerator = new IDGenerator(3, $name);
-    return $idgenerator->generate_ID();
+    return $idgenerator->generate_uid();
 }
 
 
