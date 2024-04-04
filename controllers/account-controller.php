@@ -46,7 +46,7 @@ function update_last_login(mysqli $conn, string $uid) {
  * @return string returns user's uid if user is successfuly added to a database table. You can also say it returns true.
  * @return false on mysql_stmt_prepare() error.
 */
-function create_user(mysqli $conn, string $name, string $email, string $password = ""): string|false {
+function create_user(mysqli $conn, string $name, string $email, string $password = ""): mixed {
     $uid = generate_id($name);
     while (user_exists($conn, $uid)) {
         $uid = generate_id($name);
