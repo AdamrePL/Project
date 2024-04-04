@@ -63,7 +63,7 @@
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "reapeat-required") echo "wymagane powtórzenie hasła"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "passwords-dont-match") echo "hasła się nie zgadzają"; ?>
                 </span>
-                <span>Akceptuję Regulamin oraz Politykę Prywatności</span><input type="checkbox" name="accept_tos" required /> 
+                <span>Akceptuję Regulamin oraz <a href="terms-of-service.html">Politykę Prywatności</a></span><input type="checkbox" name="accept_tos" required /> 
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "agreement-rejected") echo "wymagana akceptacja tos-u"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "empty-fields") echo "pole nazwy lub email nie zostało wypełnione"; ?>
