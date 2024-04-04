@@ -79,61 +79,6 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     return $uid;
 }
 
-//! call after SOMETHING(???) in profile.php/profile-controller happens
-//probably like a checkbox with confirmation or sth
-/**
- * @param string $uid users uuid
- * @return void well the function has nothing to return, so it voids.
- */
-function delete_user(mysqli $conn, string $uid): void {
-    $sql = "DELETE FROM `users` WHERE uuid = ?";
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt,$sql);
-    mysqli_stmt_bind_param($stmt,"s",$uid);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
-
-/**
- * @param int $number phone number wheter with spaces or without
- * 
- * @return true returns true if phone number form is correct.
- * @return false returns false if phone number doesn't match format.
-*/
-function validate_phone(int $number): bool {
-    if (!preg_match("/\d{3}[-\s]?\d{3}[-\s]?\d{3}/", $number)) {
-        return false;
-    }
-    return true;
-}
-
-function set_phone(mysqli $conn, string $uid, int $nr): void {
-    $stmt = mysqli_stmt_init($conn);
-    $sql = "UPDATE `users` SET `phone`= ? WHERE uuid = $uid;";
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $nr);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
-
-function set_discord(mysqli $conn, string $uid, string $discord_id) {
-    $stmt = mysqli_stmt_init($conn);
-    $sql = "UPDATE `users` SET `discord`= ? WHERE uuid = $uid;";
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $discord_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
-
-function change_email($conn, string $uid, string $email) {
-    $hashed_email = convert_uuencode(base64_encode($email));
-    $stmt = mysqli_stmt_init($conn);
-    $sql = "UPDATE `users` SET `email`= ? WHERE uuid = $uid;";
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $hashed_email);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
 
 /**
  * @param string $name Username, not person's name.
@@ -163,7 +108,7 @@ function generate_id(string $name): string {
 
     // return strtolower($name) . "#" . array_rand($chars, 3);
     require_once "../src/classes/IDGenerator.php";
-    $idgenerator = new IDGenerator(3, true, $name);
+    $idgenerator = new IDGenerator(3, $name);
     return $idgenerator->generate_ID();
 }
 

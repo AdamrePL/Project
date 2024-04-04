@@ -4,6 +4,11 @@ class AccountManager {
     public function __construct(mysqli $conn) {
         $this->conn = $conn;
     }
+    
+    /**
+     * @param string $uid users uuid
+     * @return void well the function has nothing to return, so it voids.
+    */
     public function delete_user(string $uid): void {
         $sql = "DELETE FROM `users` WHERE uuid = ?";
         $stmt = mysqli_stmt_init($this->conn);
@@ -12,6 +17,13 @@ class AccountManager {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
+
+    /**
+     * @param int $number phone number wheter with spaces or without
+     * 
+     * @return true returns true if phone number form is correct.
+     * @return false returns false if phone number doesn't match format.
+    */
     public function validate_phone(int $number): bool {
         if (!preg_match("/\d{3}[-\s]?\d{3}[-\s]?\d{3}/", $number)) {
             return false;
@@ -40,5 +52,7 @@ class AccountManager {
         $sql = "UPDATE `users` SET `email`= ? WHERE uuid = $uid;";
         mysqli_stmt_prepare($stmt, $sql);
         mysqli_stmt_bind_param($stmt, 's', $hashed_email);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
     }
 }

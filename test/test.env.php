@@ -68,3 +68,8 @@ for ($i = 0; $i < 5; $i++) {
     }
 }
 
+$chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
+
+foreach ($chars as $key => $value) {
+    echo $value;
+} 

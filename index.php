@@ -108,7 +108,7 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-            require_once "src\classes\Offer.php";
+            require_once "src/classes/Offer.php";
 
             $offers = new Oferty($conn);
             $offers->PrintAll()
