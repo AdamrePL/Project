@@ -149,18 +149,22 @@ function generate_id(string $name): string {
     /**
      * @var array Contains digits 0-9, uppercase and lowercase english alphabet.
     */
-    $chars = [];
-    for ($i=65; $i < 90; $i++) { 
-        array_push($chars, chr($i));
-    } 
-    for ($i=97; $i < 122; $i++) { 
-        array_push($chars, chr($i));
-    } 
-    for ($i=0; $i < 9; $i++) { 
-        array_push($chars, $i);
-    }
+    
+    // $chars = [];
+    // for ($i=65; $i < 90; $i++) { 
+    //     array_push($chars, chr($i));
+    // } 
+    // for ($i=97; $i < 122; $i++) { 
+    //     array_push($chars, chr($i));
+    // } 
+    // for ($i=0; $i < 9; $i++) { 
+    //     array_push($chars, $i);
+    // }
 
-    return strtolower($name) . "#" . array_rand($chars, 3);
+    // return strtolower($name) . "#" . array_rand($chars, 3);
+    require_once "../src/classes/IDGenerator.php";
+    $idgenerator = new IDGenerator(3, true, $name);
+    return $idgenerator->generate_ID();
 }
 
 

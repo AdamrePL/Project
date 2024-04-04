@@ -2,8 +2,9 @@
 class IDGenerator{
     private $length;
     private $include_numbers;
+    private $name;
     
-    public function __construct(int $length = 3, bool $include_numbers = true)
+    public function __construct(int $length = 3, bool $include_numbers = true, string $name)
     {
         $this->length = $length;
         $this->include_numbers = $include_numbers;
@@ -29,6 +30,17 @@ class IDGenerator{
         $this->include_numbers = $include_numbers;
     }
 
+    public function get_name(): string
+    {
+        return $this->name;
+    }
+    
+    public function set_name(string $name): void
+    {
+        $this->name = $name;
+    }
+
+
     public function generate_ID(): string
     {
         $result = "";
@@ -38,6 +50,6 @@ class IDGenerator{
             $result = $result . chr($selection[array_rand($selection)]);
         }
 
-        return $result;
+        return $this->name . $result;
     }
 }
