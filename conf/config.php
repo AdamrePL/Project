@@ -18,7 +18,7 @@
     */ 
 
     try {
-        $conn = mysqli_connect(SERVER, DB_USER, DB_PWD, DB);
+        $conn = new mysqli(SERVER, DB_USER, DB_PWD, DB);
     } catch (Exception $err) {
         $conn_err = "Error code: " . mysqli_connect_errno() . " - Failed to connect to MySQL: " . mysqli_connect_error();
         $conn_err .= "<font color='crimson'>\nW przypadku wystąpienia tego błedu, proszę powiadomić administratora strony!</font>";
