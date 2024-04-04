@@ -19,7 +19,7 @@
     <header>
         <hgroup>
             <h1><?php echo SITENAME; ?> TLiMC</h1>
-            <p>wewnątrzszkolna wymiana podręczników</p>
+            <p>wewnątrzszkolna wymiana podręcznikós</p>
         </hgroup>
         <menu>
             <nav>
