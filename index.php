@@ -28,7 +28,7 @@
                 <?php
                     echo !isset($_SESSION["uid"]) ? '<a href="src/access.php">Zaloguj</a>' : '<a href="src/profile.php">moj profil</a>';
                 ?>
-            </nav>  
+            </nav>
         </menu>
     </header>
     
@@ -47,7 +47,7 @@
     </nav>
 
     <main id="przegladaj">
-        <h1>Dostępne oferty</h1>
+        <h1>Przeglądaj oferty</h1>
         <search>
             <fieldset class="filters">
                 <legend>&nbsp;Typ oferty&nbsp;</legend>
@@ -90,7 +90,7 @@
                 <input type="submit" value="&#x1F50D;" />
                 <datalist id="books-search-list">
                     <?php 
-                        // $sql = "SELECT DISTINCT `name` FROM `booklist`"; Wszystkie */
+                        // $sql = "SELECT DISTINCT `name` FROM `booklist`"; /* Wszystkie */
                         $sql = "SELECT DISTINCT `id`, `name` FROM `products`"; /* Dostępne */
                         $query = mysqli_query($conn,$sql);
                         while ($result = mysqli_fetch_array($query)) {

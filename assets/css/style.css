@@ -266,8 +266,7 @@ main {
     flex-wrap: wrap;
 }
 
-.offers{
-}
+/* a:has(.offer) { */
 .offer {
   /* ! Dwie linie poniżej oraz jedna powyżej selektora jest na wypadek gdyby oferta miala byc zamknięta w <a> tagu
     /* color: inherit;

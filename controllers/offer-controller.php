@@ -159,8 +159,8 @@ for ($i = 0; $i < $book_count; $i++) {
     $custom = intval($isCustom);
     
     mysqli_stmt_bind_param($stmt, 'issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
-    $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', $isCustom)";
-    mysqli_query($conn, $sql);
+    // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', $isCustom)";
+    // mysqli_query($conn, $sql);
     mysqli_stmt_execute($stmt);
 }
 
