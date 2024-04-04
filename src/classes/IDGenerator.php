@@ -8,6 +8,7 @@ class IDGenerator{
     {
         $this->length = $length;
         $this->include_numbers = $include_numbers;
+        $this->name = $name;
     }
     
     public function get_length(): int
@@ -50,6 +51,6 @@ class IDGenerator{
             $result = $result . chr($selection[array_rand($selection)]);
         }
 
-        return $this->name . $result;
+        return $this->name . "#" . $result;
     }
 }
