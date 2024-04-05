@@ -1,8 +1,7 @@
 <?php 
 // $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "../conf/config.php"; ?>
+require_once "../conf/config.php"; 
 
-<?php 
 if (!isset($_SESSION["uid"])) {
     header("Location: /");
 }
@@ -145,7 +144,7 @@ if (!isset($_SESSION["uid"])) {
                         echo '<span>Oferta wygasa: ' . $result["offer-edate"] . '</span>';
                         echo '<span><a href="" class="offer_management edit">edytuj</a> <a href="" class="offer_management change">zmień status</a></span>';
                         echo '</span>'; 
-
+                        
                         echo '</div>';    
                     }
 

@@ -72,8 +72,11 @@
                 <button type="button">Dodaj pole</button>
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
-            <input type="submit" value="Create Offer" name="standard" />
-            <input type="reset" value="Reset" />
+
+            <input type="checkbox" id = "publish-data-agreement" name = "personal-data-agreement" required>
+            <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
+            <p><input type="submit" value="Create Offer" name="standard" />
+            <input type="reset" value="Reset" /></p>    
         </form>
 
         <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego

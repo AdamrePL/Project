@@ -9,6 +9,10 @@ class Oferty
         $this->conn = $conn;
     }
 
+    public function ShowButton (){
+        echo '<button>Pokaż</button>';
+    }
+
     public function PrintAll(){
         $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
         $query = mysqli_query($this->conn, $sql);
@@ -16,13 +20,13 @@ class Oferty
 
         while ($result = mysqli_fetch_assoc($query)){
             date_default_timezone_set('Europe/Warsaw');
-            $FormatDate = date('Y-m-d H:i:s');
-            
+            $FormatDate = date('d.m.Y');
 
             if ($FormatDate >= date($result["offer-edate"])){
                 $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
                 $this->conn->query($sqlupdate);
             }
+
             echo '<div class="offer">';
                         $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
                         $query2 = mysqli_query($this->conn, $sql2);
@@ -43,24 +47,22 @@ class Oferty
                         } else {
                             $result2 = mysqli_fetch_assoc($query2);
                             echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
-                            echo $FormatDate;
                         }
-                        
-                        echo '<details>';
-                        echo '<summary>Dane kontaktowe</summary>';
-                        echo $FormatDate;
-                        echo $result["phone"];
-                        echo $result["email"];
-                        echo $result["discord"];
-                        echo '</details>';
-                        
+                      
+
+
+                        echo 'Dane kontaktowe';
+                        ShowButton();            
+                        //!WILL BE FINISHED            
                         echo '<span class="offer-date">';
-                            echo '<span>oferta utworzona: ' . $result["offer-cdate"]  . '</span>';
-                            echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
+                            echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
+                            echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
                         echo '</span>';
                     echo '</div>';
-        }
 
+                    
+        }
+        
     }
 
      
