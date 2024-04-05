@@ -111,7 +111,8 @@
             require_once "src/classes/Offer.php";
 
             $offers = new Oferty($conn);
-            $offers->PrintAll()
+            $offers->deleteIf30();
+            $offers->PrintAll();
             ?>
     </main>
 
