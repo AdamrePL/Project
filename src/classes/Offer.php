@@ -15,12 +15,12 @@ class Oferty
         
 
         while ($result = mysqli_fetch_assoc($query)){
-            $date = date_default_timezone_set('Europe/Warsaw');
-            $FormatDate = date('Y-m-d H:i:s',$date);
+            date_default_timezone_set('Europe/Warsaw');
+            $FormatDate = date('Y-m-d H:i:s');
             
 
-            if ($FormatDate <= $result["offer-edate"]){
-                $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1'" ;
+            if ($FormatDate >= date($result["offer-edate"])){
+                $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
                 $this->conn->query($sqlupdate);
             }
             echo '<div class="offer">';
@@ -47,14 +47,15 @@ class Oferty
                         }
                         
                         echo '<details>';
-                        echo '<summary>Dane kontaktowe chuj</summary>';
+                        echo '<summary>Dane kontaktowe</summary>';
+                        echo $FormatDate;
                         echo $result["phone"];
                         echo $result["email"];
                         echo $result["discord"];
                         echo '</details>';
                         
                         echo '<span class="offer-date">';
-                            echo '<span>oferta utworzsdadsadsdona: ' . $result["offer-cdate"]  . '</span>';
+                            echo '<span>oferta utworzona: ' . $result["offer-cdate"]  . '</span>';
                             echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
                         echo '</span>';
                     echo '</div>';
