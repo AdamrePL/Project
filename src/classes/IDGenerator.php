@@ -14,6 +14,7 @@
 
 // jezeli chodzi o pliki, to pls pls pls, zeby wszytko bylo z malych liter odzielane znakiem '-' (lub nie odzielane), ale zeby byl jeden styl ich nazewnictwa
 // czyli np. uzywamy tylko xxxx-xxx.php, albo xxxx.xxxxxx.php, albo, xxxxxxx.php
+// klase sie pisze z dużej litery ale dalej to spoko 🤙 @chopa113
 
 // a co do sciezek, zrobilem taki fajny trik, jezeli wpiszecie $_SERVER["BASE"], to przeniesie was do folderu głownego, 
 // a sciezka bedzie wygladac nastepujaco: 
