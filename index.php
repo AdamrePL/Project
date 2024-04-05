@@ -100,6 +100,7 @@
                 </datalist>
             </form>
         </search>
+<<<<<<< Updated upstream
         <?php 
             $sql = "SELECT COUNT(*) AS `ilosc-ofert` FROM `offers` WHERE `status` = 1";
             $query = mysqli_query($conn, $sql);
@@ -111,6 +112,21 @@
                 // $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8');
                 $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20"; //finalne zapytanie
                 // $sql = "SELECT * FROM `offers` LIMIT 20";
+=======
+
+
+        <p>Liczba dostępnych ofert: 
+            <?php 
+                $sql = "SELECT COUNT(*) AS active_offers FROM `offers` WHERE `status` = 1";
+                $query  = mysqli_query($conn, $sql);
+                $result =  mysqli_fetch_assoc($query);
+                echo $result['active_offers'];
+             ?>
+        </p>
+
+            <?php
+                $sql = "SELECT * FROM `offers`WHERE `status` = 1 " ;
+>>>>>>> Stashed changes
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) {
                     // echo '<a href="?offer='.$result["id"].'">';
@@ -150,6 +166,10 @@
                     echo '</div>';
                     // echo '</a>';
                 }
+<<<<<<< Updated upstream
+=======
+              
+>>>>>>> Stashed changes
             ?>
         </div>
     </main>
