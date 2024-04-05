@@ -15,6 +15,7 @@ class Oferty
         
 
         while ($result = mysqli_fetch_assoc($query)){
+            // Setting current date, i dont know but we can add this to the config
             date_default_timezone_set('Europe/Warsaw');
             $FormatDate = date('Y-m-d H:i:s');
             
@@ -48,7 +49,6 @@ class Oferty
                         
                         echo '<details>';
                         echo '<summary>Dane kontaktowe</summary>';
-                        echo $FormatDate;
                         echo $result["phone"];
                         echo $result["email"];
                         echo $result["discord"];
