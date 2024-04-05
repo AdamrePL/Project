@@ -2,34 +2,34 @@
 
 function user_exists(mysqli $conn, $uid): bool {
     $sql = "SELECT * FROM `users` WHERE uuid = ?;";
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $uid);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt = $conn->stmt_init();
+    $stmt->prepare($sql);
+    $stmt->bind_param("s", $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
     return mysqli_num_rows($result) > 0;
 }
 
 function get_user_password(mysqli $conn, $uid): string {
     $sql = "SELECT `password` FROM `users` WHERE uuid = ? LIMIT 1;";
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $uid);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt = $conn->stmt_init();
+    $stmt->prepare($sql);
+    $stmt->bind_param("s", $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
     $row = mysqli_fetch_assoc($result);
     return $row["password"];
 }
 
 function update_last_login(mysqli $conn, string $uid) {
     $sql = "UPDATE `users` SET `last-login` = NOW() WHERE uuid = ?";
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $uid);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt = $conn->stmt_init();
+    $stmt->prepare($sql);
+    $stmt->bind_param("s", $uid);
+    $stmt->execute();
+    $stmt->close();
 }
 
 /**
@@ -54,7 +54,7 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 
     $hashed_email = convert_uuencode(base64_encode($email));
 
-    $stmt = mysqli_stmt_init($conn);
+    $stmt = $conn->stmt_init();
     if (!empty($password) || $password != "") {
         $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
         
@@ -63,18 +63,18 @@ function create_user(mysqli $conn, string $name, string $email, string $password
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             return false;
         }
-        mysqli_stmt_bind_param($stmt, "ssss", $uid, $name, $hashed_pass, $hashed_email);
+        $stmt->bind_param("ssss", $uid, $name, $hashed_pass, $hashed_email);
     } else {
         // $sql = "INSERT INTO `users` VALUES(?, ?, '', '', '', ?, '', '', '', '');";
         $sql = "INSERT INTO `users`(`uuid`,`username`,`email`) VALUES(?, ?, ?);";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             return false;
         }
-        mysqli_stmt_bind_param($stmt, "sss", $uid, $name, $hashed_email);
+        $stmt->bind_param("sss", $uid, $name, $hashed_email);
     }
     
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt->execute();
+    $stmt->close();
 
     return $uid;
 }

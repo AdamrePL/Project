@@ -90,8 +90,8 @@ $isCustom = false; // change when we add handling for custom creation
 
 $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
+$stmt = $conn->stmt_init();
+$stmt->prepare($sql);
 
 for ($i = 0; $i < $book_count; $i++) {
     if (!$isCustom) {
@@ -158,10 +158,10 @@ for ($i = 0; $i < $book_count; $i++) {
 // ? Now here's question.. do we store status as a number that represents a status, like a flag, or as a string (word), my guess is number cuz then we can do bitmask operations.. but then, why would we want that?
     $custom = intval($isCustom);
     
-    mysqli_stmt_bind_param($stmt, 'issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
+    $stmt->bind_param('issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
     // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', $isCustom)";
     // mysqli_query($conn, $sql);
-    mysqli_stmt_execute($stmt);
+    $stmt->execute();
 }
 
 // $ext = "png";

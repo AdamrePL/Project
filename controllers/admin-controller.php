@@ -25,11 +25,11 @@ foreach ($json_data as $klasa => $value) { // class loop
         //& note to self: set record count to 500 in phpMyAdmin to avoid 30 minutes of debugging perfectly fine code
         if (!empty($title)) {
             $sql = "INSERT INTO `booklist` VALUES('',?,?,?,?,?)";
-            $stmt = mysqli_stmt_init($conn);
-            mysqli_stmt_prepare($stmt, $sql);
-            mysqli_stmt_bind_param($stmt, 'ssiss', $title, $subject, $class, $author, $publisher);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);
+            $stmt = $conn->stmt_init();
+            $stmt->prepare($sql);
+            $stmt->bind_param('ssiss', $title, $subject, $class, $author, $publisher);
+            $stmt->execute();
+            $stmt->close();
         }
     }
 }

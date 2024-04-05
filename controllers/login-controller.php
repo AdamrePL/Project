@@ -54,17 +54,18 @@ if (password_verify($_POST["l_password"], $pwd)) {
 }
 
 $sql = "SELECT * FROM `users` WHERE uuid = ?;";
-$stmt = mysqli_stmt_init($conn);
-mysqli_stmt_prepare($stmt, $sql);
-mysqli_stmt_bind_param($stmt, 's', $uid);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$stmt = $conn->stmt_init();
+$stmt->prepare($sql);
+$stmt->bind_param('s', $uid);
+$stmt->execute();
+$result = $stmt->get_result();
 if ($result = mysqli_fetch_assoc($result)) {
     session_regenerate_id(true);
     $_SESSION["uid"] = $result["uuid"];
     $_SESSION["isadmin"] = $result["admin"];
     $_SESSION["username"] = $result["username"];
 }
+$stmt->close();
 
 update_last_login($conn, $uid);
 header("Location: ../src/profile.php?info=success");
