@@ -19,6 +19,7 @@ class Oferty
         
 
         while ($result = mysqli_fetch_assoc($query)){
+            // Setting current date, i dont know but we can add this to the config
             date_default_timezone_set('Europe/Warsaw');
             $FormatDate = date('d.m.Y');
 
