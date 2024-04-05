@@ -12,6 +12,7 @@ class Oferty
     public function PrintAll(){
         $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
         $query = mysqli_query($this->conn, $sql);
+        
 
         while ($result = mysqli_fetch_assoc($query)){
             $date = date_default_timezone_set('Europe/Warsaw');
