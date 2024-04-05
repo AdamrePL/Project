@@ -14,6 +14,7 @@ class Oferty
     public function PrintAll(){
         $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
         $query = mysqli_query($this->conn, $sql);
+        
 
         while ($result = mysqli_fetch_assoc($query)){
             echo '<div class="offer">';
@@ -46,8 +47,8 @@ class Oferty
                         echo '</details>';
                         
                         echo '<span class="offer-date">';
-                            echo '<span>oferta utworzona: ' . $result["offer-cdate"] . '</span>';
-                            echo '<span>oferta wygasa: ' . $result["offer-edate"] . '</span>';
+                            echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"])) . '</span>';
+                            echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
                         echo '</span>';
                     echo '</div>';
         }
