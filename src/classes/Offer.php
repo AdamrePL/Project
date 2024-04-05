@@ -9,18 +9,51 @@ class Oferty
         $this->conn = $conn;
     }
 
+    public function FormatDate (){
+        date_default_timezone_set('Europe/Warsaw');
+        $FormatDate = date('Y-m-d H:i:s');
+        return $FormatDate;
+    }
+
+
+    public function dateToDays($date1, $date2){
+        $diff = strtotime($date1) - strtotime($date2);
+        return round($diff/86400);
+
+    }
+
+    public function deleteIf30 (){
+        $sql = "SELECT * FROM `offers`";
+        foreach($this->conn->query($sql) as $row){
+            if (self::dateToDays(self::FormatDate(),$row["offer-edate"])){
+                // $sqldel1 = "ALTER TABLE `offers`
+                // ADD CONSTRAINT `offers_ibfk_2`
+                // FOREIGN KEY(`id`) REFERENCES `products` (`offer-id`)
+                // ON DELETE CASCADE";
+                $this->conn->query('ALTER TABLE `offers` DISABLE KEYS'); //robie jeszcze to!!!!!!!!
+                $sqldel = "DELETE FROM `offers` WHERE `id` = " .$row["id"];
+                $this->conn->query('ALTER TABLE `offers` ENABLE KEYS');
+                    // $this->conn->exec($sqldel);
+
+                mysqli_query($this->conn, $sqldel);
+                // mysqli_query($this->conn, $sqldel);
+                
+            }
+        }
+    }
+
     public function PrintAll(){
         $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
         $query = mysqli_query($this->conn, $sql);
         
 
         while ($result = mysqli_fetch_assoc($query)){
-            // Setting current date, i dont know but we can add this to the config
-            date_default_timezone_set('Europe/Warsaw');
-            $FormatDate = date('Y-m-d H:i:s');
+            // Setting current date, i dont know but we can add this to the config   
             
+            
+            echo "<script>console.log('Debug Objects: " . self::dateToDays(self::FormatDate(),$result["offer-edate"]) . "' );</script>"; //tylko test
 
-            if ($FormatDate >= date($result["offer-edate"])){
+            if (self::FormatDate() >= date($result["offer-edate"])){
                 $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
                 $this->conn->query($sqlupdate);
             }
@@ -44,7 +77,6 @@ class Oferty
                         } else {
                             $result2 = mysqli_fetch_assoc($query2);
                             echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
-                            echo $FormatDate;
                         }
                         
                         echo '<details>';
