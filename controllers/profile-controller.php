@@ -16,7 +16,7 @@
 
     if($if_pass_set && ($pass === $passCheck)){
         $sql = "UPDATE `users` SET `password` = $pass WHERE `uuid` = ?";
-        $stmt = mysqli_stmt_init($conn);
+        $stmt = $conn->stmt_init();
         mysqli_stmt_prepare($stmt,$sql);
         mysqli_stmt_bind_param($stmt,"s",$uid);
         mysqli_stmt_execute($stmt);
@@ -40,12 +40,12 @@
     
     if($mail_flag){
         $sql = "UPDATE `users` SET `email-flag` = 1 WHERE `uuid` = ?";
-        $stmt = mysqli_stmt_init($conn);
-        mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"s",$uid);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        mysqli_stmt_close($stmt);
+        $stmt = $conn->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param("s",$uid);
+        $stmt->execute();
+        $result = $stmt->get_result($stmt);
+        $stmt->close();
         echo $result;
     }
 
