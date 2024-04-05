@@ -15,7 +15,6 @@ class Oferty
         return $FormatDate;
     }
 
-
     public function dateToDays($date1, $date2){
         $diff = strtotime($date1) - strtotime($date2);
         return round($diff/86400);
@@ -25,18 +24,20 @@ class Oferty
     public function deleteIf30 (){
         $sql = "SELECT * FROM `offers`";
         foreach($this->conn->query($sql) as $row){
-            if (self::dateToDays(self::FormatDate(),$row["offer-edate"])){
-                // $sqldel1 = "ALTER TABLE `offers`
-                // ADD CONSTRAINT `offers_ibfk_2`
-                // FOREIGN KEY(`id`) REFERENCES `products` (`offer-id`)
-                // ON DELETE CASCADE";
-                $this->conn->query('ALTER TABLE `offers` DISABLE KEYS'); //robie jeszcze to!!!!!!!!
-                $sqldel = "DELETE FROM `offers` WHERE `id` = " .$row["id"];
-                $this->conn->query('ALTER TABLE `offers` ENABLE KEYS');
-                    // $this->conn->exec($sqldel);
+            //check date
+            if (self::dateToDays(self::FormatDate(),$row["offer-edate"]) >= 30){
 
-                mysqli_query($this->conn, $sqldel);
-                // mysqli_query($this->conn, $sqldel);
+                $this->conn->query("SET FOREIGN_KEY_CHECKS = 0");
+
+                $this->conn->query("ALTER TABLE `offers` DROP FOREIGN KEY `offers_ibfk_1`");
+                
+                $deleteoffer = "DELETE FROM `offers` WHERE `id` = " . $row["id"];
+                $this->conn->query($deleteoffer);
+                $deleteproduct = "DELETE FROM `products` WHERE `offer-id` = " .$row['id'];
+                $this->conn->query($deleteproduct);
+
+                $this->conn->query("ALTER TABLE `offers` ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION");
+                $this->conn->query("SET FOREIGN_KEY_CHECKS = 1");
                 
             }
         }
@@ -48,7 +49,6 @@ class Oferty
         
 
         while ($result = mysqli_fetch_assoc($query)){
-            // Setting current date, i dont know but we can add this to the config   
             
             
             echo "<script>console.log('Debug Objects: " . self::dateToDays(self::FormatDate(),$result["offer-edate"]) . "' );</script>"; //tylko test
@@ -57,7 +57,6 @@ class Oferty
                 $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
                 $this->conn->query($sqlupdate);
             }
-
             echo '<div class="offer">';
                         $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
                         $query2 = mysqli_query($this->conn, $sql2);
@@ -83,8 +82,8 @@ class Oferty
 
 
                         echo 'Dane kontaktowe';
-                        ShowButton();            
-                        //!WILL BE FINISHED            
+                        // ShowButton();            
+                        // //!WILL BE FINISHED            
                         echo '<span class="offer-date">';
                             echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                             echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
