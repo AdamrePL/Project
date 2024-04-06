@@ -10,6 +10,7 @@ RewriteRule ^.*$ - [E=BASE:%2]
 RewriteRule ^db/$ - [F,L]
 RewriteRule ^src/$ - [F,L]
 RewriteRule ^controllers/$ - [F,L]
+RewriteRule ^classes/$ - [F,L]
 RewriteRule ^conf/$ - [F,L]
 # Block access from assets folder
 RewriteRule ^assets/$ - [F,L]

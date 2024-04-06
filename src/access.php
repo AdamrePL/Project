@@ -2,8 +2,9 @@
 
 <?php
     if (isset($_SESSION["uid"])) {
-        header("Location: / ");
-        exit(403);
+        header("HTTP/1.0 403 Forbidden", true, 403);
+        header("Location: ". $_SERVER["BASE"]);
+        exit();
     }
 ?>
 

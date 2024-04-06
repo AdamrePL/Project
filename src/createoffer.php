@@ -3,12 +3,6 @@
 <!-- /**
 * ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
     * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
-
-* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
-    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
-
-* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
-    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
 */ -->
 
 <head>
@@ -90,9 +84,9 @@
                         
                         <select name="quality">
                             <?php
-                                for ($q = 0; $q < count($quality); $q++){
-                                    echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                                }
+                                // for ($q = 0; $q < count($quality); $q++){
+                                //     echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                                // }
                                 ?>
                         </select>
                         

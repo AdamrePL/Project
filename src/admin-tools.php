@@ -3,7 +3,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 require_once $abspath."conf/config.php"; 
 
 if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] < 1) {
-    header("Location: $abspath");
+    header("Location: ". $_SERVER["BASE"]);
 }
 ?>
 <!DOCTYPE html>

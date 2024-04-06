@@ -1,5 +1,5 @@
 <?php
-class Footer{
+class Footer {
     private $content;
     public function __construct(string $content){
         $this->content = $content;

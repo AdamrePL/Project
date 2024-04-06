@@ -1,4 +1,7 @@
-<?php require_once "conf/config.php"; ?>
+<?php 
+require_once "conf/config.php"; 
+$abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -86,7 +89,7 @@
 
             </fieldset> -->
             <form method="get">
-                <input type="search" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
+                <input type="search" pattern="[^'\x22]+" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
                 <input type="submit" value="&#x1F50D;" />
                 <datalist id="books-search-list">
                     <?php 
@@ -108,7 +111,7 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-            require_once "src/classes/Offer.php";
+            require_once "classes/Offer.php";
 
             $offers = new Oferty($conn);
             $offers->deleteIf30();

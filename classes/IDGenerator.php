@@ -33,6 +33,9 @@
 class IDGenerator {
     private $length;
     private $name;
+    /**
+     * @var array Contains digits 0-9, uppercase and lowercase english alphabet letters.
+    */
     private $chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
     private string $split_character = '#';
     
@@ -61,7 +64,6 @@ class IDGenerator {
     {
         $this->name = $name;
     }
-
 
     public function generate_uid(): string
     {

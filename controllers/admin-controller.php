@@ -11,6 +11,9 @@ mysqli_query($conn,"TRUNCATE TABLE `booklist`;");
 
 $json_data = file_get_contents("$abspath.assets/downloads/booklist.json");
 $json_data = json_decode($json_data);
+$sql = "INSERT INTO `booklist` VALUES('', ?, ?, ?, ?, ?)";
+$stmt = $conn->stmt_init();
+$stmt->prepare($sql);
 foreach ($json_data as $klasa => $value) { // class loop
     $class = $klasa;
     echo '<h1>Klasa: ' . $class . '</h1>';
@@ -24,14 +27,11 @@ foreach ($json_data as $klasa => $value) { // class loop
 
         //& note to self: set record count to 500 in phpMyAdmin to avoid 30 minutes of debugging perfectly fine code
         if (!empty($title)) {
-            $sql = "INSERT INTO `booklist` VALUES('',?,?,?,?,?)";
-            $stmt = $conn->stmt_init();
-            $stmt->prepare($sql);
             $stmt->bind_param('ssiss', $title, $subject, $class, $author, $publisher);
             $stmt->execute();
-            $stmt->close();
         }
     }
 }
+$stmt->close();
 
 ?>

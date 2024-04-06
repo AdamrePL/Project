@@ -79,34 +79,7 @@ function create_user(mysqli $conn, string $name, string $email, string $password
     return $uid;
 }
 
-
-/**
- * @param string $name Username, not person's name.
- * 
- * @return string
- * Returns Unique User Identifier.
- * Sets username to lowercase and concatenates with '#' and 3 randomly generated characters.
- * 
- * Characters are taken from defined within a function - list of specific ASCII characters.
- */
-// Generates random string of 3 characters from specific ASCII characters.
 function generate_id(string $name): string {
-    /**
-     * @var array Contains digits 0-9, uppercase and lowercase english alphabet.
-    */
-    
-    // $chars = [];
-    // for ($i=65; $i < 90; $i++) { 
-    //     array_push($chars, chr($i));
-    // } 
-    // for ($i=97; $i < 122; $i++) { 
-    //     array_push($chars, chr($i));
-    // } 
-    // for ($i=0; $i < 9; $i++) { 
-    //     array_push($chars, $i);
-    // }
-
-    // return strtolower($name) . "#" . array_rand($chars, 3);
     require_once "../src/classes/IDGenerator.php";
     $idgenerator = new IDGenerator(3, $name);
     return $idgenerator->generate_uid();
