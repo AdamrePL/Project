@@ -40,15 +40,24 @@ article > p {
     padding-left: 1rem;
 }
 
+#definitions > dl {
+    font-size: 1.2em;
+}
+
+#definitions > dl > dt {
+    margin-top: 1em;
+    font-weight: bold;
+}
+
 #definitions > span > p {
     padding-left: 1rem;
 }
 
 ::-moz-selection {
     color: black;
-    background-color: mediumspringgreen; /* Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */
+    background-color: aqua; /* Side note: We could use transparent background with different font-color for something else as it's very interesting, atleast idea of it is. */
     /** 
-       * ! Options that I tried/recommend: yellow, lime, limegreen, aqua, greenyellow (not to be mistaken with yellowgreen).
+       * ! Options that I tried/recommend: yellow, lime, limegreen, mediumspringgreen, greenyellow (not to be mistaken with yellowgreen).
     */       
 }
 
