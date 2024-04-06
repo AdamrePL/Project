@@ -14,22 +14,22 @@
 </head>
 
 <body>
-    <div class="access-wrapper">
-        <div class="logo">
+    <main class="access-wrapper">
+        <picture class="logo">
             <img src="../assets/img/logo.png" />
-        </div>
+        </picture>
 
         <div class="line"></div>
 
         <?php 
             if (!isset($_GET["page"])) {
-                $_GET["page"]="";
+                $_GET["page"] = "login";
             }
             switch ($_GET["page"]) {
                 case 'register':
                     echo '<div class="form-wrapper">';
-                    echo '<h1>Rejestracja</h1>';
-                    echo '<form method="post" action="../controllers/register-account.php" class="user-form">';
+                    echo '<h1>rejestracja</h1>';
+                    echo '<form method="post" action="../controllers/register-account.php">';
                         echo '<input type="text" name="username" title="Nazwa musi zaczynać się od litery&#013;jedyny dozwolony znak specjalny to _&#013;Maksymalnie 30 znaków" pattern="[a-zA-Z]{1}\w{2,29}" minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" value="'; echo isset($_GET["username"]) ? $_GET["username"] : ""; echo '" required />';
                         echo '<span class="error-msg">';
                             if (isset($_GET["error"]) && $_GET["error"] == "incorrect-username") echo "nieprawidłowa nazwa użytkownika";
@@ -52,7 +52,7 @@
                             if (isset($_GET["error"]) && $_GET["error"] == "reapeat-required") echo "wymagane powtórzenie hasła";
                             if (isset($_GET["error"]) && $_GET["error"] == "passwords-dont-match") echo "hasła się nie zgadzają";
                         echo '</span>';
-                        echo '<span>Akceptuję Regulamin oraz <a href="terms-of-service.html">Politykę Prywatności</a><input type="checkbox" name="accept_tos" required /> </span>';
+                        echo '<label><input type="checkbox" name="accept_tos" required />Akceptuję Regulamin oraz <a href="terms-of-service.html">Politykę Prywatności</a></label>';
                         echo '<span class="error-msg">';
                             if (isset($_GET["error"]) && $_GET["error"] == "agreement-rejected") echo "wymagana akceptacja tos-u";
                             if (isset($_GET["error"]) && $_GET["error"] == "empty-fields") echo "pole nazwy lub email nie zostało wypełnione";
@@ -69,9 +69,9 @@
                 
                 default:
                     echo '<div class="form-wrapper">';
-                    echo '<h1>Logowanie</h1>';
+                    echo '<h1>logowanie</h1>';
                     echo '<form method="post" action="../controllers/login-controller.php" class="user-form">';
-                        echo '<input type="text" name="user-id" minlength="7" maxlength="34" pattern="\w{3,30}(#[a-zA-Z0-9]{3})" placeholder="ID użytkownika; ala#xxx" autocomplete="off" autofocus />';
+                        echo '<input type="text" name="user-id" minlength="7" maxlength="34" pattern="\w{3,30}(#[a-zA-Z0-9]{3})" placeholder="ID użytkownika" autocomplete="off" autofocus required />';
                         echo '<span class="error-msg">';
                             if (isset($_GET["error"]) && $_GET["error"] == "incorrect-uid") echo "niepoprawne uid";
                             if (isset($_GET["error"]) && $_GET["error"] == "incorrect-tag") echo "niepoprawny tag";
@@ -92,5 +92,5 @@
                     break;
             }
         ?>
-    </div>
+    </main>
 </body>

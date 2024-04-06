@@ -1,20 +1,51 @@
 @import "global.css";
 
-* {
-    margin: revert;
-}
-
 body {
-    min-height: 100svh;
     margin: 0;
     display: flex;
     align-items: center;
+    font-size: 16px;
+}
+
+main {
+    --_line-width: 2px;
+    height: max(500px, 85svh);
+    min-width: max(600px, 95svw);
+    margin-inline: auto;
+    background: rgb(var(--secondary));
+    display: flex;
+    box-shadow: 0px 0px 8px 0.1px gray;
+    align-items: center;
+    flex-direction: row;
+    /* flex-direction: row-reverse; */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    flex: 1;
+}
+
+.logo img {
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.line {
+    width: var(--_line-width);
+    background: rgba(100, 100, 100, 0.5);
+    height: 90%;
+    box-shadow: 1px 0px 1px 0.1px rgba(200, 200, 200, 0.5);
+    margin: 0;
 }
 
 h1 {
     text-align: center;
     text-transform: capitalize;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 h1::after {
@@ -25,89 +56,44 @@ h1::after {
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    /* background: gray; */
     background: linear-gradient(90deg, rgba(80, 80, 80, 0.5), rgba(50, 50, 50, 0.8),rgba(80, 80, 80, 0.5));
     box-shadow: 0px 1px 1px 0.1px rgba(200, 200, 200, 0.5);
 }
 
-.access-wrapper {
-    --line-width: 2px;
-    height: max(400px, 85svh);
-    min-width: max(600px, 95svw);
-    margin-inline: auto;
-    background: rgb(var(--secondary));
-    display: flex;
-    box-shadow: 0px 0px 8px 0.1px gray;
-    align-items: center;
+.form-wrapper {
+    flex: 2.5;
 }
 
-.access-wrapper > * {
-    height: 50%;
-    width: calc(50% - var(--line-width) / 2);
-    margin-inline: auto;
-}
-
-.access-wrapper > :first-child {
-    width: 35%;
-}
-
-input:invalid {
-    color: red;
-}
-
-.user-form {
-    width: 80%;
-    margin-inline: auto;
+form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 0.2rem;
 }
 
-.user-form > * {
-    margin-inline: auto;
-}
-
-.user-form > input:not([type="submit"]) {
+input:not(input[type="submit"]):not(input[type="checkbox"]) {
     border: none;
     padding: 0.5rem;
-    margin: 0.2rem;
-    position: relative;
-    width: 33.334%;
+    margin: 0.25rem;
+    background: none;
+    border-bottom: 2px solid rgb(var(--accent));
+    width: 50%;
+    font-size: 1rem;
 }
 
-.user-form > input:not([type="submit"])::after {
-    content: '';
-    width: 100%;
-    height: 1.5px;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5);
+input:not([type="submit"]):not(:placeholder-shown):invalid {
+    border-bottom: 2px solid rgb(var(--deny-error, crimson));
+}
+
+input:not([type="submit"]):not(:placeholder-shown):valid {
+    border-bottom: 2px solid rgb(var(--confirm-success, limegreen));
 }
 
 .error-msg {
     font-size: 0.8rem;
-    color: red;
+    color: rgb(var(--deny-error, crimson));
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-}
-
-.logo img {
-    height: 100%;
-    aspect-ratio: 1/1;
-}
-
-.line {
-    width: var(--line-width);
-    background: rgba(100, 100, 100, 0.5);
-    height: 90%;
-    box-shadow: 1px 0px 1px 0.1px rgba(200, 200, 200, 0.5);
-    margin: 0;
+form > input:focus-visible {
+    outline: 1px solid white;
 }

@@ -224,6 +224,11 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
+
+    user-select: none; /* All */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Edge, Internet Explorer */
+    -webkit-user-select: none; /* Chrome, Safari */
 }
 
 /* Chrome / Safari */
