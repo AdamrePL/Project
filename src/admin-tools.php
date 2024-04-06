@@ -18,7 +18,10 @@ if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] < 1) {
     
 
     <?php
-
+    // $ext = "png";
+    // foreach (glob("../_user/*.$ext") as $file) {
+    //    selects every file that ends with $ext
+    // } 
     ?>
 </body>
 </html>

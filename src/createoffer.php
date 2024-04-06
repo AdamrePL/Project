@@ -1,11 +1,23 @@
-<?php require_once "../conf/config.php"; ?>
+<?php
+require_once "../conf/config.php"; 
+$abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
+?>
 
 <!-- /**
 * ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
     * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
 */ -->
-
+<!DOCTYPE html>
+<html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo SITENAME; ?> - Utwórz oferte</title>
+
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=<?php echo $_SERVER["BASE"] . "src/noscript.html" ?>">
+    </noscript>
 
     <link rel="stylesheet" href="../assets/css/createoffer.css">
     <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script>
@@ -23,10 +35,17 @@
         <form action="../controllers/offer-controller.php" method="post" enctype="multipart/form-data">
             <div class="offer-info">
                 <div class="offer-contact">
+                    <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p>
                     <h3>Dane kontaktowe</h3>
-                    <input type="text" name="phone" placeholder="numer telefonu" />
-                    <input type="text" name="email" placeholder="e-mail" />
-                    <input type="text" name="discord" placeholder="discord tag" /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
+                    <?php 
+                        $sql = "SELECT `phone`, `email`, `discord`, `email-flag` FROM `users` WHERE uuid = '".$_SESSION["uid"]."';";
+                        $query = $conn->query($sql);
+                        $result = $query->fetch_assoc();
+                        $query->close();
+                        ?>
+                    <input type="text" name="phone" placeholder="numer telefonu" <?php echo 'value="' . $result["phone"] . '"'; ?> />
+                    <input type="text" name="email" placeholder="e-mail" <?php if ($result["email-flag"] != 0) echo 'value="'. base64_decode(convert_uudecode($result["email"])) .'"';?> />
+                    <input type="text" name="discord" placeholder="discord tag" <?php echo 'value="' . $result["discord"].'"'; ?> /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
                 </div>
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
@@ -59,8 +78,8 @@
                     </select>
                     
                     <input type="text" name="note[]" maxlength="80" multiline="true" />
-                    <input type="file" name="first_img[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                    <input type="file" name="first_img[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>
                 
                 <button type="button">Dodaj pole</button>
@@ -104,12 +123,9 @@
                 </div>
         </form> -->
     </div>
-</section>
 
 
-
-<!-- <div class="custom_offerCreate" style="padding-top: 5rem;" id="formCustom">
-    <form>
+    <!-- <form>
         <label for="book">Tytuł książki</label>
         <input type="text" name="book" maxlength="" placeholder="Tytuł książki"/>
 
@@ -188,3 +204,9 @@
         <input type="reset" value="Reset" />
     </form>
 </div>
+                -->
+
+                </section>
+                <?php include_once $abspath."src/footer.php"; ?>
+                </body>
+                </html>

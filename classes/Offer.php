@@ -77,8 +77,8 @@ class Oferty {
                 }
                 
                 echo 'Dane kontaktowe';
-                // ShowButton();            
-                // //!WILL BE FINISHED            
+                // ShowButton();
+                // //!WILL BE FINISHED
                 echo '<span class="offer-date">';
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';

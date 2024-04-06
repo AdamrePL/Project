@@ -53,13 +53,13 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
         <h1>Przeglądaj oferty</h1>
         <search>
             <fieldset class="filters">
-                <legend>&nbsp;Typ oferty&nbsp;</legend>
+                <legend>&ThinSpace;Typ oferty&ThinSpace;</legend>
                 <label>Wszystkie <input type="radio" name="offer_type" value="all" /></label>
                 <label>Pakiet <input type="radio" name="offer_type" value="bundle" /></label>
                 <label>Pojedyńcze <input type="radio" name="offer_type" value="singlular" /></label>
             </fieldset>
             <fieldset class="filters">
-                <legend>&nbsp;Klasa&nbsp;</legend>
+                <legend>&ThinSpace;Klasa&ThinSpace;</legend>
                 <?php
                 $sql = "SELECT DISTINCT `class` FROM `booklist`;";
                 $query = mysqli_query($conn, $sql);
@@ -69,7 +69,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 ?>
             </fieldset>
             <fieldset class="filters">
-                <legend>&nbsp;Przedmiot&nbsp;</legend>
+                <legend>&ThinSpace;Przedmiot&ThinSpace;</legend>
                 <select name="klasa"> <!-- multiple -->
                 <!-- <optgroup><option disabled>Wybierz klase</option></optgroup> -->
                 
@@ -83,7 +83,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 </select>
             </fieldset>
             <!-- <fieldset class="filters">
-                <legend>&nbsp;Sortuj przez&nbsp;</legend>
+                <legend>&ThinSpace;Sortuj przez&ThinSpace;</legend>
                 <label>Cene - rosnąco <input type="radio" name="sort_price" value="desc" /></label>
                 <label>Cene - malejąco <input type="radio" name="sort_price" value="desc" /></label>
 
@@ -119,9 +119,8 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             ?>
     </main>
 
-    <?php include "./src/footer.php"; ?>    
+    <?php include "./src/footer.php"; ?>
     
 </body>
 </html>
 <?php $conn -> close(); ?>
-

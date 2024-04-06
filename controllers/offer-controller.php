@@ -37,7 +37,7 @@ const CUSTOM_MAX_FILE_SIZE = 20;
  * 
  * "archived" - [experimental] opcjonalne na wypadek zostawiania ofert w bazie danych po miesiącu od zakończenia/wygasniecia oferty
  * 
- * "hidden" - [experimental] Ukryta, aby sprzedawca nie widział jej na swoim profilu
+ * "hidden" - [experimental] Ukryta, aby sprzedawca nie widział jej na swoim profilu - bardzo podobne do expired/cancelled, tylko roznica taka ze go nie widac na profilu
  */
 $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
 $offer_errors = [];
@@ -49,7 +49,7 @@ $email = str_replace(" ", "", $_POST["email"]);
 $phone = str_replace(" ", "", $_POST["phone"]);
 
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header("Location: $path_to_form?error=incorrect-email");
     exit(422);
 }
@@ -78,7 +78,7 @@ $offer_id = mysqli_insert_id($conn);
 
 $book_count = count($_POST["book"]);
 
-$file = $_FILES['first_img'];
+$file = $_FILES['image'];
 
 if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
     header("HTTP/1.0 403 Forbidden");
@@ -86,7 +86,7 @@ if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
     exit(403);
 }
 
-$isCustom = false; // change when we add handling for custom creation
+$isCustom = false; // change when we add handling for custom creation, in front end
 
 $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -98,7 +98,7 @@ for ($i = 0; $i < $book_count; $i++) {
         $sql = "SELECT * FROM `booklist` WHERE id = ".mysqli_real_escape_string($conn, $_POST["book"][$i]);
         // I know this is slow, BUT - first of all, its easier to find specific entry (row) this way, and if we were to take out everything out of database just once to look for the right entry, then we'd have to loop through all unwanted results
         $query = mysqli_query($conn, $sql);
-        while ($result = mysqli_fetch_assoc($query)) {
+        if ($result = mysqli_fetch_assoc($query)) {
             $book_name = $result["name"];
             $book_subj = $result["subject"];
             $book_class = $result["class"];
@@ -120,19 +120,21 @@ for ($i = 0; $i < $book_count; $i++) {
     // TODO FILES: add mime type check.
     // $fileType = $file['type'];
     $allowed_mimes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-    $allowed = array('png', 'jpg', 'jpeg', 'webp', 'gif', 'jif', 'jfif', 'jpe', 'pjp', 'pjpeg'); // the 'jif', 'jpe' and next extensions in array are technicaly for 'jpg' file aswell
+    $allowed_files = array('png', 'jpg', 'jpeg', 'webp', 'gif', 'jif', 'jfif', 'jpe', 'pjp', 'pjpeg'); // the 'jif', 'jpe' and next extensions in array are technicaly for 'jpg' file aswell
     
+    $file_names = [];
     for ($j = 0; $j < MAX_IMG_PER_ENTRY; $j++) {
         $pic_index = $i * MAX_IMG_PER_ENTRY + $j;
-        $file_names = [];
+        echo $pic_index;
         // you can edit it however you want, shit is crazy, so many ways to setup.
-        if ($file["name"][$pic_index] == null || $file["error"] !== 0) {
+        if ($file["name"][$pic_index] == null || $file["error"][$pic_index] !== 0) {
+            echo "skipped $pic_index";
             continue;
         }
         if ($file["size"][$pic_index] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
             $ext = strtolower(pathinfo($file["name"][$pic_index], PATHINFO_EXTENSION)); // $ext = strtolower(end(explode('.', $fileName)));
             if (in_array($ext, $allowed_files)) {
-                $fileName = $file['name'][$pic_index] = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
+                $fileName = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
                 array_push($file_names, $fileName);
                 move_uploaded_file($file["tmp_name"][$pic_index], $file_folder . $fileName);
             } else {
@@ -142,8 +144,10 @@ for ($i = 0; $i < $book_count; $i++) {
             array_push($offer_errors, "file-too-big&input-nr=".$pic_index);
         }
     }
-    $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names); echo '<br>';
+    $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names);
+    echo '<br>';
     print_r(explode(CUSTOM_ARRAY_SEPARATOR, $book_images));
+    print_r($offer_errors);
 
     // $_FILE = array(); # We might want to use this if we were to make this ... advanced, for now it has to work
     // foreach($_FILES as $name => $file) {
@@ -155,19 +159,13 @@ for ($i = 0; $i < $book_count; $i++) {
     // }
     file_put_contents("files.test.json", json_encode($_FILES, JSON_PRETTY_PRINT));
 
-// ? Now here's question.. do we store status as a number that represents a status, like a flag, or as a string (word), my guess is number cuz then we can do bitmask operations.. but then, why would we want that?
+    // ? Now here's question.. @chopa113 do we store status as a number that represents a status, like a flag, or as a string (word), my guess is number cuz then we can do bitmask operations.. but then, why would we want that?
+    // * Currently status numbers are as follows: 0 - zakonczona/ended , 1 - aktywna/active , 2 - anulowana/cancelled, 3- wygasla/expired , 4 - usunieta/removed (by admin) i 5, 6 powyzej w liscie ktore sa experymentalne
     $custom = intval($isCustom);
     
     $stmt->bind_param('issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
-    // $sql = "INSERT INTO `products` VALUES('', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price'.00', $book_qual, $book_note, '', $isCustom)";
-    // mysqli_query($conn, $sql);
     $stmt->execute();
 }
-
-// $ext = "png";
-// foreach (glob("../_user/images/*.$ext") as $file) {
-//    selects every file that ends with $ext
-// } 
 
 // $Book = array(
 //     "name"=>$title,

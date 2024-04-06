@@ -27,7 +27,7 @@
             }
             switch ($_GET["page"]) {
                 case 'register':
-                    echo '<div id="form-wrapper">';
+                    echo '<div class="form-wrapper">';
                     echo '<h1>Rejestracja</h1>';
                     echo '<form method="post" action="../controllers/register-account.php" class="user-form">';
                         echo '<input type="text" name="username" title="Nazwa musi zaczynać się od litery&#013;jedyny dozwolony znak specjalny to _&#013;Maksymalnie 30 znaków" pattern="[a-zA-Z]{1}\w{2,29}" minlength="3" maxlength="30" placeholder="Nazwa użytkownika" autocomplete="username" value="'; echo isset($_GET["username"]) ? $_GET["username"] : ""; echo '" required />';

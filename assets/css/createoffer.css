@@ -17,3 +17,7 @@ body {
     padding: 0.5rem;
     font-variant: small-caps;
 }
+
+.offer-wrapper {
+    text-align: center;
+}

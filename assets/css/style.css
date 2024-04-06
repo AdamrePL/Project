@@ -309,6 +309,11 @@ main {
     text-wrap: wrap;
 } */
 
+fieldset {
+    width: fit-content;
+    display: inline-block;
+}
+
 /**
  * @see 
  * https://reference.codeproject.com/css/:any 
