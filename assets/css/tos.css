@@ -49,7 +49,7 @@ article > p {
     font-weight: bold;
 }
 
-#definitions > span > p {
+span > p {
     padding-left: 1rem;
 }
 
