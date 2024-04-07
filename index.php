@@ -40,6 +40,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             if (isset($_SESSION["uid"])) {
                 echo '<a href="controllers/logout.php">Wyloguj</a>';
                 echo '<a href="src/profile.php#offers">Moje oferty</a>';
+                echo '<a href="src/createoffer.php">Stwórz ofertę</a>';
             } else {
                 echo '<a href="src/access.php">Zaloguj się</a>';
             }

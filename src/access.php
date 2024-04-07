@@ -62,13 +62,14 @@
                         //!hello yes please tell user UID after creation *WITHOUT* pressing this f&$*@!g button-->
                         //<span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>-->
                         echo '<input type="submit" name="reg" value="Zarejestruj">';
-                        echo '<span>Posiadasz już konto? <a href="?page=login">Zaloguj się</a></span>';
+                        echo '<span>Posiadasz już konto? <a href="?page=login">Zaloguj się</a>.</span>';
                         echo '</form>';
                         echo '</div>';
                     break;
                 
                 default:
                     echo '<div class="form-wrapper">';
+                    // echo '<a class="return-btn" href="'.$_SERVER["BASE"].'">&NestedLessLess;&nbsp;Powrót</a>';
                     echo '<h1>logowanie</h1>';
                     echo '<form method="post" action="../controllers/login-controller.php" class="user-form">';
                         echo '<input type="text" name="user-id" minlength="7" maxlength="34" pattern="\w{3,30}(#[a-zA-Z0-9]{3})" placeholder="ID użytkownika" autocomplete="off" autofocus required />';
@@ -86,7 +87,7 @@
                         echo '<span class="error-msg">';
                             if (isset($_GET["error"]) && $_GET["error"] == "l_submit-error") echo "formularz nie został prawidłowo wysłany";
                         echo '</span>';
-                        echo '<span>Nie posiadasz konta? <a href="?page=register">Zarejestruj się</a></span>';
+                        echo '<span>Nie posiadasz konta? <a href="?page=register">Zarejestruj się</a>.</span>';
                     echo '</form>';
                     echo '</div>';
                     break;

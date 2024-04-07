@@ -2,6 +2,12 @@
 
 body {
     background: rgb(var(--background));
+    min-height: 100svh;
+    font-size: 16pt;
+}
+
+h1 {
+    text-align: center;
 }
 
 .return-btn {
@@ -18,6 +24,56 @@ body {
     font-variant: small-caps;
 }
 
-.offer-wrapper {
-    text-align: center;
+input:not([type="checkbox"]) , select {
+    border: none;
+    background: none;
+    border-bottom: 2px solid rgb(var(--accent));
+    width: 20rem;
+    padding: 0.5rem;
+    margin: 0.25rem;
+    font-size: 0.95rem;
 }
+
+option {
+    color: rgb(var(--text-50));
+}
+
+form :focus-visible {
+    outline: 1px solid rgb(255,255,255, 0.667);
+    outline-offset: 3px;
+}
+
+input[type="text"]:not(:placeholder-shown):invalid {
+    border-bottom: 2px solid rgb(var(--deny-error, crimson));
+}
+
+input[type="text"]:not(:placeholder-shown):valid {
+    border-bottom: 2px solid rgb(var(--confirm-success, limegreen));
+}
+
+::-webkit-file-upload-button {
+    display: none;
+}
+
+input[type="file"] {
+    color: transparent !important;
+}
+
+input[type="file"]::before {
+    content: attr(title);
+    color: rgb(var(--text));
+}
+
+input[type="submit"], input[type="reset"] {
+    padding: 0.3rem 0.8rem;
+    margin: 0.25rem;
+    font-size: 1.2rem;
+    width: 20%;
+    border-radius: 4px 4px 0px 4px;
+    background: rgb(var(--primary-200));
+    border-bottom: 2px solid rgb(var(--primary-400));
+}
+
+/* .offer-contact, .offer-info {
+
+} */

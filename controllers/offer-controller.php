@@ -7,6 +7,12 @@ require "../conf/config.php";
 
 $abspath = $_SERVER["BASE"];
 
+if (!isset($_SESSION["uid"]) && isset($_POST["standard"])) {
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: $abspath"."src/access.php?error=session-expired");
+    exit(403);
+}
+
 if (!isset($_SESSION["uid"])) {
     header("HTTP/1.0 403 Forbidden");
     header("Location: $abspath"."src/access.php?error=access-denied-login-required");
