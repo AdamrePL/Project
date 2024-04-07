@@ -2,7 +2,8 @@
 
 body {
     color: rgb(var(--text));
-    font-size: 1.5em;
+    /* font-size: 16pt; */
+    font-size: 1.5em; /*== 24px*/
     background: rgb(var(--background));
 }
 
@@ -93,6 +94,7 @@ header > menu > nav > a {
     border-bottom: 5px solid rgb(var(--secondary));
     box-shadow: 0px 0px 3px 0.5px rgba(var(--primary-500),0.5);
     transition: all 0.175s ease-in-out;
+    text-transform: capitalize;
 }
 
 header > menu > nav > a:hover,
@@ -135,15 +137,6 @@ nav a:link {
     text-decoration: none;
 }
 
-/*
-idea for background: get b-roll footage/images of some book activities (reading,handling,etc), set background to opaque,
-roll them mfs like a movie
-
-aight bet >:)
-get them images first tho
-we make it npc-ahh website
-*/
-
 /* & Stara stylizacja in case of backup or idk */
 /* #nawigacja { /* //nadal trzeba zmienić nową booooo wielkości są różne w zależności od ulozenia oraz wielkosci strony, mimo to i tak ledwo widoczne ale sa
     width: 80%;
@@ -183,7 +176,7 @@ we make it npc-ahh website
     margin: 2rem auto;
     display: grid;
     gap: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(max(15rem, 15%), 1fr)); /* !!!! THIS HAS TO BE LEFT ON 'auto-fit' */
+    grid-template-columns: repeat(auto-fit, minmax(max(15rem, 15%), 1fr)); /* !!!! THIS HAS TO BE LEFT ON 'auto-fit' DO NOR USE 'auto-fill' */
     word-wrap: break-word;
     /* place-items: center stretch; */
     /* justify-items: center; */

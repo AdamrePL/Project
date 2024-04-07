@@ -4,5 +4,5 @@
     session_unset();
     session_destroy();
 
-    header("Location: /");
+    header("Location: " . $_SERVER["BASE"]);
 ?>

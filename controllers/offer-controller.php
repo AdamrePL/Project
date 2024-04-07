@@ -103,6 +103,8 @@ for ($i = 0; $i < $book_count; $i++) {
     if (!$isCustom) {
         $sql = "SELECT * FROM `booklist` WHERE id = ".mysqli_real_escape_string($conn, $_POST["book"][$i]);
         // I know this is slow, BUT - first of all, its easier to find specific entry (row) this way, and if we were to take out everything out of database just once to look for the right entry, then we'd have to loop through all unwanted results
+        // There's an solution to this, but it requires looping twice and weird ass query that results idk how would look nor order.. basically another for($i < bookcount) that would concatenate "AND $_POST["book"][$i])" to a sql query, and then it would get them all at once, and idk what their order would be in result of that query. so that said we might not add them correctly with images
+        // still, it wouldve looked something like this:  $query = "SELECT * FROM `booklist` WHERE"; for($i = 0; $i < $book_count; $i++) { if ($i == 0) {$query .= ' id = ' . $_POST["book"][$i]; continue; } $query .= ' AND id = ' . $_POST["book"][$i]; }
         $query = mysqli_query($conn, $sql);
         if ($result = mysqli_fetch_assoc($query)) {
             $book_name = $result["name"];
@@ -132,7 +134,6 @@ for ($i = 0; $i < $book_count; $i++) {
     for ($j = 0; $j < MAX_IMG_PER_ENTRY; $j++) {
         $pic_index = $i * MAX_IMG_PER_ENTRY + $j;
         echo $pic_index;
-        // you can edit it however you want, shit is crazy, so many ways to setup.
         if ($file["name"][$pic_index] == null || $file["error"][$pic_index] !== 0) {
             echo "skipped $pic_index";
             continue;
@@ -140,6 +141,7 @@ for ($i = 0; $i < $book_count; $i++) {
         if ($file["size"][$pic_index] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
             $ext = strtolower(pathinfo($file["name"][$pic_index], PATHINFO_EXTENSION)); // $ext = strtolower(end(explode('.', $fileName)));
             if (in_array($ext, $allowed_files)) {
+                // you can edit it however you want, shit is crazy, so many ways to setup.
                 $fileName = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
                 array_push($file_names, $fileName);
                 move_uploaded_file($file["tmp_name"][$pic_index], $file_folder . $fileName);

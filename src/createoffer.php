@@ -62,8 +62,8 @@ if (!isset($_SESSION["uid"])) {
                     <select name="book[]">
                         <?php
                             $sql = "SELECT `id`, `name` FROM `booklist`";
-                            $query = mysqli_query($conn,$sql);
-                            while ($result = mysqli_fetch_array($query)) {
+                            $query = $conn->query( $sql);
+                            while ($result = $query->fetch_assoc()) {
                                 echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
                             }
                         ?>
@@ -73,15 +73,16 @@ if (!isset($_SESSION["uid"])) {
                     
                     <select name="quality[]">
                         <?php
-                            for ($q = 0; $q < count($quality); $q++){
+                            $quality_count = count($quality);
+                            for ($q = 0; $q < $quality_count; $q++){
                                 echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
                             }
                         ?>
                     </select>
                     
                     <input type="text" name="note[]" maxlength="80" multiline="true" placeholder="notatka" />
-                    <input type="file" name="image[]" title="Click to choose an image" accept="image/png, image/jpeg, image/gif, image/webp" />
-                    <input type="file" name="image[]" title="Kliknij aby wybrać obraz" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" title="Click to choose an image - max 20MB" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" title="Kliknij aby wybrać obraz - max 20MB" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>
                 
                 <button type="button">Dodaj pole</button>
