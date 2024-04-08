@@ -1,5 +1,5 @@
 <?php
-// a i jeszcze co do tej klasy, wydaje mi się, że mozna ja zmienic pod sama klase dla obslugi rejestracji
+// wydaje mi się, że mozna ja zmienic pod sama klase dla obslugi rejestracji @AdamrePL
 
 class IDGenerator {
     private $length;
