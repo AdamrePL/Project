@@ -57,7 +57,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 <legend>&ThinSpace;Typ oferty&ThinSpace;</legend>
                 <label>Wszystkie <input type="radio" name="offer_type" value="all" /></label>
                 <label>Pakiet <input type="radio" name="offer_type" value="bundle" /></label>
-                <label>Pojedyńcze <input type="radio" name="offer_type" value="singlular" /></label>
+                <label>Pojedyncze <input type="radio" name="offer_type" value="singlular" /></label>
             </fieldset>
             <fieldset class="filters">
                 <legend>&ThinSpace;Klasa&ThinSpace;</legend>

@@ -41,13 +41,13 @@ class Oferty {
         }
     }
 
+
     public function PrintAll(){
         $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
         $query = mysqli_query($this->conn, $sql);
         
 
         while ($result = mysqli_fetch_assoc($query)){
-            
             
             echo "<script>console.log('Debug Objects: " . self::dateToDays(self::FormatDate(),$result["offer-edate"]) . "' );</script>"; //tylko test
 
@@ -70,16 +70,22 @@ class Oferty {
                     while ($result2 = mysqli_fetch_assoc($query2)) {
                         echo $result2["name"] . '<br>';
                     }
+                    
                     echo '</details>';
+
                 } else {
                     $result2 = mysqli_fetch_assoc($query2);
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
-                
+
+                require_once "C:\Users\Staz\Desktop\Project\antiscraping.php";
                 echo 'Dane kontaktowe';
-                // ShowButton();
-                // //!WILL BE FINISHED
+                echo '<br><button >Pokaż dane sprzedawcy</button>';
                 echo '<span class="offer-date">';
+
+                //! almost done
+                // showData();
+                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
                 echo '</span>';

@@ -55,9 +55,42 @@ h1 {
     flex-basis: 20%;
 }
 
+.side-panel {
+    height: 100%;
+    width: 0;
+    position: fixed;    
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+}
+
+
+.side-panel > p {
+    color:white;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+  }
+
+.side-panel > hr{
+margin-left: 20px;
+width: 85%;
+}
+#books{
+    transition: 0.5s;
+}
+#books-title{
+    transition: 0.5s;
+}
 ul {
     list-style: inside;
-    list-style-type: square;
+    list-style-type: none;
     padding: 0;
 }
 

@@ -1,14 +1,43 @@
 <?php require_once "../conf/config.php"; ?>
 <head>
-    <title><?php echo SITENAME . " - "; ?>Spis Książek</title>
+        <title><?php echo SITENAME . " - "; ?>Spis Książek</title>
     <link href="../assets/css/booklist.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
 <section id="booklist">
-    <h1>Spis Książek</h1>
+    <h1 id = "books-title">Spis Książek</h1>
+    <button onclick="show_Sidepanel()">☰</button>
+    <!-- //?got an idea to do filtering in side panel -->
+    <div class="side-panel" id ="side-panel-booklist">
+    <?php
+    $sql = "SELECT DISTINCT subject FROM booklist";
+    $query = mysqli_query($conn,$sql);
+    echo '<button onclick="hide_Sidepanel()">X</button>';
+    while ($result = mysqli_fetch_assoc($query)){
+        echo'<p> '. $result["subject"].'</p>';
+        echo '<hr>';
+    }
+    ?>
+    </div>
 
+    <script>
+        function show_Sidepanel() {
+            document.getElementById("side-panel-booklist").style.width = "500px";
+            document.getElementById("books").style.marginLeft = "500px";
+            document.getElementById("books-title").style.marginLeft = "500px";
+        }
+
+        function hide_Sidepanel() {
+            document.getElementById("side-panel-booklist").style.width = "0";
+            document.getElementById("books").style.marginLeft = "0";
+            document.getElementById("books-title").style.marginLeft = "0";
+        }
+    </script>
+
+    <div class="container" id="books">
     <?php 
         $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC, `subject`";
         $query = mysqli_query($conn, $sql);
@@ -38,6 +67,7 @@
             echo '</div>';
         }
     ?>
+    </div>
 </section>
 
 <section id="booklist-files">
