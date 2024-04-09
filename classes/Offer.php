@@ -80,7 +80,7 @@ class Oferty {
                 }
 
                 echo '<details>';
-                echo '<summary onclick="getContact()">Dane kontaktowe</summary>';
+                echo '<summary onclick="getContact('. $result["id"] .')">Dane kontaktowe</summary>';
                 echo '</details>';
                 echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';

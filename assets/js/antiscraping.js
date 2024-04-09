@@ -1,6 +1,4 @@
-var offer_id = 1;
-
-function getContact() {
+function getContact(id) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "antiscraping.php", true); 
     // & I don't have any clue how tf this path works but it works - @AdamrePL
@@ -16,5 +14,5 @@ function getContact() {
         }
     }
 
-    xhr.send("offer-id=" + encodeURIComponent(offer_id)); 
+    xhr.send("offer-id=" + encodeURIComponent(id)); 
 }
