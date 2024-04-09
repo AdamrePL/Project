@@ -81,6 +81,8 @@ class Oferty {
 
                 echo '<details>';
                 echo '<summary onclick="getContact('. $result["id"] .')">Dane kontaktowe</summary>';
+                // This has to be moved to separate javascript file, just saying.
+                // Javascript file will querySelectorAll('.offer') and .AddEventListener("click", () => {take current element id attribute, and call function})
                 echo '</details>';
                 echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';

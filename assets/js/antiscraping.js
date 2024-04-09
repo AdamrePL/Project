@@ -9,10 +9,18 @@ function getContact(id) {
             if (xhr.status === 200) {
                 // Here you work with the data thats been recived from php file
                 // ex. you insert it into DOM
-                console.log( JSON.parse(xhr.responseText) ); // 
+                console.log(JSON.parse(xhr.responseText)); // return
             }
         }
     }
 
     xhr.send("offer-id=" + encodeURIComponent(id)); 
 }
+// You can create class for that if you want.. ig it is gonna be used in 2 places, profile.php and main page to be exact
+// function displayInfo(id) {
+//     getContact(id);
+// }
+
+// class OfferController {
+
+// }
