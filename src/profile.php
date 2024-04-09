@@ -34,21 +34,20 @@ if (!isset($_SESSION["uid"])) {
                 <form action="../controllers/profile-controller.php" method="post">
                     <label for="new_password">nowe hasło</label>
                     <input type="text" name="new_password" placeholder="new password" />
+                    <label for="password">potwierdź hasło</label>
+                    <input type="text" name="nowe hasło" placeholder="potwierdź hasło" />
                     <input type="submit" value="ustaw nowe hasło" name="set-new-password" />
                 </form>
 
                 <form action="../controllers/profile-controller.php">
-                    <label for="con_password">potwierdź hasło</label>
-                    <input type="text" name="nowe hasło" placeholder="potwierdź hasło" />
-            
                     <label for="email_adress">podaj email</label>
                     <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
-            
-                    <label for="phone_number">enter phone number</label>
+                    <br>
+                    <label for="phone_number">podaj nr. telefonu</label>
                     <input type="tel" name="phone_number" placeholder="podaj numer" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
-                    
+                    <br>
                     <label for="discord_user">podaj nazwe użytkownika discord-a</label>
-                    <input type="text" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
+                    <input type="text" id="discord_user" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
             
                     <label for="email_flag">Użyć emaila do automatycznego wypełniania formy kontaktu?</label>
                     <input type="checkbox" name="email_flag" />
@@ -87,7 +86,7 @@ if (!isset($_SESSION["uid"])) {
                 //! Man you did not ruin it as there was no layout, although you did in fact fuck up how the buttons look, CSS STYLING and NAMING ELEMENTS
                 echo '<div class="contact">';
                     echo '<p>'. (!empty($result["phone"]) ? $result["phone"] : "Nr tel.") .'</p>';
-                    echo '<p><span>'. base64_decode(convert_uudecode($result["email"])) .'</span><input type="checkbox" name="" id="" /></p>';
+                    echo '<p>'. base64_decode(convert_uudecode($result["email"])) .'</p>';
                     echo '<p><i class="fa-brands fa-discord"></i>'. (!empty($result["discord"]) ? $result["discord"] : "Discord") . '</p>';
                 echo '</div>';
                 

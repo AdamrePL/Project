@@ -1,4 +1,3 @@
-<script src = "../assets/js/antiscraping.js"></script>
 <?php
 class Oferty {
     private $conn;
@@ -57,7 +56,7 @@ class Oferty {
                 $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
                 $this->conn->query($sqlupdate);
             }
-            echo '<div class="offer" id = "offer">';
+            echo '<div class="offer" id="'. $result["id"] .'">';
                 $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
                 $query2 = mysqli_query($this->conn, $sql2);
                 $prod = mysqli_num_rows($query2);
@@ -80,18 +79,9 @@ class Oferty {
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
 
-                $discord = $result["discord"];
-
-
-                
-
-
-                echo 'Dane kontaktowe';
-                echo '<br><button onclick = "showData()">Pokaż dane sprzedawcy</button>';
-
-                
-
-
+                echo '<details>';
+                echo '<summary onclick="getContact()">Dane kontaktowe</summary>';
+                echo '</details>';
                 echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';

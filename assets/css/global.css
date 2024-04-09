@@ -236,6 +236,12 @@ input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
 
+input[type="submit"],
+input[type="button"] {
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
 /* Firefox */
 /* input[type=number] {
     -moz-appearance:textfield;

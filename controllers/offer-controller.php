@@ -141,6 +141,11 @@ for ($i = 0; $i < $book_count; $i++) {
         if ($file["size"][$pic_index] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
             $ext = strtolower(pathinfo($file["name"][$pic_index], PATHINFO_EXTENSION)); // $ext = strtolower(end(explode('.', $fileName)));
             if (in_array($ext, $allowed_files)) {
+                if (!in_array($file["type"][$pic_index], $allowed_mimes)) {
+                    array_push($offer_errors, "wrong-file-mime-type&input-nr=".$pic_index);
+                    echo "skipped $pic_index";
+                    continue;
+                }
                 // you can edit it however you want, shit is crazy, so many ways to setup.
                 $fileName = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
                 array_push($file_names, $fileName);
