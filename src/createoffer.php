@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?php require_once "../conf/config.php"; ?>
 
 <!-- /**
@@ -11,10 +12,23 @@
     * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
 */ -->
 
+=======
+<?php
+require_once "../conf/config.php"; 
+$abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
+?>
+
+<!-- /**
+* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
+    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
+*/ -->
+<!DOCTYPE html>
+<html>
+>>>>>>> Stashed changes
 <head>
 
     <link rel="stylesheet" href="../assets/css/createoffer.css">
-    <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script>
+    <!-- <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script> -->
 </head>
 
 <a class="return-btn" href="<?php echo $_SERVER["BASE"]; ?>">&NestedLessLess;&nbsp;Powrót</a>
@@ -26,13 +40,35 @@
 <section id="offer-creation">
     <h1>Stwórz ofertę</h1>
     <div class="offer-wrapper">
-        <form action="../controllers/offer-controller.php" method="post" enctype="multipart/form-data">
+        <?php
+        require_once 'offer-controller.php';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $controller = new OfferController($conn,$_SESSION["uid"]);
+            $controller->addOffer();
+            exit();
+        }
+        ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
             <div class="offer-info">
                 <div class="offer-contact">
+<<<<<<< Updated upstream
                     <h3>Dane kontaktowe</h3>
                     <input type="text" name="phone" placeholder="numer telefonu" />
                     <input type="text" name="email" placeholder="e-mail" />
                     <input type="text" name="discord" placeholder="discord tag" /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
+=======
+                    <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p>
+                    <h3>Dane kontaktowe</h3>
+                    <?php 
+                        $sql = "SELECT `phone`, `email`, `discord`, `email-flag` FROM `users` WHERE uuid = '".$_SESSION["uid"]."';";
+                        $query = $conn->query($sql);
+                        $result = $query->fetch_assoc();
+                        $query->close();
+                        ?>
+                    <input type="text" name="phone" placeholder="numer telefonu">
+                    <input type="text" name="email" placeholder="e-mail">
+                    <input type="text" name="discord" placeholder="discord tag"> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
+>>>>>>> Stashed changes
                 </div>
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
@@ -65,15 +101,28 @@
                     </select>
                     
                     <input type="text" name="note[]" maxlength="80" multiline="true" />
+<<<<<<< Updated upstream
                     <input type="file" name="first_img[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                     <input type="file" name="first_img[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+=======
+                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+>>>>>>> Stashed changes
                 </div>
                 
                 <button type="button">Dodaj pole</button>
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
+<<<<<<< Updated upstream
             <input type="submit" value="Create Offer" name="standard" />
             <input type="reset" value="Reset" />
+=======
+
+            <input type="checkbox" id = "publish-data-agreement" name = "personal-data-agreement" required>
+            <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
+            <p><input type="submit" value="Create Offer" name="standard" />
+            <input type="reset" value="Reset" /></p>    
+>>>>>>> Stashed changes
         </form>
 
         <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego
@@ -190,4 +239,14 @@
         <input type="submit" value="Create Offer" />
         <input type="reset" value="Reset" />
     </form>
+<<<<<<< Updated upstream
 </div>
+=======
+</div>
+                -->
+
+                </section>
+                <?php include_once $abspath."src/footer.php"; ?>
+                </body>
+                </html>
+>>>>>>> Stashed changes
