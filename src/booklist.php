@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<<<<<<< Updated upstream
 <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
 <section id="booklist">
     <h1 id = "books-title">Spis Książek</h1>
@@ -21,6 +22,35 @@
         echo '<hr>';
     }
     ?>
+=======
+    <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
+    <div class="side-panel" id="side-panel-booklist">
+        <h2 class="side-panel-title">Zawężanie wyników</h2>
+        <br>
+        <h4>Przedmioty</h4>
+        
+        
+        <?php
+        $sql = "SELECT DISTINCT subject FROM booklist";
+        $query = mysqli_query($conn, $sql);
+
+        while ($result = mysqli_fetch_assoc($query)) {
+            echo '<p> ' . $result["subject"] . '</p>';
+            echo '<hr>';
+
+        }
+        ?>
+        <p>
+        <h4>Klasy</h4>
+        </p>
+        <?php
+        $sql = "SELECT DISTINCT class FROM booklist";
+        $query = mysqli_query($conn, $sql);
+        while ($result = mysqli_fetch_assoc($query)) {
+            echo '<span class = "btn-filter">' . $result["class"] . '</span>';
+        }
+        ?>
+>>>>>>> Stashed changes
     </div>
 
     <script>

@@ -82,10 +82,28 @@ h1 {
 margin-left: 20px;
 width: 85%;
 }
+<<<<<<< Updated upstream
 #books{
     transition: 0.5s;
 }
 #books-title{
+=======
+.side-panel-title{
+    text-align: center;
+}
+.side-panel > .btn-filter{
+}
+.btn-filter{
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 15px 20px;
+    border:none;
+}
+
+.container{
+>>>>>>> Stashed changes
     transition: 0.5s;
 }
 ul {
