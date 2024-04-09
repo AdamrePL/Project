@@ -1,7 +1,9 @@
+<script src = "../assets/js/antiscraping.js"></script>
 <?php
 class Oferty {
     private $conn;
 
+    
     public function __construct($conn)
     {
         $this->conn = $conn;
@@ -55,7 +57,7 @@ class Oferty {
                 $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
                 $this->conn->query($sqlupdate);
             }
-            echo '<div class="offer">';
+            echo '<div class="offer" id = "offer">';
                 $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
                 $query2 = mysqli_query($this->conn, $sql2);
                 $prod = mysqli_num_rows($query2);
@@ -64,9 +66,9 @@ class Oferty {
                     echo '<h4 class="offer-title">Pakiet</h4>';
                     echo '<details>';
                     echo '<summary>Pakiet zawiera: </summary>';
-                    for ($i = 0; $i < $prod; $i++) {
+                    // for ($i = 0; $i < $prod; $i++) {
                         
-                    }
+                    // }
                     while ($result2 = mysqli_fetch_assoc($query2)) {
                         echo $result2["name"] . '<br>';
                     }
@@ -78,14 +80,19 @@ class Oferty {
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
 
-                require_once "C:\Users\Staz\Desktop\Project\antiscraping.php";
-                echo 'Dane kontaktowe';
-                echo '<br><button >Pokaż dane sprzedawcy</button>';
-                echo '<span class="offer-date">';
+                $discord = $result["discord"];
 
-                //! almost done
-                // showData();
+
                 
+
+
+                echo 'Dane kontaktowe';
+                echo '<br><button onclick = "showData()">Pokaż dane sprzedawcy</button>';
+
+                
+
+
+                echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
                 echo '</span>';
