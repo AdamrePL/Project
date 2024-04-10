@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
 <section id="booklist">
@@ -23,6 +24,8 @@
     }
     ?>
 =======
+=======
+>>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
     <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
     <div class="side-panel" id="side-panel-booklist">
         <h2 class="side-panel-title">Zawężanie wyników</h2>
@@ -50,7 +53,10 @@
             echo '<span class = "btn-filter">' . $result["class"] . '</span>';
         }
         ?>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
     </div>
 
     <script>

@@ -1,14 +1,12 @@
 <?php
 require_once "../conf/config.php"; 
 $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
-
-if (!isset($_SESSION["uid"])) {
-    header("HTTP/1.0 403 Forbidden", true, 403);
-    header("Location: ". $_SERVER["BASE"]);
-    exit();
-}
 ?>
 
+<!-- /**
+* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
+    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
+*/ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +20,7 @@ if (!isset($_SESSION["uid"])) {
     </noscript>
 
     <link rel="stylesheet" href="../assets/css/createoffer.css">
-    <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script>
+    <!-- <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script> -->
 </head>
 
 <a class="return-btn" href="<?php echo $_SERVER["BASE"]; ?>">&NestedLessLess;&nbsp;Powrót</a>
@@ -34,10 +32,18 @@ if (!isset($_SESSION["uid"])) {
 <section id="offer-creation">
     <h1>Stwórz ofertę</h1>
     <div class="offer-wrapper">
-        <form action="../controllers/offer-controller.php" method="post" enctype="multipart/form-data">
+        <?php
+        require_once 'offer-controller.php';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $controller = new OfferController($conn,$_SESSION["uid"]);
+            $controller->addOffer();
+            exit();
+        }
+        ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
             <div class="offer-info">
                 <div class="offer-contact">
-                    <!-- <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p> -->
+                    <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p>
                     <h3>Dane kontaktowe</h3>
                     <?php 
                         $sql = "SELECT `phone`, `email`, `discord`, `email-flag` FROM `users` WHERE uuid = '".$_SESSION["uid"]."';";
@@ -45,9 +51,9 @@ if (!isset($_SESSION["uid"])) {
                         $result = $query->fetch_assoc();
                         $query->close();
                         ?>
-                    <input type="text" name="phone" placeholder="numer telefonu" <?php echo 'value="' . $result["phone"] . '"'; ?> />
-                    <input type="text" name="email" placeholder="e-mail" <?php if ($result["email-flag"] != 0) echo 'value="'. base64_decode(convert_uudecode($result["email"])) .'"';?> />
-                    <input type="text" name="discord" placeholder="discord tag" <?php echo 'value="' . $result["discord"].'"'; ?> /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
+                    <input type="text" name="phone" placeholder="numer telefonu">
+                    <input type="text" name="email" placeholder="e-mail">
+                    <input type="text" name="discord" placeholder="discord tag"> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
                 </div>
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
@@ -59,7 +65,7 @@ if (!isset($_SESSION["uid"])) {
             <div class="product-list">
                 <h3>Produkty</h3>
                 <div class="product">
-                    <select name="book[]">
+                    <select name="book">
                         <?php
                             $sql = "SELECT `id`, `name` FROM `booklist`";
                             $query = $conn->query( $sql);
@@ -69,9 +75,9 @@ if (!isset($_SESSION["uid"])) {
                         ?>
                     </select>
                     
-                    <input type="number" name="price[]" placeholder="cena" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
+                    <input type="number" name="price" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
                     
-                    <select name="quality[]">
+                    <select name="quality">
                         <?php
                             $quality_count = count($quality);
                             for ($q = 0; $q < $quality_count; $q++){
@@ -80,18 +86,19 @@ if (!isset($_SESSION["uid"])) {
                         ?>
                     </select>
                     
-                    <input type="text" name="note[]" maxlength="80" multiline="true" placeholder="notatka" />
-                    <input type="file" name="image[]" title="Click to choose an image - max 20MB" accept="image/png, image/jpeg, image/gif, image/webp" />
-                    <input type="file" name="image[]" title="Kliknij aby wybrać obraz - max 20MB" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="text" name="note" maxlength="80" multiline="true" />
+                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>
                 
                 <button type="button">Dodaj pole</button>
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
-            
-            <label><input type="checkbox"  name="personal-data-agreement" required /> Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
-            <input type="submit" value="Stwórz ofertę" name="standard" />
-            <input type="reset" value="Resetuj" />    
+
+            <input type="checkbox" id = "publish-data-agreement" name = "personal-data-agreement" required>
+            <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
+            <p><input type="submit" value="Create Offer" name="standard" />
+            <input type="reset" value="Reset" /></p>    
         </form>
 
         <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego
@@ -207,6 +214,11 @@ if (!isset($_SESSION["uid"])) {
     </form>
 </div>
                 -->
+
+                </section>
+                <?php include_once $abspath."src/footer.php"; ?>
+                </body>
+                </html>
 
 </section>
 

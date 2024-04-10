@@ -5,6 +5,7 @@
 #booklist,
 #booklist-files {
     max-width: min(1400px, 100% - 4rem);
+    transition: 0.5s;
     margin-inline: auto;
     padding: 2rem;
 }
@@ -56,6 +57,7 @@ h1 {
 }
 
 .side-panel {
+    color: white;
     height: 100%;
     width: 0;
     position: fixed;    
@@ -70,18 +72,22 @@ h1 {
 
 
 .side-panel > p {
-    color:white;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 16px;
     display: block;
     transition: 0.3s;
   }
+.side-panel > p:hover, .btn-filter:hover{
+    opacity: 0.5;
+}
+
 
 .side-panel > hr{
-margin-left: 20px;
-width: 85%;
+    margin-left: 20px;
+    width: 85%;
 }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 #books{
     transition: 0.5s;
@@ -93,19 +99,34 @@ width: 85%;
 }
 .side-panel > .btn-filter{
 }
+=======
+.side-panel-title{
+    text-align: center;
+}
+>>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
 .btn-filter{
     font-size: 20px;
     cursor: pointer;
     background-color: #111;
     color: white;
+<<<<<<< HEAD
     padding: 15px 20px;
     border:none;
 }
 
 .container{
 >>>>>>> Stashed changes
+=======
+    padding: 10px 15px;
+    border: none;   
+    width: fit-content;
+}
+
+.container{
+>>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
     transition: 0.5s;
 }
+
 ul {
     list-style: inside;
     list-style-type: none;
@@ -116,3 +137,4 @@ li {
     padding: 0.75rem;
     word-break: break-word;
 }
+
