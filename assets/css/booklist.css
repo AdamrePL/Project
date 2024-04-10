@@ -5,7 +5,6 @@
 #booklist,
 #booklist-files {
     max-width: min(1400px, 100% - 4rem);
-    transition: 0.5s;
     margin-inline: auto;
     padding: 2rem;
 }
@@ -14,7 +13,7 @@
     min-height: 10%;
 }
 
-#booklist-files > a {
+#booklist-files>a {
     display: block;
     margin: 1rem;
     padding: 0.5rem;
@@ -31,7 +30,7 @@ h1 {
     margin: 1rem;
 }
 
-.card > span {
+.card>span {
     font-size: 1.5rem;
     padding: 1rem;
     font-weight: bold;
@@ -42,7 +41,7 @@ h1 {
     gap: 1rem;
 }
 
-.card > span > p:first-child {
+.card>span>p:first-child {
     flex-grow: 2;
     flex-shrink: 1;
     text-align: left;
@@ -50,57 +49,62 @@ h1 {
     text-wrap: wrap;
 }
 
-.card > span > p:last-child {
+.card>span>p:last-child {
     text-align: right;
     flex-grow: 1;
     flex-basis: 20%;
 }
 
-.side-panel {
+#side-panel-booklist {
     color: white;
     height: 100%;
-    width: 0;
-    position: fixed;    
+    width: 0px;
+    position: fixed;
     z-index: 1;
-    top: 0;
-    left: 0;
     background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0s;
     padding-top: 20px;
 }
 
 
-.side-panel > p {
-    padding: 8px 8px 8px 32px;
+.side-panel-group>p {
+    padding: 8px 8px 8px 20px;
     text-decoration: none;
     font-size: 16px;
     display: block;
-    transition: 0.3s;
-  }
-.side-panel > p:hover, .btn-filter:hover{
+    transition: 0s;
+}
+
+.side-panel-group > .btn-filter{
+    border: 1px, solid,white;
+    display: block;
+}
+#side-panel-subjects > p:hover,
+.btn-filter:hover {
     opacity: 0.5;
 }
 
 
-.side-panel > hr{
+.side-panel-group>hr {
     margin-left: 20px;
     width: 85%;
 }
-.side-panel-title{
+
+#side-panel-title {
     text-align: center;
 }
-.btn-filter{
+
+.btn-filter {
     font-size: 20px;
     cursor: pointer;
     background-color: #111;
     color: white;
-    padding: 10px 15px;
-    border: none;   
+    padding: 10px 20px;
     width: fit-content;
+    border: none;
 }
 
-.container{
+.container {
     transition: 0.5s;
 }
 
@@ -114,4 +118,3 @@ li {
     padding: 0.75rem;
     word-break: break-word;
 }
-
