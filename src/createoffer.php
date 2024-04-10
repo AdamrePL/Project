@@ -1,18 +1,3 @@
-<<<<<<< Updated upstream
-<?php require_once "../conf/config.php"; ?>
-
-<!-- /**
-* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
-    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
-
-* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
-    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
-
-* ! PROBLEM FOUND!!!! - USER SESSION MAY EXPIRE WHILST CREATING THE OFFER! 
-    * ! IF USER WAS TO CREATE OFFER AFTER IT EXPIRED, DATABASE WONT SAVE THE UID UNDER THE CREATED OFFER
-*/ -->
-
-=======
 <?php
 require_once "../conf/config.php"; 
 $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
@@ -24,7 +9,6 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
 */ -->
 <!DOCTYPE html>
 <html>
->>>>>>> Stashed changes
 <head>
 
     <link rel="stylesheet" href="../assets/css/createoffer.css">
@@ -51,12 +35,6 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
             <div class="offer-info">
                 <div class="offer-contact">
-<<<<<<< Updated upstream
-                    <h3>Dane kontaktowe</h3>
-                    <input type="text" name="phone" placeholder="numer telefonu" />
-                    <input type="text" name="email" placeholder="e-mail" />
-                    <input type="text" name="discord" placeholder="discord tag" /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
-=======
                     <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p>
                     <h3>Dane kontaktowe</h3>
                     <?php 
@@ -68,7 +46,6 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                     <input type="text" name="phone" placeholder="numer telefonu">
                     <input type="text" name="email" placeholder="e-mail">
                     <input type="text" name="discord" placeholder="discord tag"> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
->>>>>>> Stashed changes
                 </div>
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
@@ -80,7 +57,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             <div class="product-list">
                 <h3>Produkty</h3>
                 <div class="product">
-                    <select name="book[]">
+                    <select name="book">
                         <?php
                             $sql = "SELECT `id`, `name` FROM `booklist`";
                             $query = mysqli_query($conn,$sql);
@@ -90,9 +67,9 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         ?>
                     </select>
                     
-                    <input type="number" name="price[]" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
+                    <input type="number" name="price" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
                     
-                    <select name="quality[]">
+                    <select name="quality">
                         <?php
                             for ($q = 0; $q < count($quality); $q++){
                                 echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
@@ -100,29 +77,19 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         ?>
                     </select>
                     
-                    <input type="text" name="note[]" maxlength="80" multiline="true" />
-<<<<<<< Updated upstream
-                    <input type="file" name="first_img[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                    <input type="file" name="first_img[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-=======
+                    <input type="text" name="note" maxlength="80" multiline="true" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
->>>>>>> Stashed changes
                 </div>
                 
                 <button type="button">Dodaj pole</button>
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
-<<<<<<< Updated upstream
-            <input type="submit" value="Create Offer" name="standard" />
-            <input type="reset" value="Reset" />
-=======
 
             <input type="checkbox" id = "publish-data-agreement" name = "personal-data-agreement" required>
             <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
             <p><input type="submit" value="Create Offer" name="standard" />
             <input type="reset" value="Reset" /></p>    
->>>>>>> Stashed changes
         </form>
 
         <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego
@@ -239,9 +206,6 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
         <input type="submit" value="Create Offer" />
         <input type="reset" value="Reset" />
     </form>
-<<<<<<< Updated upstream
-</div>
-=======
 </div>
                 -->
 
@@ -249,4 +213,10 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 <?php include_once $abspath."src/footer.php"; ?>
                 </body>
                 </html>
->>>>>>> Stashed changes
+
+</section>
+
+<?php include_once $abspath."src/footer.php"; ?>
+
+</body>
+</html>
