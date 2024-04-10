@@ -75,9 +75,19 @@ class OfferController{
 
 
             echo 'popa';
+            $query = mysqli_query($this->conn,"SELECT * FROM `booklist` WHERE `id` =" . $_POST["book"]);
+            $res = mysqli_fetch_assoc($query);
 
-            $data = $this->conn->query("SELECT NOW()");
-            $this->conn->query("INSERT INTO `offers` VALUES ('', '$user', 'now()', 'now()', 1, '$phone', '$email', '$discord')");
+            //list ktory zawiera wszystkie potrzebne zmienne
+            $list = array($res["name"],$res["authors"],$res["publisher"],$res["subject"],$_POST["note"],$_POST["price"],$_POST["exp_days"],$_POST["quality"]);
+
+            if ($list[6] == NULL){
+                $list[6] = 30;
+            }
+            $this->conn->query("INSERT INTO `offers` VALUES ('', '$user', NOW(), NOW() +INTERVAL $list[6] DAY, 1, '$phone', '$email', '$discord')");
+            $lastid = $this->conn->insert_id;
+
+            $this->conn->query("INSERT INTO `products` VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','1','$list[5]','$list[7]','$list[4]','','0')");
         } catch (Exception $e) {
             echo $e->getMessage();
             // header('Location: ' . './offer-controller.php?error=' . $e->getMessage());
