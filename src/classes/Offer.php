@@ -1,5 +1,5 @@
 <?php
-require_once "../conf/config.php";
+require_once "C:\Users\Staz\Desktop\Project\conf\config.php";
 class Oferty {
     private $conn;
 

@@ -73,8 +73,6 @@ class OfferController{
             
             $date = self::FormatDate();
 
-
-            echo 'popa';
             $query = mysqli_query($this->conn,"SELECT * FROM `booklist` WHERE `id` =" . $_POST["book"]);
             $res = mysqli_fetch_assoc($query);
 

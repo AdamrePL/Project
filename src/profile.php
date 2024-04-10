@@ -1,6 +1,6 @@
 <?php 
 // $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "../conf/config.php"; ?>
+require_once "C:\Users\Staz\Desktop\Project\conf\config.php"; ?>
 
 <?php 
 if (!isset($_SESSION["uid"])) {
@@ -95,6 +95,7 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span>';
                 echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
                 echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
+                echo '<a href="../src/createoffer.php">Stwórz ofertę</a>';
                 echo '</span>';
 
             echo '</section>';
@@ -105,6 +106,7 @@ if (!isset($_SESSION["uid"])) {
             if(empty(mysqli_fetch_assoc($selection_query))){
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
             } else {
+                
                 require_once "classes/Offer.php";
                 $offers = new Oferty($conn);
                 $offers->PrintAll(FALSE);
