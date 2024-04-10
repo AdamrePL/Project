@@ -15,14 +15,14 @@
         <div class="side-panel-group" id="side-panel-subjects">
 
             <br>
-            <h4>Przedmioty</h4>
+            <h4>Przedmiot</h4>
 
             <?php
             $sql = "SELECT DISTINCT subject FROM booklist";
             $query = mysqli_query($conn, $sql);
 
             while ($result = mysqli_fetch_assoc($query)) {
-                echo '<p>' . $result["subject"] . '</p>';
+                echo '<p class = "filter-subject" > <a href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</p></a>';
                 // echo '<hr>';
             }
             ?>
@@ -30,18 +30,21 @@
 
         <div class="side-panel-group" id="side-panel-grades">
             <br>
-            <h4>Klasy</h4>
+            <h4>Klasa</h4>
             <p>
                 <?php
                 $sql = "SELECT DISTINCT class FROM booklist";
                 $query = mysqli_query($conn, $sql);
                 
                 for ($i = 1; $i<6; $i++){
-                    echo '<span class = "btn-filter ">' . $i .'</span>';
+                    echo '<span  class = "btn-filter ">' . $i .'</span>';
                 }
-                while ($result = mysqli_fetch_assoc($query)) {
+                // while ($result = mysqli_fetch_assoc($query)) {
                     
-                }
+                // }
+                //&tutaj bedzie sprawdzanie czy filter jest dostępny, żeby każda klasa się wyświetlała
+                //&np. jak nie będzie produktów dla danej klasy czyli w aktualnym przypadku (10.04) nie ma dla klasy 3 i 4,
+                //&to będzie wyświetlana ona z jakimiś charakterystycznymi stylami
                 ?></p>
         </div>
     </div>
@@ -51,7 +54,13 @@
         <h1 id="books-title">Spis Książek</h1>
         <button onclick= "toggleSide_Panel()" class="btn-filter" id="btn-show">☰</button>
         <?php
-        $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC, `subject`";
+        if(isset($_GET["subject"])){
+        $sql = "SELECT * FROM `booklist` WHERE `subject` = '". $_GET["subject"] ."' ORDER BY `class` ASC";
+        }
+        else
+        {
+        $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC";
+        }
         $query = mysqli_query($conn, $sql);
         while ($result = mysqli_fetch_assoc($query)) {
             echo '<div class="card">';

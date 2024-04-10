@@ -1,3 +1,5 @@
+filtering("all")
+
 function toggleSide_Panel() {
     var side_panel = document.getElementById("side-panel-booklist");
     var booklist = document.getElementById("booklist");

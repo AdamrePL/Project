@@ -66,6 +66,25 @@ h1 {
     padding-top: 20px;
 }
 
+#side-panel-booklist a:link {
+    color: white;
+    text-decoration: none;
+}
+
+#side-panel-booklist a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#side-panel-booklist a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#side-panel-booklist a:active {
+    color: white;
+    text-decoration: none;
+}
 
 .side-panel-group>p {
     padding: 8px 8px 8px 20px;
@@ -75,11 +94,12 @@ h1 {
     transition: 0s;
 }
 
-.side-panel-group > .btn-filter{
-    border: 1px, solid,white;
+.side-panel-group>.btn-filter {
+    border: 1px, solid, white;
     display: block;
 }
-#side-panel-subjects > p:hover,
+
+#side-panel-subjects>p:hover,
 .btn-filter:hover {
     opacity: 0.5;
 }
