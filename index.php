@@ -111,7 +111,7 @@
             require_once "src\classes\Offer.php";
 
             $offers = new Oferty($conn);
-            $offers->PrintAll()
+            $offers->PrintAll();
             ?>
     </main>
 
