@@ -108,7 +108,8 @@
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <?php
-            require_once "src\classes\Offer.php";
+            $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
+            require_once "$abspath\classes\Offer.php";
 
             $offers = new Oferty($conn);
             $offers->PrintAll();

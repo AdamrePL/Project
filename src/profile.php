@@ -1,6 +1,6 @@
 <?php 
-// $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "C:\Users\Staz\Desktop\Project\conf\config.php"; ?>
+$abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
+require_once "$abspath\conf\config.php"; ?>
 
 <?php 
 if (!isset($_SESSION["uid"])) {
@@ -107,7 +107,7 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php?row=1">Stwórz ofertę</a></span>';
             } else {
                 
-                require_once "classes/Offer.php";
+                require_once "$abspath\classes\Offer.php";
                 $offers = new Oferty($conn);
                 $offers->PrintAll(FALSE);
             }

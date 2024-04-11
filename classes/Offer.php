@@ -1,5 +1,6 @@
 <?php
-require_once "C:\Users\Staz\Desktop\Project\conf\config.php";
+$abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
+require_once "$abspath\conf\config.php";
 class Oferty {
     private $conn;
 
@@ -77,7 +78,8 @@ class Oferty {
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
                 echo '<details>';
-                echo '<summary onclick="getContact('. $result["id"] .')">Dane kontaktowe</summary>';
+                echo '<summary>Dane kontaktowe</summary>';
+                echo '<div class="css-' . bin2hex(random_bytes(rand(5,20))) . '">dds</div>';
                 // This has to be moved to separate javascript file, just saying.
                 // Javascript file will querySelectorAll('.offer') and .AddEventListener("click", () => {take current element id attribute, and call function})
                 echo '</details>';
