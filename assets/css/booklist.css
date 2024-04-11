@@ -8,6 +8,7 @@
     transition: 0.5s;
     margin-inline: auto;
     padding: 2rem;
+    display: flexbox;
 }
 
 #booklist-files {
@@ -22,7 +23,7 @@
 }
 
 .card {
-    background: rgb(var(--secondary-300));
+    background-color: white;
     margin-bottom: 2rem;
 }
 
@@ -37,8 +38,6 @@ h1 {
     font-weight: bold;
     display: flex;
     flex-direction: row;
-    background: rgb(var(--secondary-200));
-    box-shadow: 0px 2px 3px 0.1px rgb(var(--accent-200));
     gap: 1rem;
 }
 
@@ -56,6 +55,7 @@ h1 {
     flex-basis: 20%;
 }
 
+<<<<<<< Updated upstream
 .side-panel {
     color: white;
     height: 100%;
@@ -87,22 +87,68 @@ h1 {
     margin-left: 20px;
     width: 85%;
 }
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+#books{
+    transition: 0.5s;
+}
+#books-title{
+=======
 .side-panel-title{
     text-align: center;
 }
+.side-panel > .btn-filter{
+}
+=======
+.side-panel-title{
+    text-align: center;
+}
+>>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
 .btn-filter{
     font-size: 20px;
     cursor: pointer;
     background-color: #111;
     color: white;
+<<<<<<< HEAD
+    padding: 15px 20px;
+    border:none;
+}
+
+.container{
+>>>>>>> Stashed changes
+=======
     padding: 10px 15px;
     border: none;   
     width: fit-content;
 }
 
 .container{
+>>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
     transition: 0.5s;
 }
+=======
+#btn-container{
+    max-width: min(1400px, 100% - 4rem);
+    margin-inline: auto;
+    padding: 2rem;
+}
+.btn-filter{
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    margin: 5px;
+    display:flex;
+    padding: 14px 28px;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn-filter:hover{
+    background-color: black;
+    color: white;   
+}
+
+>>>>>>> Stashed changes
 
 ul {
     list-style: inside;
