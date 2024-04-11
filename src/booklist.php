@@ -6,8 +6,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
 <section id="booklist">
     <h1 id = "books-title">Spis Książek</h1>
@@ -24,8 +22,6 @@
     }
     ?>
 =======
-=======
->>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
     <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
 <<<<<<< Updated upstream
     <div class="side-panel" id="side-panel-booklist">
