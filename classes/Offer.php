@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="assets/css/antiscraping.css">
 <?php
 class Oferty {
     private $conn;
@@ -70,7 +71,7 @@ class Oferty {
                     // }
                     while ($result2 = mysqli_fetch_assoc($query2)) {
                         echo $result2["name"] . '<br>';
-                    }
+                    }   
                     
                     echo '</details>';
 
@@ -79,12 +80,24 @@ class Oferty {
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
 
-                echo '<details>';
-                echo '<summary onclick="getContact('. $result["id"] .')">Dane kontaktowe</summary>';
-                // This has to be moved to separate javascript file, just saying.
-                // Javascript file will querySelectorAll('.offer') and .AddEventListener("click", () => {take current element id attribute, and call function})
-                echo '</details>';
-                echo '<span class="offer-date">';                
+
+
+
+
+
+                echo '<button onclick="showData()">Pokaz dane</button>';
+                echo '<div id="data-container">' . base64_encode($result["discord"]) .'</div>';
+
+
+
+
+
+
+
+
+
+
+                echo '<span class="offer-date">';      
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
                 echo '</span>';
@@ -94,3 +107,6 @@ class Oferty {
 
 }
 ?>
+
+
+
