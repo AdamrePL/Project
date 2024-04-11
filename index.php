@@ -116,7 +116,6 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             require_once "classes/Offer.php";
 
             $offers = new Oferty($conn);
-            $offers->deleteIf30();
             $offers->PrintAll();
             ?>
     </main>

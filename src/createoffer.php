@@ -64,8 +64,11 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             
             <div class="product-list">
                 <h3>Produkty</h3>
+                <?php
+                for ($i=1; $i<$_GET['row']+1; $i++){
+                ?>
                 <div class="product">
-                    <select name="book">
+                    <select name="book[]">
                         <?php
                             $sql = "SELECT `id`, `name` FROM `booklist`";
                             $query = $conn->query( $sql);
@@ -75,9 +78,9 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         ?>
                     </select>
                     
-                    <input type="number" name="price" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
+                    <input type="number" name="price[]" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
                     
-                    <select name="quality">
+                    <select name="quality[]">
                         <?php
                             $quality_count = count($quality);
                             for ($q = 0; $q < $quality_count; $q++){
@@ -86,12 +89,14 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         ?>
                     </select>
                     
-                    <input type="text" name="note" maxlength="80" multiline="true" />
+                    <input type="text" name="note[]" maxlength="80" multiline="true" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>
-                
-                <button type="button">Dodaj pole</button>
+                <?php 
+                }
+                ?>
+                <button onclick= "location.href='createoffer.php?row=<?php echo $_GET["row"] + 1 ?>'">Dodaj pole</button>
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
 

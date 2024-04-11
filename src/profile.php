@@ -1,6 +1,6 @@
 <?php 
 // $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "../conf/config.php"; 
+require_once "C:\Users\Staz\Desktop\Project\conf\config.php"; ?>
 
 if (!isset($_SESSION["uid"])) {
     header("Location: /");
@@ -93,61 +93,20 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span>';
                 echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
                 echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
+                echo '<a href="../src/createoffer.php?row=1">Stwórz ofertę</a>';
                 echo '</span>';
 
             echo '</section>';
             
             $selection_sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
             $selection_query = mysqli_query($conn,$selection_sql);
+
             if(empty(mysqli_fetch_assoc($selection_query))){
-                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
-            } else {
-                echo '<section class="user-offers">';
-                    $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
-                    $query = mysqli_query($conn,$sql);
-
-                    while ($result = mysqli_fetch_assoc($query)) {
-                        echo '<div class="offer">'; 
-
-                        //& copied selector from index ( ,,,= w =,,, )
-                        $prod = explode(",", $result["products"]);
-                        if (count($prod) > 1) {
-                            echo '<p>Pakiet</p>';
-                            echo '<details>';
-                            echo '<summary>Pakiet zawiera</summary>';
-                            for ($i = 0; $i < count($prod); $i++) {
-                                $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
-                                $query2 = mysqli_query($conn, $sql2);
-                                $result2 = mysqli_fetch_assoc($query2);
-
-                                echo $result2["name"] . '<br>';
-                            }
-                            echo '</details>';
-
-                        } else {
-                            $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[0]";
-                            $query2 = mysqli_query($conn, $sql2);
-                            $result2 = mysqli_fetch_assoc($query2);
-
-                            echo '<p>' . $result2["name"] . '</p>';
-                        }
-                        
-                        echo '<details>';
-                            echo '<summary>Dane kontaktowe</summary>';
-                            echo $result["phone"];
-                            echo $result["email"];
-                            echo $result["discord"];
-                        echo '</details>';
-            
-                        echo '<span class="misc">';
-                        echo '<span>Oferta wygasa: ' . $result["offer-edate"] . '</span>';
-                        echo '<span><a href="" class="offer_management edit">edytuj</a> <a href="" class="offer_management change">zmień status</a></span>';
-                        echo '</span>'; 
-                        
-                        echo '</div>';    
-                    }
-
-                echo '</section>';
+                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php?row=1">Stwórz ofertę</a></span>';
+            } else {              
+                require_once "classes/Offer.php";
+                $offers = new Oferty($conn);
+                $offers->PrintAll(FALSE);
             }
 
             if (isset($_SESSION["first-login"]) && ($_SESSION["first-login"] > 0)) {

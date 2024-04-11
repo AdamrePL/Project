@@ -1,6 +1,7 @@
 <?php
 require_once "../conf/config.php";
-class OfferController{
+class OfferController
+{
     private $conn;
 
     public $post;
@@ -31,7 +32,8 @@ class OfferController{
     //         echo '<script>console.log(' . $e->getMessage() . ')</script>';
     //     }
     // }
-    public function FormatDate (){
+    public function FormatDate()
+    {
         date_default_timezone_set('Europe/Warsaw');
         $FormatDate = date('Y-m-d H:i:s');
         return $FormatDate;
@@ -64,35 +66,33 @@ class OfferController{
     {
         try {
             // $user = htmlspecialchars(stripslashes(trim($_SESSION["uuid"])));
+
+
             $user = $_SESSION['uid'];
             $phone = htmlspecialchars(stripslashes(trim($_POST["phone"])));
             $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
             $discord = htmlentities(stripslashes(trim($_POST["discord"])));
             $days = htmlspecialchars(stripslashes(trim(self::ExpDay())));
             $hours = htmlspecialchars(stripslashes(trim(self::ExpHours())));
-            
-            $date = self::FormatDate();
-
-
-            echo 'popa';
-            $query = mysqli_query($this->conn,"SELECT * FROM `booklist` WHERE `id` =" . $_POST["book"]);
-            $res = mysqli_fetch_assoc($query);
-
-            //list ktory zawiera wszystkie potrzebne zmienne
-            $list = array($res["name"],$res["authors"],$res["publisher"],$res["subject"],$_POST["note"],$_POST["price"],$_POST["exp_days"],$_POST["quality"]);
-
-            if ($list[6] == NULL){
-                $list[6] = 30;
+            $exp = $_POST["exp_days"];
+            if ($exp == NULL) {
+                $exp = 30;
             }
-            $this->conn->query("INSERT INTO `offers` VALUES ('', '$user', NOW(), NOW() +INTERVAL $list[6] DAY, 1, '$phone', '$email', '$discord')");
+            $this->conn->query("INSERT INTO offers VALUES ('', '$user', NOW(), NOW() + INTERVAL $exp DAY, 1, '$phone', '$email', '$discord')");
             $lastid = $this->conn->insert_id;
 
-            $this->conn->query("INSERT INTO `products` VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','1','$list[5]','$list[7]','$list[4]','','0')");
+            $date = self::FormatDate();
+            foreach ($_POST['book'] as $key => $book) {
+                $query = mysqli_query($this->conn, "SELECT * FROM booklist WHERE id =" . $book);
+                $res = mysqli_fetch_assoc($query);
+                $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $_POST["note"][$key], $_POST['price'][$key],$_POST["exp_days"], $_POST["quality"][$key]);
+                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','1','$list[5]','$list[7]','$list[4]','','0')");
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             // header('Location: ' . './offer-controller.php?error=' . $e->getMessage());
-            
-            echo('<script>console.log("' . $e->getMessage() . '");</script>');
+
+            echo ('<script>console.log("' . $e->getMessage() . '");</script>');
         }
     }
 }
