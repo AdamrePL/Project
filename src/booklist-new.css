@@ -1,0 +1,81 @@
+@import "./global.css";
+
+
+#booklist,
+#booklist-files {
+    max-width: min(1400px, 100% - 4rem);
+    margin-inline: auto;
+    padding: 2rem;
+    display: flexbox;
+}
+
+#booklist-files {
+    min-height: 10%;
+}
+
+#booklist-files>a {
+    display: block;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.card {
+    background-color: white;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.card>span {
+    border: 3px, solid;
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.card>span>p:last-child {
+    text-align: right;
+    flex-grow: 1;
+    flex-basis: 20%;
+}
+
+#btn-container{
+    max-width: min(1400px, 100% - 4rem);
+    margin-inline: auto;
+    padding: 2rem;
+    display: none;
+}
+.btn-filter{
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    margin: 5px;
+    display:flex;
+    padding: 14px 28px;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn-filter:hover{
+    background-color: black;
+    color: white;   
+}
+
+
+ul {
+    list-style: inside;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 0.75rem;
+    word-break: break-word;
+}

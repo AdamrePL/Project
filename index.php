@@ -46,7 +46,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             }
         ?>
         <a href="#przegladaj">Przeglądaj Oferty</a>
-        <a href="src/booklist.php">Lista podręczników</a>
+        <a href="src/booklist-new.php">New lista podręczników</a>
         <a href="src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
 

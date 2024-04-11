@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 function toggleSide_Panel() {
     var side_panel = document.getElementById("side-panel-booklist");
     var booklist = document.getElementById("booklist");
@@ -14,3 +15,5 @@ function toggleSide_Panel() {
         booklist.style.marginLeft = "auto";
     }
 }
+=======
+>>>>>>> Stashed changes

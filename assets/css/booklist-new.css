@@ -1,0 +1,73 @@
+@import "./global.css";
+
+
+#booklist,
+#booklist-files {
+    max-width: min(1400px, 100% - 4rem);
+    margin-inline: auto;
+    padding: 2rem;
+    display: flexbox;
+}
+
+#booklist-files {
+    min-height: 10%;
+}
+
+#booklist-files>a {
+    display: block;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.card {
+    background-color: rgba(77, 75, 75, 0.671);
+    margin-bottom: 2rem;
+}
+
+/* 
+.details{
+    float: right;
+} */
+
+
+
+.book-grade::before{
+    content: "Klasa - ";
+}
+.book-subject::before{
+    content: "Przedmiot ";
+}
+.book-publisher::before{
+    content: "Wydawnictwo ";
+}
+.book-authors::before{
+    content: "Autorzy ";
+}
+
+
+.book-title{
+    text-decoration: none;
+    font-size: 125%;
+}
+#btn-container{
+    max-width: min(1400px, 100% - 4rem);
+    margin-inline: auto;
+    padding: 2rem;
+    display: none;
+}
+.btn-filter{
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    margin: 5px;
+    display:flex;
+    padding: 14px 28px;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn-filter:hover{
+    background-color: black;
+    color: white;   
+}
