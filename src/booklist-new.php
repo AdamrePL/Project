@@ -9,6 +9,7 @@
 
 <body>
     <!-- filtry i sortowanie -->
+    <div class="filter-bar">
     <?php
     $sql = "SELECT DISTINCT subject FROM booklist";
     $query = mysqli_query($conn, $sql);
@@ -22,7 +23,7 @@
     <?php
     echo '<br>Klasa<br>';
     for ($grade = 1; $grade < 6; $grade++) {
-        echo '<a class = "btn-filter" onclick = "selected()" href = "/src/booklist-new.php?grade=' . $grade . '">' . $grade . '</a>';
+        echo '<a class = "btn-filter"  href = "/src/booklist-new.php?grade=' . $grade . '">' . $grade . '</a>';
     }
 
     echo '</div>';
@@ -30,8 +31,7 @@
 
     ?></p>
     </div>
-    </div>
-    
+
 
 
     <section id="booklist">
