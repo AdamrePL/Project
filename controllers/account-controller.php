@@ -178,7 +178,7 @@ class Account
         // }
 
         // return strtolower($name) . "#" . array_rand($chars, 3);
-        require_once "../src/classes/IDGenerator.php";
+        require_once "../classes/IDGenerator.php";
         $idgenerator = new IDGenerator(3, true, $name);
         return $idgenerator->generate_ID();
     }
