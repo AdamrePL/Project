@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="assets/css/antiscraping.css">
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 require_once "$abspath\conf\config.php";
@@ -71,19 +72,32 @@ class Oferty {
                     echo '<summary>Pakiet zawiera: </summary>';
                     while ($result2 = mysqli_fetch_assoc($query2)) {
                         echo $result2["name"] . '<br>';
-                    }
+                    }   
+                    
                     echo '</details>';
                 } else {
                     $result2 = mysqli_fetch_assoc($query2);
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
-                echo '<details>';
-                echo '<summary>Dane kontaktowe</summary>';
-                echo '<div class="css-' . bin2hex(random_bytes(rand(5,20))) . '">dds</div>';
-                // This has to be moved to separate javascript file, just saying.
-                // Javascript file will querySelectorAll('.offer') and .AddEventListener("click", () => {take current element id attribute, and call function})
-                echo '</details>';
-                echo '<span class="offer-date">';                
+
+
+
+
+
+
+                echo '<button onclick="showData()" id ="btn-show-data">Dane</button>';
+                echo '<div id="data-container">' . base64_encode($result["discord"]) .'</div>';
+
+
+
+
+
+
+
+
+
+
+                echo '<span class="offer-date">';      
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
                 echo '</span>';
@@ -92,3 +106,6 @@ class Oferty {
     }
 }
 ?>
+
+
+

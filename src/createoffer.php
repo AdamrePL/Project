@@ -51,7 +51,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         $result = $query->fetch_assoc();
                         $query->close();
                         ?>
-                    <input type="text" name="phone" placeholder="numer telefonu">
+                    <input type="number" name="phone" placeholder="numer telefonu">
                     <input type="text" name="email" placeholder="e-mail">
                     <input type="text" name="discord" placeholder="discord tag"> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
                 </div>
@@ -89,7 +89,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         ?>
                     </select>
                     
-                    <input type="text" name="note[]" maxlength="80" multiline="true" />
+                    <input type="text" name="note[]" placeholder = "opis" maxlength="80" multiline="true" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>

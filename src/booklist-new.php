@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <!-- filtry i sortowanie -->
     <?php
     $sql = "SELECT DISTINCT subject FROM booklist";
@@ -23,7 +22,7 @@
     <?php
     echo '<br>Klasa<br>';
     for ($grade = 1; $grade < 6; $grade++) {
-        echo '<a class = "btn-filter" href = "/src/booklist-new.php?grade=' . $grade . '">' . $grade . '</a>';
+        echo '<a class = "btn-filter" onclick = "selected()" href = "/src/booklist-new.php?grade=' . $grade . '">' . $grade . '</a>';
     }
 
     echo '</div>';
@@ -47,8 +46,6 @@
             echo "Podręczniki dla klasy " . $_GET["grade"] . ": ";
         } else {
             $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC";
-
-          
             echo "Wszystkie podręczniki";
         }
         //! 
