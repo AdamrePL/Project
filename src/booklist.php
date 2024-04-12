@@ -9,58 +9,38 @@
 
 <body>
     <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
-
     <div class="side-panel" id="side-panel-booklist">
-        <h2 class="title" id="side-panel-title">Zawężanie wyników</h2>
-        <div class="side-panel-group" id="side-panel-subjects">
+        <h2 class="side-panel-title">Zawężanie wyników</h2>
+        <br>
+        <h4>Przedmioty</h4>
+        <?php
+        $sql = "SELECT DISTINCT subject FROM booklist";
+        $query = mysqli_query($conn, $sql);
 
-            <br>
-            <h4>Przedmiot</h4>
+        while ($result = mysqli_fetch_assoc($query)) {
+            echo '<p> ' . $result["subject"] . '</p>';
+            echo '<hr>';
 
-            <?php
-            $sql = "SELECT DISTINCT subject FROM booklist";
-            $query = mysqli_query($conn, $sql);
-
-            while ($result = mysqli_fetch_assoc($query)) {
-                echo '<p class = "filter-subject" > <a href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</p></a>';
-                // echo '<hr>';
-            }
-            ?>
-        </div>
-
-        <div class="side-panel-group" id="side-panel-grades">
-            <br>
-            <h4>Klasa</h4>
-            <p>
-                <?php
-                $sql = "SELECT DISTINCT class FROM booklist";
-                $query = mysqli_query($conn, $sql);
-                
-                for ($i = 1; $i<6; $i++){
-                    echo '<span  class = "btn-filter ">' . $i .'</span>';
-                }
-                // while ($result = mysqli_fetch_assoc($query)) {
-                    
-                // }
-                //&tutaj bedzie sprawdzanie czy filter jest dostępny, żeby każda klasa się wyświetlała
-                //&np. jak nie będzie produktów dla danej klasy czyli w aktualnym przypadku (10.04) nie ma dla klasy 3 i 4,
-                //&to będzie wyświetlana ona z jakimiś charakterystycznymi stylami
-                ?></p>
-        </div>
+        }
+        ?>
+        <p>
+        <h4>Klasy</h4>
+        </p>
+        <?php
+        $sql = "SELECT DISTINCT class FROM booklist";
+        $query = mysqli_query($conn, $sql);
+        while ($result = mysqli_fetch_assoc($query)) {
+            echo '<span class = "btn-filter">' . $result["class"] . '</span>';
+        }
+        ?>
     </div>
 
 
     <section id="booklist">
         <h1 id="books-title">Spis Książek</h1>
-        <button onclick= "toggleSide_Panel()" class="btn-filter" id="btn-show">☰</button>
+        <button onclick="show_Sidepanel()" class="btn-filter" id="btn-show">☰</button>
         <?php
-        if(isset($_GET["subject"])){
-        $sql = "SELECT * FROM `booklist` WHERE `subject` = '". $_GET["subject"] ."' ORDER BY `class` ASC";
-        }
-        else
-        {
-        $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC";
-        }
+        $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC, `subject`";
         $query = mysqli_query($conn, $sql);
         while ($result = mysqli_fetch_assoc($query)) {
             echo '<div class="card">';
