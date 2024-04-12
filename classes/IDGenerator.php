@@ -3,16 +3,13 @@
 
 class IDGenerator {
     private $length;
+    private $include_numbers;
     private $name;
-    /**
-     * @var array Contains digits 0-9, uppercase and lowercase english alphabet letters.
-    */
-    private $chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
-    private string $split_character = '#';
     
-    public function __construct(int $length = 3, string $name)
+    public function __construct(int $length = 3, bool $include_numbers = true, string $name)
     {
         $this->length = $length;
+        $this->include_numbers = $include_numbers;
         $this->name = $name;
     }
     
@@ -36,8 +33,15 @@ class IDGenerator {
         $this->name = $name;
     }
 
-    public function generate_uid(): string
+    public function generate_ID(): string
     {
-        return strtolower($this->name) . $this->split_character . array_rand($this->chars, $this->length);
+        $result = "";
+        // If allowed, use numbers in generation
+        $selection = $this->include_numbers ? array_merge(range(97, 122), range(48, 57)) : range(97, 122);
+        for ($i = 0; $i < $this->length; $i++){
+            $result = $result . chr($selection[array_rand($selection)]);
+        }
+
+        return $this->name . "#" . $result;
     }
 }

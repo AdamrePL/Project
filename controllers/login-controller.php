@@ -1,73 +1,87 @@
 <?php
+$abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
-require_once "../conf/config.php";
+class LoginController {
+    private $conn;
 
-$path_to_form = "../src/access.php";
 
-if (isset($_SESSION["uid"])) {
-    header("Location: / ");
-    exit(403);
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
+
+    public function loginUser(){
+        try{
+            require_once 'account-controller.php';
+            $accController = new Account($this->conn);
+
+            if (isset($_SESSION["uid"])) {
+                header("Location: / ");
+                exit(403);
+            }
+            
+            if (!isset($_POST["log"])) {
+               throw new Exception('no login');
+            }
+            
+            include_once "account-controller.php";
+            
+            $uid = trim($_POST["user-id"]);
+            
+            
+            if (!preg_match(self::UID_PATTERN, $uid)) {
+                throw new Exception('incorrect uid');
+            }
+            
+            $uid = explode("#", $uid);
+            $username = strtolower($uid[0]);
+            $id = $uid[1];
+            $uid = $username . '#' . $id;
+            
+            if (strlen($id) > 3) {
+                throw new Exception('incorrect tag');
+            }
+            
+            
+            if (!$accController->user_exists($uid)) {
+                throw new Exception('no user');
+            }
+            
+            $pwd = $accController->get_user_password($uid);
+            
+            if (!empty($pwd) && empty($_POST["l_password"])) {
+                throw new Exception('password required');
+            }
+            
+            if (password_verify($_POST["l_password"], $pwd)) {
+                throw new Exception('wrong password');
+            }
+            
+            $sql = "SELECT * FROM `users` WHERE uuid = ?;";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, 's', $uid);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            if ($result = mysqli_fetch_assoc($result)) {
+                session_regenerate_id(true);
+                $_SESSION["uid"] = $result["uuid"];
+                $_SESSION["isadmin"] = $result["admin"];
+                $_SESSION["username"] = $result["username"];
+            }
+            
+            $accController->update_last_login($uid);
+            header("Location: ../src/profile.php?info=success");
+            
+            $conn -> close();
+        }catch(Exception $e){
+            echo $e->getMessage();
+            echo ('<script>console.log("' . $e->getMessage() . '");</script>');
+        }
+        
+    }
+
 }
-
-if (!isset($_POST["log"])) {
-    header("Location: $path_to_form?error=l_submit-error");
-    exit(403);
-}
-
-include_once "account-controller.php";
-
-$uid = trim($_POST["user-id"]);
-
-const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
-
-if (!preg_match(UID_PATTERN, $uid)) {
-    header("Location: $path_to_form?error=incorrect-uid");
-    exit(422);
-}
-
-$uid = explode("#", $uid);
-$username = strtolower($uid[0]);
-$id = $uid[1];
-$uid = $username . '#' . $id;
-
-if (strlen($id) > 3) {
-    header("Location: $path_to_form?error=incorrect-tag");
-    exit(422);
-}
-
-
-if (!user_exists($conn, $uid)) {
-    header("Location: $path_to_form?error=no-user-found");
-    exit(403);
-}
-
-$pwd = get_user_password($conn, $uid);
-
-if (!empty($pwd) && empty($_POST["l_password"])) {
-    header("Location: $path_to_form?error=password-required");
-    exit(403);
-}
-
-if (password_verify($_POST["l_password"], $pwd)) {
-    header("Location: $path_to_form?error=wrong-password");
-    exit(403);
-}
-
-$sql = "SELECT * FROM `users` WHERE uuid = ?;";
-$stmt = $conn->stmt_init();
-$stmt->prepare($sql);
-$stmt->bind_param('s', $uid);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result = mysqli_fetch_assoc($result)) {
-    session_regenerate_id(true);
-    $_SESSION["uid"] = $result["uuid"];
-    $_SESSION["isadmin"] = $result["admin"];
-    $_SESSION["username"] = $result["username"];
-}
-$stmt->close();
-
-update_last_login($conn, $uid);
-header("Location: ../src/profile.php?info=success");
-
-$conn -> close();
