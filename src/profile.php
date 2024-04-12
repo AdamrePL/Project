@@ -2,10 +2,6 @@
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 require_once "$abspath\conf\config.php"; ?>
 
-if (!isset($_SESSION["uid"])) {
-    header("Location: /");
-}
-?>
 
 <!-- <h2>Last login: <?php // date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
 <h2>Joined: <?php //date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
