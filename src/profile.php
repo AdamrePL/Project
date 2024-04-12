@@ -50,7 +50,6 @@ if (!isset($_SESSION["uid"])) {
                     <input type="text" id="discord_user" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
             
                     <label for="email_flag">Użyć emaila do automatycznego wypełniania formy kontaktu?</label>
-                    <input type="checkbox" name="email_flag" />
             
                     <span>
                         <button type="submit" id="confirm" name="save">Zapisz</button>

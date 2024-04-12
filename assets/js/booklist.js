@@ -1,19 +1,24 @@
-<<<<<<< Updated upstream
-function toggleSide_Panel() {
-    var side_panel = document.getElementById("side-panel-booklist");
-    var booklist = document.getElementById("booklist");
+var isSelected = false;
+function selected() {
+    var button = document.getElementById("btn-filter");
+    const buttonStyle = button.style;
 
-    if (side_panel.style.width === "0px") 
-    {
-        side_panel.style.width = "450px";
-        booklist.style.marginLeft = "450px";
+    if(!isSelected){
+        isSelected = true;
+        button.style.background = "black";
+        button.style.color = "white";
+    }
+    else{
+        isSelected = false;
+        button.style = button.style;
     }
 
-    else 
-    {
-        side_panel.style.width = "0px";
-        booklist.style.marginLeft = "auto";
-    }
+
+
+
+
+
+    
+
+
 }
-=======
->>>>>>> Stashed changes

@@ -85,7 +85,7 @@ class Oferty {
 
 
 
-                echo '<button onclick="showData()">Pokaz dane</button>';
+                echo '<button onclick="showData()" id ="btn-show-data">Dane</button>';
                 echo '<div id="data-container">' . base64_encode($result["discord"]) .'</div>';
 
 
