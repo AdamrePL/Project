@@ -90,7 +90,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
 
             </fieldset> -->
             <form method="get">
-                <input type="search" pattern="[^'\x22]+" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
+                <input type="search" pattern="[^'\x22]+" list="books-search-list" name="search" id="searchbar" autocomplete="off" placeholder="Znajdź Produkt" />
                 <input type="submit" value="&#x1F50D;" />
                 <datalist id="books-search-list">
                     <?php 
@@ -109,7 +109,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             $query = mysqli_query($conn, $sql);
             $result = mysqli_fetch_assoc($query)["ilosc-ofert"];
         ?>
-        <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
+        <p>Ilość <b>aktualnych</b> ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
             <script src="assets/js/antiscraping.js" defer></script>
             <?php

@@ -190,9 +190,6 @@
     }
 }
 
-/* * DO NOT TOUCH COLORS, THESE ARE FINAL COLORS */
-/* ! ACTULLY NVM THESE ACCENTS SHADES OF BACKGROUND AND TEXT SUCK! */
-
 * {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif; /* & Default font for this website: sans-serif */
@@ -245,9 +242,9 @@ input[type="button"] {
 }
 
 /* Firefox */
-/* input[type=number] {
-    -moz-appearance:textfield;
-} */
+input[type=number] {
+    -moz-appearance: textfield;
+}
 
 footer {
     width: 100%;

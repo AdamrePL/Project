@@ -1,9 +1,5 @@
 @import "global.css";
 
-#filters {
-    margin-bottom: 8rem;
-}
-
 #filters-bar {
     position: fixed;
     width: 100%;
@@ -28,6 +24,10 @@
 
 #filters-bar option {
     text-transform: capitalize;
+}
+
+#booklist {
+    margin-top: 5rem;
 }
 
 #booklist,

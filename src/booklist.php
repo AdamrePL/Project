@@ -12,16 +12,6 @@
 </head>
 
 <body>
-    <!-- //& <section> Tutaj dodać filtrowanie książek po klasie i przedmiocie </section> -->
-    <!-- <div class="side-panel" id="side-panel-booklist"> //! Cool concept and all, but for now ill get rid of it for sticky scroll menu
-        <button type="menu" onclick="hide_Sidepanel()">X</button>
-        <h2 class="side-panel-title">Filtry</h2>
-        
-        <h3>Przedmioty</h3>
-        <p><h3>Klasy</h3></p>
-    </div> -->
-    <!-- <button type="menu" onclick="show_Sidepanel()" class="btn-filter" id="btn-show">T</button> -->
-
     <section id="filters">
         <header id="filters-bar">
             <select name="class">
@@ -51,12 +41,15 @@
     <main id="booklist">
         <h1 id="books-title">Spis Książek</h1>
         <?php
-        if (isset($_GET["subject"]) && !empty($_GET["subject"])) {
-            $subj = $conn->real_escape_string($_GET["subject"]);
-            $sql = "SELECT * FROM `booklist` WHERE subject LIKE '%$subj%' ORDER BY `class` ASC";
-        } else if (isset($_GET["class"]) && !empty($_GET["class"])) {
-            $class = $conn->real_escape_string($_GET["class"]);
-            $sql = "SELECT * FROM `booklist` WHERE class LIKE '$class'  ORDER BY `subject`";
+        $subj = isset($_GET["subject"]) ? $conn->real_escape_string($_GET["subject"]) : false;
+        $class = isset($_GET["class"]) ? $conn->real_escape_string($_GET["class"]) : false;
+
+        if ($subj && $class) {
+            $sql = "SELECT * FROM `booklist` WHERE `subject` LIKE '%$subj%' AND class = '$class'";
+        } else if ($subj) {
+            $sql = "SELECT * FROM `booklist` WHERE `subject` LIKE '%$subj%' ORDER BY `class` ASC";
+        } else if ($class) {
+            $sql = "SELECT * FROM `booklist` WHERE `class` = '$class'  ORDER BY `subject`";
         } else {
             $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC, `subject`";
         }
