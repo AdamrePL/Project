@@ -67,28 +67,28 @@ class AccountManager {
         return true;
     }
     public function set_phone(string $uid, int $nr): void {
-        $stmt = mysqli_stmt_init($this->conn);
+        $stmt = $this->conn->stmt_init();
         $sql = "UPDATE `users` SET `phone`= ? WHERE uuid = $uid;";
-        mysqli_stmt_prepare($stmt, $sql);
-        mysqli_stmt_bind_param($stmt, 's', $nr);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+        $stmt->prepare($sql);
+        $stmt->bind_param('s', $nr);
+        $stmt->execute();
+        $stmt->close();
     }
     public function set_discord(string $uid, string $discord_id) {
         $stmt = mysqli_stmt_init($this->conn);
         $sql = "UPDATE `users` SET `discord`= ? WHERE uuid = $uid;";
-        mysqli_stmt_prepare($stmt, $sql);
-        mysqli_stmt_bind_param($stmt, 's', $discord_id);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+        $stmt->prepare($sql);
+        $stmt->bind_param('s', $discord_id);
+        $stmt->execute();
+        $stmt->close();
     }
     public function change_email(string $uid, string $email) {
         $hashed_email = convert_uuencode(base64_encode($email));
-        $stmt = mysqli_stmt_init($this->conn);
+        $stmt = $this->conn->stmt_init();
         $sql = "UPDATE `users` SET `email`= ? WHERE uuid = $uid;";
-        mysqli_stmt_prepare($stmt, $sql);
-        mysqli_stmt_bind_param($stmt, 's', $hashed_email);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+        $stmt->prepare($sql);
+        $stmt->bind_param('s', $hashed_email);
+        $stmt->execute();
+        $stmt->close();
     }
 }

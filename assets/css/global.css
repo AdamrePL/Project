@@ -253,7 +253,7 @@ footer {
     border-top: 2.5px solid rgb(var(--primary-400));
     background: rgb(var(--primary-300));
     
-    letter-spacing: 0.3pt; /* & might need an update */
+    letter-spacing: 0.3pt; /* & this line might need an update */
 }
 
 footer > p {

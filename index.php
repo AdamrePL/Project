@@ -37,6 +37,9 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     
     <nav id="nawigacja">
         <?php
+            if (isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] > 0) {
+                echo '<a href="src/admin-tools.php"><b>Panel Sterowania</b></a>';
+            }
             if (isset($_SESSION["uid"])) {
                 echo '<a href="controllers/logout.php">Wyloguj</a>';
                 echo '<a href="src/profile.php#offers">Moje oferty</a>';

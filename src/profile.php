@@ -3,7 +3,7 @@
 require_once "../conf/config.php"; 
 
 if (!isset($_SESSION["uid"])) {
-    header("Location: /");
+    header("Location: ". $_SERVER["BASE"]);
 }
 ?>
 
@@ -18,12 +18,24 @@ if (!isset($_SESSION["uid"])) {
 
     <link rel="stylesheet" href="../assets/css/profile.css">
     <script src="../assets/js/profile-controller.js" defer></script>
+
+    <title>
+        <?php echo SITENAME;
+            if (isset($_GET["page"])) {
+                if ($_GET["page"] == "settings") {
+                    echo " - Ustawienia";
+                }
+            } else {
+                echo " - Profil";
+            }
+        ?>
+    </title>
 </head>
 
 <body>
 <?php
     if (!isset($_GET["page"])) {
-        $_GET["page"]="profile";
+        $_GET["page"] = "profile";
     }
     
     switch ($_GET["page"]) {
@@ -37,37 +49,38 @@ if (!isset($_SESSION["uid"])) {
                 <h1>User Settings</h1>
             
                 <form action="../controllers/profile-controller.php" method="post">
-                    <label for="new_password">nowe hasło</label>
-                    <input type="text" name="new_password" placeholder="new password" />
-                    <label for="password">potwierdź hasło</label>
-                    <input type="text" name="nowe hasło" placeholder="potwierdź hasło" />
+                    <label for="new_password">Zmień/Ustaw Hasło</label>
+                    <input type="password" name="new_pass" placeholder="new password" />
+                    <label for="password">Potwierdź Hasło</label>
+                    <input type="password" name="repeat_pass" placeholder="potwierdź hasło" />
                     <input type="submit" value="ustaw nowe hasło" name="set-new-password" />
                 </form>
 
                 <form action="../controllers/profile-controller.php">
-                    <label for="email_adress">podaj email</label>
+                    <label for="email_adress">Zmień/Ustaw Email</label>
                     <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
                     <br>
-                    <label for="phone_number">podaj nr. telefonu</label>
+                    <label for="phone_number">Zmień/Ustaw nr. telefonu</label>
                     <input type="tel" name="phone_number" placeholder="podaj numer" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
                     <br>
-                    <label for="discord_user">podaj nazwe użytkownika discord-a</label>
+                    <label for="discord_user">Zmień/Ustaw nazwe użytkownika discord</label>
                     <input type="text" id="discord_user" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
             
                     <label for="email_flag">Użyć emaila do automatycznego wypełniania formy kontaktu?</label>
                     <input type="checkbox" name="email_flag" />
             
                     <span>
-                        <button type="submit" id="confirm" name="save">Zapisz</button>
                         <button type="reset" id="reset" name="remove-all-contacts">Usuń formy kontaktu</button>
+                        <button type="submit" id="confirm" name="save">Zapisz</button>
                     </span>
                 </form>
 
 
             </div>';
-            echo '<div>
+            echo 
+            '<div>
                 <form method="post" action="../controllers/profile-controller.php">
-                    <input class="" type="submit" name="remove-account" value="Usuń konto" />
+                    <input type="submit" name="remove-account" value="Usuń konto" />
                 </form>
             </div>';
 
