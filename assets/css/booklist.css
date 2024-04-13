@@ -1,17 +1,40 @@
-@import "./global.css";
+@import "global.css";
 
-/* TODO @AdamrePL - Make it responsive 💀, it looks horrible on mobile devices */
+#filters {
+    margin-bottom: 8rem;
+}
+
+#filters-bar {
+    position: fixed;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* font-variant: small-caps; */
+    background: rgb(var(--primary-300), 0.3);
+    backdrop-filter: blur(5px);
+    flex-wrap: wrap;
+}
+
+#filters-bar select {
+    font-size: 1rem;
+    padding: 0.25rem;
+    text-align: center;
+    font-variant: all-small-caps;
+}
+
+#filters-bar option {
+    text-transform: capitalize;
+}
 
 #booklist,
 #booklist-files {
-    max-width: min(1400px, 100% - 4rem);
-    transition: 0.5s;
+    max-width: min(1400px, 100% - 2rem);
     margin-inline: auto;
-    padding: 2rem;
-}
-
-#booklist-files {
-    min-height: 10%;
+    padding-block: 2rem;
 }
 
 #booklist-files > a {
@@ -27,7 +50,7 @@
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 1rem;
 }
 
@@ -37,16 +60,17 @@ h1 {
     font-weight: bold;
     display: flex;
     flex-direction: row;
+    white-space: nowrap;
     background: rgb(var(--secondary-200));
     box-shadow: 0px 2px 3px 0.1px rgb(var(--accent-200));
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .card > span > p:first-child {
     flex-grow: 2;
     flex-shrink: 1;
     text-align: left;
-    word-break: break-word;
     text-wrap: wrap;
 }
 
@@ -54,54 +78,6 @@ h1 {
     text-align: right;
     flex-grow: 1;
     flex-basis: 20%;
-}
-
-.side-panel {
-    color: white;
-    height: 100%;
-    width: 0;
-    position: fixed;    
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 20px;
-}
-
-
-.side-panel > p {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-    transition: 0.3s;
-  }
-.side-panel > p:hover, .btn-filter:hover{
-    opacity: 0.5;
-}
-
-
-.side-panel > hr{
-    margin-left: 20px;
-    width: 85%;
-}
-.side-panel-title{
-    text-align: center;
-}
-.btn-filter{
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;   
-    width: fit-content;
-}
-
-.container{
-    transition: 0.5s;
 }
 
 ul {

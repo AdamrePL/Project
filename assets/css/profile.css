@@ -4,6 +4,7 @@
 body {
     background: rgb(var(--background-50));
 }
+
 a {
     text-decoration: none;
 }
@@ -30,6 +31,7 @@ a {
     /* flex-wrap: wrap; */
     flex-basis: 20%;
     gap: 1.5rem;
+    flex-shrink: 0;
 }
 
 .user-id {
@@ -67,59 +69,39 @@ a {
 }
 
 .contact {
-    flex: 1;
+    flex-grow: 1;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    flex-shrink: 3;
 }
 
-/* .contact ::first-letter {
-    text-transform: uppercase;
-} */
-
-.contact > * {
-    flex-basis: 50%;
+.contact > span {
+    flex-basis: 100%;
+    flex-shrink: 3;
+    gap: 2rem;
+    justify-content: space-between;
 }
 
-div ~ span{
-    display: flex;
-    justify-content: center;
-    height: 30%;
-    width: 20%;
-    margin: 0;
-    padding: 0.5rem;
-    margin-left: auto;
-    
-    a[name="user_edit"], a[name="logout"] {
-        font-size: 1.2rem;
-        padding: 2%;
-        /* display: block; */
-        height: auto;
-        width: 8rem;
-        overflow:hidden;
-        border: none;
-        border-radius: 5px;
-        text-shadow: 0px 0px 3px gray;
-        transition: all 0.2s ease-in-out;
-    }
+.contact > span > p {
+    display: inline-block;
+}
 
-    a[name="user_edit"] {   
-        background: rgb(var(--primary-400));
-        color: white;
-        transform:translateX(2%);
-    }
+.contact > span > a {
+    font-size: 1.2rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    text-shadow: 0px 0px 3px gray;
+    transition: all 0.2s ease-in-out;
+}
 
-    a[name="logout"] {
-        --primary-450: 115, 95, 230;
-        background: rgb(var(--primary-450));
-        color: white; 
-        transform:translateX(-2%);
-    }
-
-    a[name="user_edit"]:hover, a[name="logout"]:hover {
-        width: 10.5rem;
-    }   
-
+.contact > span > a[name="user_edit"] {   
+    background: rgb(var(--primary-400));
+    color: rgb(var(--text));
+}
+.contact > span > a[name="logout"] {
+    background: rgb(var(--primary-500));
+    color: rgb(var(--text));
 }
 
 input,

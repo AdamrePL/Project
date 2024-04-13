@@ -9,8 +9,13 @@ if (!isset($_SESSION["uid"])) {
 
 <!-- <h2>Last login: <?php // date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
 <h2>Joined: <?php //date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
-
+<!DOCTYPE html>
+<html lang="pl">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../assets/css/profile.css">
     <script src="../assets/js/profile-controller.js" defer></script>
 </head>
@@ -82,19 +87,18 @@ if (!isset($_SESSION["uid"])) {
                 </div>
                 ';
                 
-                //& 20.03 sorry for fucking up `contact` layout, will fix !!! (hopefully)
-                //! Man you did not ruin it as there was no layout, although you did in fact fuck up how the buttons look, CSS STYLING and NAMING ELEMENTS
                 echo '<div class="contact">';
-                    echo '<p>'. (!empty($result["phone"]) ? $result["phone"] : "Nr tel.") .'</p>';
-                    echo '<p>'. base64_decode(convert_uudecode($result["email"])) .'</p>';
-                    echo '<p><i class="fa-brands fa-discord"></i>'. (!empty($result["discord"]) ? $result["discord"] : "Discord") . '</p>';
+                    echo '<span>';
+                        echo '<p><i class="fa-solid fa-phone"></i>'. $result["phone"] .'</p>';
+                        echo '<p><i class="fa-solid fa-envelope"></i>'. base64_decode(convert_uudecode($result["email"])) .'</p>';
+                        echo '<p><i class="fa-brands fa-discord"></i>'. $result["discord"] . '</p>';
+                    echo '</span>';
+                    echo '<span>';
+                        echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
+                        echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
+                    echo '</span>';
                 echo '</div>';
                 
-                echo '<span>';
-                echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
-                echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
-                echo '</span>';
-
             echo '</section>';
             
             $selection_sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
