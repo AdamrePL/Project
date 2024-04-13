@@ -49,6 +49,18 @@ const fun = function() {
         }
     }
 
+    xhr.onprogress = e => {
+        if (e.lengthComputable) {
+            console.log(`Received ${e.loaded} of ${e.total} bytes`);
+        } else {
+            console.log(`Received ${e.loaded} bytes`); // no Content-Length
+        }
+    };
+
+    xhr.onerror = function() {
+        console.error("Request failed");
+    };
+
     xhr.send("show-uid=ok"); 
 }
 

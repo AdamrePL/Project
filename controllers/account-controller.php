@@ -1,26 +1,16 @@
 <?php
 
+
 function user_exists(mysqli $conn, $uid): bool {
-    $sql = "SELECT * FROM `users` WHERE uuid = ?;";
-    $stmt = $conn->stmt_init();
-    $stmt->prepare($sql);
-    $stmt->bind_param("s", $uid);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close();
-    return mysqli_num_rows($result) > 0;
+    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
+    $idk = new AccountManager($conn);
+    return $idk->user_exists($uid);
 }
 
 function get_user_password(mysqli $conn, $uid): string {
-    $sql = "SELECT `password` FROM `users` WHERE uuid = ? LIMIT 1;";
-    $stmt = $conn->stmt_init();
-    $stmt->prepare($sql);
-    $stmt->bind_param("s", $uid);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close();
-    $row = mysqli_fetch_assoc($result);
-    return $row["password"];
+    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
+    $idk = new AccountManager($conn);
+    return $idk->get_user_password($uid);
 }
 
 function update_last_login(mysqli $conn, string $uid) {
@@ -46,7 +36,7 @@ function update_last_login(mysqli $conn, string $uid) {
  * @return string returns user's uid if user is successfuly added to a database table. You can also say it returns true.
  * @return false on mysql_stmt_prepare() error.
 */
-function create_user(mysqli $conn, string $name, string $email, string $password = ""): mixed {
+function create_user(mysqli $conn, string $name, string $email, string $password = ""): string|false {
     $uid = generate_id($name);
     while (user_exists($conn, $uid)) {
         $uid = generate_id($name);
@@ -80,9 +70,9 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 }
 
 function generate_id(string $name): string {
-    require_once "../src/classes/AccountManager.php";
-    $idgenerator = new AccountManager($conn);
-    return $idgenerator->generate_uid($name);
+    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
+    $gen = new AccountManager($conn);
+    return $gen->generate_uid($name);
 }
 
 

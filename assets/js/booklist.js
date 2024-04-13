@@ -4,5 +4,6 @@ function show_Sidepanel() {
 }
 
 function hide_Sidepanel() {
-    document.getElementById("side-panel-booklist").style.width = "0";
+    document.getElementById("side-panel-booklist").style.width = "0px";
+    document.getElementById("booklist").style.marginLeft = "auto";
 }

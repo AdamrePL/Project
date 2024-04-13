@@ -4,12 +4,13 @@ class AccountManager {
     /**
      * @var array Contains digits 0-9, uppercase and lowercase english alphabet letters.
     */
-    private $chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
+    private $chars;
     private string $split_character = '#';
     private $length = 3;
 
     public function __construct(mysqli $conn) {
         $this->conn = $conn;
+        $this->chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
     }
 
     public function generate_uid($name): string
@@ -17,14 +18,27 @@ class AccountManager {
         return strtolower($name) . $this->split_character . array_rand($this->chars, $this->length);
     }
     
-    public function user_exists(mysqli $conn, $uid): bool {
+    public function user_exists($uid): bool {
         $sql = "SELECT * FROM `users` WHERE uuid = ?;";
-        $stmt = $conn->stmt_init();
+        $stmt = $this->conn->stmt_init();
         $stmt->prepare($sql);
         $stmt->bind_param("s", $uid);
         $stmt->execute();
+        $result = $stmt->get_result();
         $stmt->close();
-        return $stmt->num_rows() > 0;
+        return $result->num_rows > 0;
+    }
+
+    public function get_user_password($uid): string {
+        $sql = "SELECT `password` FROM `users` WHERE uuid = ? LIMIT 1;";
+        $stmt = $this->conn->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param("s", $uid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $row = mysqli_fetch_assoc($result);
+        return $row["password"];
     }
 
     /**
