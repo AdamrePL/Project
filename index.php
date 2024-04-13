@@ -111,13 +111,12 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
         ?>
         <p>Ilość aktualnych ofert w bazie danych: <?php echo $result; ?></p>
         <div class="browse-wrapper">
-            <script src="assets/js/antiscraping.js"></script>
+            <script src="assets/js/antiscraping.js" defer></script>
             <?php
             require_once "classes/Offer.php";
-
-            $offers = new Oferty($conn);
-            $offers->deleteIf30();
-            $offers->PrintAll();
+            
+            $offers = new OffersDisplay($conn);
+            $offers->Display(20);
             ?>
     </main>
 

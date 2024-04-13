@@ -1,5 +1,5 @@
 <?php
-class Oferty {
+class OffersDisplay {
     private $conn;
 
     
@@ -8,62 +8,18 @@ class Oferty {
         $this->conn = $conn;
     }
 
-    public function FormatDate (){
-        date_default_timezone_set('Europe/Warsaw');
-        $FormatDate = date('Y-m-d H:i:s');
-        return $FormatDate;
-    }
-
-    public function dateToDays($date1, $date2){
-        $diff = strtotime($date1) - strtotime($date2);
-        return round($diff/86400);
-
-    }
-
-    public function deleteIf30 (){
-        $sql = "SELECT * FROM `offers`";
-        foreach($this->conn->query($sql) as $row){
-            //check date
-            if (self::dateToDays(self::FormatDate(),$row["offer-edate"]) >= 30){
-
-                $this->conn->query("SET FOREIGN_KEY_CHECKS = 0");
-
-                $this->conn->query("ALTER TABLE `offers` DROP FOREIGN KEY `offers_ibfk_1`");
-                
-                $deleteoffer = "DELETE FROM `offers` WHERE `id` = " . $row["id"];
-                $this->conn->query($deleteoffer);
-                $deleteproduct = "DELETE FROM `products` WHERE `offer-id` = " .$row['id'];
-                $this->conn->query($deleteproduct);
-
-                $this->conn->query("ALTER TABLE `offers` ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION");
-                $this->conn->query("SET FOREIGN_KEY_CHECKS = 1");
-                
-            }
-        }
-    }
-
-
-    public function PrintAll(){
-        $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
-        $query = mysqli_query($this->conn, $sql);
-        
-
-        while ($result = mysqli_fetch_assoc($query)){
-            
-            echo "<script>console.log('Debug Objects: " . self::dateToDays(self::FormatDate(),$result["offer-edate"]) . "' );</script>"; //tylko test
-
-            if (self::FormatDate() >= date($result["offer-edate"])){
-                $sqlupdate = "UPDATE `offers` SET `status` = '0' WHERE `status` = '1' AND `id` =" . $result["id"];
-                $this->conn->query($sqlupdate);
-            }
-            echo '<div class="offer" id="'. $result["id"] .'">';
+    public function Display($amount){
+        $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT $amount";
+        $query = $this->conn->query($sql);
+        while ($result = $query->fetch_assoc()){
+            echo '<div class="offer" id="offer_'. $result["id"] .'">';
                 $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
                 $query2 = mysqli_query($this->conn, $sql2);
                 $prod = mysqli_num_rows($query2);
                 
                 if ($prod > 1) {
                     echo '<h4 class="offer-title">Pakiet</h4>';
-                    echo '<details>';
+                    echo '<details class="offer-contains">';
                     echo '<summary>Pakiet zawiera: </summary>';
                     // for ($i = 0; $i < $prod; $i++) {
                         
@@ -79,10 +35,8 @@ class Oferty {
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
                 }
 
-                echo '<details>';
-                echo '<summary onclick="getContact('. $result["id"] .')">Dane kontaktowe</summary>';
-                // This has to be moved to separate javascript file, just saying.
-                // Javascript file will querySelectorAll('.offer') and .AddEventListener("click", () => {take current element id attribute, and call function})
+                echo '<details class="contact-info">';
+                echo '<summary>Dane kontaktowe</summary>';
                 echo '</details>';
                 echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';

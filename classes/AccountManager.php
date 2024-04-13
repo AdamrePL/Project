@@ -1,21 +1,43 @@
 <?php
 class AccountManager {
     private $conn;
+    /**
+     * @var array Contains digits 0-9, uppercase and lowercase english alphabet letters.
+    */
+    private $chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
+    private string $split_character = '#';
+    private $length = 3;
+
     public function __construct(mysqli $conn) {
         $this->conn = $conn;
     }
+
+    public function generate_uid($name): string
+    {
+        return strtolower($name) . $this->split_character . array_rand($this->chars, $this->length);
+    }
     
+    public function user_exists(mysqli $conn, $uid): bool {
+        $sql = "SELECT * FROM `users` WHERE uuid = ?;";
+        $stmt = $conn->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param("s", $uid);
+        $stmt->execute();
+        $stmt->close();
+        return $stmt->num_rows() > 0;
+    }
+
     /**
      * @param string $uid users uuid
      * @return void well the function has nothing to return, so it voids.
     */
     public function delete_user(string $uid): void {
         $sql = "DELETE FROM `users` WHERE uuid = ?";
-        $stmt = mysqli_stmt_init($this->conn);
-        mysqli_stmt_prepare($stmt,$sql);
-        mysqli_stmt_bind_param($stmt,"s",$uid);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+        $stmt = $this->conn->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param("s", $uid);
+        $stmt->execute();
+        $stmt->close();
     }
 
     /**

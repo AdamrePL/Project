@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST["offer-id"])) {
-    require_once "conf/config.php"; 
+    require_once "../conf/config.php"; 
 
     $query = $conn->query("SELECT `user-uuid` FROM `offers` WHERE id = " . $conn->real_escape_string(htmlentities($_POST["offer-id"])));
     $result = $query->fetch_assoc();

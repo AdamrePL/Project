@@ -1,21 +1,49 @@
-function getContact(id) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "antiscraping.php", true); 
-    // & I don't have any clue how tf this path works but it works - @AdamrePL
-    // * Actually on second thought, I think it's the path from the currently working/active page (page where the event/function/xhr was triggered/called - also in other words, from where the xhr was sent and NOT from script file location)
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // application/json
-    xhr.onload = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Here you work with the data thats been recived from php file
-                // ex. you insert it into DOM
-                console.log(JSON.parse(xhr.responseText)); // return
-            }
-        }
-    }
+document.querySelectorAll(".contact-info").forEach(element => {
+    element.addEventListener("toggle", (e) => {
+        let id = e.target.parentNode.id.split("_")[1];
+        if (element.hasAttribute("open")) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "controllers/antiscraping.php", true); 
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); // application/json
+            xhr.onload = () => {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText); // return
+                        if (data["discord"] != null) {
+                            let disc = document.createElement("p");
+                            disc.innerText = data["discord"];
+                            
+                            e.target.appendChild(disc);
+                        }
+                        if (data["email"] != null) {
+                            let mail = document.createElement("p");
+                            mail.innerText = data["email"];
+                            
+                            e.target.appendChild(mail);
+                        }
 
-    xhr.send("offer-id=" + encodeURIComponent(id)); 
-}
+                        if (data["phone"] != null) {
+                            let phon = document.createElement("p");
+                            phon.innerText = data["phone"];
+                            
+                            e.target.appendChild(phon);
+                        }
+                    }
+                }
+            }
+            xhr.send("offer-id=" + encodeURIComponent(id));
+        } else {
+            const siblings = Array.from(e.target.children);
+          
+            siblings.forEach(sibling => {
+                if (sibling !== e.target.firstChild) {
+                    e.target.removeChild(sibling);
+                }
+            });
+        }
+    });
+});
+
 // You can create class for that if you want.. ig it is gonna be used in 2 places, profile.php and main page to be exact
 // function displayInfo(id) {
 //     getContact(id);
