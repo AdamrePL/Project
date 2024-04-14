@@ -119,7 +119,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             require_once "classes/Offer.php";
             
             $offers = new OffersDisplay($conn);
-            $offers->Display(20);
+            $offers->display_offers(20);
             ?>
     </main>
 
@@ -128,3 +128,5 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
 </body>
 </html>
 <?php $conn -> close(); ?>
+
+<!-- https://www.w3schools.com/icons/fontawesome5_icons_writing.asp -->

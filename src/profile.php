@@ -102,13 +102,14 @@ if (!isset($_SESSION["uid"])) {
                 
                 echo '<div class="contact">';
                     echo '<span>';
-                        echo '<p><i class="fa-solid fa-phone"></i>'. $result["phone"] .'</p>';
-                        echo '<p><i class="fa-solid fa-envelope"></i>'. base64_decode(convert_uudecode($result["email"])) .'</p>';
-                        echo '<p><i class="fa-brands fa-discord"></i>'. $result["discord"] . '</p>';
+                        echo '<p><i class="fa-solid fa-phone"></i> '. $result["phone"] .'</p>';
+                        echo '<p><i class="fa-solid fa-envelope"></i> '. base64_decode(convert_uudecode($result["email"])) .'</p>';
+                        echo '<p><i class="fa-brands fa-discord"></i> '. $result["discord"] . '</p>';
                     echo '</span>';
                     echo '<span>';
-                        echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
-                        echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
+                        echo '<a href="?page=settings" name="user_edit"><i class="fa-regular fa-edit"></i>&nbsp;|&nbsp;<i class="fa-solid fa-gear"></i></a>';
+                        // echo '<a href="?page=settings" name="user_edit"><i class="fa-regular fa-bookmark"></i></a>';
+                        echo '<a href="../controllers/logout.php" name="logout"><i class="fa-solid fa-sign-out"></i></a>';
                     echo '</span>';
                 echo '</div>';
                 
@@ -120,49 +121,10 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
             } else {
                 echo '<section class="user-offers">';
-                    $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
-                    $query = mysqli_query($conn,$sql);
-
-                    while ($result = mysqli_fetch_assoc($query)) {
-                        echo '<div class="offer">'; 
-
-                        //& copied selector from index ( ,,,= w =,,, )
-                        $prod = explode(",", $result["products"]);
-                        if (count($prod) > 1) {
-                            echo '<p>Pakiet</p>';
-                            echo '<details>';
-                            echo '<summary>Pakiet zawiera</summary>';
-                            for ($i = 0; $i < count($prod); $i++) {
-                                $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[$i]";
-                                $query2 = mysqli_query($conn, $sql2);
-                                $result2 = mysqli_fetch_assoc($query2);
-
-                                echo $result2["name"] . '<br>';
-                            }
-                            echo '</details>';
-
-                        } else {
-                            $sql2 = "SELECT * FROM `products` WHERE `products`.`id` = $prod[0]";
-                            $query2 = mysqli_query($conn, $sql2);
-                            $result2 = mysqli_fetch_assoc($query2);
-
-                            echo '<p>' . $result2["name"] . '</p>';
-                        }
-                        
-                        echo '<details>';
-                            echo '<summary>Dane kontaktowe</summary>';
-                            echo $result["phone"];
-                            echo $result["email"];
-                            echo $result["discord"];
-                        echo '</details>';
+                    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/Offer.php";
             
-                        echo '<span class="misc">';
-                        echo '<span>Oferta wygasa: ' . $result["offer-edate"] . '</span>';
-                        echo '<span><a href="" class="offer_management edit">edytuj</a> <a href="" class="offer_management change">zmień status</a></span>';
-                        echo '</span>'; 
-                        
-                        echo '</div>';    
-                    }
+                    $offers = new OffersDisplay($conn);
+                    $offers->display_offers(null, null, $_SESSION["uid"]);
 
                 echo '</section>';
             }

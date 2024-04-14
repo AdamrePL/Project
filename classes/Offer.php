@@ -8,10 +8,23 @@ class OffersDisplay {
         $this->conn = $conn;
     }
 
-    public function Display($amount){
-        $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT $amount";
+    public function display_offers($amount, $status = null, $user = null) {
+        if (!is_null($user)) {
+            $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '$user'";
+            $this->display($sql, true);
+        } else if (!is_null($status)) {
+            $sql = "SELECT * FROM `offers` WHERE `status` = $status LIMIT $amount";
+            $this->display($sql);
+        } else {
+            $sql = "SELECT * FROM `offers` WHERE `status` = 1 LIMIT $amount";
+            $this->display($sql);
+        }
+        
+    }
+
+    public function display($sql, $settings = false){
         $query = $this->conn->query($sql);
-        while ($result = $query->fetch_assoc()){
+        while ($result = $query->fetch_assoc()) {
             echo '<div class="offer" id="offer_'. $result["id"] .'">';
                 $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
                 $query2 = mysqli_query($this->conn, $sql2);
@@ -19,6 +32,9 @@ class OffersDisplay {
                 
                 if ($prod > 1) {
                     echo '<h4 class="offer-title">Pakiet</h4>';
+                    if ($settings) {
+                        echo '<span>ustawienia: <a><i class="fa fa-trash"></i></a></span>';
+                    }
                     echo '<details class="offer-contains">';
                     echo '<summary>Pakiet zawiera: </summary>';
                     // for ($i = 0; $i < $prod; $i++) {
@@ -33,10 +49,21 @@ class OffersDisplay {
                 } else {
                     $result2 = mysqli_fetch_assoc($query2);
                     echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
+                    if ($settings) {
+                        echo '<span>ustawienia: <a><i class="fa fa-trash"></i></a></span>';
+                    }
                 }
 
                 echo '<details class="contact-info">';
                 echo '<summary>Dane kontaktowe</summary>';
+                if ($settings) {
+                    $sql = "SELECT `phone`, `email`, `discord` FROM `users` WHERE uuid = '". $_SESSION["uid"]." '";
+                    $query = $this->conn->query($sql);
+                    $result3 = $query->fetch_assoc();
+                    echo '<p>'. $result3["discord"] .'</p>';
+                    echo '<p>'. $result3["phone"] .'</p>';
+                    echo '<p>'. $result3["email"] .'</p>';
+                }
                 echo '</details>';
                 echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';

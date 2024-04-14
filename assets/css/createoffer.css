@@ -60,9 +60,11 @@ input[type="file"] {
     position: relative;
 }
 
+/* https://kapeli.com/cheat_sheets/Font_Awesome.docset/Contents/Resources/Documents/index */
+
 input[type="file"]::before {
     font-family: 'Font Awesome 6 Free';
-    content: "\f1c5"; /*\f15b file icon*/
+    content: '\f1c5'; /*\f15b file icon*/
     color: rgb(var(--text));
 
 }

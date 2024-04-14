@@ -11,20 +11,21 @@ document.querySelectorAll(".contact-info").forEach(element => {
                         let data = JSON.parse(xhr.responseText); // return
                         if (data["discord"] != null) {
                             let disc = document.createElement("p");
-                            disc.innerText = data["discord"];
+
+                            disc.innerHTML = '<i class="fa-brands fa-discord"></i> '+data["discord"];
                             
                             e.target.appendChild(disc);
                         }
                         if (data["email"] != null) {
                             let mail = document.createElement("p");
-                            mail.innerText = data["email"];
+                            mail.innerHTML = '<i class="fa-regular fa-envelope"></i> '+data["email"];
                             
                             e.target.appendChild(mail);
                         }
 
                         if (data["phone"] != null) {
                             let phon = document.createElement("p");
-                            phon.innerText = data["phone"];
+                            phon.innerHTML = '<i class="fa-solid fa-phone"></i> '+data["phone"];
                             
                             e.target.appendChild(phon);
                         }
