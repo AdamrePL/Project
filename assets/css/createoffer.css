@@ -57,11 +57,22 @@ input[type="text"]:not(:placeholder-shown):valid {
 
 input[type="file"] {
     color: transparent !important;
+    position: relative;
 }
 
 input[type="file"]::before {
+    font-family: 'Font Awesome 6 Free';
+    content: "\f1c5"; /*\f15b file icon*/
+    color: rgb(var(--text));
+
+}
+
+input[type="file"]::after {
     content: attr(title);
     color: rgb(var(--text));
+    position: absolute;
+    margin-left: 25px;
+    left: 0;
 }
 
 input[type="submit"], input[type="reset"] {
