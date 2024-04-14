@@ -41,8 +41,9 @@
     <main id="booklist">
         <h1 id="books-title">Spis Książek</h1>
         <?php
-        $subj = isset($_GET["subject"]) ? $conn->real_escape_string($_GET["subject"]) : false;
-        $class = isset($_GET["class"]) ? $conn->real_escape_string($_GET["class"]) : false;
+        $_GET_lower = array_change_key_case($_GET, CASE_LOWER);
+        $subj = isset($_GET_lower["subject"]) ? $conn->real_escape_string($_GET_lower["subject"]) : false;
+        $class = isset($_GET_lower["class"]) ? $conn->real_escape_string($_GET_lower["class"]) : false;
 
         if ($subj && $class) {
             $sql = "SELECT * FROM `booklist` WHERE `subject` LIKE '%$subj%' AND class = '$class'";

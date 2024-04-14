@@ -26,15 +26,16 @@
     text-transform: capitalize;
 }
 
-#booklist {
-    margin-top: 5rem;
-}
 
 #booklist,
 #booklist-files {
     max-width: min(1400px, 100% - 2rem);
     margin-inline: auto;
     padding-block: 2rem;
+}
+
+#booklist {
+    padding-top: 5rem;
 }
 
 #booklist-files > a {
