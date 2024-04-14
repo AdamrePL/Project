@@ -1,4 +1,21 @@
 <?php
+
+class Offer {
+    private $conn;
+    private $offer_id;
+    
+    public function __construct($conn, $offer_id) {
+        $this->conn = $conn;
+        $this->offer_id = $offer_id;
+    }
+
+    public function get_products() {
+        $sql = "SELECT * FROM `products` WHERE `products`.`offer-id` = $this->offer_id";
+        $query = $this->conn->query($sql);
+        return $query->fetch_assoc();
+    }
+}
+
 class OffersDisplay {
     private $conn;
 
@@ -65,6 +82,7 @@ class OffersDisplay {
                     echo '<p>'. $result3["email"] .'</p>';
                 }
                 echo '</details>';
+                echo '<a href="src/offer.php?id='. $result["id"] .'">Pokaż więcej..</a>';
                 echo '<span class="offer-date">';                
                     echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
                     echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';

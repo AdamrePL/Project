@@ -9,21 +9,21 @@ document.querySelectorAll(".contact-info").forEach(element => {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
                         let data = JSON.parse(xhr.responseText); // return
-                        if (data["discord"] != null) {
+                        if (data["discord"] != null && data["discord"] != "") {
                             let disc = document.createElement("p");
 
                             disc.innerHTML = '<i class="fa-brands fa-discord"></i> '+data["discord"];
                             
                             e.target.appendChild(disc);
                         }
-                        if (data["email"] != null) {
+                        if (data["email"] != null && data["email"] != "") {
                             let mail = document.createElement("p");
                             mail.innerHTML = '<i class="fa-regular fa-envelope"></i> '+data["email"];
                             
                             e.target.appendChild(mail);
                         }
 
-                        if (data["phone"] != null) {
+                        if (data["phone"] != null && data["phone"] != "") {
                             let phon = document.createElement("p");
                             phon.innerHTML = '<i class="fa-solid fa-phone"></i> '+data["phone"];
                             
