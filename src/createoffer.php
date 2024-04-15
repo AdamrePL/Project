@@ -14,7 +14,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITENAME; ?> - Utwórz oferte</title>
-
+    <script src = "assets\js\offer-form-controller.js"></script>
     <noscript>
         <meta http-equiv="refresh" content="0; url=<?php echo $_SERVER["BASE"] . "src/noscript.html" ?>">
     </noscript>
@@ -64,9 +64,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             
             <div class="product-list">
                 <h3>Produkty</h3>
-                <?php
-                for ($i=1; $i<$_GET['row']+1; $i++){
-                ?>
+               
                 <div class="product">
                     <select name="book[]">
                         <?php
@@ -93,11 +91,10 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                     <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>
-                <?php 
-                }
-                ?>
-                <button onclick= "location.href='createoffer.php?row=<?php echo $_GET["row"] + 1 ?>'">Dodaj pole</button>
+                
             </div>
+            <button id= "btn-new-field" type="button">Dodaj pole</button>
+
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
 
             <input type="checkbox" id = "publish-data-agreement" name = "personal-data-agreement" required>
