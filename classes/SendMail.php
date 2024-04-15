@@ -61,5 +61,9 @@ class SendMail{
             $this->sendmail_exception = $e;
             return false;
         }
+        
+    }
+    public function remind_user_id(): bool{
+        //TODO: Finish this method.
     }
 }
