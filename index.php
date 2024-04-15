@@ -122,7 +122,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];?>
     </main>
 
     <?php
-    include "src/footer.php";
+    include "src\\footer.php";
     ?>
 
     <?php
