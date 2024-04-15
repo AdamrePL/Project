@@ -33,7 +33,7 @@ class SendMail{
         return $this->sendmail_exception;
     }
 
-    public function send_mail(string $subject, string $body, string $altbody): false{
+    public function send_mail(string $subject, string $body, string $altbody): bool{
         try{
             //Setup
             $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
