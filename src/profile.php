@@ -1,6 +1,6 @@
 <?php 
 // $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "C:\Users\Staz\Desktop\Project\conf\config.php"; ?>
+require_once "C:\Users\Staz\Desktop\Project\conf\config.php";
 
 if (!isset($_SESSION["uid"])) {
     header("Location: /");

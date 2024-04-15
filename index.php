@@ -124,8 +124,4 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     
 </body>
 </html>
-<<<<<<< Updated upstream
-<?php $conn -> close(); ?>
-=======
 <?php $conn->close(); ?>    
->>>>>>> Stashed changes

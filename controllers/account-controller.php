@@ -80,9 +80,9 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 }
 
 function generate_id(string $name): string {
-    require_once "../src/classes/IDGenerator.php";
-    $idgenerator = new IDGenerator(3, $name);
-    return $idgenerator->generate_uid();
+    require_once "../classes/IDGenerator.php";
+    $idgenerator = new IDGenerator(3,true, $name);
+    return $idgenerator->generate_ID();
 }
 
 
