@@ -63,40 +63,78 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             </div>
             
             <div class="product-list">
-                <h3>Produkty</h3>
+            <h3>Produkty</h3>
+<div id="productsContainer">
+    <?php
+    for ($i = 1; $i < $_GET['row'] + 1; $i++) {
+        ?>
+        <div class="product">
+            <select name="book[]">
                 <?php
-                for ($i=1; $i<$_GET['row']+1; $i++){
-                ?>
-                <div class="product">
-                    <select name="book[]">
-                        <?php
-                            $sql = "SELECT `id`, `name` FROM `booklist`";
-                            $query = $conn->query( $sql);
-                            while ($result = $query->fetch_assoc()) {
-                                echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
-                            }
-                        ?>
-                    </select>
-                    
-                    <input type="number" name="price[]" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
-                    
-                    <select name="quality[]">
-                        <?php
-                            $quality_count = count($quality);
-                            for ($q = 0; $q < $quality_count; $q++){
-                                echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                            }
-                        ?>
-                    </select>
-                    
-                    <input type="text" name="note[]" placeholder = "opis" maxlength="80" multiline="true" />
-                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                </div>
-                <?php 
+                $sql = "SELECT `id`, `name` FROM `booklist`";
+                $query = $conn->query($sql);
+                while ($result = $query->fetch_assoc()) {
+                    echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
                 }
                 ?>
-                <button onclick= "location.href='createoffer.php?row=<?php echo $_GET["row"] + 1 ?>'">Dodaj pole</button>
+            </select>
+
+            <input type="number" name="price[]" min="0" max="999.99" step="0.01" required />
+
+            <select name="quality[]">
+                <?php
+                $quality_count = count($quality);
+                for ($q = 0; $q < $quality_count; $q++) {
+                    echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input type="text" name="note[]" placeholder="opis" maxlength="80" multiline="true" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+        </div>
+        <?php
+    }
+    ?>
+</div>
+    <button id="addButton">Dodaj pole</button>
+    <script>
+    document.getElementById("addButton").addEventListener("click", function () {
+        var container = document.getElementById("productsContainer");
+        var div = document.createElement("div");
+        div.classList.add("product");
+
+        div.innerHTML = `
+            <select name="book[]">
+                <?php
+                $sql = "SELECT `id`, `name` FROM `booklist`";
+                $query = $conn->query($sql);
+                while ($result = $query->fetch_assoc()) {
+                    echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input type="number" name="price[]" min="0" max="999.99" step="0.01" required />
+
+            <select name="quality[]">
+                <?php
+                $quality_count = count($quality);
+                for ($q = 0; $q < $quality_count; $q++) {
+                    echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input type="text" name="note[]" placeholder="opis" maxlength="80" multiline="true" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+        `;
+        container.appendChild(div);
+        });
+    </script>
+
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
 

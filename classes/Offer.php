@@ -51,7 +51,7 @@ class Oferty {
             $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
             $query = mysqli_query($this->conn, $sql);
         }else{
-            $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '".$_SESSION['uid']."' LIMIT 20";
+            $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '".$_SESSION['uid']."' ORDER BY `id` DESC LIMIT 20 ";
             $query = mysqli_query($this->conn, $sql);
         }
         
