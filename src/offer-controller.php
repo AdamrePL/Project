@@ -44,7 +44,6 @@ class OfferController
     public function addOffer()
     {
         try {
-            // $user = htmlspecialchars(stripslashes(trim($_SESSION["uuid"])));
 
 
             $user = $_SESSION['uid'];

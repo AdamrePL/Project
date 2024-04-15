@@ -48,7 +48,7 @@ class Oferty {
 
     public function PrintAll($ALL = TRUE){
         if ($ALL == TRUE){
-            $sql = "SELECT * FROM `offers` WHERE `status` = '1' LIMIT 20";
+            $sql = "SELECT * FROM `offers` WHERE `status` = '1' ORDER BY `id` DESC LIMIT 20 ";
             $query = mysqli_query($this->conn, $sql);
         }else{
             $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '".$_SESSION['uid']."' ORDER BY `id` DESC LIMIT 20 ";
@@ -84,8 +84,9 @@ class Oferty {
 
 
 
-
-                echo '<button onclick="showData()" id ="btn-show-data">Dane</button>';
+                if ($ALL == TRUE){
+                    echo '<button onclick="showData()" id ="btn-show-data">Dane</button>';
+                }
                 echo '<div id="data-container">' . base64_encode($result["discord"]) .'</div>';
 
 
