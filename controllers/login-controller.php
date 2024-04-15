@@ -5,69 +5,74 @@ require_once "../conf/config.php";
 $path_to_form = "../src/access.php";
 
 if (isset($_SESSION["uid"])) {
+    // throw new Exception("Error Processing Request", 403);
+    
     header("Location: / ");
     exit(403);
 }
 
 if (!isset($_POST["log"])) {
+    // throw new Exception("Error Processing Request", 403);
+    
     header("Location: $path_to_form?error=l_submit-error");
     exit(403);
 }
 
 include_once "account-controller.php";
+include_once "../classes/AccountManager.php";
+require_once "../classes/LoginManager.php";
 
 $uid = trim($_POST["user-id"]);
 
-const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
+$manager = new LoginManager($conn, $uid);
 
-if (!preg_match(UID_PATTERN, $uid)) {
+try {
+    $manager->check_uid();
+} catch (Exception) {
     header("Location: $path_to_form?error=incorrect-uid");
     exit(422);
 }
 
-$uid = explode("#", $uid);
-$username = strtolower($uid[0]);
-$id = $uid[1];
-$uid = $username . '#' . $id;
+$res = $manager->validate();
 
-if (strlen($id) > 3) {
+$id = $res["id"];
+$uid = $res["uid"];
+
+try {
+    $manager->check_len($id);
+} catch (Exception) {
     header("Location: $path_to_form?error=incorrect-tag");
     exit(422);
 }
 
+$idk = new AccountManager($conn);
 
-if (!user_exists($conn, $uid)) {
-    header("Location: $path_to_form?error=no-user-found");
-    exit(403);
-}
+try {
+    if (!$idk->user_exists($uid)) {
+    // throw new Exception("no-user-found", 403);
+        header("Location: $path_to_form?error=no-user-found");
+        exit(403);
+    }
+} catch (EXCEPTION) {}
 
-$pwd = get_user_password($conn, $uid);
+$pwd = $idk->get_user_password($uid);
 
 if (!empty($pwd) && empty($_POST["l_password"])) {
+    // throw new Exception("password-required", 403);
+
     header("Location: $path_to_form?error=password-required");
     exit(403);
 }
 
 if (password_verify($_POST["l_password"], $pwd)) {
+    // throw new Exception("wrong-password", 403);
+
     header("Location: $path_to_form?error=wrong-password");
     exit(403);
 }
 
-$sql = "SELECT * FROM `users` WHERE uuid = ?;";
-$stmt = $conn->stmt_init();
-$stmt->prepare($sql);
-$stmt->bind_param('s', $uid);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result = mysqli_fetch_assoc($result)) {
-    session_regenerate_id(true);
-    $_SESSION["uid"] = $result["uuid"];
-    $_SESSION["isadmin"] = $result["admin"];
-    $_SESSION["username"] = $result["username"];
-}
-$stmt->close();
+$manager->login();
 
-update_last_login($conn, $uid);
 header("Location: ../src/profile.php?info=success");
 
-$conn -> close();
+$conn->close();

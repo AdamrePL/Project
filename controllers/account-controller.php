@@ -1,25 +1,9 @@
 <?php
 
-
-function user_exists(mysqli $conn, $uid): bool {
-    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
-    $idk = new AccountManager($conn);
-    return $idk->user_exists($uid);
-}
-
 function get_user_password(mysqli $conn, $uid): string {
     require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
     $idk = new AccountManager($conn);
     return $idk->get_user_password($uid);
-}
-
-function update_last_login(mysqli $conn, string $uid) {
-    $sql = "UPDATE `users` SET `last-login` = NOW() WHERE uuid = ?";
-    $stmt = $conn->stmt_init();
-    $stmt->prepare($sql);
-    $stmt->bind_param("s", $uid);
-    $stmt->execute();
-    $stmt->close();
 }
 
 /**
@@ -38,7 +22,8 @@ function update_last_login(mysqli $conn, string $uid) {
 */
 function create_user(mysqli $conn, string $name, string $email, string $password = ""): string|false {
     $uid = generate_id($name);
-    while (user_exists($conn, $uid)) {
+    $idk = new AccountManager($conn);
+    while ($idk->user_exists($conn, $uid)) {
         $uid = generate_id($name);
     }
 

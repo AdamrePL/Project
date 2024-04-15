@@ -33,8 +33,7 @@ if (!isset($_GET) || empty($_GET) || !isset($_GET["id"]) || $_GET["id"] == "") {
         echo '<br>';
         echo $result["offer-cdate"] . $result["offer-edate"] . $result["phone"] . $result["email"] . $result["discord"];
         echo '<br>';
-        print_r($result2);
-        echo 'tyt:' . $result2["name"] . 'autor:' . $result2["publisher"] . 'przed: ' . $result2["subject"] . $result2["subject"] . $result2["subject"] . $result2["subject"] . $result2["subject"];
+        echo 'tyt:' . $result2["name"] . 'autor:' . $result2["author"] . $result2["publisher"] . 'przed: ' . $result2["subject"] . $result2["class"] . $result2["price"] . $result2["quality"] . $result2["note"] . $result2["img"];
     }
 ?>
 

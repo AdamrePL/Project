@@ -13,8 +13,7 @@ class AccountManager {
         $this->chars = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9));
     }
 
-    public function generate_uid($name): string
-    {
+    public function generate_uid($name): string {
         return strtolower($name) . $this->split_character . array_rand($this->chars, $this->length);
     }
     
