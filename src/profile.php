@@ -92,7 +92,7 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span>';
                 echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
                 echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
-                echo '<a href="../src/createoffer.php?row=1">Stwórz ofertę</a>';
+                echo '<a href="../src/createoffer.php">Stwórz ofertę</a>';
                 echo '</span>';
 
             echo '</section>';
@@ -101,7 +101,7 @@ if (!isset($_SESSION["uid"])) {
             $selection_query = mysqli_query($conn,$selection_sql);
 
             if(empty(mysqli_fetch_assoc($selection_query))){
-                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php?row=1">Stwórz ofertę</a></span>';
+                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
             } else {              
                 require_once "classes/Offer.php";
                 $offers = new Oferty($conn);
