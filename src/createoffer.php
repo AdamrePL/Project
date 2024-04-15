@@ -14,7 +14,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITENAME; ?> - Utwórz oferte</title>
-    <script src = "assets\js\offer-form-controller.js"></script>
+    <script src = "..\assets\js\offer-form-controller.js"></script>
     <noscript>
         <meta http-equiv="refresh" content="0; url=<?php echo $_SERVER["BASE"] . "src/noscript.html" ?>">
     </noscript>
@@ -45,12 +45,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 <div class="offer-contact">
                     <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p>
                     <h3>Dane kontaktowe</h3>
-                    <?php 
-                        $sql = "SELECT `phone`, `email`, `discord`, `email-flag` FROM `users` WHERE uuid = '".$_SESSION["uid"]."';";
-                        $query = $conn->query($sql);
-                        $result = $query->fetch_assoc();
-                        $query->close();
-                        ?>
+                    
                     <input type="number" name="phone" placeholder="numer telefonu">
                     <input type="text" name="email" placeholder="e-mail">
                     <input type="text" name="discord" placeholder="discord tag"> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
@@ -62,10 +57,11 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 </div>
             </div>
             
-            <div class="product-list">
+            <div id="product-list">
                 <h3>Produkty</h3>
-               
-                <div class="product">
+                <button type="button" onclick = "newField()">Nowe pole</button>
+
+                <div id="product">
                     <select name="book[]">
                         <?php
                             $sql = "SELECT `id`, `name` FROM `booklist`";
@@ -93,15 +89,15 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 </div>
                 
             </div>
-            <button id= "btn-new-field" type="button">Dodaj pole</button>
-
-            <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
+          
+          
 
             <input type="checkbox" id = "publish-data-agreement" name = "personal-data-agreement" required>
             <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
             <p><input type="submit" value="Create Offer" name="standard" />
             <input type="reset" value="Reset" /></p>    
         </form>
+
 
         <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego
                 <div class="products-list">
@@ -122,7 +118,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                         
                         <input type="text" name="note" maxlength="80" multiline="true" />
                         
-                        
+                                    
                         
                         <input type="image" name="image"/>
                         <input type="image" name="image1"/>

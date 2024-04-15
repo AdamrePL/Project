@@ -25,7 +25,6 @@ const add_prod_btn = list.lastElementChild.onclick = () => {
 
 
 
-document.getElementById("btn-new-field").addEventListener("click",newField());
 
 function newField(){
     const field = document.getElementById("product").cloneNode(true);
