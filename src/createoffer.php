@@ -33,7 +33,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     <h1>Stwórz ofertę</h1>
     <div class="offer-wrapper">
         <?php
-        require_once $abspath.'\src\createoffer.php';
+        require_once $abspath.'\src\offer-controller.php';
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $controller = new OfferController($conn,$_SESSION["uid"]);
             $controller->addOffer();
