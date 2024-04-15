@@ -50,11 +50,6 @@
             echo '<span class = "btn-filter">' . $result["class"] . '</span>';
         }
         ?>
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> e22fff761387592c840f29755f5ce7895985ad0e
-=======
 
     <!-- <div class="side-panel" id="side-panel-booklist"> -->
     <!-- <h2 class="title" id="side-panel-title">Zawężanie wyników</h2> -->
@@ -96,25 +91,6 @@
             document.getElementById("books-title").style.marginLeft = "500px";
         }
 
-<<<<<<< Updated upstream
-        function hide_Sidepanel() {
-            document.getElementById("side-panel-booklist").style.width = "0";
-            document.getElementById("books").style.marginLeft = "0";
-            document.getElementById("books-title").style.marginLeft = "0";
-        }
-    </script>
-
-    <div class="container" id="books">
-    <?php 
-        $sql = "SELECT * FROM `booklist` ORDER BY `class` ASC, `subject`";
-        $query = mysqli_query($conn, $sql);
-        while ($result = mysqli_fetch_assoc($query)) {
-            echo '<div class="card">';
-                echo '<span>';
-                    echo '<p>'. $result["name"] .'</p>';
-                    echo '<p>Klasa - '. $result["class"] .'</p>';
-                echo '</span>';
-=======
     <section id="booklist">
         <!-- <button onclick= "toggleSide_Panel()" class="btn-filter" id="btn-show">☰</button> -->
         <?php
@@ -141,7 +117,6 @@
             echo '</span>';
             echo '<span class="book-grade">Klasa - ' . $result["class"] . '</span>';
 
->>>>>>> Stashed changes
 
 
                 echo '<ul>';

@@ -220,14 +220,12 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
 </div>
                 -->
 
-                </section>
-                <?php include_once $abspath."src/footer.php"; ?>
-                </body>
-                </html>
 
 </section>
 
-<?php include_once $abspath."src/footer.php"; ?>
+<?php
+    include_once "footer.php";
+?>
 
 </body>
 </html>
