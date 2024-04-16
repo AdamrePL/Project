@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2024 at 11:53 AM
--- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Generation Time: Apr 15, 2024 at 11:50 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `booklist`
+-- Table structure for table `booklist`
 --
 
 CREATE TABLE `booklist` (
@@ -94,7 +94,7 @@ INSERT INTO `booklist` (`id`, `name`, `subject`, `class`, `authors`, `publisher`
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `offers`
+-- Table structure for table `offers`
 --
 
 CREATE TABLE `offers` (
@@ -113,14 +113,12 @@ CREATE TABLE `offers` (
 --
 
 INSERT INTO `offers` (`id`, `user-uuid`, `offer-cdate`, `offer-edate`, `status`, `phone`, `email`, `discord`) VALUES
-(7, 'tetester#je3', '2024-03-22 10:11:59', '2024-04-01 10:11:59', 0, 0, '', 'Yippe'),
-(8, 'tetester#je3', '2024-03-22 10:48:31', '2024-03-27 10:48:31', 0, 607419261, '', 'MangoBanana'),
 (9, 'admin#11d', '2024-03-22 12:59:48', '2024-03-30 14:59:48', 0, 111333777, '', 'Marcin');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -148,12 +146,15 @@ INSERT INTO `products` (`id`, `offer-id`, `name`, `author`, `publisher`, `subjec
 (5, 8, 'Informatyka na czasie 2 Zakres Podstawowy', 'Janusz Mazur, Paweł Perekietka, Zbigniew Talaga, Janusz S. Wierzbicki', 'Nowa Era', 'informatyka', 2, 30.00, '0', 'Stan książki - praktycznie jak nowa', '', 0),
 (6, 9, 'Biologia na czasie 1', 'Anna Helmin, Jolanta Holeczek', 'Nowa Era', 'biologia', 1, 20.00, '2', 'Jest jeszcze w folii', '', 0),
 (7, 9, 'MATeMAtyka 1 Maturalne karty pracy Zakres Rozszerzony', 'Dorota Ponczek, Karolina Wej', 'Nowa Era', 'matematyka', 1, 10.00, '0', 'Książka ma wiele notacji wewnątrz.. oraz na zewnątrz, wiele obliczeń na stronach', '', 0),
-(8, 9, 'Edukacja dla bezpieczeństwa', 'Bogusław Breitkopf, Mariusz Cieśla', 'WSiP Nowa Edycja', 'edukacja dla bezpieczeństwa', 1, 14.00, '1', '', '', 0);
+(8, 9, 'Edukacja dla bezpieczeństwa', 'Bogusław Breitkopf, Mariusz Cieśla', 'WSiP Nowa Edycja', 'edukacja dla bezpieczeństwa', 1, 14.00, '1', '', '', 0),
+(9, 10, 'Pioneer Plus. Level B1+ Students Book', 'H.G. Mitchell, Marileni Malkogianni', 'MM Publications', 'język angielski rozszerzony', 1, 34.00, '0', '', '', 0),
+(10, 10, 'Spotkania z filozofią', 'Monika Bokiniec, Sylwester Zielka', 'Nowa Era', 'filozofia', 1, 42.00, '0', '', '', 0),
+(11, 11, 'Biologia na czasie 2', 'Anna Helmin, Jolanta Holeczek', 'Nowa Era', 'biologia', 1, 25.00, '1', 'fajna książka lubie czytac porysowana', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -174,24 +175,26 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`uuid`, `username`, `password`, `phone`, `email`, `discord`, `last-login`, `email-flag`, `admin`) VALUES
 ('admin#11d', 'admin', '', NULL, '49$=6>F1%0C!:6$XP3&Y2;&,S43T`\n`\n', NULL, '2024-03-22 12:56:10', 0, 1),
-('chopa#vj1', 'chopa', '', NULL, '06D=&>F,P0FM94S5J8C(P/0``\n`\n', NULL, '2024-04-03 13:41:20', 0, 1),
-('etetee#Vqc', 'etetee', '', NULL, '08E=6=%I50G1:4S5T6E$]/0``\n`\n', NULL, '2024-03-20 14:50:28', 0, 0),
+('anaxar#gay', 'anaxar', '', NULL, '465<U:&5\'1GE11S%H85=W=6-N53T`\n`\n', NULL, '2024-04-12 12:39:36', 0, 0),
+('etetee#Vqc', 'etetee', '', NULL, '08E=6=%I50G1:4S5T6E$]/0``\n`\n', NULL, '2022-02-20 14:50:28', 0, 0),
+('marke#egq', 'marke', '', NULL, '48E=&>6$R5D%:,C%H85=W=5DR.70`\n`\n', NULL, '2024-04-12 11:24:55', 0, 0),
 ('ola#fhk', 'Ola', '$2y$10$1Lpi2a2zldtQoGIPkqu4U.wVJ2ld8IS/fg8HSyTWZgNoIFXW.Rfwq', NULL, '06EAD=&0R,3-11T8P3&Y\"<P``\n`\n', NULL, '2024-03-22 12:55:05', 0, 0),
-('tete#WGu', 'tete', '', NULL, '09$=6,%I50C!:6%)L3&Y2;```\n`\n', NULL, '2024-03-22 12:53:19', 0, 0),
-('tetester#je3', 'Tetester', '', NULL, '49#(Y:&%%0C595VAV8GDU-5E823T`\n`\n', NULL, '2024-03-22 09:52:13', 0, 0);
+('popa#ng6', 'popa', '', NULL, '06D=&:UE50G195VQS3&Y6:```\n`\n', NULL, '2024-04-12 09:28:18', 0, 0),
+('popka#ld8', 'popka', '', NULL, '48T<Y=V$R1D%B5T9P8D,U>611/3T`\n`\n', NULL, '2024-04-12 11:24:24', 0, 0),
+('tete#WGu', 'tete', '', NULL, '09$=6,%I50C!:6%)L3&Y2;```\n`\n', NULL, '2024-03-22 12:53:19', 0, 0);
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `booklist`
+-- Indexes for table `booklist`
 --
 ALTER TABLE `booklist`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `offers`
+-- Indexes for table `offers`
 --
 ALTER TABLE `offers`
   ADD PRIMARY KEY (`id`),
@@ -199,7 +202,7 @@ ALTER TABLE `offers`
   ADD KEY `user-uuid` (`user-uuid`);
 
 --
--- Indeksy dla tabeli `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -207,7 +210,7 @@ ALTER TABLE `products`
   ADD KEY `offer-id` (`offer-id`);
 
 --
--- Indeksy dla tabeli `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD UNIQUE KEY `uuid` (`uuid`);
@@ -226,13 +229,13 @@ ALTER TABLE `booklist`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -242,13 +245,13 @@ ALTER TABLE `products`
 -- Constraints for table `offers`
 --
 ALTER TABLE `offers`
-  ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`offer-id`) REFERENCES `offers` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`offer-id`) REFERENCES `offers` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

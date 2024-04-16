@@ -85,8 +85,8 @@ class OfferController
             foreach ($_POST['book'] as $key => $book) {
                 $query = mysqli_query($this->conn, "SELECT * FROM booklist WHERE id =" . $book);
                 $res = mysqli_fetch_assoc($query);
-                $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $_POST["note"][$key], $_POST['price'][$key],$_POST["exp_days"], $_POST["quality"][$key]);
-                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','1','$list[5]','$list[7]','$list[4]','','0')");
+                $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $_POST["note"][$key], $_POST['price'][$key],$res["class"], $_POST["quality"][$key]);
+                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','$list[6]','$list[5]','$list[7]','$list[4]','','0')");
             }
         } catch (Exception $e) {
             echo $e->getMessage();

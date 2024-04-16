@@ -1,11 +1,7 @@
 <?php 
-// $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "C:\Users\Staz\Desktop\Project\conf\config.php";
+$abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
+require_once "$abspath\conf\config.php"; ?>
 
-if (!isset($_SESSION["uid"])) {
-    header("Location: /");
-}
-?>
 
 <!-- <h2>Last login: <?php // date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
 <h2>Joined: <?php //date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
@@ -92,7 +88,7 @@ if (!isset($_SESSION["uid"])) {
                 echo '<span>';
                 echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
                 echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
-                echo '<a href="../src/createoffer.php">Stwórz ofertę</a>';
+                echo '<a href="../src/createoffer.php?row=1">Stwórz ofertę</a>';
                 echo '</span>';
 
             echo '</section>';
@@ -101,9 +97,10 @@ if (!isset($_SESSION["uid"])) {
             $selection_query = mysqli_query($conn,$selection_sql);
 
             if(empty(mysqli_fetch_assoc($selection_query))){
-                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
-            } else {              
-                require_once "classes/Offer.php";
+                echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php?row=1">Stwórz ofertę</a></span>';
+            } else {
+                
+                require_once "$abspath\classes\Offer.php";
                 $offers = new Oferty($conn);
                 $offers->PrintAll(FALSE);
             }
