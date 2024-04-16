@@ -2,9 +2,12 @@
 
 class LoginManager {
     private $conn;
-    private $uid;
-    protected const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
 
+    public $uid;
+    public $username;
+    public $tag;
+    
+    protected const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
 
     public function __construct(mysqli $conn, $uid) {
         $this->conn = $conn;
@@ -19,15 +22,15 @@ class LoginManager {
 
     public function validate() {
         $uid = explode("#", $this->uid);
-        $username = strtolower($uid[0]);
+        $username = $uid[0];
         $id = $uid[1];
-        $uid = $username . '#' . $id;
+        $uid = strtolower($username) . '#' . $id;
 
-        return array("uid"=>$uid,"id"=>$id);
-    }
-
-    public function check_len($tag) {
-        if (strlen($tag) > 3) {
+        $this->uid = $uid;
+        $this->username = $username;
+        $this->tag = $id;
+        
+        if (strlen($this->tag) > 3) {
             throw new Exception("incorrect-tag", 403);
         }
     }
@@ -53,10 +56,12 @@ class LoginManager {
             $_SESSION["uid"] = $result["uuid"];
             $_SESSION["isadmin"] = $result["admin"];
             $_SESSION["username"] = $result["username"];
+            $this->update_last_login();
+            return true;
         }
         $stmt->close();
 
-        $this->update_last_login();
+        return false;
     }
 
 }

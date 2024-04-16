@@ -1,10 +1,14 @@
 <?php
+require_once "../conf/config.php";
 
 function get_user_password(mysqli $conn, $uid): string {
     require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
     $idk = new AccountManager($conn);
     return $idk->get_user_password($uid);
 }
+
+require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
+
 
 /**
  * @param mysqli $conn
@@ -21,10 +25,10 @@ function get_user_password(mysqli $conn, $uid): string {
  * @return false on mysql_stmt_prepare() error.
 */
 function create_user(mysqli $conn, string $name, string $email, string $password = ""): string|false {
-    $uid = generate_id($name);
     $idk = new AccountManager($conn);
-    while ($idk->user_exists($conn, $uid)) {
-        $uid = generate_id($name);
+    $uid = $idk->generate_uid($name);
+    while ($idk->user_exists($uid)) {
+        $uid = $idk->generate_uid($name);
     }
 
     $hashed_email = convert_uuencode(base64_encode($email));
@@ -53,14 +57,6 @@ function create_user(mysqli $conn, string $name, string $email, string $password
 
     return $uid;
 }
-
-function generate_id(string $name): string {
-    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
-    $gen = new AccountManager($conn);
-    return $gen->generate_uid($name);
-}
-
-
 
 // PHONE NR REGEX: /\d{3}[-\s]?\d{3}[-\s]?\d{3}/
 // EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";

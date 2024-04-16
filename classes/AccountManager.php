@@ -14,7 +14,12 @@ class AccountManager {
     }
 
     public function generate_uid($name): string {
-        return strtolower($name) . $this->split_character . array_rand($this->chars, $this->length);
+        $uid = strtolower($name) . $this->split_character;
+        $chars_len = count($this->chars);
+        for ($i = 0; $i < $this->length; $i++) {
+            $uid .= $this->chars[rand(0, $chars_len-1)];
+        }
+        return $uid;
     }
     
     public function user_exists($uid): bool {
@@ -31,12 +36,16 @@ class AccountManager {
     public function get_user_password($uid): string {
         $sql = "SELECT `password` FROM `users` WHERE uuid = ? LIMIT 1;";
         $stmt = $this->conn->stmt_init();
-        $stmt->prepare($sql);
+        if (!$stmt->prepare($sql)) {
+            throw new mysqli_sql_exception("mysql-stmt-error");
+        }
         $stmt->bind_param("s", $uid);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
-        $row = mysqli_fetch_assoc($result);
+        if (!$row = mysqli_fetch_assoc($result)) {
+            throw new mysqli_sql_exception("mysql-error--user-password");
+        }
         return $row["password"];
     }
 
