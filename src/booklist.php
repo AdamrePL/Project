@@ -1,5 +1,6 @@
 <?php require_once "../conf/config.php"; ?>
 
+
 <head>
     <title><?php echo SITENAME . " - "; ?>Spis Książek</title>
     <link href="../assets/css/booklist-new.css" type="text/css" rel="stylesheet">
@@ -8,28 +9,29 @@
 </head>
 
 <body>
+
     <!-- filtry i sortowanie -->
     <div class="filter-bar">
-    <?php
-    $sql = "SELECT DISTINCT subject FROM booklist";
-    $query = mysqli_query($conn, $sql);
-    echo '<div class = "container" id ="btn-container">';
-    echo 'Przedmiot<br>';
-    while ($result = mysqli_fetch_assoc($query)) {
-        echo '<a class = "btn-filter" href = "/src/booklist-new.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
-    }
-    ?>
-  
-    <?php
-    echo '<br>Klasa<br>';
-    for ($grade = 1; $grade < 6; $grade++) {
-        echo '<a class = "btn-filter"  href = "/src/booklist-new.php?grade=' . $grade . '">' . $grade . '</a>';
-    }
+        <?php
+        $sql = "SELECT DISTINCT subject FROM booklist";
+        $query = mysqli_query($conn, $sql);
+        echo '<div class = "container" id ="btn-container">';
+        echo 'Przedmiot<br>';
+        while ($result = mysqli_fetch_assoc($query)) {
+            echo '<a class = "btn-filter" href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
+        }
+        ?>
 
-    echo '</div>';
-    
+        <?php
+        echo '<br>Klasa<br>';
+        for ($grade = 1; $grade < 6; $grade++) {
+            echo '<a class = "btn-filter"  href = "/src/booklist.php?grade=' . $grade . '">' . $grade . '</a>';
+        }
 
-    ?></p>
+        echo '</div>';
+
+
+        ?></p>
     </div>
     </div>
     </div>
@@ -57,7 +59,7 @@
 
         $query = mysqli_query($conn, $sql);
         while ($result = mysqli_fetch_assoc($query)) {
-            echo '<a class="card" href = "/src/book.php?book='. $result["name"].'">';
+            echo '<a class="card" href = "/src/book.php?book=' . $result["name"] . '">';
             //image
             // echo '<span class = "detail image-container"><img class ="detail image" src = "#"></img></span>';
 
@@ -70,8 +72,8 @@
 
             //grade
             echo '<span class="detail grade">
-            ' . $result["class"] . 
-            '</span>';
+            ' . $result["class"] .
+                '</span>';
 
 
 
@@ -95,14 +97,9 @@
         ?>
     </section>
 
-    <section id="booklist-files">
-        <h1>Zawartość do pobrania</h1>
-        <a href="../assets/downloads/booklist.json" download>Uzupełniony - przykładowy plik przygotowawczy</a>
-        <a href="../assets/downloads/booklist_template.json" download>Plik przygotowawczy dla wstawienia książek na stronę</a>
-    </section>
 
-    <?php
-    include_once "footer.php";
-    ?>
+
+    <?php include "footer.php"; ?>  
+
 
 </body>
