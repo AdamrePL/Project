@@ -11,27 +11,6 @@ class OfferController
         $this->conn = $conn;
     }
 
-    // public function CheckAll($email, $phone, $discord)
-    // {
-    //     try {
-    //         if (isset($email)) {
-    //             if (!preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/", $email)) {
-    //                 throw new ErrorException('invalid email');
-    //             }
-    //         } elseif (isset($phone)) {
-    //             if (!preg_match("^\+48[0-9]{9}$", $phone)) {
-    //                 throw new ErrorException('invalid phone number');
-    //             }
-    //         } elseif (isset($discord)) {
-    //             if (strlen($this->post["discord"]) >= 4 || strlen($this->post["discord"]) <= 32) {
-    //                 throw new ErrorException('invalid discord nickname');
-    //             }
-    //         }
-    //     } catch (ErrorException $e) {
-    //         header('Location: ' . $_SERVER["BASE"] . "\src\createoffer.php?error=" . $e->getMessage());
-    //         echo '<script>console.log(' . $e->getMessage() . ')</script>';
-    //     }
-    // }
     public function FormatDate()
     {
         date_default_timezone_set('Europe/Warsaw');
@@ -65,10 +44,10 @@ class OfferController
     public function addOffer()
     {
         try {
-            // $user = htmlspecialchars(stripslashes(trim($_SESSION["uuid"])));
 
 
             $user = $_SESSION['uid'];
+            
             $phone = htmlspecialchars(stripslashes(trim($_POST["phone"])));
             $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
             $discord = htmlentities(stripslashes(trim($_POST["discord"])));
@@ -83,9 +62,11 @@ class OfferController
 
             $date = self::FormatDate();
             foreach ($_POST['book'] as $key => $book) {
+                $note = htmlspecialchars(stripslashes(trim($_POST["note"][$key])));
+                $price = htmlspecialchars(stripslashes(trim($_POST["price"][$key])));
                 $query = mysqli_query($this->conn, "SELECT * FROM booklist WHERE id =" . $book);
                 $res = mysqli_fetch_assoc($query);
-                $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $_POST["note"][$key], $_POST['price'][$key],$res["class"], $_POST["quality"][$key]);
+                $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $note, $price,$res["class"], $_POST["quality"][$key]);
                 $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','$list[6]','$list[5]','$list[7]','$list[4]','','0')");
             }
         } catch (Exception $e) {

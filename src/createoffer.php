@@ -58,45 +58,82 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
                     <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni - min 5, max 91, puste = 14" min="5" max="91" />
-                    <input type="number" name="exp_hours" inputmode="numeric" placeholder="Godziny - max 23" min="0" max="23" />
                 </div>
             </div>
             
             <div class="product-list">
-                <h3>Produkty</h3>
+            <h3>Produkty</h3>
+<div id="productsContainer">
+    <?php
+    for ($i = 1; $i < $_GET['row'] + 1; $i++) {
+        ?>
+        <div class="product">
+            <select name="book[]">
                 <?php
-                for ($i=1; $i<$_GET['row']+1; $i++){
-                ?>
-                <div class="product">
-                    <select name="book[]">
-                        <?php
-                            $sql = "SELECT `id`, `name` FROM `booklist`";
-                            $query = $conn->query( $sql);
-                            while ($result = $query->fetch_assoc()) {
-                                echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
-                            }
-                        ?>
-                    </select>
-                    
-                    <input type="number" name="price[]" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
-                    
-                    <select name="quality[]">
-                        <?php
-                            $quality_count = count($quality);
-                            for ($q = 0; $q < $quality_count; $q++){
-                                echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                            }
-                        ?>
-                    </select>
-                    
-                    <input type="text" name="note[]" placeholder = "opis" maxlength="80" multiline="true" />
-                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                </div>
-                <?php 
+                $sql = "SELECT `id`, `name` FROM `booklist`";
+                $query = $conn->query($sql);
+                while ($result = $query->fetch_assoc()) {
+                    echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
                 }
                 ?>
-                <button onclick= "location.href='createoffer.php?row=<?php echo $_GET["row"] + 1 ?>'">Dodaj pole</button>
+            </select>
+
+            <input type="number" name="price[]" min="0" max="999.99" step="0.01" required />
+
+            <select name="quality[]">
+                <?php
+                $quality_count = count($quality);
+                for ($q = 0; $q < $quality_count; $q++) {
+                    echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input type="text" name="note[]" placeholder="opis" maxlength="80" multiline="true" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+        </div>
+        <?php
+    }
+    ?>
+</div>
+    <button id="addButton">Dodaj pole</button>
+    <script>
+    document.getElementById("addButton").addEventListener("click", function () {
+        var container = document.getElementById("productsContainer");
+        var div = document.createElement("div");
+        div.classList.add("product");
+
+        div.innerHTML = `
+            <select name="book[]">
+                <?php
+                $sql = "SELECT `id`, `name` FROM `booklist`";
+                $query = $conn->query($sql);
+                while ($result = $query->fetch_assoc()) {
+                    echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input type="number" name="price[]" min="0" max="999.99" step="0.01" required />
+
+            <select name="quality[]">
+                <?php
+                $quality_count = count($quality);
+                for ($q = 0; $q < $quality_count; $q++) {
+                    echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input type="text" name="note[]" placeholder="opis" maxlength="80" multiline="true" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+            <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+        `;
+        container.appendChild(div);
+        });
+    </script>
+
             </div>
             <!-- Tutaj opcjonalnie dodać opis oferty? max 120 znaków -->
 
@@ -106,128 +143,15 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             <input type="reset" value="Reset" /></p>    
         </form>
 
-        <!-- <form action="../controllers/offer-controller.php"> // ! Zrobimy obsługę tworzenia customowych ofert po zrobieniu standardowego
-                <div class="products-list">
-                    <div class="product">
-                        <input type="text" name="" id="">
-                        <input type="text" name="" id="">
-                        <input type="text" name="" id="">
 
-                        <input type="number" name="price" pattern="^\d*\.?\d*$" min="0" max="999.99" />
-                        
-                        <select name="quality">
-                            <?php
-                                // for ($q = 0; $q < count($quality); $q++){
-                                //     echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                                // }
-                                ?>
-                        </select>
-                        
-                        <input type="text" name="note" maxlength="80" multiline="true" />
-                        
-                        
-                        
-                        <input type="image" name="image"/>
-                        <input type="image" name="image1"/>
-                    </div>
-                    <button>Dodaj pole</button>
-
-                    <input type="submit" value="Create Offer" name="custom" />
-                    <input type="reset" value="Reset" />
-                </div>
-        </form> -->
     </div>
 
 
-    <!-- <form>
-        <label for="book">Tytuł książki</label>
-        <input type="text" name="book" maxlength="" placeholder="Tytuł książki"/>
-
-        <label for="class">Klasa</label>
-        <select name="class">
-            <?php 
-                // $sql = "SELECT DISTINCT `class` FROM booklist;";
-                // $query = mysqli_query($conn, $sql);
-                // while ($result = mysqli_fetch_array($query)) {
-                //     echo '<option value="' . $result["class"] . '">' . $result["class"] . '</option>';
-                // }
-                
-            ?>
-        </select>
-        
-        <label for="authors">Autorzy</label>
-        <input type="text" name="authors"/>
-
-        <label for="publisher">Wydawnictwo</label>
-        <select name="publisher">
-            <?php 
-                // $sql = "SELECT DISTINCT `publisher` FROM booklist;";
-                // $query = mysqli_query($conn, $sql);
-                // while ($result = mysqli_fetch_array($query)) {
-                //     echo '<option value="' . $result["publisher"] . '">' . $result["publisher"] . '</option>';
-                // }
-                
-            ?>
-        </select>
-
-
-        <label for="subjects">Przedmiot</label>
-        <select name="subjects">
-            <?php 
-                // $sql = "SELECT DISTINCT `subject` FROM booklist;";
-                // $query = mysqli_query($conn, $sql);
-                // while ($result = mysqli_fetch_array($query)) {
-                //     echo '<option value="' . $result["subject"] . '">' . $result["subject"] . '</option>';
-                // }
-                
-                // if($result["name"]!=$_GET["book"]){
-                //     code above goes here
-                // } else{
-                //     $sql = "SELECT DISTINCT `subject` FROM booklist WHERE `name`=?;";
-                //     $res = mysqli_fetch_array(mysqli_query($conn,$sql));
-                //     echo '<option value="'. $res["subject"] . '">' . $res["subject"] . '</option>';
-                // }
-            ?>
-        </select>
-        
-        <label for="quality">Stan książki</label>
-        <select name="quality">
-            <?php
-                // $quality = ["Używana","Uszkodzona","Nowa"];
-                // foreach($quality as $A){
-                //     echo '<option value="' . $A . '">' . $A . '</option>'; 
-                // }
-            ?>
-        </select>
-
-        <label for="price">Cena</label>
-        <input type="number" name="price" minlength="1" maxlength="2" aria-multiline="false"/>
-
-        <label for="note">Krótki opis</label>
-        <input type="text" name="note" maxlength="125" aria-multiline="true"/>
-            
-        <label for="phone email discord">Test</label>
-        <input type="checkbox" name="phone">Numer telefonu</input>
-        <input type="checkbox" name="email">E-mail</input>
-        <input type="checkbox" name="discord">Discord</input>
-
-        <input type="file" name="image"/>
-        <input type="file" name="image1"/>
-
-        <input type="submit" value="Create Offer" />
-        <input type="reset" value="Reset" />
-    </form>
-</div>
-                -->
-
-                </section>
-                <?php include_once $abspath."src/footer.php"; ?>
-                </body>
-                </html>
-
 </section>
 
-<?php include_once $abspath."src/footer.php"; ?>
+<?php
+    include_once "footer.php";
+?>
 
 </body>
 </html>
