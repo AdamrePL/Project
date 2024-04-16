@@ -250,16 +250,28 @@ input[type="button"] {
 footer {
     width: 100%;
     text-align: center;
+    color: white;
     padding-block: 1.5rem;
-    border-top: 2.5px solid rgb(var(--primary-400));
     background: rgb(var(--primary-300));
-    
+    background-color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1rem;
+    text-wrap: pretty;
     letter-spacing: 0.3pt; /* & might need an update */
 }
 
-footer > p {
-    margin-inline: auto;
-    text-wrap: pretty;
+
+
+
+footer a{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    background-color: black;
+    font-size: 1rem;    
+}
+
+footer #creators{
+    font-size: 0.75rem;
 }
 
 .overlay {

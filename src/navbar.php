@@ -8,7 +8,7 @@
         </div>
         <div class="navbar-right">
             <li>
-                <?php echo !isset($_SESSION["uid"]) ? '<a href="src/access.php">Zaloguj</a>' : '<a href="src/profile.php">mój profil</a>'; ?>
+                <?php echo !isset($_SESSION["uid"]) ? '<a href="src/access.php">zaloguj się</a>' : '<a href="src/profile.php">mój profil</a>'; ?>
             </li>
         </div>
     </ul>
