@@ -1,9 +1,14 @@
 <?php
 require_once "../conf/config.php";
 
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
 
 // this class is an interface for sending emails to change password / reveal the user id if forgotten
 // as for now, it remains unfinished, although i'll just call it work in proggress :)
@@ -18,9 +23,9 @@ class SendMail{
 
     private $sendmail_exception;
 
-    private $mail = new PHPMailer(true);
+    private $mail;
     
-    public function __construct(string $target_address,string $target_name = SITENAME . "User", string $sender_address = SITE_EMAIL_ADDRESS, string $sender_host = SITE_EMAIL_HOST, string $sender_port = SITE_EMAIL_PORT, string $sender_password = SITE_EMAIL_PASSWORD): void{
+    public function __construct(string $target_address,string $target_name = SITENAME . "User", string $sender_address = SITE_EMAIL_ADDRESS, string $sender_host = SITE_EMAIL_HOST, string $sender_port = SITE_EMAIL_PORT, string $sender_password = SITE_EMAIL_PASSWORD){
         $this->target_address = $target_address;
         $this->sender_address = $sender_address;
         $this->sender_host = $sender_host;
@@ -35,8 +40,9 @@ class SendMail{
 
     public function send_mail(string $subject, string $body, string $altbody): bool{
         try{
+            $this->mail = new PHPMailer(true);
             //Setup
-            $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                     //Enable verbose debug output
             $this->mail->isSMTP();                                            //Send using SMTP
             $this->mail->Host       = $this->sender_host;                     //Set the SMTP server to send through
             $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -63,7 +69,18 @@ class SendMail{
         }
         
     }
-    public function remind_user_id(): bool{
-        //TODO: Finish this method.
+    public function remind_user_id(string $uid): bool{
+        $template_file_path = '..\assets\email-templates\remind-user-id.html';
+        $template_file = fopen($template_file_path, 'r');
+        $template_text = fread($template_file, filesize($template_file_path));
+
+        $subject = "Reminder of Your User ID";
+        $body = str_replace("%", $uid, $template_text);
+        $altbody = $body;
+
+        if($this->send_mail($subject, $body, $altbody)){
+            return true;
+        }
+        return false;
     }
 }
