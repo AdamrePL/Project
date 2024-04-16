@@ -81,7 +81,7 @@ if (!isset($_SESSION["uid"])) {
                     </select>
                     
                     <input type="text" name="note[]" maxlength="80" multiline="true" placeholder="notatka" />
-                    <input type="file" name="image[]" title="Click to choose an image - max 20MB" accept="image/png, image/jpeg, image/gif, image/webp" />
+                    <input type="file" name="image[]" title="Kliknij aby wybrać obraz - max 20MB<?php // Click to choose an image - max 20MB ?>" accept="image/png, image/jpeg, image/gif, image/webp" />
                     <input type="file" name="image[]" title="Kliknij aby wybrać obraz - max 20MB" accept="image/png, image/jpeg, image/gif, image/webp" />
                 </div>
                 
