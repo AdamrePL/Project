@@ -128,4 +128,7 @@ require_once "$abspath\conf\config.php"; ?>
         break;
     }
 ?>
+<?php
+    include_once "footer.php";
+?>
 </body>

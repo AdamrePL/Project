@@ -51,7 +51,6 @@ $quality = ["Used", "Damaged", "New"];
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
                     <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni - min 5, max 91, puste = 14" min="5" max="91" />
-                    <input type="number" name="exp_hours" inputmode="numeric" placeholder="Godziny - max 23" min="0" max="23" />
                 </div>
             </div>
 
