@@ -51,7 +51,8 @@ if (isset($_SESSION["uid"])) {
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "l_submit-error") echo "formularz nie został prawidłowo wysłany"; ?>
                 </span>
-                <span>Nie posiadasz konta? <a href="?register.php">Zarejestruj się</a></span>
+                <span>Nie posiadasz konta? <a href="?register">Zarejestruj się</a></span>
+                <div>Nie pamiętasz User ID? <a href="remind-me.php">Przypomnij User ID</a></div>
             </form>
             </div>
         </div>
