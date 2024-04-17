@@ -86,8 +86,8 @@
     define("SITENAME", "Giełda");
 
     //E-mail credentials:
-    define("SITE_EMAIL_ADDRESS", "##############");  // !     REPLACE WITH YOUR EMAIL -
-    define("SITE_EMAIL_PASSWORD", "##############"); // !     - AND PASSWORD FOR IT TO WORK
+    define("SITE_EMAIL_ADDRESS", "dikessdikes@gmail.com");  // !     REPLACE WITH YOUR EMAIL -
+    define("SITE_EMAIL_PASSWORD", "mjvk mqpn kmuz lzdq"); // !     - AND PASSWORD FOR IT TO WORK
     define("SITE_EMAIL_HOST", "smtp.gmail.com");
     define("SITE_EMAIL_PORT", 465);
     define("SITE_EMAIL_NAME", "Giełda Podręczników");
