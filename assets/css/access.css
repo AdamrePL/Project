@@ -1,12 +1,13 @@
 @import "global.css";
 
+
 body {
     margin: 0;
     display: flex;
     font-size: 16px;
     align-items: center;
-    /* flex-direction: column; /* ! include this if you want to have footer here aswell
-    justify-content: center; */
+    flex-direction: column;
+    justify-content: center;
 }
 
 main {
@@ -48,7 +49,7 @@ h1 {
     text-align: center;
     text-transform: capitalize;
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 h1::after {
@@ -59,14 +60,20 @@ h1::after {
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    background: linear-gradient(90deg, rgba(80, 80, 80, 0.5), rgba(50, 50, 50, 0.8),rgba(80, 80, 80, 0.5));
-    box-shadow: 0px 1px 1px 0.1px rgba(200, 200, 200, 0.5);
 }
 
 .form-wrapper {
     flex: 2.5;
 }
+.container-login{
+    border: 1px solid black;
+    padding: 10px 20px;
 
+}
+.container-register{    
+    border: 1px solid black;
+    padding: 10px 20px;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -83,16 +90,17 @@ input {
 
 input:not(input[type="submit"]):not(input[type="checkbox"]) {
     background: none;
-    border-bottom: 2px solid rgb(var(--accent-600), 0.8);
-    width: 50%;
+    width: 100%;
+    border: 1px solid black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 input:not([type="submit"]):not(:placeholder-shown):invalid {
-    border-bottom: 2px solid rgb(var(--deny-error, crimson));
+    color: rgb(var(--deny-error, crimson));
 }
 
 input:not([type="submit"]):not(:placeholder-shown):valid {
-    border-bottom: 2px solid rgb(var(--confirm-success, limegreen));
+    color:  rgb(var(--text));
 }
 
 input[type="submit"] {
@@ -100,9 +108,8 @@ input[type="submit"] {
     margin: 0.25rem;
     font-size: 1.2em;
     min-width: max(10rem, 25%);
-    border-radius: 4px 4px 0px 4px;
-    background: rgb(var(--primary-200));
-    border-bottom: 2px solid rgb(var(--primary-400));
+    background-color: black;
+    color: white;
 }
 
 .error-msg {
