@@ -1,3 +1,4 @@
+<!-- //TODO: UI -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="remind-user-id.php" method="post">
+    <form action="../controllers/remind-user-id.php" method="post">
         <input type="email" name="email" id="">
         <button type="submit">Remind my User ID</button>
     </form>

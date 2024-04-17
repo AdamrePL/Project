@@ -84,6 +84,8 @@
     #region Constants
 
     define("SITENAME", "Giełda");
+    define("SITE_URL", "http:/localhost");
+    define("PASSWORD_RESET_PAGE_URL", SITE_URL . "/src/reset-my-password.php");
 
     //E-mail credentials:
     define("SITE_EMAIL_ADDRESS", "dikessdikes@gmail.com");  // !     REPLACE WITH YOUR EMAIL -
