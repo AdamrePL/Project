@@ -7,7 +7,9 @@ require_once "$abspath\conf\config.php"; ?>
 <h2>Joined: <?php //date("d.m.Y", strtotime($row['join-date'])); ?></h2> -->
 
 <head>
+    <title><?php echo SITENAME?> Twój Profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/profile-controller.js" defer></script>
 </head>
 
@@ -18,10 +20,14 @@ require_once "$abspath\conf\config.php"; ?>
     }
     
     switch ($_GET["page"]) {
-        // W ustawieniach profilu oraz tworzeniu ofert, zabezpieczyć aby osoba nie mogła podawać linków do stron, np. discord.gg/discord.com, oraz zadnych zaproszen na serwery oraz nieodpowiednich stron
+
+
+        //! W ustawieniach profilu oraz tworzeniu ofert, zabezpieczyć aby osoba nie mogła podawać linków do stron, np. discord.gg/discord.com, oraz zadnych zaproszen na serwery oraz nieodpowiednich stron
         // ^ może to być zrobione REGEX'em 
         // dodatkowo zabezpieczyc te pola z htmlspecialchars po stronie php'a przy dodawaniu/wyciaganiu z bazy danych (? chyba jak dobrze pamietam), aby zabezpieczyć strone przed XSS i Javascript/html/css injection
+        
         case "settings":
+            include "navbar.php";
             echo '<a class="return-btn" href="profile.php">&NestedLessLess; Powrót</a>
 
             <div class="user-settings-wrapper">
@@ -55,6 +61,7 @@ require_once "$abspath\conf\config.php"; ?>
 
 
             </div>';
+
             echo '<div>
                 <form method="post" action="../controllers/profile-controller.php">
                     <input class="" type="submit" name="remove-account" value="Usuń konto" />
@@ -65,31 +72,36 @@ require_once "$abspath\conf\config.php"; ?>
         break;
 
         default:
+        include "navbar.php";
             echo '<section id="user-details">';
+
+                echo '<span id = "setting-link"><a href="?page=settings" name="user_edit">Ustawienia konta</a></span>';
+                echo '<span id = "setting-link"><a href="../controllers/logout.php" name="logout">Wyloguj się</a></span>';
+
                 $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = '" . $_SESSION["uid"] . "'");
                 $result = mysqli_fetch_assoc($query);
-            echo '
-                <div class="user">
-                    <h3>'. $result["username"] .'</h3>
-                    <div class="user-id">
-                        <span class="uid" data-content="click to show uid"></span>
-                    </div>
-                </div>
-                ';
+            // echo '
+            //     <div class="user">
+            //         <h3>'. $result["username"] .'</h3>
+            //         <div class="user-id">
+            //             <span class="uid" data-content="Kliknij, aby wyśwsietlić ID"></span>
+            //         </div>
+            //     </div>
+            //     ';
                 
                 //& 20.03 sorry for fucking up `contact` layout, will fix !!! (hopefully)
                 //! Man you did not ruin it as there was no layout, although you did in fact fuck up how the buttons look, CSS STYLING and NAMING ELEMENTS
-                echo '<div class="contact">';
-                    echo '<p>'. (!empty($result["phone"]) ? $result["phone"] : "Nr tel.") .'</p>';
-                    echo '<p>'. base64_decode(convert_uudecode($result["email"])) .'</p>';
-                    echo '<p><i class="fa-brands fa-discord"></i>'. (!empty($result["discord"]) ? $result["discord"] : "Discord") . '</p>';
-                echo '</div>';
+                // echo '<div class="contact">';
+                //     echo '<p>'. (!empty($result["phone"]) ? $result["phone"] : "Nr tel.") .'</p>';
+                //     echo '<p>'. base64_decode(convert_uudecode($result["email"])) .'</p>';
+                //     echo '<p><i class="fa-brands fa-discord"></i>'. (!empty($result["discord"]) ? $result["discord"] : "Discord") . '</p>';
+                // echo '</div>';
                 
-                echo '<span>';
-                echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
-                echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
-                echo '<a href="../src/createoffer.php">Stwórz ofertę</a>';
-                echo '</span>';
+                // echo '<span>';
+                // echo '<a href="?page=settings" name="user_edit">Zmień Ustawienia</a>';
+                // echo '<a href="../controllers/logout.php" name="logout">Wyloguj</a>';
+                // echo '<a href="../src/createoffer.php">Stwórz ofertę</a>';
+                // echo '</span>';
 
             echo '</section>';
             
@@ -98,9 +110,11 @@ require_once "$abspath\conf\config.php"; ?>
 
             if(empty(mysqli_fetch_assoc($selection_query))){
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
-            } else {
+            } 
+            else {
                 
                 require_once "$abspath\classes\Offer.php";
+                echo "<h1>Twoje oferty</h1>";
                 $offers = new Oferty($conn);
                 $offers->PrintAll(FALSE);
             }

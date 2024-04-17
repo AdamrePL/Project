@@ -86,13 +86,12 @@ class Oferty {
 
                 if ($ALL == TRUE){
                     echo '<button onclick="showData()" id ="btn-show-data">Dane</button>';
+                    echo '<div id="data-container">' . base64_encode($result["discord"]) .'</div>';
                 }
-                echo '<div id="data-container">' . base64_encode($result["discord"]) .'</div>';
 
-
-
-
-
+                if(!$ALL){
+                    echo '<a href = "#">Edytuj ofertę</a>';
+                }
 
 
 

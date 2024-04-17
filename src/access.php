@@ -83,7 +83,7 @@ if (isset($_SESSION["uid"])) {
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "reapeat-required") echo "wymagane powtórzenie hasła"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "passwords-dont-match") echo "hasła się nie zgadzają"; ?>
                 </span>
-                <span>Akceptuję Regulamin oraz <a href="terms-of-service.html">Politykę Prywatności</a></span><input type="checkbox" name="accept_tos" required />
+                <span>Akceptuję Regulamin oraz <a href="terms-of-service.html">Politykę Prywatności</a><input type="checkbox" name="accept_tos" required /></span>
                 <span class="error-msg">
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "agreement-rejected") echo "wymagana akceptacja tos-u"; ?>
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "empty-fields") echo "pole nazwy lub email nie zostało wypełnione"; ?>
@@ -91,7 +91,7 @@ if (isset($_SESSION["uid"])) {
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "unexpected-error") echo "wystąpił niespodziewany błąd :("; ?>
                 </span>
                
-                <span>Chcę zostać zalogowany po rejestracji konta</span><input type="checkbox" name="login_after_register"/>
+                <span>Chcę zostać zalogowany po rejestracji konta<input type="checkbox" name="login_after_register"/></span>
                 <input type="submit" name="reg" value="Zarejestruj">
                 <span>Posiadasz już konto? <a href="?register">Zaloguj się</a></span>
                 </div> 

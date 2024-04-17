@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/navbar.css">
+<link rel="stylesheet" href="../assets/css/navbar.css">
 <div class="navbar">
     <ul>
         <div class="navbar-left">

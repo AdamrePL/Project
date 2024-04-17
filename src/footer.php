@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="assets/css/global.css">
 <?php
-require_once "classes/Footer.php";
+require_once "C:\Users\Staz\Desktop\Project\classes\Footer.php";
 ob_start(); // Footer content is to be pasted below, between the ending php tag and and the starting tag
 ?>
 <footer>
