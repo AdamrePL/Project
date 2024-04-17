@@ -68,4 +68,29 @@ class AccountManager {
         $row_uid = $data["uuid"];
         return $row_uid;
     }
+    public function set_password_by_uid(string $pass, string $uid) : bool {
+        $sql = "UPDATE `users` SET `password` = ? WHERE `uuid` = ?";
+        $stmt = mysqli_stmt_init($this->conn);
+        mysqli_stmt_prepare($stmt, $sql);
+        mysqli_stmt_bind_param($stmt, "ss",$pass, $uid);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $affected = mysqli_stmt_affected_rows($stmt);
+        mysqli_stmt_close($stmt);
+        return $affected;
+    }
+
+    public function get_id_by_password_reset_token(string $token) : string{
+        $sql = "SELECT `user-uuid` FROM `password-reset-tokens` WHERE `token` = ?";
+        $stmt = mysqli_stmt_init($this->conn);
+        mysqli_stmt_prepare($stmt, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $token);
+        mysqli_stmt_execute($stmt);
+        $result = $stmt->get_result(); 
+        $data = $result->fetch_assoc(); 
+        return $data["user-uuid"];
+
+    }
+
 }

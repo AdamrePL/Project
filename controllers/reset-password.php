@@ -1,15 +1,39 @@
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-if(!isset($_POST["email"])){
-    header("Location: ..\index.php");
-}
+
 require_once "$abspath\conf\config.php";
 require_once "$abspath\classes\AccountManager.php";
 require_once "$abspath\classes\SendMail.php";
 
 $am = new AccountManager($conn);
-$sm = new SendMail($_POST["email"]);
 
+
+
+if(isset($_POST["token"])){
+    if(!isset($_POST["password"]) and !isset($_POST["confirm_password"])){
+        header("Location: ../src/reset-my-password.php?token=$token&m=pwd-empty");
+    }
+    if($_POST["password"] != $_POST["confirm_password"]){
+        header("Location: ../src/reset-my-password.php?token=$token&m=pwd-diffrent");
+    }
+    // if(!preg_match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$", $_POST["password"])){
+    //     header("Location: ../src/reset-my-password.php?token=$token&m=pwd-invalid");
+    // }
+    $tk_uid = $am->get_id_by_password_reset_token($_POST["token"]);
+    $new_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    if ($am->set_password_by_uid($new_password, $tk_uid)) {
+        header("Location: ../src/access.php?m=pwd-change-success");
+        exit();
+    } else {
+        header("Location: ../src/access.php?m=pwd-change-failed");
+    }
+    exit();
+}
+if(!isset($_POST["email"])){
+    header("Location: ..\index.php");
+    exit();
+}
+$sm = new SendMail($_POST["email"]);
 $uid = $am->get_user_id_by_email($_POST["email"]);
 
 if(!isset($uid)){
