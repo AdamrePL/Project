@@ -1,5 +1,7 @@
 <?php
-if(isset($_POST["uid"]));
+if(!isset($_POST["uid"])){
+    header("Location: index.php?m=error");
+}
 
 if($_SESSION["uid"] != $_POST["uid"]){
     header("Location: / ");
