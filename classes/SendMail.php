@@ -113,4 +113,24 @@ class SendMail{
         }
         return false;
     }
+    
+    /**
+     * send_reset_password
+     *
+     * @param  mixed $pwd_link Password reset link
+     * @return bool Returns true if e-mail was sent successfully and false if sending has failed. Failure reason can be obtained by calling get_sendmail_exception()
+     */
+    public function send_reset_password(string $pwd_link): bool{
+        $template_file_path = '..\assets\email-templates\reset-password.html';
+        $template_file = fopen($template_file_path, 'r');
+        $template_text = fread($template_file, filesize($template_file_path));
+        
+        $subject = "Your password reset link";
+        $body = str_replace("%", $pwd_link, $template_text);
+        $altbody = $body;
+        if($this->send_mail($subject, $body, $altbody)){
+            return true;
+        }
+        return false;
+    }
 }

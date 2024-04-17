@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 11:50 AM
+-- Generation Time: Apr 17, 2024 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -113,7 +113,27 @@ CREATE TABLE `offers` (
 --
 
 INSERT INTO `offers` (`id`, `user-uuid`, `offer-cdate`, `offer-edate`, `status`, `phone`, `email`, `discord`) VALUES
-(9, 'admin#11d', '2024-03-22 12:59:48', '2024-03-30 14:59:48', 0, 111333777, '', 'Marcin');
+(9, 'admin#11d', '2024-03-22 12:59:48', '2024-03-30 14:59:48', 0, 111333777, '', 'Marcin'),
+(14, 'admin#11d', '2024-04-16 09:23:27', '2024-04-22 09:23:27', 1, 123456789, 'adfna@gaklg.com', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password-reset-tokens`
+--
+
+CREATE TABLE `password-reset-tokens` (
+  `id` int(11) NOT NULL,
+  `user-uuid` varchar(34) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `token` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `password-reset-tokens`
+--
+
+INSERT INTO `password-reset-tokens` (`id`, `user-uuid`, `token`) VALUES
+(5, 'derfie#gpi', '6012e7aa92ee6d36e0cad594bc0042866745d7ec');
 
 -- --------------------------------------------------------
 
@@ -149,7 +169,8 @@ INSERT INTO `products` (`id`, `offer-id`, `name`, `author`, `publisher`, `subjec
 (8, 9, 'Edukacja dla bezpieczeństwa', 'Bogusław Breitkopf, Mariusz Cieśla', 'WSiP Nowa Edycja', 'edukacja dla bezpieczeństwa', 1, 14.00, '1', '', '', 0),
 (9, 10, 'Pioneer Plus. Level B1+ Students Book', 'H.G. Mitchell, Marileni Malkogianni', 'MM Publications', 'język angielski rozszerzony', 1, 34.00, '0', '', '', 0),
 (10, 10, 'Spotkania z filozofią', 'Monika Bokiniec, Sylwester Zielka', 'Nowa Era', 'filozofia', 1, 42.00, '0', '', '', 0),
-(11, 11, 'Biologia na czasie 2', 'Anna Helmin, Jolanta Holeczek', 'Nowa Era', 'biologia', 1, 25.00, '1', 'fajna książka lubie czytac porysowana', '', 0);
+(11, 11, 'Biologia na czasie 2', 'Anna Helmin, Jolanta Holeczek', 'Nowa Era', 'biologia', 1, 25.00, '1', 'fajna książka lubie czytac porysowana', '', 0),
+(14, 14, 'MATeMAtyka 1 Maturalne karty pracy Zakres Rozszerzony', 'Dorota Ponczek, Karolina Wej', 'Nowa Era', 'matematyka', 1, 33.00, '0', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -174,13 +195,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uuid`, `username`, `password`, `phone`, `email`, `discord`, `last-login`, `email-flag`, `admin`) VALUES
-('admin#11d', 'admin', '', NULL, '49$=6>F1%0C!:6$XP3&Y2;&,S43T`\n`\n', NULL, '2024-03-22 12:56:10', 0, 1),
+('admin#11d', 'admin', '', NULL, '49$=6>F1%0C!:6$XP3&Y2;&,S43T`\n`\n', NULL, '2024-04-16 09:23:00', 0, 1),
 ('anaxar#gay', 'anaxar', '', NULL, '465<U:&5\'1GE11S%H85=W=6-N53T`\n`\n', NULL, '2024-04-12 12:39:36', 0, 0),
-('etetee#Vqc', 'etetee', '', NULL, '08E=6=%I50G1:4S5T6E$]/0``\n`\n', NULL, '2022-02-20 14:50:28', 0, 0),
+('derfie#gpi', 'derfie', '', NULL, '<8E<Y=V%82G9.:E%Y355\";&1\'.7=E6$UU63(Y=```\n`\n', NULL, '2024-04-17 09:50:48', 0, 0),
+('etetee#Vqc', 'etetee', '', NULL, '08E=6=%I50G1:4S5T6E$]/0``\n`\n', NULL, '2024-04-16 11:09:20', 0, 0),
+('ivan#gg4', 'ivan', '', NULL, '<85A::&)M,7!B;6PR65<U05HR,6AA5W=U63(Y=```\n`\n', NULL, '2024-04-16 11:23:21', 0, 0),
 ('marke#egq', 'marke', '', NULL, '48E=&>6$R5D%:,C%H85=W=5DR.70`\n`\n', NULL, '2024-04-12 11:24:55', 0, 0),
 ('ola#fhk', 'Ola', '$2y$10$1Lpi2a2zldtQoGIPkqu4U.wVJ2ld8IS/fg8HSyTWZgNoIFXW.Rfwq', NULL, '06EAD=&0R,3-11T8P3&Y\"<P``\n`\n', NULL, '2024-03-22 12:55:05', 0, 0),
 ('popa#ng6', 'popa', '', NULL, '06D=&:UE50G195VQS3&Y6:```\n`\n', NULL, '2024-04-12 09:28:18', 0, 0),
 ('popka#ld8', 'popka', '', NULL, '48T<Y=V$R1D%B5T9P8D,U>611/3T`\n`\n', NULL, '2024-04-12 11:24:24', 0, 0),
+('qwertyuio#seh', 'qwertyuio', '', NULL, '<6C-.<F%83G=95S!W36M\";F)71G!B0S5J8C(P/0``\n`\n', NULL, '2024-04-16 12:52:59', 0, 0),
 ('tete#WGu', 'tete', '', NULL, '09$=6,%I50C!:6%)L3&Y2;```\n`\n', NULL, '2024-03-22 12:53:19', 0, 0);
 
 --
@@ -200,6 +224,13 @@ ALTER TABLE `offers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD KEY `user-uuid` (`user-uuid`);
+
+--
+-- Indexes for table `password-reset-tokens`
+--
+ALTER TABLE `password-reset-tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user-uuid` (`user-uuid`);
 
 --
 -- Indexes for table `products`
@@ -229,13 +260,19 @@ ALTER TABLE `booklist`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `password-reset-tokens`
+--
+ALTER TABLE `password-reset-tokens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -246,6 +283,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `offers`
   ADD CONSTRAINT `offers_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `password-reset-tokens`
+--
+ALTER TABLE `password-reset-tokens`
+  ADD CONSTRAINT `password-reset-tokens_ibfk_1` FOREIGN KEY (`user-uuid`) REFERENCES `users` (`uuid`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `products`
