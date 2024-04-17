@@ -4,14 +4,14 @@ uid_element.addEventListener("click", function showConfirm() {
     uid_element.removeEventListener("click", showConfirm);
     
     const warning_box = document.createElement("p");
-    warning_box.innerText = "Are you sure you want to display sensitive information?";
+    warning_box.innerText = "Czy na pewno chcesz wyświetlić swoje ID?";
     
     const confirm_btn = document.createElement("button");
     confirm_btn.type = "button";
-    confirm_btn.innerText = "pokaż";
+    confirm_btn.innerText = "Tak";
     confirm_btn.className = "agree";
     confirm_btn.addEventListener("click", function cont() {
-        fun();
+        displayUID();
         while (uid_element.childElementCount > 1) {
             uid_element.lastChild.remove();
         }
@@ -19,7 +19,7 @@ uid_element.addEventListener("click", function showConfirm() {
 
     const cancel_btn = document.createElement("button");
     cancel_btn.type = "button";
-    cancel_btn.innerText = "anuluj";
+    cancel_btn.innerText = "Nie";
     cancel_btn.className = "disagree";
     cancel_btn.addEventListener("click", () => {
         while (uid_element.childElementCount > 1) {
@@ -32,7 +32,7 @@ uid_element.addEventListener("click", function showConfirm() {
     uid_element.appendChild(cancel_btn);
 });
 
-const fun = function() {
+const displayUID = function() {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "../controllers/get_user_uid.test.php", true); 
     // & I don't have any clue how tf this path works but it works - @AdamrePL
@@ -43,7 +43,7 @@ const fun = function() {
             if (xhr.status === 200) {
                 uid_element.querySelector(".uid").dataset.content = xhr.responseText;
                 setTimeout(() => {
-                    uid_element.querySelector(".uid").dataset.content = "Click to reveal UID";
+                    uid_element.querySelector(".uid").dataset.content = "Kliknij, żeby wyświetlić ID";
                 }, 10000)
             }
         }

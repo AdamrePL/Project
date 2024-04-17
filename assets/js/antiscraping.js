@@ -5,6 +5,9 @@ function showData() {
     var data = dataContainer.innerText;
     var button = document.getElementById("btn-show-data");
     const buttonStyle = button.style;
+
+
+    
     if(!isShowed){
         var decodedData = atob(data);
         dataContainer.style.display = 'block'; 

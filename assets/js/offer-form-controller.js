@@ -23,4 +23,10 @@ const add_prod_btn = list.lastElementChild.onclick = () => {
 }
 
 
+
+function newField(){
+    const field = document.getElementById("product").cloneNode(true);       
+    document.getElementById("product-list").appendChild(field);
+}
+
 // note to myself: that interesting, and other familar ones idk -> FileList

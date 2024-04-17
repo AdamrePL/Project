@@ -90,9 +90,7 @@ Cillum id aliqua minim sint incididunt ex minim qui laborum. Deserunt amet repre
             </span>
         </article>
     </main>
-    <footer>
-        <span title="TLiMC&#013;Technikum Łączności i Multimediów Cyfrowych"><a target="_blank" href="https://tlimc.szczecin.pl/">TLiMC</a></span>
-        <P>&copy; Made by Adamre and Browar - 2024</P>
-    </footer>
+    <?php include "footer.php";  ?>
+
 </body>
 </html>
