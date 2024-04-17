@@ -1,15 +1,53 @@
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-if(!isset($_POST["email"])){
-    header("Location: ..\index.php");
-}
+
 require_once "$abspath\conf\config.php";
 require_once "$abspath\classes\AccountManager.php";
 require_once "$abspath\classes\SendMail.php";
 
 $am = new AccountManager($conn);
-$sm = new SendMail($_POST["email"]);
 
+
+
+if(isset($_POST["token"])){
+    if(!isset($_POST["password"]) and !isset($_POST["confirm_password"])){
+        header("Location: ../src/reset-my-password.php?token=$token&m=pwd-empty");
+    }
+    if($_POST["password"] != $_POST["confirm_password"]){
+        header("Location: ../src/reset-my-password.php?token=$token&m=pwd-diffrent");
+    }
+    // if(!preg_match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$", $_POST["password"])){
+    //     header("Location: ../src/reset-my-password.php?token=$token&m=pwd-invalid");
+    // }
+    $token = $_POST["token"];
+    $uppercase = preg_match('@[A-Z]@', $_POST["password"]);
+    $lowercase = preg_match('@[a-z]@', $_POST["password"]);
+    $number    = preg_match('@[0-9]@', $_POST["password"]);
+    if(!$uppercase || !$lowercase || !$number  || strlen($_POST["password"]) < 5) {
+        header("Location: ../src/reset-my-password.php?token=$token&m=pwd-invalid");
+    }
+    $tk_uid = $am->get_id_by_password_reset_token($_POST["token"]);
+    $new_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    if ($am->set_password_by_uid($new_password, $tk_uid)) {
+        $sql = "DELETE FROM `password-reset-tokens` WHERE `user-uuid` = ?";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("s", $tk_uid);
+        $stmt->execute();
+        mysqli_stmt_close($stmt);
+        header("Location: ../src/access.php?m=pwd-change-success");
+
+        exit();
+    } else {
+        header("Location: ../src/access.php?m=pwd-change-failed");
+    }
+    
+    exit();
+}
+if(!isset($_POST["email"])){
+    header("Location: ..\index.php");
+    exit();
+}
+$sm = new SendMail($_POST["email"]);
 $uid = $am->get_user_id_by_email($_POST["email"]);
 
 if(!isset($uid)){
@@ -17,7 +55,7 @@ if(!isset($uid)){
     exit();
 }
 
-$sql = "SELECT `user-uuid` FROM `password-reset-tokens` WHERE `user-uuid` = ?";
+$sql = "SELECT `user-uuid`, `token` FROM `password-reset-tokens` WHERE `user-uuid` = ?";
 $stmt = $conn->prepare($sql); 
 $stmt->bind_param("s", $uid);
 $stmt->execute();
@@ -37,7 +75,9 @@ if(!isset($data["token"])){
         header("Location:  ../src/reset-my-password.php?m=link-error-occured");
     }
     
-} //!not finished yet
+} else {
+    header("Location:  ../src/reset-my-password.php?m=link-already-sent");
+}
 
 
 
