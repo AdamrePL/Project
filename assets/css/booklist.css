@@ -1,23 +1,18 @@
 @import "./global.css";
 
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1rem;
+}
+.container{
+}
 
-#booklist,
-#booklist-files {
+#booklist {
     max-width: min(1400px, 100% - 4rem);
     margin-inline: auto;
     padding: 2rem;
 }
 
-#booklist-files {
-    min-height: 10%;
-}
-
-#booklist-files>a {
-    display: block;
-    margin: 1rem;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-}
 
 .detail{
     padding: 3px ;
@@ -76,9 +71,7 @@
 .grade::before{
     content: "Klasa - ";
 }
-.subject::before{
-    content: "Przedmiot ";
-}
+
 .publisher::before{
     content: "Wydawnictwo ";
 }

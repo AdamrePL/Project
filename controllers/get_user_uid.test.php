@@ -6,8 +6,7 @@ if (!isset($_SESSION["uid"])) {
     header("Location: " . $_SERVER["BASE"]);
     exit(403);
 }
-
-if (isset($_POST["show-uid"]) && $_POST["show-uid"] == "ok") {
+else if (isset($_POST["show-uid"]) && $_POST["show-uid"] == "ok") {
     echo $_SESSION["uid"];
 }
 ?>

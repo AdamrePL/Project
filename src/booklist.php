@@ -1,38 +1,41 @@
-<?php require_once "../conf/config.php"; ?>
+<?php require_once "../conf/config.php";
+include "navbar.php";
+?>
+
 
 
 <head>
     <title><?php echo SITENAME . " - "; ?>Spis Książek</title>
-    <link href="../assets/css/booklist-new.css" type="text/css" rel="stylesheet">
+    <link href="../assets/css/booklist.css" type="text/css" rel="stylesheet">
     <script src="../assets/js/booklist.js"></script>
 
 </head>
 
 <body>
+    <div class="container">
+        <!-- filtry i sortowanie -->
+        <div class="filter-bar">
+            <?php
+            $sql = "SELECT DISTINCT subject FROM booklist";
+            $query = mysqli_query($conn, $sql);
+            echo '<div class = "container" id ="btn-container">';
+            echo 'Przedmiot<br>';
+            while ($result = mysqli_fetch_assoc($query)) {
+                echo '<a class = "btn-filter" href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
+            }
+            ?>
 
-    <!-- filtry i sortowanie -->
-    <div class="filter-bar">
-        <?php
-        $sql = "SELECT DISTINCT subject FROM booklist";
-        $query = mysqli_query($conn, $sql);
-        echo '<div class = "container" id ="btn-container">';
-        echo 'Przedmiot<br>';
-        while ($result = mysqli_fetch_assoc($query)) {
-            echo '<a class = "btn-filter" href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
-        }
-        ?>
+            <?php
+            echo '<br>Klasa<br>';
+            for ($grade = 1; $grade < 6; $grade++) {
+                echo '<a class = "btn-filter"  href = "/src/booklist.php?grade=' . $grade . '">' . $grade . '</a>';
+            }
 
-        <?php
-        echo '<br>Klasa<br>';
-        for ($grade = 1; $grade < 6; $grade++) {
-            echo '<a class = "btn-filter"  href = "/src/booklist.php?grade=' . $grade . '">' . $grade . '</a>';
-        }
-
-        echo '</div>';
+            echo '</div>';
 
 
-        ?></p>
-    </div>
+            ?></p>
+        </div>
     </div>
     </div>
 
@@ -65,15 +68,15 @@
 
 
             echo '<span class = "details">';
+
             //title
-            echo '<span class = "detail title">';
-            echo '<p>' . $result["name"] . '</p>';
-            echo '</span>';
+            echo '<span class = "detail title">' . $result["name"] .'</span>';
 
             //grade
-            echo '<span class="detail grade">
-            ' . $result["class"] .
-                '</span>';
+            echo '<span class="detail grade">' . $result["class"] .'</span>';
+            //subject
+            echo '<span class="detail subject">' . $result["subject"] .'</span>';
+
 
 
 
@@ -96,10 +99,8 @@
         }
         ?>
     </section>
-
-
-
-    <?php include "footer.php"; ?>  
-
-
+    </div>
 </body>
+<footer>
+<?php include "footer.php"; ?>
+</footer>
