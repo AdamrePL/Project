@@ -22,7 +22,7 @@ if (isset($_SESSION["uid"])) {
     <link rel="stylesheet" href="../assets/css/access.css">
 </head>
 
-<body>
+<body id ="body-access">
     <div class="access-wrapper">
         <div id="login-wrapper" aria-selected="true">
             <h1>zaloguj się</h1>
@@ -52,8 +52,12 @@ if (isset($_SESSION["uid"])) {
                     <?php if (isset($_GET["error"]) && $_GET["error"] == "l_submit-error") echo "formularz nie został prawidłowo wysłany"; ?>
                 </span>
                 <span>Nie posiadasz konta? <a href="?register">Zarejestruj się</a></span>
+<<<<<<< Updated upstream
                 <div>Nie pamiętasz User ID? <a href="remind-me.php">Przypomnij User ID</a></div>
                 <div>Nie pamiętasz hasła? <a href="reset-my-password.php">Zresetuj hasło</a></div>
+=======
+                <div>Nie pamiętasz swojego ID? <a href="remind-me.php">Przypomnij User ID</a></div>
+>>>>>>> Stashed changes
             </form>
             </div>
         </div>

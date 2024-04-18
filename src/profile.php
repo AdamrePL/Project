@@ -10,6 +10,8 @@ require_once "$abspath\conf\config.php"; ?>
     <title><?php echo SITENAME?> Twój Profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <script src="../assets/js/profile-controller.js" defer></script>
 </head>
 
@@ -113,13 +115,19 @@ require_once "$abspath\conf\config.php"; ?>
             $selection_sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
             $selection_query = mysqli_query($conn,$selection_sql);
 
+
+            $count =  "SELECT COUNT(*) as `q` FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
+            $count_query = mysqli_query($conn, $count);
+            $result = mysqli_fetch_assoc($count_query);            
+
+
             if(empty(mysqli_fetch_assoc($selection_query))){
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
             } 
             else {
                 
                 require_once "$abspath\classes\Offer.php";
-                echo "<h1>Twoje oferty</h1>";
+                echo "<h1>Twoje oferty []</h1>";
                 $offers = new Oferty($conn);
                 $offers->PrintAll(FALSE);
             }
@@ -132,14 +140,16 @@ require_once "$abspath\conf\config.php"; ?>
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] - 1;
+                $_SESSION["first-login"] = $_SESSION["first-login"] ;
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>
-                        <div class="overlay-wrapper">
-                            Twoje uid: '. $_SESSION["uid"] .'. Zapisz, lub zapamiętaj swoje uid ponieważ służy ono do logowania się na konto! ' . $message . '
+                        <div class="overlay-id">
+                            Twoje ID: <span id = "overlay-uid">'. $_SESSION["uid"] . '</span><button onclick = "copyUID()"><i class="fa-solid fa-copy"></i></button>
+                            <div class="tooltip" id ="info-copy">Skopiowano ID</div>
                         </div>
-                        <p class="overlay-msg">Click anywhere outside of the box to close</p>
+                        <div class = "overlay-msg">'.$message.'</div>
+                        <p class="overlay-msg">Kliknij gdziekolwiek poza wiadomość, by ją zamknąć.</p>
                     </div>
                 ';
             }
@@ -150,4 +160,5 @@ require_once "$abspath\conf\config.php"; ?>
 <?php
     include_once "footer.php";
 ?>
+
 </body>

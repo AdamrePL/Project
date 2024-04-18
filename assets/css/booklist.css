@@ -4,8 +4,8 @@ body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1rem;
 }
-.container{
-}
+/* .container{
+} */
 
 #booklist {
     max-width: min(1400px, 100% - 4rem);

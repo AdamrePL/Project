@@ -101,6 +101,4 @@ include "navbar.php";
     </section>
     </div>
 </body>
-<footer>
 <?php include "footer.php"; ?>
-</footer>

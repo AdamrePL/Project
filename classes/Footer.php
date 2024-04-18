@@ -11,6 +11,6 @@ class Footer {
         return $this->content;
     }
     public function render_footer() : void {
-        echo "<footer>$this->content</footer>";
+        echo "$this->content";
     }
 }

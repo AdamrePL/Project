@@ -1,7 +1,7 @@
 @import "global.css";
 
 
-body {
+#body-access {
     margin: 0;
     display: flex;
     font-size: 16px;
@@ -9,6 +9,8 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
+
 
 main {
     --_line-width: 2px;
@@ -123,3 +125,6 @@ form :focus-visible {
     outline: 1px solid rgb(255,255,255, 0.667);
     outline-offset: 3px;
 }
+
+
+
