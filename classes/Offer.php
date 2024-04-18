@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="assets/css/antiscraping.css">
+<link rel="stylesheet" href="/assets/css/antiscraping.css">
+<link rel="stylesheet" href="/assets/css/booklist.css">
+
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 require_once "$abspath\conf\config.php";
@@ -44,18 +46,49 @@ class Oferty {
             }
         }
     }
+       
+
+    
 
 
     public function PrintAll($ALL = TRUE){
+
         if ($ALL == TRUE){
+            
+            $condition = array("nowy","używany","uszkodzony");
+            $sql_filter_subject = "SELECT DISTINCT subject FROM booklist";
+            $query_filter_subject = mysqli_query($this->conn, $sql_filter_subject);
+            echo '<div class = "container" id ="btn-container">';
+            echo 'Przedmiot<br>';
+            while ($result = mysqli_fetch_assoc($query_filter_subject)) {
+                echo '<a class = "btn-filter" href = "/src/offer-list.php?filter/subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
+            }
+            echo '<br>Klasa<br>';
+            for($grade = 1; $grade<6; $grade++){
+                echo '<a class = "btn-filter" href = "/src/offer-list.php?filter/grade=' . $grade. '">' . $grade . '</a>';
+            }
+            echo '<br>Stan<br>';
+            foreach($condition as $cond){
+                echo '<a class = "btn-filter" href = "/src/offer-list.php?filter/condition=' . $cond. '">' . $cond . '</a>';
+
+            }
+
+            if(isset($_GET["subject"])){
+                $sql = "SELECT * FROM `offers`,`products` WHERE offer.status = '1' AND offer.id = products.offer-id ";
+            }
             $sql = "SELECT * FROM `offers` WHERE `status` = '1' ORDER BY `id` DESC LIMIT 20 ";
             $query = mysqli_query($this->conn, $sql);
+
+
+
+
         }else{
             $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '".$_SESSION['uid']."' ORDER BY `id` DESC LIMIT 20 ";
             $query = mysqli_query($this->conn, $sql);
         }
-        
-        
+
+
+
         while ($result = mysqli_fetch_assoc($query)){
             echo "<script>console.log('Debug Objects: " . self::dateToDays(self::FormatDate(),$result["offer-edate"]) . "' );</script>"; //tylko test
             if (self::FormatDate() >= date($result["offer-edate"])){

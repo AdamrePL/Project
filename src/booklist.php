@@ -25,6 +25,7 @@ include "navbar.php";
             }
             ?>
 
+
             <?php
             echo '<br>Klasa<br>';
             for ($grade = 1; $grade < 6; $grade++) {

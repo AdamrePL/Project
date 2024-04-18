@@ -1,4 +1,4 @@
-/* body {
+body {
     font-size: 1.5rem;
     background-color: rgb(var(--background));
 }
@@ -62,4 +62,12 @@ button {
 
 #cancel:hover {
     background: red;
-} */
+}
+#input-delete-account{
+    background: white;
+    color: red;
+}
+#input-delete-account:hover{
+    background: red;
+    color: white;
+}

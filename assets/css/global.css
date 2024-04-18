@@ -330,6 +330,10 @@ footer #creators{
     font-size: 50px;
     display: inline-block;
 }
+.overlay  button:hover{
+    background-color: black;
+    color: white;
+}
 
 
 .tooltip{ 

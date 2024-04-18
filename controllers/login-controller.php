@@ -57,20 +57,13 @@ class LoginController
             if (!empty($pwd) && empty($_POST["l_password"])) {
                 throw new Exception('password required');
             }
-<<<<<<< Updated upstream
             if(!empty($pwd)){
-=======
-            if (!empty($pwd)) {
->>>>>>> Stashed changes
                 if (!password_verify($_POST["l_password"], $pwd)) {
                     throw new Exception('wrong password');
                 }
             }
 
-<<<<<<< Updated upstream
             
-=======
->>>>>>> Stashed changes
             $sql = "SELECT * FROM `users` WHERE uuid = ?;";
             $stmt = mysqli_stmt_init($this->conn);
             mysqli_stmt_prepare($stmt, $sql);

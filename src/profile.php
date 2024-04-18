@@ -30,53 +30,23 @@ require_once "$abspath\conf\config.php"; ?>
         
         case "settings":
             include "navbar.php";
-            echo '<a class="return-btn" href="profile.php">&NestedLessLess; Powrót</a>
+            echo '
 
             <div class="user-settings-wrapper">
-                <h1>User Settings</h1>
-            
-                <form action="../controllers/profile-controller.php" method="post">
-                    <label for="new_password">nowe hasło</label>
-                    <input type="text" name="new_password" placeholder="new password" />
-                    <label for="password">potwierdź hasło</label>
-                    <input type="text" name="nowe hasło" placeholder="potwierdź hasło" />
-                    <input type="submit" value="ustaw nowe hasło" name="set-new-password" />
-                </form>
-
-                <form action="../controllers/profile-controller.php">
-                    <label for="email_adress">podaj email</label>
-                    <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
-                    <br>
-                    <label for="phone_number">podaj nr. telefonu</label>
-                    <input type="tel" name="phone_number" placeholder="podaj numer" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
-                    <br>
-                    <label for="discord_user">podaj nazwe użytkownika discord-a</label>
-                    <input type="text" id="discord_user" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
-            
-                    <label for="email_flag">Użyć emaila do automatycznego wypełniania formy kontaktu?</label>
-            
-                    <span>
-                        <button type="submit" id="confirm" name="save">Zapisz</button>
-                        <button type="reset" id="reset" name="remove-all-contacts">Usuń formy kontaktu</button>
-                    </span>
-                </form>
+                <h3>Ustawienia użytkownika</h3>
 
 
             </div>';
 
-            // echo '<div>
-            //     <form method="post" action="../controllers/profile-controller.php">
-            //         <input class="" type="submit" name="remove-account" value="Usuń konto" />
-            //     </form>
-            // </div>';
+            
             echo '<div>
                     <form method="post" action="deleteaccount.php">
                         <input type="hidden" name="uid" value="'.$_SESSION["uid"].'">
-                        <input class="" type="submit" name="remove-account" value="Usuń konto" />
-                    </form>
-                </div>';
-            //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
-        break;
+                            <input class="" id = "input-delete-account" type="submit" name="remove-account" value="Usuń konto" />
+                        </form>
+                    </div>';
+                //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
+            break;
 
         default:
         include "navbar.php";
