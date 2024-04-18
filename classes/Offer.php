@@ -91,6 +91,12 @@ class Oferty {
 
                 if(!$ALL){
                     echo '<a href = "#">Edytuj ofertę</a>';
+                    ?>
+                    <form action="../controllers/delete_offer.php" method="post">
+                        <input type="hidden" name="offer_id" value="<?=$result["id"];?>">
+                        <button type="submit">Usuń ofertę</button>
+                    </form>
+                    <?php
                 }
 
 
