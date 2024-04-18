@@ -62,12 +62,17 @@ require_once "$abspath\conf\config.php"; ?>
 
             </div>';
 
+            // echo '<div>
+            //     <form method="post" action="../controllers/profile-controller.php">
+            //         <input class="" type="submit" name="remove-account" value="Usuń konto" />
+            //     </form>
+            // </div>';
             echo '<div>
-                <form method="post" action="../controllers/profile-controller.php">
-                    <input class="" type="submit" name="remove-account" value="Usuń konto" />
-                </form>
-            </div>';
-
+                    <form method="post" action="deleteaccount.php">
+                        <input type="hidden" name="uid" value="'.$_SESSION["uid"].'">
+                        <input class="" type="submit" name="remove-account" value="Usuń konto" />
+                    </form>
+                </div>';
             //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
         break;
 

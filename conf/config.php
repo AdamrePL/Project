@@ -94,6 +94,11 @@
     define("SITE_EMAIL_PORT", 465);
     define("SITE_EMAIL_NAME", "Giełda Podręczników");
 
+    //Inactive account deletion settings
+    define("USER_EXPIRY_MONTHS", 14);
+    //! To activate inactive account deletion go to Task Scheduler -> Import task and choose "User Expiration.xml".
+    //! It will run every day at 10:30
+
     
 
     #endregion Constants

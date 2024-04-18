@@ -53,6 +53,7 @@ if (isset($_SESSION["uid"])) {
                 </span>
                 <span>Nie posiadasz konta? <a href="?register">Zarejestruj się</a></span>
                 <div>Nie pamiętasz User ID? <a href="remind-me.php">Przypomnij User ID</a></div>
+                <div>Nie pamiętasz hasła? <a href="reset-my-password.php">Zresetuj hasło</a></div>
             </form>
             </div>
         </div>
