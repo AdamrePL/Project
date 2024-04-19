@@ -52,4 +52,11 @@ const displayUID = function() {
     xhr.send("show-uid=ok"); 
 }
 
-// I usually do not suck at javascript, but this code? I am not proud of and very dissapointed with my performance - @AdamrePL
+function copyUID(){
+    var tooltip = document.getElementById("info-copy");
+    var UID = document.getElementById("overlay-uid").innerHTML;
+    navigator.clipboard.writeText(UID);
+
+    tooltip.style.visibility = "visible";
+    
+}

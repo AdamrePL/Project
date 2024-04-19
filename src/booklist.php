@@ -25,6 +25,7 @@ include "navbar.php";
             }
             ?>
 
+
             <?php
             echo '<br>Klasa<br>';
             for ($grade = 1; $grade < 6; $grade++) {
@@ -101,6 +102,4 @@ include "navbar.php";
     </section>
     </div>
 </body>
-<footer>
 <?php include "footer.php"; ?>
-</footer>

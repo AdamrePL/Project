@@ -10,6 +10,8 @@ require_once "$abspath\conf\config.php"; ?>
     <title><?php echo SITENAME?> Twój Profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <script src="../assets/js/profile-controller.js" defer></script>
 </head>
 
@@ -28,53 +30,23 @@ require_once "$abspath\conf\config.php"; ?>
         
         case "settings":
             include "navbar.php";
-            echo '<a class="return-btn" href="profile.php">&NestedLessLess; Powrót</a>
+            echo '
 
             <div class="user-settings-wrapper">
-                <h1>User Settings</h1>
-            
-                <form action="../controllers/profile-controller.php" method="post">
-                    <label for="new_password">nowe hasło</label>
-                    <input type="text" name="new_password" placeholder="new password" />
-                    <label for="password">potwierdź hasło</label>
-                    <input type="text" name="nowe hasło" placeholder="potwierdź hasło" />
-                    <input type="submit" value="ustaw nowe hasło" name="set-new-password" />
-                </form>
-
-                <form action="../controllers/profile-controller.php">
-                    <label for="email_adress">podaj email</label>
-                    <input type="email" name="email_adress" placeholder="email" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"/>
-                    <br>
-                    <label for="phone_number">podaj nr. telefonu</label>
-                    <input type="tel" name="phone_number" placeholder="podaj numer" pattern="\d{3}[-\s]?\d{3}[-\s]?\d{3}" minlength="9"/> <!-- inputmode="numeric" -->
-                    <br>
-                    <label for="discord_user">podaj nazwe użytkownika discord-a</label>
-                    <input type="text" id="discord_user" name="discord_user" placeholder="podaj nazwe użytkownika discord-a" />
-            
-                    <label for="email_flag">Użyć emaila do automatycznego wypełniania formy kontaktu?</label>
-            
-                    <span>
-                        <button type="submit" id="confirm" name="save">Zapisz</button>
-                        <button type="reset" id="reset" name="remove-all-contacts">Usuń formy kontaktu</button>
-                    </span>
-                </form>
+                <h3>Ustawienia użytkownika</h3>
 
 
             </div>';
 
-            // echo '<div>
-            //     <form method="post" action="../controllers/profile-controller.php">
-            //         <input class="" type="submit" name="remove-account" value="Usuń konto" />
-            //     </form>
-            // </div>';
+            
             echo '<div>
                     <form method="post" action="deleteaccount.php">
                         <input type="hidden" name="uid" value="'.$_SESSION["uid"].'">
-                        <input class="" type="submit" name="remove-account" value="Usuń konto" />
-                    </form>
-                </div>';
-            //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
-        break;
+                            <input class="" id = "input-delete-account" type="submit" name="remove-account" value="Usuń konto" />
+                        </form>
+                    </div>';
+                //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
+            break;
 
         default:
         include "navbar.php";
@@ -113,13 +85,19 @@ require_once "$abspath\conf\config.php"; ?>
             $selection_sql = "SELECT * FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
             $selection_query = mysqli_query($conn,$selection_sql);
 
+
+            $count =  "SELECT COUNT(*) as `q` FROM `offers` WHERE `user-uuid` = '" . $_SESSION["uid"] . "'";
+            $count_query = mysqli_query($conn, $count);
+            $result = mysqli_fetch_assoc($count_query);            
+
+
             if(empty(mysqli_fetch_assoc($selection_query))){
                 echo '<span class="no-offers">Nie stworzyłeś żadnej oferty! Chciałbyś to zmienić? <a href="../src/createoffer.php">Stwórz ofertę</a></span>';
             } 
             else {
                 
                 require_once "$abspath\classes\Offer.php";
-                echo "<h1>Twoje oferty</h1>";
+                echo "<h1>Twoje oferty []</h1>";
                 $offers = new Oferty($conn);
                 $offers->PrintAll(FALSE);
             }
@@ -132,14 +110,16 @@ require_once "$abspath\conf\config.php"; ?>
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] - 1;
+                $_SESSION["first-login"] = $_SESSION["first-login"] ;
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>
-                        <div class="overlay-wrapper">
-                            Twoje uid: '. $_SESSION["uid"] .'. Zapisz, lub zapamiętaj swoje uid ponieważ służy ono do logowania się na konto! ' . $message . '
+                        <div class="overlay-id">
+                            Twoje ID: <span id = "overlay-uid">'. $_SESSION["uid"] . '</span><button onclick = "copyUID()"><i class="fa-solid fa-copy"></i></button>
+                            <div class="tooltip" id ="info-copy">Skopiowano ID</div>
                         </div>
-                        <p class="overlay-msg">Click anywhere outside of the box to close</p>
+                        <div class = "overlay-msg">'.$message.'</div>
+                        <p class="overlay-msg">Kliknij gdziekolwiek poza wiadomość, by ją zamknąć.</p>
                     </div>
                 ';
             }
@@ -150,4 +130,5 @@ require_once "$abspath\conf\config.php"; ?>
 <?php
     include_once "footer.php";
 ?>
+
 </body>

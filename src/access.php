@@ -22,7 +22,7 @@ if (isset($_SESSION["uid"])) {
     <link rel="stylesheet" href="../assets/css/access.css">
 </head>
 
-<body>
+<body id ="body-access">
     <div class="access-wrapper">
         <div id="login-wrapper" aria-selected="true">
             <h1>zaloguj się</h1>

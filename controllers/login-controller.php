@@ -1,7 +1,8 @@
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
-class LoginController {
+class LoginController
+{
     private $conn;
 
 
@@ -13,8 +14,9 @@ class LoginController {
 
     const UID_PATTERN = "/\w{3,30}(#[a-zA-Z0-9]{3})/";
 
-    public function loginUser(){
-        try{
+    public function loginUser()
+    {
+        try {
             require_once 'account-controller.php';
             $accController = new Account($this->conn);
 
@@ -22,36 +24,36 @@ class LoginController {
                 header("Location: / ");
                 exit(403);
             }
-            
+
             if (!isset($_POST["log"])) {
-               throw new Exception('no login');
+                throw new Exception('no login');
             }
-            
+
             include_once "account-controller.php";
-            
+
             $uid = trim($_POST["user-id"]);
-            
-            
+
+
             if (!preg_match(self::UID_PATTERN, $uid)) {
                 throw new Exception('incorrect uid');
             }
-            
+
             $uid = explode("#", $uid);
             $username = strtolower($uid[0]);
             $id = $uid[1];
             $uid = $username . '#' . $id;
-            
+
             if (strlen($id) > 3) {
                 throw new Exception('incorrect tag');
             }
-            
-            
+
+
             if (!$accController->user_exists($uid)) {
                 throw new Exception('no user');
             }
-            
+
             $pwd = $accController->get_user_password($uid);
-            
+
             if (!empty($pwd) && empty($_POST["l_password"])) {
                 throw new Exception('password required');
             }
@@ -74,16 +76,14 @@ class LoginController {
                 $_SESSION["isadmin"] = $result["admin"];
                 $_SESSION["username"] = $result["username"];
             }
-            
+
             $accController->update_last_login($uid);
             header("Location: ../src/profile.php?info=success");
-            
-            $conn -> close();
-        }catch(Exception $e){
+
+            $conn->close();
+        } catch (Exception $e) {
             echo $e->getMessage();
             echo ('<script>console.log("' . $e->getMessage() . '");</script>');
         }
-        
     }
-
 }
