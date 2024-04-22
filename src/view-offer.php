@@ -29,6 +29,8 @@ $quality = ["Used", "Damaged", "New"];
     <title>Document</title>
 </head>
 <body>
+    <div class="page-container">
+    <div class="content-wrap">
     <?php 
     include "navbar.php";
     ?>
@@ -60,6 +62,7 @@ $quality = ["Used", "Damaged", "New"];
                     echo "<li><details><summary>" . $row["name"] . " - ".$row["price"]."zł </summary>
                     <p>Stan: ".$quality[$row["quality"]]."</p>
                     <p>Opis: ".$row["note"]."</p>
+                    <img class=\"book-preview\" src=\"..\assets\img\book.webp\">
 
                     </details></li>";
                 }
@@ -67,5 +70,9 @@ $quality = ["Used", "Damaged", "New"];
             </ul>
             
     </div>
+    </div>
+    
+    </div>
+    <?php include "$abspath/src/footer.php";  ?>
 </body>
 </html>
