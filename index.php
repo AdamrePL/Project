@@ -8,6 +8,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="tlimc,Technikum Szkół Łączności i Multimediów Cyfrowych,giełda książek,giełda">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/global.css">
     <link rel="icon" type="image/png" href="assets/img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -19,6 +20,8 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];?>
 </head>
 
 <body>
+<div class="page-wrapper">
+    <div class="content-wrap">
     <header>
         <?php include "src/navbar.php";?>
 
@@ -55,29 +58,9 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];?>
             ?>
             
     </main>
-
+    </div>
     <?php include "src/footer.php";  ?>
-
-    <?php
-    // if (isset($_GET["offer-id"]) && $_GET["offer-id"] != null) {
-    //     $sql = "SELECT * FROM `offers` WHERE `offers`.`id` = ?";
-    //     $stmt = mysqli_prepare($conn, $sql);
-    //     mysqli_stmt_bind_param($stmt, 'i', $_GET["offer-id"]);
-    //     mysqli_stmt_execute($stmt);
-    //     $query = mysqli_stmt_get_result($stmt);
-    //     mysqli_stmt_close($stmt);
-
-    //     $result = mysqli_fetch_assoc($query);
-
-    //     echo '<div class="overlay">';
-    //     echo '<script src="../assets/js/script.js" defer></script>';
-    //     echo '<div class="overlay-wrapper">';
-    //     print_r($result);
-    //     echo '</div>';
-    //     echo '<p class="overlay-msg">Click anywhere outside of the box to close</p>';
-    //     echo '</div>';
-    // }
-    ?>
+</div>
 </body>
 
 </html>

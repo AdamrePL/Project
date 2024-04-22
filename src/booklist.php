@@ -16,10 +16,13 @@ include "navbar.php";
         <!-- filtry i sortowanie -->
         <div class="filter-bar">
             <?php
+            $break = '<div class="break"></div>';
             $sql = "SELECT DISTINCT subject FROM booklist";
             $query = mysqli_query($conn, $sql);
             echo '<div class = "container" id ="btn-container">';
-            echo 'Przedmiot<br>';
+            echo $break;
+            echo '<h3>Przedmiot</h3>';
+            echo $break;
             while ($result = mysqli_fetch_assoc($query)) {
                 echo '<a class = "btn-filter" href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
             }
@@ -27,7 +30,9 @@ include "navbar.php";
 
 
             <?php
-            echo '<br>Klasa<br>';
+            echo $break;
+            echo '<h3>Klasa</h3>';
+            echo $break;
             for ($grade = 1; $grade < 6; $grade++) {
                 echo '<a class = "btn-filter"  href = "/src/booklist.php?grade=' . $grade . '">' . $grade . '</a>';
             }

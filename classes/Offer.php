@@ -69,16 +69,16 @@ class Oferty
                 echo '<a class = "btn-filter" href = "/src/offer-list.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
             }
             echo $break;
-            echo '<h3>Stan</h3>';
-            echo $break;
-            foreach($condition as $cond){
-                echo '<a class = "btn-filter" href = "/src/offer-list.php?filter/condition=' . $cond. '">' . $cond . '</a>';
-            }
-            echo $break;
             echo '<h3>Klasa</h3>';
             echo $break;
             for ($grade = 1; $grade < 6; $grade++) {
                 echo '<a class = "btn-filter" href = "/src/offer-list.php?grade=' . $grade . '">' . $grade . '</a>';
+            }
+            echo $break;
+            echo '<h3>Stan</h3>';
+            echo $break;
+            foreach($condition as $cond){
+                echo '<a class = "btn-filter" href = "/src/offer-list.php?filter/condition=' . $cond. '">' . $cond . '</a>';
             }
             echo $break;
             if (isset($_GET["subject"])) {
@@ -150,7 +150,7 @@ class Oferty
 
 
             if ($prod > 1) {
-                echo '<h4 class="offer-title">Pakiet</h4>';
+                echo '<h4 class="offer-title"><a href="'.$result["id"].'">Pakiet</a></h4>';
                 echo '<details>';
                 echo '<summary>Pakiet zawiera: </summary>';
                 while ($result2 = mysqli_fetch_assoc($query2)) {
@@ -160,7 +160,7 @@ class Oferty
                 echo '</details>';
             } else {
                 $result2 = mysqli_fetch_assoc($query2);
-                echo '<h4 class="offer-title">' . $result2["name"] . '</h4>';
+                echo '<h4 class="offer-title"><a href="src/view-offer.php?id='.$result["id"]. '">' . $result2["name"] . '</a></h4>';
             }
 
 

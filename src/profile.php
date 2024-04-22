@@ -1,6 +1,10 @@
 <?php 
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "$abspath\conf\config.php"; ?>
+require_once "$abspath\conf\config.php";
+if (!isset($_SESSION["uid"])){
+    header("Location: access.php");
+}
+ ?>
 
 
 <!-- <h2>Last login: <?php // date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
@@ -16,6 +20,9 @@ require_once "$abspath\conf\config.php"; ?>
 </head>
 
 <body>
+    <div class="page-wrapper">
+    <div class="content-wrap">
+    
 <?php
     if (!isset($_GET["page"])) {
         $_GET["page"]="profile";
@@ -52,7 +59,7 @@ require_once "$abspath\conf\config.php"; ?>
         include "navbar.php";
             echo '<section id="user-details">';
 
-                echo '<span id = "setting-link"><a href="?page=settings" name="user_edit">Ustawienia konta</a></span>';
+                echo '<span id = "setting-link"><a href="?page=settings" name="user_edit">Ustawienia konta </a></span>';
                 echo '<span id = "setting-link"><a href="../controllers/logout.php" name="logout">Wyloguj się</a></span>';
 
                 $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = '" . $_SESSION["uid"] . "'");
@@ -127,8 +134,9 @@ require_once "$abspath\conf\config.php"; ?>
         break;
     }
 ?>
+</div>
 <?php
     include_once "footer.php";
 ?>
-
+</div>
 </body>

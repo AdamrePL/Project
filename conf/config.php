@@ -73,7 +73,7 @@
      * & In case you don't know how this timeout works, because I also forgot while im typing this, then check out 
      * @link https://www.php.net/manual/en/ref.session.php
     */
-    session_set_cookie_params(3600 / 2, $_SERVER["BASE"], "localhost", true, true); # 1 Godz / 2, zostawcie default na 1 godzine i po prostu matmy używajcie, np 3600 * 1.5 = 1godz 30min
+    session_set_cookie_params(3600 * 24 * 3, $_SERVER["BASE"], "localhost", true, true); # 1 Godz / 2, zostawcie default na 1 godzine i po prostu matmy używajcie, np 3600 * 1.5 = 1godz 30min
     session_start();
 
     // print_r( session_get_cookie_params() );
