@@ -33,7 +33,7 @@ $quality = ["Used", "Damaged", "New"];
         function getContact(){
             console.log(grecaptcha.getResponse())
         }
-    </script>
+    </script>   
 </head>
 <body>
     <div class="page-container">
@@ -44,11 +44,12 @@ $quality = ["Used", "Damaged", "New"];
     <div class="offer-view">
         <div class="offer-info">
             <div class="offer-contact">
-            <div class="g-recaptcha" data-sitekey="6LcCUMMpAAAAAPEcFChST1sLJot04GlBWLlLBgjc" data-callback="getContact()"></div>
+            
                 <h3>Dane kontaktowe</h3>
-                <p>Telefon: <?php echo $data["phone"]; ?></p>
+                <div class="g-recaptcha" data-sitekey="6LcCUMMpAAAAAPEcFChST1sLJot04GlBWLlLBgjc" data-callback="getContact()"></div>
+                <!--  <p>Telefon: <?php echo $data["phone"]; ?></p>
                 <p>Email: <?php echo $data["email"]; ?></p>
-                <p>Discord: <?php echo $data["discord"]; ?></p>
+                <p>Discord: <?php echo $data["discord"]; ?></p>-->
             </div>
             <div class="offer-options">
                 <h3>Oferta ważna do:</h3>
