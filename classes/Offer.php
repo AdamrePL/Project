@@ -150,7 +150,7 @@ class Oferty
 
 
             if ($prod > 1) {
-                echo '<h4 class="offer-title"><a href="'.$result["id"].'">Pakiet</a></h4>';
+                echo '<h4 class="offer-title"><a href="src/view-offer.php?id='.$result["id"].'">Pakiet</a></h4>';
                 echo '<details>';
                 echo '<summary>Pakiet zawiera: </summary>';
                 while ($result2 = mysqli_fetch_assoc($query2)) {
