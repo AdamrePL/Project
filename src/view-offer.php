@@ -26,7 +26,9 @@ $quality = ["Used", "Damaged", "New"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/view-offer.css">
+    
     <title>Document</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="page-container">
@@ -37,6 +39,7 @@ $quality = ["Used", "Damaged", "New"];
     <div class="offer-view">
         <div class="offer-info">
             <div class="offer-contact">
+            <!-- <div class="g-recaptcha" data-sitekey="6LcCUMMpAAAAAPEcFChST1sLJot04GlBWLlLBgjc"></div> -->
                 <h3>Dane kontaktowe</h3>
                 <p>Telefon: <?php echo $data["phone"]; ?></p>
                 <p>Email: <?php echo $data["email"]; ?></p>
