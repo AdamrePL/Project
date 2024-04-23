@@ -11,20 +11,15 @@ a {
 /*#region User Profile */
 
 #user-details {
-    background: white;
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0px 0px 10px 2px gray;
-    height: 15rem;
+    display: inline;
+    float: right;
 }
 
 #user-details > * {
-    margin: 1.5rem 2rem;
-    text-align: center;
+    display: inline;
 }
 #setting-link{
-    margin-top: 100px;
+    
 }
 
 .user {

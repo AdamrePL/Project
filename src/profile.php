@@ -1,6 +1,10 @@
 <?php 
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "$abspath\conf\config.php"; ?>
+require_once "$abspath\conf\config.php";
+if (!isset($_SESSION["uid"])){
+    header("Location: access.php");
+}
+ ?>
 
 
 <!-- <h2>Last login: <?php // date("H:i, d.m.Y", strtotime($row['last-login'])); ?></h2>
@@ -16,6 +20,9 @@ require_once "$abspath\conf\config.php"; ?>
 </head>
 
 <body>
+    <div class="page-wrapper">
+    <div class="content-wrap">
+    
 <?php
     if (!isset($_GET["page"])) {
         $_GET["page"]="profile";
@@ -39,7 +46,7 @@ require_once "$abspath\conf\config.php"; ?>
             </div>';
 
             
-            echo '<div>
+            echo '<div> 
                     <form method="post" action="deleteaccount.php">
                         <input type="hidden" name="uid" value="'.$_SESSION["uid"].'">
                             <input class="" id = "input-delete-account" type="submit" name="remove-account" value="Usuń konto" />
@@ -52,7 +59,7 @@ require_once "$abspath\conf\config.php"; ?>
         include "navbar.php";
             echo '<section id="user-details">';
 
-                echo '<span id = "setting-link"><a href="?page=settings" name="user_edit">Ustawienia konta</a></span>';
+                echo '<span id = "setting-link"><a href="?page=settings" name="user_edit">Ustawienia konta </a></span>';
                 echo '<span id = "setting-link"><a href="../controllers/logout.php" name="logout">Wyloguj się</a></span>';
 
                 $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = '" . $_SESSION["uid"] . "'");
@@ -97,8 +104,8 @@ require_once "$abspath\conf\config.php"; ?>
             else {
                 
                 require_once "$abspath\classes\Offer.php";
-                echo "<h1>Twoje oferty []</h1>";
-                $offers = new Oferty($conn);
+                echo "<h1>Twoje oferty [<a href=\"../src/createoffer.php\">Dodaj</a>]</h1>";
+                $offers = new Offer($conn, "../");
                 $offers->PrintAll(FALSE);
             }
 
@@ -110,7 +117,7 @@ require_once "$abspath\conf\config.php"; ?>
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] ;
+                $_SESSION["first-login"] = $_SESSION["first-login"] ; //why?    
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>
@@ -127,8 +134,9 @@ require_once "$abspath\conf\config.php"; ?>
         break;
     }
 ?>
+</div>
 <?php
     include_once "footer.php";
 ?>
-
+</div>
 </body>

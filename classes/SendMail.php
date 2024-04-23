@@ -11,8 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 // this class is an interface for sending emails to change password / reveal the user id if forgotten
-// as for now, it remains unfinished, although i'll just call it work in proggress :)
-// TODO: finish the class
+
 class SendMail{
     private $target_address;
     private $target_name;

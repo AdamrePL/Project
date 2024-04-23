@@ -29,9 +29,9 @@ input {
     display: block;
 }
 
-h1 {
-    color: blue;
-}
+/* h1 {
+    color: blue;    
+} */
 
 label {
     padding: 0;

@@ -1,7 +1,7 @@
 <?php
     require_once "../conf/config.php";
 
-    $sql = "SELECT * FROM `booklist` WHERE `name` = '" . $_GET["book"] . "'";
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
