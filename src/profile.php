@@ -105,7 +105,7 @@ if (!isset($_SESSION["uid"])){
                 
                 require_once "$abspath\classes\Offer.php";
                 echo "<h1>Twoje oferty []</h1>";
-                $offers = new Oferty($conn);
+                $offers = new Offer($conn, "../");
                 $offers->PrintAll(FALSE);
             }
 
@@ -117,7 +117,7 @@ if (!isset($_SESSION["uid"])){
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] ;
+                $_SESSION["first-login"] = $_SESSION["first-login"] ; //why?
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>

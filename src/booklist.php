@@ -68,7 +68,7 @@ include "navbar.php";
 
         $query = mysqli_query($conn, $sql);
         while ($result = mysqli_fetch_assoc($query)) {
-            echo '<a class="card" href = "/src/book.php?book=' . $result["name"] . '">';
+            echo '<a class="card" href = "/src/offer-list.php?book=' . $result["name"] . '">';
             //image
             // echo '<span class = "detail image-container"><img class ="detail image" src = "#"></img></span>';
 
