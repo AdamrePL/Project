@@ -29,11 +29,27 @@ $quality = ["Used", "Damaged", "New"];
     
     <title>Document</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        function getContact(){
-            console.log(grecaptcha.getResponse())
+    <script type="text/javascript">
+        function recaptcha_callback() {
+            console.log("recaptcha_callback called");
+            let xhr = new XMLHttpRequest();
+            var form_data = new FormData(document.getElementById("captcha-f"));
+            xhr.open("POST", "../controllers/get-contact-info.php", true);
+            xhr.onreadystatechange = function() {
+                console.log(xhr.readyState, xhr.status);
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    if (xhr.responseText == "failure"){
+                        document.getElementById("contact-info").innerHTML = "<p>Wystąpił błąd podczas pobierania danych kontaktowych. Odśwież stronę</p>";
+                        return;
+                    }
+                    document.getElementById("contact-info").innerHTML = xhr.responseText;
+                    console.log(xhr.responseText);
+                }
+            }
+            xhr.send(form_data);
         }
-    </script>   
+    </script>
+    
 </head>
 <body>
     <div class="page-container">
@@ -46,10 +62,16 @@ $quality = ["Used", "Damaged", "New"];
             <div class="offer-contact">
             
                 <h3>Dane kontaktowe</h3>
-                <div class="g-recaptcha" data-sitekey="6LcCUMMpAAAAAPEcFChST1sLJot04GlBWLlLBgjc" data-callback="getContact()"></div>
-                <!--  <p>Telefon: <?php echo $data["phone"]; ?></p>
-                <p>Email: <?php echo $data["email"]; ?></p>
-                <p>Discord: <?php echo $data["discord"]; ?></p>-->
+                
+
+                <div id="contact-info"> 
+                <form action="../controllers/get-contact-info.php" id="captcha-f" method="post">
+                    <input type="hidden" name="id" value="<?php echo $offer_id; ?>">
+                    <div class="g-recaptcha" data-sitekey="6LcCUMMpAAAAAPEcFChST1sLJot04GlBWLlLBgjc" data-callback="recaptcha_callback"></div>
+                </form>
+
+                </div>
+
             </div>
             <div class="offer-options">
                 <h3>Oferta ważna do:</h3>
@@ -83,7 +105,5 @@ $quality = ["Used", "Damaged", "New"];
     
     </div>
     <?php include "$abspath/src/footer.php";  ?>
-
-
 </body>
 </html>

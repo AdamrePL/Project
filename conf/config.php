@@ -99,6 +99,8 @@
     //! To activate inactive account deletion go to Task Scheduler -> Import task and choose "User Expiration.xml".
     //! It will run every day at 10:30
 
+    //ReCaptcha settings
+    define("RECAPTCHA_SECRET", "6LcCUMMpAAAAAGdRAAQjfzqt-aJMlajzMkQBa7Bi");
     
 
     #endregion Constants
