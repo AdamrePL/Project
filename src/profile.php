@@ -46,7 +46,7 @@ if (!isset($_SESSION["uid"])){
             </div>';
 
             
-            echo '<div>
+            echo '<div> 
                     <form method="post" action="deleteaccount.php">
                         <input type="hidden" name="uid" value="'.$_SESSION["uid"].'">
                             <input class="" id = "input-delete-account" type="submit" name="remove-account" value="Usuń konto" />
@@ -104,7 +104,7 @@ if (!isset($_SESSION["uid"])){
             else {
                 
                 require_once "$abspath\classes\Offer.php";
-                echo "<h1>Twoje oferty []</h1>";
+                echo "<h1>Twoje oferty [<a href=\"../src/createoffer.php\">Dodaj</a>]</h1>";
                 $offers = new Offer($conn, "../");
                 $offers->PrintAll(FALSE);
             }
@@ -117,7 +117,7 @@ if (!isset($_SESSION["uid"])){
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] ; //why?
+                $_SESSION["first-login"] = $_SESSION["first-login"] ; //why?    
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>
