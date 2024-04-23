@@ -90,10 +90,15 @@ $quality = ["Used", "Damaged", "New"];
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 while ($row = $result->fetch_assoc()){
+                    if($row["img"] != ""){
+                        $img = "../assets/img/downloads/".$row["img"];
+                    } else {
+                        $img = "../assets/img/book.webp";
+                    }
                     echo "<li><details><summary>" . $row["name"] . " - ".$row["price"]."zł </summary>
                     <p>Stan: ".$quality[$row["quality"]]."</p>
-                    <p>Opis: ".$row["note"]."</p>
-                    <img class=\"book-preview\" src=\"..\assets\img\book.webp\">
+                    <p>Opis: ".nl2br($row["note"])."</p>
+                    <img class=\"book-preview\" src=\"$img\">
 
                     </details></li>";
                 }

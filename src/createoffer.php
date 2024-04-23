@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <section id="offer-creation">
         <h1>Stwórz ofertę</h1>
         <div class="offer-wrapper">
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="offer-info">
                     <div class="offer-contact">
                         <h3>Dane kontaktowe</h3>
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="offer-options">
                         <h3>Oferta ma wygasnąć po:</h3>
+                        <input type="hidden" name="exp_hours" value="0">
                         <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni - min 5, max 91, puste = 14" min="5" max="91" />
                     </div>
                 </div>
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <h3>Produkty</h3>
                     <button type="button" onclick="newField()">Nowe pole</button>
 
-                    <div id="product">
+                    <div id="product"><!-- when user presses new field button, this div is duplicated exactly as it is -->
                         <table>
                             <tr>
                                 <td>
@@ -83,14 +84,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    
                                     <textarea name="note[]" id="" cols="30" rows="3"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
-                                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" />
+                                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" multiple/>
                                 </td>
                             </tr>
                         </table>
