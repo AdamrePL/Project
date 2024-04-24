@@ -130,4 +130,30 @@ class OfferController
         }
         return $offer_id;
     }
+    public function editProducts($product_id, $new_book_id, $product, $price, $quality, $description)
+    {
+        try {
+            $sql = "SELECT * FROM booklist WHERE id = ?";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $new_book_id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $data = $result->fetch_assoc();
+            mysqli_stmt_close($stmt);
+            if (!isset($data)) {
+                return false;
+            }
+            $sql = "UPDATE products SET name = ?, author = ?, publisher = ?, subject = ?, class = ?, price = ?, quality = ?, note = ? WHERE id = ?;";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "sssssssss", $product, $data["authors"], $data["publisher"], $data["subject"], $data["class"], $price, $quality, $description, $product_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            return true;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            echo ('<script>console.log("' . $e->getMessage() . '");</script>');
+        }
+    }
 }
