@@ -29,26 +29,7 @@ $quality = ["Used", "Damaged", "New"];
     
     <title>Document</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script type="text/javascript">
-        function recaptcha_callback() {
-            console.log("recaptcha_callback called");
-            let xhr = new XMLHttpRequest();
-            var form_data = new FormData(document.getElementById("captcha-f"));
-            xhr.open("POST", "../controllers/get-contact-info.php", true);
-            xhr.onreadystatechange = function() {
-                console.log(xhr.readyState, xhr.status);
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    if (xhr.responseText == "failure"){
-                        document.getElementById("contact-info").innerHTML = "<p>Wystąpił błąd podczas pobierania danych kontaktowych. Odśwież stronę</p>";
-                        return;
-                    }
-                    document.getElementById("contact-info").innerHTML = xhr.responseText;
-                    console.log(xhr.responseText);
-                }
-            }
-            xhr.send(form_data);
-        }
-    </script>
+    <script src="../assets/js/info-retriever-min.js" type="text/javascript"></script>
     
 </head>
 <body>
