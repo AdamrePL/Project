@@ -84,10 +84,11 @@ if (!isset($_SESSION["uid"])) {
                 </form>
             </div>';
 
-            //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
         break;
+            //* EMAIL REGEX: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ||| slower but more precise: "^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$"
 
         default:
+            $idk = new AccountManager($conn);
             echo '<section id="user-details">';
                 $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uuid = '" . $_SESSION["uid"] . "'");
                 $result = mysqli_fetch_assoc($query);
@@ -103,7 +104,7 @@ if (!isset($_SESSION["uid"])) {
                 echo '<div class="contact">';
                     echo '<span>';
                         echo '<p><i class="fa-solid fa-phone"></i> '. $result["phone"] .'</p>';
-                        echo '<p><i class="fa-solid fa-envelope"></i> '. base64_decode(convert_uudecode($result["email"])) .'</p>';
+                        echo '<p><i class="fa-solid fa-envelope"></i> '. $idk->dehash_email($result["email"]) .'</p>';
                         echo '<p><i class="fa-brands fa-discord"></i> '. $result["discord"] . '</p>';
                     echo '</span>';
                     echo '<span>';

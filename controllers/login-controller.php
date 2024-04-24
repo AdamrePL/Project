@@ -15,12 +15,11 @@ if (!isset($_POST["submit"])) {
 }
 
 if (!isset($_POST["user-id"])) {
-    
+    header("HTTP/1.0 403 Forbidden");
     header("Location: $path_to_form?error=no-uid-provided");
     exit(403);
 }
 
-include_once "account-controller.php";
 include_once "../classes/AccountManager.php";
 require_once "../classes/LoginManager.php";
 

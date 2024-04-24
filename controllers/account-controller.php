@@ -1,61 +1,37 @@
 <?php
-require_once "../conf/config.php";
+$abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
 
-function get_user_password(mysqli $conn, $uid): string {
-    require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
-    $idk = new AccountManager($conn);
-    return $idk->get_user_password($uid);
+if (!isset($_SESSION["uid"])) {
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: ".$_SERVER["BASE"]."?login-required");
+    exit();
 }
 
-require_once $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"]."classes/AccountManager.php";
+if (!isset($_POST) || empty($_POST)) {
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: ".$_SERVER["BASE"]."?incorrect-submit");
+    exit();
+}
 
+require_once $abspath."conf/config.php";
+require_once $abspath."classes/AccountManager.php";
 
-/**
- * @param mysqli $conn
- * A database connection returned by mysqli_connect() or mysqli_init(). 
- * Połączenie z bazą danych wzrócone przez mysqli_connect() lub mysqli_init().
- * @param string $name
- * Username, not person's name.
- * @param string $email
- * Not yet hashed, verified email adress
- * @param string $password (Optional)
- * Not yet hashed password. Set to an empty string by default.
- * 
- * @return string returns user's uid if user is successfuly added to a database table. You can also say it returns true.
- * @return false on mysql_stmt_prepare() error.
-*/
-function create_user(mysqli $conn, string $name, string $email, string $password = ""): string|false {
-    $idk = new AccountManager($conn);
-    $uid = $idk->generate_uid($name);
-    while ($idk->user_exists($uid)) {
-        $uid = $idk->generate_uid($name);
-    }
+if (isset($_POST("save"))) {
+    $discord = $_POST["discord_user"];
+    $email = $_POST["email_adress"];
+    $phone = $_POST["phone_number"];
+    $use_email = $_POST["email_flag"];
+}
 
-    $hashed_email = convert_uuencode(base64_encode($email));
+if (isset($_POST("set-new-password"))) {
+    $new_pass = $_POST["new_pass"];
+    $confirm_pass = $_POST["repeat_pass"];
 
-    $stmt = $conn->stmt_init();
-    if (!empty($password) || $password != "") {
-        $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
-        
-        // $sql = "INSERT INTO `users` VALUES(?, ?, ?, '', '', ?, '', '', '', '');";
-        $sql = "INSERT INTO `users`(`uuid`,`username`, `password` , `email`) VALUES(?, ?, ?, ?);";
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            return false;
-        }
-        $stmt->bind_param("ssss", $uid, $name, $hashed_pass, $hashed_email);
-    } else {
-        // $sql = "INSERT INTO `users` VALUES(?, ?, '', '', '', ?, '', '', '', '');";
-        $sql = "INSERT INTO `users`(`uuid`,`username`,`email`) VALUES(?, ?, ?);";
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            return false;
-        }
-        $stmt->bind_param("sss", $uid, $name, $hashed_email);
-    }
-    
-    $stmt->execute();
-    $stmt->close();
+    $idk->set_new_password($_SESSION["uid"], $new_pass);
+}
 
-    return $uid;
+if (isset($_POST("remove-account"))) {
+
 }
 
 // PHONE NR REGEX: /\d{3}[-\s]?\d{3}[-\s]?\d{3}/

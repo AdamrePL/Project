@@ -13,7 +13,9 @@ if (!isset($_POST["submit"])) {
     exit(403);
 }
 
-include_once "account-controller.php";
+include_once "AccountManager.php";
+
+$idk = new AccountManager($conn);
 
 $pass_len = 5;
 $name_len = 30;
@@ -88,7 +90,7 @@ if (!isset($_POST["accept_tos"])) {
 }
 
 
-if ($uid = create_user($conn, $name, $email, $pass)) {
+if ($uid = $idk->create_user($name, $email, $pass)) {
 // do formularza oraz tutaj dodac wybor czy logowac po zarejestrowaniu czy nie,
 //& it ""works""
 // jezeli nie to:
