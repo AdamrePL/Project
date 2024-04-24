@@ -145,7 +145,13 @@ class Offer
 
 
                 if (!$all) {
-                    echo '<a href="/src/revise-offer.php?offer_id=' . $result["id"] . '" class="btn-edit edit">Popraw ofertę</a>';
+                    echo '<form action="../src/revise-offer.php" method="get">';
+                    echo '<input type="hidden" name="offer_id" value="' . $result["id"] . '">';
+
+                    echo '<button type="submit" class="btn-edit">Zmień ofertę</button>';
+                    echo '</form>';
+
+
                     echo '<form action="../controllers/delete_offer.php" method="post">';
                     echo '<input type="hidden" name="offer_id" value="' . $result["id"] . '">';
                     echo '<button type="submit" class="btn-edit delete">Usuń ofertę</button>';
