@@ -115,4 +115,19 @@ class OfferController
             echo ('<script>console.log("' . $e->getMessage() . '");</script>');
         }
     }
+    public function editOffer($offer_id, $phone, $email, $discord, $exp_days)
+    {
+        try {
+            $sql = "UPDATE `offers` SET `phone` = ?, `email` = ?, `discord` = ?, `offer-edate` = NOW() + INTERVAL ? DAY WHERE `id` = ?;";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "sssss", $phone, $email, $discord, $exp_days, $offer_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            echo ('<script>console.log("' . $e->getMessage() . '");</script>');
+        }
+        return $offer_id;
+    }
 }

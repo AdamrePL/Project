@@ -14,7 +14,8 @@ if (!isset($_SESSION["uid"])){
     <title><?php echo SITENAME?> Twój Profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/global.css">
+    
 
     <script src="../assets/js/profile-controller.js" defer></script>
 </head>
