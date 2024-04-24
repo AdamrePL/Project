@@ -117,7 +117,7 @@ $quality = ["Used", "Damaged", "New"];
             
             <input type="submit" value="Popraw Ofertę" name="standard" />
           
-            <a href="revise-products.php?offer-id=<?php echo $data["id"];?>" class="edit-products-link" target="_blank">Popraw produkty</a>
+            <a href="revise-products.php?offer_id=<?php echo $data["id"];?>" class="edit-products-link" target="_blank">Popraw produkty</a>
         </form>
         
     </div>
