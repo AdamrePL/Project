@@ -8,14 +8,14 @@ if (!isset($_GET["offer_id"])){
     exit(403);
 }
 $offer_id = $_GET["offer_id"];
-
+$inv_message = "";
 if(isset($_POST["edit"])){
     $product_id = $_POST["product_id"];
     $product = $_POST["product"];
     $price = $_POST["price"];
     $quality = $_POST["quality"];
     $description = $_POST["description"];
-    $inv_message = "";
+
 
     for ($i = 0; $i < count($product); $i++){
         if (empty($product[$i])){
@@ -38,7 +38,7 @@ if(isset($_POST["edit"])){
                 $inv_message .= "Nie udało się zaktualizować produktów. \n";
                 break;
             } else {
-                $inv_message .= "Produkty zostały zaktualizowane. \n";
+                echo "<script>window.close();</script>";
             
             }
         }
@@ -131,6 +131,7 @@ while ($row = $result_booklist->fetch_assoc()){
             }
             ?>
         </table>
+        <p><?php echo $inv_message; ?></p>
         <input type="submit" value="Zapisz zmiany">
     </form>
 </body>
