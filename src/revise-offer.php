@@ -37,7 +37,8 @@ if(isset($_POST["edit"])){
         $offer = new OfferController($conn);
         $resp_id = $offer->editOffer($offer_id, $phone, $email, $discord, $exp_days);
         if (isset($resp_id)){
-            header("Location: ../src/profile.php?offer_id=$resp_id?allok=1");
+            // header("Location: ../src/profile.php?offer_id=$resp_id?allok=1");
+            header("Location: view-offer.php?id=$resp_id&allok=1");
         }
         exit(200);
     } 

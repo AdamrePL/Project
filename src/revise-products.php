@@ -24,7 +24,7 @@ if(isset($_POST["edit"])){
         if (empty($price[$i]) || $price[$i] < 0){
             $inv_message .= "Cena produktu nie może być pusta ani ujemna. \n";
         }
-        if (empty($quality[$i]) || $quality[$i] < 0 || $quality[$i] > 2){
+        if ( $quality[$i] < 0 || $quality[$i] > 2){
             $inv_message .= "Niepoprawny stan produktu. \n";
         }
     }

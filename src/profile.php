@@ -118,7 +118,7 @@ if (!isset($_SESSION["uid"])){
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] ; //why?    
+                $_SESSION["first-login"] = 0 ;     
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>
