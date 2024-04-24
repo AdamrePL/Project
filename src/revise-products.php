@@ -33,7 +33,7 @@ if(isset($_POST["edit"])){
         require_once "offer-controller.php";
         $offer = new OfferController($conn);
         for ($i = 0; $i < count($product_id); $i++){
-            $resp = $offer->editProducts($product_id[$i], $product[$i], $product[$i], $price[$i], $quality[$i], $description[$i]);
+            $resp = $offer->editProducts($product_id[$i], $product[$i],  $price[$i], $quality[$i], $description[$i]);
             if (!$resp){
                 $inv_message .= "Nie udało się zaktualizować produktów. \n";
                 break;

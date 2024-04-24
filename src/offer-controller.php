@@ -130,7 +130,7 @@ class OfferController
         }
         return $offer_id;
     }
-    public function editProducts($product_id, $new_book_id, $product, $price, $quality, $description)
+    public function editProducts($product_id, $new_book_id, $price, $quality, $description)
     {
         try {
             $sql = "SELECT * FROM booklist WHERE id = ?";
@@ -147,7 +147,7 @@ class OfferController
             $sql = "UPDATE products SET name = ?, author = ?, publisher = ?, subject = ?, class = ?, price = ?, quality = ?, note = ? WHERE id = ?;";
             $stmt = mysqli_stmt_init($this->conn);
             mysqli_stmt_prepare($stmt, $sql);
-            mysqli_stmt_bind_param($stmt, "sssssssss", $product, $data["authors"], $data["publisher"], $data["subject"], $data["class"], $price, $quality, $description, $product_id);
+            mysqli_stmt_bind_param($stmt, "sssssssss", $data["name"], $data["authors"], $data["publisher"], $data["subject"], $data["class"], $price, $quality, $description, $product_id);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
             return true;
