@@ -3,6 +3,49 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
 require_once "$abspath\conf\config.php";
 
+if(isset($_POST["edit"])){
+    $offer_id = $_POST["offer_id"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
+    $discord = $_POST["discord"];
+    $exp_days = $_POST["exp_days"];
+    $personal_data_agreement = $_POST["personal-data-agreement"];
+    
+    $inv_message = "";
+
+    if (empty($exp_days) || $exp_days < 5 || $exp_days > 91){
+        $inv_message .= "Niepoprawna ilość dni. \n";
+    }
+    if (!empty($phone) and strlen($phone) < 9){
+        $inv_message .= "Niepoprawny numer telefonu. \n";
+    }
+    if (!empty($email) and !filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $inv_message .= "Niepoprawny adres e-mail. \n";
+    }
+    if (!empty($discord) and strlen($discord) < 3){
+        $inv_message .= "Niepoprawny tag discord. \n";
+    }
+    if (empty($discord) and empty($phone) and empty($email)){
+        $inv_message .= "Musisz podać przynajmniej jeden sposób kontaktu. \n";
+    }
+    if (empty($personal_data_agreement)){
+        $inv_message .= "Musisz wyrazić zgodę na publikację danych osobowych. \n";
+    }
+
+    if (empty($inv_message)){
+        require_once "offer-controller.php";
+        $offer = new OfferController($conn);
+        $resp_id = $offer->editOffer($offer_id, $phone, $email, $discord, $exp_days);
+        if (isset($resp_id)){
+            // header("Location: ../src/profile.php?offer_id=$resp_id?allok=1");
+            header("Location: view-offer.php?id=$resp_id&allok=1");
+        }
+        exit(200);
+    } 
+
+    
+}
+
 if (isset($_SESSION["uid"]) and isset($_GET["offer_id"])){
     $uid = $_SESSION["uid"];
     $offer_id = $_GET["offer_id"];
@@ -15,14 +58,13 @@ if (isset($_SESSION["uid"]) and isset($_GET["offer_id"])){
     $result = mysqli_stmt_get_result($stmt);
     $data = $result->fetch_assoc();
     mysqli_stmt_close($stmt);
-    if (isset($data)){
-        //nuthing
-    } else {
+    if (!isset($data)){
         header("Location: ../src/profile.php");
         exit(403);
     }
 } else {
     header("Location: ../src/profile.php");
+    
     exit(403);
 }   
 ?>
@@ -33,12 +75,22 @@ if (isset($_SESSION["uid"]) and isset($_GET["offer_id"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popraw ofertę</title>
     <link rel="stylesheet" href="../assets/css/editoffer.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body>
+    <div class="page-container">
+    <div class="content-wrap">
+
+
+    <?php 
+    require_once "navbar.php";
+    ?>
 <?php
 $quality = ["Used", "Damaged", "New"];
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+<form action="?offer_id=<?php echo $_GET["offer_id"] ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="edit" value="1">
+            <input type="hidden" name="offer_id" value="<?php echo $data["id"];?>">
             <div class="offer-info">
                 <div class="offer-contact">
                     <h3>Dane kontaktowe</h3>
@@ -59,33 +111,21 @@ $quality = ["Used", "Damaged", "New"];
                 </div>
             </div>
             <div class="">
+            <p><?php if (isset($inv_message)) {echo nl2br($inv_message);}?></p>
             <input type="checkbox" id="publish-data-agreement" name="personal-data-agreement" required>
             <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
             </div>
             
             <input type="submit" value="Popraw Ofertę" name="standard" />
           
-            <details>
-                <summary>Edytuj produkty ()</summary>
-                <ul>
-                <?php
-                $sql = "SELECT `products`.* FROM `products` WHERE `products`.`offer-id` = ?;";
-                $stmt = mysqli_stmt_init($conn);
-                mysqli_stmt_prepare($stmt, $sql);
-                mysqli_stmt_bind_param($stmt,"s", $offer_id);
-                mysqli_stmt_execute($stmt);
-                $result = mysqli_stmt_get_result($stmt);
-                $data = $result->fetch_assoc();
-                mysqli_stmt_close($stmt);
-                if (isset($data)){
-                    echo '<li><a href="" target="_blank">'.$data["name"].' - '.$data["price"].' zł</a></li>';
-                } else {
-                    echo "Brak produktów w ofercie";
-                }
-                ?>
-                </ul>
-            </details>
+            <a href="revise-products.php?offer_id=<?php echo $data["id"];?>" class="edit-products-link" target="_blank">Popraw produkty</a>
         </form>
         
+    </div>
+    <?php
+    require_once "footer.php";
+    ?>
+
+    </div>
 </body>
 </html>

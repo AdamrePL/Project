@@ -115,4 +115,45 @@ class OfferController
             echo ('<script>console.log("' . $e->getMessage() . '");</script>');
         }
     }
+    public function editOffer($offer_id, $phone, $email, $discord, $exp_days)
+    {
+        try {
+            $sql = "UPDATE `offers` SET `phone` = ?, `email` = ?, `discord` = ?, `offer-edate` = NOW() + INTERVAL ? DAY WHERE `id` = ?;";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "sssss", $phone, $email, $discord, $exp_days, $offer_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            echo ('<script>console.log("' . $e->getMessage() . '");</script>');
+        }
+        return $offer_id;
+    }
+    public function editProducts($product_id, $new_book_id, $price, $quality, $description)
+    {
+        try {
+            $sql = "SELECT * FROM booklist WHERE id = ?";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $new_book_id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $data = $result->fetch_assoc();
+            mysqli_stmt_close($stmt);
+            if (!isset($data)) {
+                return false;
+            }
+            $sql = "UPDATE products SET name = ?, author = ?, publisher = ?, subject = ?, class = ?, price = ?, quality = ?, note = ? WHERE id = ?;";
+            $stmt = mysqli_stmt_init($this->conn);
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "sssssssss", $data["name"], $data["authors"], $data["publisher"], $data["subject"], $data["class"], $price, $quality, $description, $product_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            return true;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            echo ('<script>console.log("' . $e->getMessage() . '");</script>');
+        }
+    }
 }

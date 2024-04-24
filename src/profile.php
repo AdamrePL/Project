@@ -14,7 +14,8 @@ if (!isset($_SESSION["uid"])){
     <title><?php echo SITENAME?> Twój Profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/global.css">
+    
 
     <script src="../assets/js/profile-controller.js" defer></script>
 </head>
@@ -117,7 +118,7 @@ if (!isset($_SESSION["uid"])){
                 } else {
                     $message = 'Ta wiadomość się już nie pokaże po odświeżeniu strony lub po ponownym wejsciu na profil';
                 }
-                $_SESSION["first-login"] = $_SESSION["first-login"] ; //why?    
+                $_SESSION["first-login"] = 0 ;     
                 echo '
                     <div class="overlay">
                         <script src="../assets/js/script.js" defer></script>

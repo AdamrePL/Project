@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once 'offer-controller.php';
     $controller = new OfferController($conn, $_SESSION["uid"]);
     $controller->addOffer();
+    header("Location: ../src/profile.php");
     exit();
 }
 ?>
