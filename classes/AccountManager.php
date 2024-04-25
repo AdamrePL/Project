@@ -55,7 +55,7 @@ class AccountManager {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
-    public function get_user_id_by_email(string $email) : string{
+    public function get_user_id_by_email(string $email){
         $hashed_email = convert_uuencode(base64_encode($email));
         // $query = mysqli_query($this->conn, "SELECT * FROM `users` WHERE email = '" . $hashed_email . "'");
 
