@@ -24,7 +24,19 @@ $q = $_GET["search"];
                 <h1>Wyniki wyszukiwania dla: <?php echo $q?></h1>
                 <div class="results">
                     <?php
-
+                    $query = "SELECT products.*, offers.id FROM products JOIN offers ON products.id = offers.id WHERE products.name LIKE '%$q%'";
+                    $result = mysqli_query($conn, $query);
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<div class='product'>";
+                            echo "<h2>" . $row['name'] . "</h2>";
+                            echo "<p>Offer ID: " . $row['id'] . "</p>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo  mysqli_error($conn);
+                    }
+                    mysqli_close($conn);
                     ?>
                 </div>
             </div>
