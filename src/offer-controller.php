@@ -144,10 +144,10 @@ class OfferController
             if (!isset($data)) {
                 return false;
             }
-            $sql = "UPDATE products SET name = ?, author = ?, publisher = ?, subject = ?, class = ?, price = ?, quality = ?, note = ? WHERE id = ?;";
+            $sql = "UPDATE products SET name = ?, author = ?, publisher = ?, subject = ?, class = ?, price = ?, quality = ?, note = ?, inactive = ? WHERE id = ?;";
             $stmt = mysqli_stmt_init($this->conn);
             mysqli_stmt_prepare($stmt, $sql);
-            mysqli_stmt_bind_param($stmt, "sssssssss", $data["name"], $data["authors"], $data["publisher"], $data["subject"], $data["class"], $price, $quality, $description, $product_id);
+            mysqli_stmt_bind_param($stmt, "ssssssssss", $data["name"], $data["authors"], $data["publisher"], $data["subject"], $data["class"], $price, $quality, $description, $product_id, $inactive);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
             return true;

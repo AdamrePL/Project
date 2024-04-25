@@ -15,6 +15,7 @@ if(isset($_POST["edit"])){
     $price = $_POST["price"];
     $quality = $_POST["quality"];
     $description = $_POST["description"];
+    $inactive = $_POST["inactive"];
 
 
     for ($i = 0; $i < count($product); $i++){
@@ -33,7 +34,7 @@ if(isset($_POST["edit"])){
         require_once "offer-controller.php";
         $offer = new OfferController($conn);
         for ($i = 0; $i < count($product_id); $i++){
-            $resp = $offer->editProducts($product_id[$i], $product[$i],  $price[$i], $quality[$i], $description[$i]);
+            $resp = $offer->editProducts($product_id[$i], $product[$i],  $price[$i], $quality[$i], $description[$i], $inactive[$i]);
             if (!$resp){
                 $inv_message .= "Nie udało się zaktualizować produktów. \n";
                 break;
@@ -127,6 +128,9 @@ while ($row = $result_booklist->fetch_assoc()){
                 echo "</tr>";
                 echo "<tr>";
                 echo "<td colspan='4'><textarea name='description[]'>" . $row["note"] . "</textarea></td>";
+                echo '<tr><td colspan="4">
+                <input type="checkbox" name="inactive[]" value="' . $row["id"] . '"> Produkt nieaktywny
+                </td></tr>';
                 echo "</tr>";
             }
             ?>
