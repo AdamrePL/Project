@@ -15,7 +15,8 @@ if(isset($_POST["edit"])){
     $price = $_POST["price"];
     $quality = $_POST["quality"];
     $description = $_POST["description"];
-    $inactive = $_POST["inactive"];
+    $status = $_POST["status"];
+
 
 
     for ($i = 0; $i < count($product); $i++){
@@ -34,7 +35,10 @@ if(isset($_POST["edit"])){
         require_once "offer-controller.php";
         $offer = new OfferController($conn);
         for ($i = 0; $i < count($product_id); $i++){
-            $resp = $offer->editProducts($product_id[$i], $product[$i],  $price[$i], $quality[$i], $description[$i], $inactive[$i]);
+            $inactive = 0;
+            if ($status[$i] == "inactive") $inactive = 1;
+            
+            $resp = $offer->editProducts($product_id[$i], $product[$i],  $price[$i], $quality[$i], $description[$i], $inactive);
             if (!$resp){
                 $inv_message .= "Nie udało się zaktualizować produktów. \n";
                 break;
@@ -128,9 +132,22 @@ while ($row = $result_booklist->fetch_assoc()){
                 echo "</tr>";
                 echo "<tr>";
                 echo "<td colspan='4'><textarea name='description[]'>" . $row["note"] . "</textarea></td>";
-                echo '<tr><td colspan="4">
-                <input type="checkbox" name="inactive[]" value="' . $row["id"] . '"> Produkt nieaktywny
-                </td></tr>';
+                echo '<tr><td colspan="4">';
+                $status = "active";
+                if ($row["inactive"] >0 ) $status = "inactive";
+                echo '<select name="status[]">';
+                
+
+                if ($status == "active") {
+                    echo '<option value="active" selected>Aktywny</option>';
+                    echo '<option value="inactive">Nieaktywny</option>';
+                } else {
+                    echo '<option value="active">Aktywny</option>';
+                    echo '<option value="inactive" selected>Nieaktywny</option>';
+                }
+                echo '</select></td>';
+
+                echo '</td></tr>';
                 echo "</tr>";
             }
             ?>

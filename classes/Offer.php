@@ -112,11 +112,11 @@ class Offer
                 }
 
                 if (isset($_GET["subject"])) {
-                    $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"] . " AND `subject` = '" . $_GET["subject"] . "'";
+                    $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"] . " AND `subject` = '" . $_GET["subject"] . "' and `inactive` = 0";
                 } else if (isset($_GET["grade"])) {
-                    $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"] . " AND `class` = '" . $_GET["grade"] . "'";
+                    $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"] . " AND `class` = '" . $_GET["grade"] . "' and `inactive` = 0";
                 } else {
-                    $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
+                    $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"] . " and `inactive` = 0";
                 }
 
                 $query2 = mysqli_query($this->conn, $sql2);

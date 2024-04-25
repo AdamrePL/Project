@@ -64,7 +64,7 @@ $quality = ["Used", "Damaged", "New"];
             <h3>Książki</h3>
             <ul>
                 <?php
-                $sql = "SELECT * from `products` WHERE `offer-id` = ?";
+                $sql = "SELECT * from `products` WHERE `offer-id` = ? and `inactive` = 0";
                 $stmt = mysqli_stmt_init($conn);
                 mysqli_stmt_prepare($stmt, $sql);
                 mysqli_stmt_bind_param($stmt, "s", $offer_id);
