@@ -106,7 +106,9 @@ class OfferController
                 }
 
                 $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $note, $price,$res["class"], $_POST["quality"][$key]);
-                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','$list[6]','$list[5]','$list[7]','$list[4]','$image_path','0')");
+                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','$list[6]','$list[5]','$list[7]','$list[4]','$image_path','0', '0')");
+                
+
             }
         } catch (Exception $e) {
             echo $e->getMessage();
