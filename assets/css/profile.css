@@ -239,9 +239,7 @@ input:not(:placeholder-shown) {
     width: 100%;
 }
 
-.offer:hover {
-    background: rgb(180,180,180);
-}
+
 
 .offer details {
     padding-left: 1.5rem;

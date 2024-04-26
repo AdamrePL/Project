@@ -1,7 +1,7 @@
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
-require_once "$abspath\conf\config.php";
+require_once "$abspath/conf/config.php";
 
 if(isset($_POST["edit"])){
     $offer_id = $_POST["offer_id"];
@@ -73,7 +73,7 @@ if (isset($_SESSION["uid"]) and isset($_GET["offer_id"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popraw ofertę</title>
+    <title>Zmień ofertę</title>
     <link rel="stylesheet" href="../assets/css/editoffer.css">
     <link rel="stylesheet" href="../assets/css/global.css">
 </head>
@@ -116,7 +116,7 @@ $quality = ["Used", "Damaged", "New"];
             <label for="publish-data-agreement">Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
             </div>
             
-            <input type="submit" value="Popraw Ofertę" name="standard" />
+            <input type="submit" value="Zmień Ofertę" name="standard" />
           
             <a href="revise-products.php?offer_id=<?php echo $data["id"];?>" class="edit-products-link" target="_blank">Popraw produkty</a>
         </form>

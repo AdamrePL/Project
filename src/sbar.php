@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="assets/css/navbar.css">
 <div class="sbar">
 <search>
-            <form method="get">
+            <form method="get" action="src/search.php">
                 <input type="search" pattern="[^'\x22]+" list="books-search-list" name="search" id="searchbar" placeholder="Znajdź Produkt" />
                 <button type = "submit"><i id="icon-search" class="fa-solid fa-magnifying-glass"></i></button>
                 <datalist id="books-search-list">
