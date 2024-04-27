@@ -1,7 +1,7 @@
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
-require_once "$abspath\conf\config.php";
+require_once $abspath . "conf\config.php";
 
 if (isset($_SESSION["uid"]) and isset($_POST["offer_id"])){
     $uid = $_SESSION["uid"];

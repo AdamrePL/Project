@@ -11,8 +11,8 @@ class Profile
 
     public function deleteUserAfter13(){
         $res = $this->conn->query("SELECT * FROM `offers` LIMIT 1");
-        include_once $abspath . '\classes\Offer.php';
-        $offer = new Oferty($this->conn);
+        include_once $abspath . "classes/Offer.php";
+        $offer = new Offer($this->conn);
         if($offer->dateToDays($offer->FormatDate(),$res["last-login"]) >= 395){
             $this->conn->query("DELETE FROM `users` WHERE `uuid` =" . $row["uuid"]);
         }

@@ -1,5 +1,5 @@
 <?php require_once "../conf/config.php";
-include "navbar.php";
+include_once "navbar.php";
 if(isset($_POST["book"])){
     $sql = "SELECT `products`.`offer-id` FROM `products` WHERE `products`.`name` = ?";
     $stmt = mysqli_stmt_init($conn);
@@ -37,4 +37,4 @@ if(isset($_POST["book"])){
     </div>
 </body>
 
-<?php include "footer.php"?>
+<?php include_once "footer.php"?>

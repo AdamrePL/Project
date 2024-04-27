@@ -1,9 +1,9 @@
 <?php
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
-require_once "$abspath\conf\config.php";
-require_once "$abspath\classes\AccountManager.php";
-require_once "$abspath\classes\SendMail.php";
+require_once $abspath . "conf\config.php";
+require_once $abspath . "classes\AccountManager.php";
+require_once $abspath . "classes\SendMail.php";
 
 $am = new AccountManager($conn);
 

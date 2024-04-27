@@ -1,6 +1,6 @@
 <?php 
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "$abspath\conf\config.php";
+require_once $abspath . "conf/config.php";
 if (!isset($_SESSION["uid"])){
     header("Location: access.php");
 }
@@ -24,7 +24,6 @@ $quality = ["Used", "Damaged", "New"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/view-offer.css">
     
     <title>Document</title>
@@ -36,7 +35,7 @@ $quality = ["Used", "Damaged", "New"];
     <div class="page-container">
     <div class="content-wrap">
     <?php 
-    include "navbar.php";
+    include_once "navbar.php";
     ?>
     <div class="offer-view">
         <div class="offer-info">
@@ -90,6 +89,6 @@ $quality = ["Used", "Damaged", "New"];
     </div>
     
     </div>
-    <?php include "$abspath/src/footer.php";  ?>
+    <?php include_once "$abspath/src/footer.php";  ?>
 </body>
 </html>

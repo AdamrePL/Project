@@ -75,7 +75,6 @@ if (isset($_SESSION["uid"]) and isset($_GET["offer_id"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zmień ofertę</title>
     <link rel="stylesheet" href="../assets/css/editoffer.css">
-    <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body>
     <div class="page-container">

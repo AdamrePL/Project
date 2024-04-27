@@ -1,6 +1,6 @@
 <?php 
 $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
-require_once "$abspath\conf\config.php";
+require_once $abspath . "conf\config.php";
 if (!isset($_SESSION["uid"])){
     header("Location: access.php");
 }
@@ -14,7 +14,6 @@ if (!isset($_SESSION["uid"])){
     <title><?php echo SITENAME?> Twój Profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/global.css">
     
 
     <script src="../assets/js/profile-controller.js" defer></script>
@@ -104,7 +103,7 @@ if (!isset($_SESSION["uid"])){
             } 
             else {
                 
-                require_once "$abspath\classes\Offer.php";
+                require_once $abspath . "classes\Offer.php";
                 echo "<h1>Twoje oferty [<a href=\"../src/createoffer.php\">Dodaj</a>]</h1>";
                 $offers = new Offer($conn, "../");
                 $offers->PrintAll(FALSE);

@@ -12,14 +12,13 @@ $q = $_GET["search"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/search.css">
     <title><?php echo $q?></title>
 </head>
 <body>
     <div class="page-container">
         <div class="content-wrap">
-            <?php include "navbar.php" ?>
+            <?php include_once "navbar.php" ?>
             <div class="search-results">
                 <h1>Wyniki wyszukiwania dla: <?php echo $q?></h1>
                 <div class="results">

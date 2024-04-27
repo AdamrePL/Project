@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </noscript>
 
     <link rel="stylesheet" href="../assets/css/createoffer.css">
-    <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 
 <body>

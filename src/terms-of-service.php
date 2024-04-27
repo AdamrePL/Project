@@ -90,7 +90,7 @@ Cillum id aliqua minim sint incididunt ex minim qui laborum. Deserunt amet repre
             </span>
         </article>
     </main>
-    <?php include "footer.php";  ?>
+    <?php include_once "footer.php";  ?>
 
 </body>
 </html>

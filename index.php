@@ -8,9 +8,8 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="tlimc,Technikum Szkół Łączności i Multimediów Cyfrowych,giełda książek,giełda">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/antiscraping.css">
-<link rel="stylesheet" href="/assets/css/booklist.css">
+    <link rel="stylesheet" href="/assets/css/booklist.css">
     <link rel="icon" type="image/png" href="assets/img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -53,7 +52,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];?>
             <?php
               
 
-            require_once $abspath  . "\classes\Offer.php";
+            require_once "classes\Offer.php";
 
             $offers = new Offer($conn);
             $offers->PrintAll();
