@@ -193,7 +193,7 @@
 
 * {
     margin: 0;
-     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     user-select: text; /* All */
     -moz-user-select: text; /* Firefox */
@@ -273,17 +273,10 @@ footer {
 }
 
 
-
-
-footer a{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+footer a {
     color: white;
     background-color: black;
     font-size: 1rem;    
-}
-
-footer #creators{
-    font-size: 0.75rem;
 }
 
 .overlay {
@@ -342,13 +335,13 @@ footer #creators{
     font-size: 50px;
     display: inline-block;
 }
-.overlay  button:hover{
+.overlay button:hover{
     background-color: black;
     color: white;
 }
 
 
-.tooltip{ 
+.tooltip { 
     visibility: hidden;
     font-size: 25px;
 }
