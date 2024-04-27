@@ -1,4 +1,4 @@
-@import "../css/global.css";
+@import "global.css";
 
 body {
     background: rgb(var(--background));

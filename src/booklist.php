@@ -2,10 +2,11 @@
 include "navbar.php";
 ?>
 
-
-
 <head>
     <title><?php echo SITENAME . " - "; ?>Spis Książek</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/css/booklist.css" type="text/css" rel="stylesheet">
     <script src="../assets/js/booklist.js"></script>
 
@@ -24,7 +25,7 @@ include "navbar.php";
             echo '<h3>Przedmiot</h3>';
             echo $break;
             while ($result = mysqli_fetch_assoc($query)) {
-                echo '<a class = "btn-filter" href = "/src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
+                echo '<a class = "btn-filter" href = "'.$_SERVER["BASE"].'src/booklist.php?subject=' . $result["subject"] . '">' . $result["subject"] . '</a>';
             }
             ?>
 
@@ -34,7 +35,7 @@ include "navbar.php";
             echo '<h3>Klasa</h3>';
             echo $break;
             for ($grade = 1; $grade < 6; $grade++) {
-                echo '<a class = "btn-filter"  href = "/src/booklist.php?grade=' . $grade . '">' . $grade . '</a>';
+                echo '<a class = "btn-filter"  href = "'.$_SERVER["BASE"].'src/booklist.php?grade=' . $grade . '">' . $grade . '</a>';
             }
 
             echo '</div>';
