@@ -14,9 +14,9 @@ if (!isset($_POST["submit"])) {
     exit(403);
 }
 
-if (!isset($_POST["user-id"])) {
+if (!isset($_POST["email"])) {
     header("HTTP/1.0 403 Forbidden");
-    header("Location: $path_to_form?error=no-uid-provided");
+    header("Location: $path_to_form?error=no-email-provided");
     exit(403);
 }
 
@@ -24,28 +24,18 @@ include_once "../classes/AccountManager.php";
 require_once "../classes/LoginManager.php";
 
 
-$uid = str_replace(" ", "", trim($_POST["user-id"]));
+$email = str_replace(" ", "", trim($_POST["email"]));
 
-$user_credentials = new LoginManager($conn, $uid);
-
-try {
-    $user_credentials->check_uid();
-    $user_credentials->validate();
-} catch (Exception $error) {
-    $err = $error->getMessage();
-    header("Location: $path_to_form?error=$err");
-    exit(422);
-}
-
+$user_credentials = new LoginManager($conn, $email);
 $manager = new AccountManager($conn);
 
-if (!$manager->user_exists($uid)) {
+if (!$manager->user_exists($email)) {
     header("Location: $path_to_form?error=no-user-found");
     exit(403);
 }
 
 try {
-    $pwd = $manager->get_user_password($user_credentials->uid);
+    $pwd = $manager->get_user_password($user_credentials->email);
     if (!empty($pwd) && empty($_POST["password"])) {
         throw new Exception("password-required", 403);
     }

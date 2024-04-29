@@ -40,19 +40,15 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             if (isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] > 0) {
                 echo '<a href="src/admin-tools.php"><b>Panel Sterowania</b></a>';
             }
-            if (isset($_SESSION["uid"])) {
-                echo '<a href="controllers/logout.php">Wyloguj</a>';
-                echo '<a href="src/profile.php#offers">Moje oferty</a>';
-                echo '<a href="src/createoffer.php">Stwórz ofertę</a>';
-            } else {
-                echo '<a href="src/access.php">Zaloguj się</a>';
-            }
-        ?>
+            ?>
+        <a href="controllers/logout.php">Wyloguj</a>
+        <a href="src/profile.php#offers">Moje oferty</a>
+        <a href="src/createoffer.php">Stwórz ofertę</a>
         <a href="#przegladaj">Przeglądaj Oferty</a>
         <a href="src/booklist.php">Lista podręczników</a>
         <a href="src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
-
+    
     <main id="przegladaj">
         <h1>Przeglądaj oferty</h1>
         <search>

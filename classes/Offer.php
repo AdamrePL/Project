@@ -27,7 +27,7 @@ class OffersDisplay {
 
     public function display_offers($amount, $status = null, $user = null) {
         if (!is_null($user)) {
-            $sql = "SELECT * FROM `offers` WHERE `user-uuid` = '$user'";
+            $sql = "SELECT * FROM `offers` WHERE `user-uid` = '$user'";
             $this->display($sql, true);
         } else if (!is_null($status)) {
             $sql = "SELECT * FROM `offers` WHERE `status` = $status LIMIT $amount";

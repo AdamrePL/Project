@@ -85,6 +85,7 @@ if ($uid = $idk->create_user($email, $pass)) {
     // } else {
         session_regenerate_id(true);
         $_SESSION["uid"] = $uid;
+        $_SESSION["email"] = $email;
         $_SESSION["isadmin"] = 0;
         $_SESSION["first-login"] = 2;
         header("Location: ../src/profile.php");
