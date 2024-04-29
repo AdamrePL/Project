@@ -17,28 +17,14 @@ include_once "AccountManager.php";
 
 $idk = new AccountManager($conn);
 
-$pass_len = 5;
-$name_len = 30;
+$pass_len = 8;
 
-const USERNAME_PATTERN = "/[a-zA-Z]{1}\w{2,29}/";
-
-$name = str_replace(" ", "", trim($_POST["username"]));
 $email = str_replace(" ", "", trim($_POST["email"]));
 $pass = trim($_POST["password"]);
 $pass_check = trim($_POST["password-repeat"]);
 
 if (empty($name) || empty($email)) {
     header("Location: $path_to_files?error=empty-fields");
-    exit(403);
-}
-
-if (!preg_match(USERNAME_PATTERN, $name)) {
-    header("Location: $path_to_form?error=incorrect-username");
-    exit(422);
-}
-
-if (strlen($name) > $name_len) {
-    header("Location: $path_to_form?error=name-too-short");
     exit(403);
 }
 
@@ -89,8 +75,7 @@ if (!isset($_POST["accept_tos"])) {
     exit(403);
 }
 
-
-if ($uid = $idk->create_user($name, $email, $pass)) {
+if ($uid = $idk->create_user($email, $pass)) {
 // do formularza oraz tutaj dodac wybor czy logowac po zarejestrowaniu czy nie,
 //& it ""works""
 // jezeli nie to:
@@ -101,7 +86,6 @@ if ($uid = $idk->create_user($name, $email, $pass)) {
         session_regenerate_id(true);
         $_SESSION["uid"] = $uid;
         $_SESSION["isadmin"] = 0;
-        $_SESSION["username"] = $name;
         $_SESSION["first-login"] = 2;
         header("Location: ../src/profile.php");
         exit(200);

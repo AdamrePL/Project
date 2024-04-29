@@ -20,13 +20,6 @@ if (!isset($_SESSION["uid"])) {
 }
 
 const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/"; // or ^\d*(\.\d{0,2})?$
-const CUSTOM_ARRAY_SEPARATOR = "&#x37E;";
-const MAX_IMG_PER_ENTRY = 2;
-/**
- * defines max file size in megabytes
- * @var int
-*/ 
-const CUSTOM_MAX_FILE_SIZE = 20;
 
 /**
  * @var string[] $status
@@ -84,17 +77,7 @@ $offer_id = mysqli_insert_id($conn);
 
 $book_count = count($_POST["book"]);
 
-$file = $_FILES['image'];
-
-if (count($file["name"]) > $book_count * MAX_IMG_PER_ENTRY) {
-    header("HTTP/1.0 403 Forbidden");
-    header("Location: ". $_SERVER["BASE"] ."src/createoffer.php?error=too-many-files");
-    exit(403);
-}
-
-$isCustom = false; // change when we add handling for custom creation, in front end
-
-$sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->stmt_init();
 $stmt->prepare($sql);
@@ -124,72 +107,7 @@ for ($i = 0; $i < $book_count; $i++) {
     $book_price = doubleval(str_replace(" ", "", $_POST["price"][$i]));
     $book_qual = str_replace(" ", "", $_POST["quality"][$i]);
     $book_note = mysqli_real_escape_string($conn, $_POST["note"][$i]);
-
-    // TODO FILES: add mime type check.
-    // $fileType = $file['type'];
-    $allowed_mimes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-    $allowed_files = array('png', 'jpg', 'jpeg', 'webp', 'gif', 'jif', 'jfif', 'jpe', 'pjp', 'pjpeg'); // the 'jif', 'jpe' and next extensions in array are technicaly for 'jpg' file aswell
     
-    $file_names = [];
-    for ($j = 0; $j < MAX_IMG_PER_ENTRY; $j++) {
-        $pic_index = $i * MAX_IMG_PER_ENTRY + $j;
-        echo $pic_index;
-        if ($file["name"][$pic_index] == null || $file["error"][$pic_index] !== 0) {
-            echo "skipped $pic_index";
-            continue;
-        }
-        if ($file["size"][$pic_index] < (1024 * 1024 * CUSTOM_MAX_FILE_SIZE)) {
-            $ext = strtolower(pathinfo($file["name"][$pic_index], PATHINFO_EXTENSION)); // $ext = strtolower(end(explode('.', $fileName)));
-            if (in_array($ext, $allowed_files)) {
-                if (!in_array($file["type"][$pic_index], $allowed_mimes)) {
-                    array_push($offer_errors, "wrong-file-mime-type&input-nr=".$pic_index);
-                    echo "skipped $pic_index";
-                    continue;
-                }
-                // you can edit it however you want, shit is crazy, so many ways to setup.
-                $fileName = base_convert(bin2hex(random_bytes(2+9*(cos(M_2_PI)+sin(M_PI_4)*M_E/time()))),16,36) . '.' . $ext;
-                array_push($file_names, $fileName);
-                move_uploaded_file($file["tmp_name"][$pic_index], $file_folder . $fileName);
-            } else {
-                array_push($offer_errors, "wrong-file-type&input-nr=".$pic_index);
-            }
-        } else {
-            array_push($offer_errors, "file-too-big&input-nr=".$pic_index);
-        }
-    }
-    $book_images = implode(CUSTOM_ARRAY_SEPARATOR, $file_names);
-    echo '<br>';
-    print_r(explode(CUSTOM_ARRAY_SEPARATOR, $book_images));
-    print_r($offer_errors);
-
-    // $_FILE = array(); # We might want to use this if we were to make this ... advanced, for now it has to work
-    // foreach($_FILES as $name => $file) {
-    //     foreach($file as $property => $keys) {
-    //         foreach($keys as $key => $value) {
-    //             $_FILE[$name][$key][$property] = $value;
-    //         }
-    //     }
-    // }
-    file_put_contents("files.test.json", json_encode($_FILES, JSON_PRETTY_PRINT));
-
-    // ? Now here's question.. @chopa113 do we store status as a number that represents a status, like a flag, or as a string (word), my guess is number cuz then we can do bitmask operations.. but then, why would we want that?
-    // * Currently status numbers are as follows: 0 - zakonczona/ended , 1 - aktywna/active , 2 - anulowana/cancelled, 3- wygasla/expired , 4 - usunieta/removed (by admin) i 5, 6 powyzej w liscie ktore sa experymentalne
-    $custom = intval($isCustom);
-    
-    $stmt->bind_param('issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note, $book_images, $custom);
+    $stmt->bind_param('issssidsssi', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual, $book_note);
     $stmt->execute();
 }
-
-// $Book = array(
-//     "name"=>$title,
-//     "author"=>$author,
-//     "publisher"=>$publisher,
-//     "subject"=>$subject,
-//     "class"=>$class,
-//     "price"=>$price,
-//     "quality"=>$quality,
-//     "note"=>$desc,
-//     "img"=>$book_images,
-//     "custom"=>$isCustom
-// ); # DIS FOR LATER, WHEN WE ADVANCED
-//? json_encode(^^^^^^, JSON_PRETTY_PRINT);

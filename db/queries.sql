@@ -1,1 +1,0 @@
-SELECT `offers`.*, `products`.* FROM `offers` LEFT JOIN `products` ON `offers`.`id` = `products`.`offer-id` WHERE `offers`.`status` = '1' LIMIT 20;
