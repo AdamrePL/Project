@@ -1,9 +1,11 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
 :root {
-    --text: black;
-    --background: white;
-    --primary: white;
-    --secondary: black;
-    --accent: rgb(0, 98, 255);
+    --text: 4, 3, 22;
+    --background: 255, 254, 245;
+    --primary: 188, 164, 244;
+    --secondary: 170, 200, 238;
+    --accent: 238, 220, 119;
     --deny-error: 242, 38, 38;
     --confirm-success: 40, 226, 49;
 

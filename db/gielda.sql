@@ -157,24 +157,6 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `offer-id`, `name`, `author`, `publisher`, `subject`, `class`, `price`, `quality`, `note`, `img`, `custom`) VALUES
-(3, 7, 'MATeMAtyka 1 Zakres Rozszerzony', 'W. Babiański, L. Chańko, K. Wej', 'Nowa Era', 'matematyka', 1, 12.00, '1', 'Książka ma wiele notacji wewnątrz.. oraz na zewnątrz, wiele obliczeń na stronach', '', 0),
-(4, 8, 'Informatyka na czasie 1 Zakres Rozszerzony', 'Zbigniew Talaga, Janusz Mazur, Janusz Wierzbicki, Paweł Perekietka', 'Nowa Era', 'informatyka', 2, 20.00, '0', '', '', 0),
-(5, 8, 'Informatyka na czasie 2 Zakres Podstawowy', 'Janusz Mazur, Paweł Perekietka, Zbigniew Talaga, Janusz S. Wierzbicki', 'Nowa Era', 'informatyka', 2, 30.00, '0', 'Stan książki - praktycznie jak nowa', '', 0),
-(6, 9, 'Biologia na czasie 1', 'Anna Helmin, Jolanta Holeczek', 'Nowa Era', 'biologia', 1, 20.00, '2', 'Jest jeszcze w folii', '', 0),
-(7, 9, 'MATeMAtyka 1 Maturalne karty pracy Zakres Rozszerzony', 'Dorota Ponczek, Karolina Wej', 'Nowa Era', 'matematyka', 1, 10.00, '0', 'Książka ma wiele notacji wewnątrz.. oraz na zewnątrz, wiele obliczeń na stronach', '', 0),
-(8, 9, 'Edukacja dla bezpieczeństwa', 'Bogusław Breitkopf, Mariusz Cieśla', 'WSiP Nowa Edycja', 'edukacja dla bezpieczeństwa', 1, 14.00, '1', '', '', 0),
-(9, 10, 'Pioneer Plus. Level B1+ Students Book', 'H.G. Mitchell, Marileni Malkogianni', 'MM Publications', 'język angielski rozszerzony', 1, 34.00, '0', '', '', 0),
-(10, 10, 'Spotkania z filozofią', 'Monika Bokiniec, Sylwester Zielka', 'Nowa Era', 'filozofia', 1, 42.00, '0', '', '', 0),
-(11, 11, 'Biologia na czasie 2', 'Anna Helmin, Jolanta Holeczek', 'Nowa Era', 'biologia', 1, 25.00, '1', 'fajna książka lubie czytac porysowana', '', 0),
-(14, 14, 'MATeMAtyka 1 Maturalne karty pracy Zakres Rozszerzony', 'Dorota Ponczek, Karolina Wej', 'Nowa Era', 'matematyka', 1, 33.00, '0', '', '', 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -189,27 +171,6 @@ CREATE TABLE `users` (
   `email-flag` tinyint(1) NOT NULL DEFAULT 0,
   `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`uuid`, `username`, `password`, `phone`, `email`, `discord`, `last-login`, `email-flag`, `admin`) VALUES
-('admin#11d', 'admin', '', NULL, '49$=6>F1%0C!:6$XP3&Y2;&,S43T`\n`\n', NULL, '2024-04-16 09:23:00', 0, 1),
-('anaxar#gay', 'anaxar', '', NULL, '465<U:&5\'1GE11S%H85=W=6-N53T`\n`\n', NULL, '2024-04-12 12:39:36', 0, 0),
-('derfie#gpi', 'derfie', '', NULL, '<8E<Y=V%82G9.:E%Y355\";&1\'.7=E6$UU63(Y=```\n`\n', NULL, '2024-04-17 09:50:48', 0, 0),
-('etetee#Vqc', 'etetee', '', NULL, '08E=6=%I50G1:4S5T6E$]/0``\n`\n', NULL, '2024-04-16 11:09:20', 0, 0),
-('ivan#gg4', 'ivan', '', NULL, '<85A::&)M,7!B;6PR65<U05HR,6AA5W=U63(Y=```\n`\n', NULL, '2024-04-16 11:23:21', 0, 0),
-('marke#egq', 'marke', '', NULL, '48E=&>6$R5D%:,C%H85=W=5DR.70`\n`\n', NULL, '2024-04-12 11:24:55', 0, 0),
-('ola#fhk', 'Ola', '$2y$10$1Lpi2a2zldtQoGIPkqu4U.wVJ2ld8IS/fg8HSyTWZgNoIFXW.Rfwq', NULL, '06EAD=&0R,3-11T8P3&Y\"<P``\n`\n', NULL, '2024-03-22 12:55:05', 0, 0),
-('popa#ng6', 'popa', '', NULL, '06D=&:UE50G195VQS3&Y6:```\n`\n', NULL, '2024-04-12 09:28:18', 0, 0),
-('popka#ld8', 'popka', '', NULL, '48T<Y=V$R1D%B5T9P8D,U>611/3T`\n`\n', NULL, '2024-04-12 11:24:24', 0, 0),
-('qwertyuio#seh', 'qwertyuio', '', NULL, '<6C-.<F%83G=95S!W36M\";F)71G!B0S5J8C(P/0``\n`\n', NULL, '2024-04-16 12:52:59', 0, 0),
-('tete#WGu', 'tete', '', NULL, '09$=6,%I50C!:6%)L3&Y2;```\n`\n', NULL, '2024-03-22 12:53:19', 0, 0);
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `booklist`
