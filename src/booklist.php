@@ -50,7 +50,6 @@ include "navbar.php";
     <section id="booklist">
         <!-- <button onclick= "toggleSide_Panel()" class="btn-filter" id="btn-show">☰</button> -->
         <?php
-        //!implementing filters
         if (isset($_GET["subject"])) {
             $sql = "SELECT * FROM `booklist` WHERE `subject` = '" . $_GET["subject"] . "' ORDER BY `class` ASC";
             echo "Podręczniki do przedmiotu " . $_GET["subject"];

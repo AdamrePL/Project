@@ -3,7 +3,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 
 require_once "$abspath/conf/config.php";
 
-if(isset($_POST["edit"])){
+if (isset($_POST["edit"])) {
     $offer_id = $_POST["offer_id"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
@@ -124,7 +124,6 @@ $quality = ["Used", "Damaged", "New"];
     <?php
     require_once "footer.php";
     ?>
-
     </div>
 </body>
 </html>

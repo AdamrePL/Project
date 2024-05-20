@@ -17,9 +17,9 @@ if(isset($_POST["edit"])){
     $description = $_POST["description"];
     $status = $_POST["status"];
 
+    $prod_count = count($product);
 
-
-    for ($i = 0; $i < count($product); $i++){
+    for ($i = 0; $i < $prod_count; $i++){
         if (empty($product[$i])){
             $inv_message .= "Nazwa produktu nie może być pusta. \n";
         }
