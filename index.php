@@ -10,7 +10,6 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     <meta name="keywords" content="tlimc,Technikum Szkół Łączności i Multimediów Cyfrowych,giełda książek,giełda">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /> -->
     
     <title><?php echo SITENAME; ?> Książkowa</title>
 
@@ -28,9 +27,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             <nav>
                 <a href="#przegladaj">przeglądaj oferty</a>
                 <a href="src/booklist.php">lista podręczników</a>
-                <?php
-                    echo !isset($_SESSION["uid"]) ? '<a href="src/access.php">Zaloguj</a>' : '<a href="src/profile.php">moj profil</a>';
-                ?>
+                <a href="src/manage.php">Moje oferty</a>
             </nav>
         </menu>
     </header>
@@ -40,12 +37,11 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
             if (isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] > 0) {
                 echo '<a href="src/admin-tools.php"><b>Panel Sterowania</b></a>';
             }
-            ?>
-        <a href="controllers/logout.php">Wyloguj</a>
-        <a href="src/profile.php#offers">Moje oferty</a>
-        <a href="src/createoffer.php">Stwórz ofertę</a>
+        ?>
+        <a href="src/manage.php">Moje oferty</a>
+        <a href="src/create.php">Stwórz Ofertę</a>
         <a href="#przegladaj">Przeglądaj Oferty</a>
-        <a href="src/booklist.php">Lista podręczników</a>
+        <a href="src/booklist.php">Lista Podręczników</a>
         <a href="src/terms-of-service.html">Polityka Prywatności</a>
     </nav>
     

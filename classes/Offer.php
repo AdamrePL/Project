@@ -25,9 +25,9 @@ class OffersDisplay {
         $this->conn = $conn;
     }
 
-    public function display_offers($amount, $status = null, $user = null) {
-        if (!is_null($user)) {
-            $sql = "SELECT * FROM `offers` WHERE `user-uid` = '$user'";
+    public function display_offers($amount, $status = null, $email = null) {
+        if (!is_null($email)) {
+            $sql = "SELECT * FROM `offers` WHERE `email` = '$email'";
             $this->display($sql, true);
         } else if (!is_null($status)) {
             $sql = "SELECT * FROM `offers` WHERE `status` = $status LIMIT $amount";
@@ -74,7 +74,7 @@ class OffersDisplay {
                 echo '<details class="contact-info">';
                 echo '<summary>Dane kontaktowe</summary>';
                 if ($settings) {
-                    $sql = "SELECT `phone`, `email`, `discord` FROM `users` WHERE uuid = '". $_SESSION["uid"]." '";
+                    $sql = "SELECT `phone`, `email`, `discord` FROM `offers` WHERE email = '". $_SESSION["email"]." '";
                     $query = $this->conn->query($sql);
                     $result3 = $query->fetch_assoc();
                     echo '<p>'. $result3["discord"] .'</p>';

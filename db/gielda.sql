@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 29 Kwi 2024, 16:09
+-- Czas generowania: 20 Maj 2024, 20:23
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -30,13 +30,14 @@ USE `gielda`;
 --
 
 DROP TABLE IF EXISTS `booklist`;
-CREATE TABLE `booklist` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `booklist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `subject` tinytext NOT NULL,
   `class` tinyint(1) NOT NULL,
   `authors` text NOT NULL,
-  `publisher` tinytext NOT NULL
+  `publisher` tinytext NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -46,15 +47,18 @@ CREATE TABLE `booklist` (
 --
 
 DROP TABLE IF EXISTS `offers`;
-CREATE TABLE `offers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `offers` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user-uid` mediumint(8) UNSIGNED NOT NULL,
   `offer-cdate` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'czas utworzenia oferty',
   `offer-edate` datetime NOT NULL COMMENT 'czas wygasniecia oferty po uplywie czasu zdefiniowanego przez sprzedawce lub defaultowo przez server w ciagu 14dni, inaczej data kiedy oferta zostanie zdjeta',
   `status` tinyint(4) NOT NULL COMMENT 'Status oferty',
   `phone` int(9) DEFAULT NULL,
   `email` varchar(320) DEFAULT NULL,
-  `discord` tinytext DEFAULT NULL
+  `discord` tinytext DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `user-uuid` (`user-uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -64,8 +68,8 @@ CREATE TABLE `offers` (
 --
 
 DROP TABLE IF EXISTS `products`;
-CREATE TABLE `products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `offer-id` bigint(20) UNSIGNED NOT NULL,
   `name` tinytext NOT NULL,
   `author` text NOT NULL,
@@ -74,41 +78,9 @@ CREATE TABLE `products` (
   `class` smallint(6) DEFAULT NULL,
   `price` decimal(5,2) NOT NULL,
   `quality` tinytext NOT NULL,
-  `note` tinytext DEFAULT NULL,
-  `img` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `custom` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `reset-tokens`
---
-
-DROP TABLE IF EXISTS `reset-tokens`;
-CREATE TABLE `reset-tokens` (
-  `email` text NOT NULL,
-  `token` tinytext NOT NULL,
-  `timeout` datetime NOT NULL,
-  `used` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `users`
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `uid` mediumint(8) UNSIGNED NOT NULL,
-  `email` text NOT NULL,
-  `password` text NOT NULL,
-  `phone` int(9) DEFAULT NULL COMMENT 'dane kontaktowe - nr tel',
-  `discord` tinytext DEFAULT NULL,
-  `last-login` datetime NOT NULL DEFAULT current_timestamp(),
-  `email-flag` tinyint(1) NOT NULL DEFAULT 0,
-  `admin` tinyint(1) NOT NULL DEFAULT 0
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `offer-id` (`offer-id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -118,72 +90,12 @@ CREATE TABLE `users` (
 --
 
 DROP TABLE IF EXISTS `verify`;
-CREATE TABLE `verify` (
+CREATE TABLE IF NOT EXISTS `verify` (
   `email` text NOT NULL,
   `token` tinytext NOT NULL,
   `timeout` datetime NOT NULL DEFAULT current_timestamp(),
   `verified` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indeksy dla tabeli `booklist`
---
-ALTER TABLE `booklist`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `offers`
---
-ALTER TABLE `offers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `user-uuid` (`user-uid`);
-
---
--- Indeksy dla tabeli `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `offer-id` (`offer-id`);
-
---
--- Indeksy dla tabeli `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`uid`);
-
---
--- AUTO_INCREMENT dla zrzuconych tabel
---
-
---
--- AUTO_INCREMENT dla tabeli `booklist`
---
-ALTER TABLE `booklist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT dla tabeli `offers`
---
-ALTER TABLE `offers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT dla tabeli `products`
---
-ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT dla tabeli `users`
---
-ALTER TABLE `users`
-  MODIFY `uid` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Ograniczenia dla zrzutów tabel

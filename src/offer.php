@@ -20,10 +20,6 @@ if (!isset($_GET) || empty($_GET) || !isset($_GET["id"]) || $_GET["id"] == "") {
     $query = $conn->query($sql);
     $result = $query->fetch_assoc();
 
-    $sql = "SELECT `username` FROM `users` WHERE `users`.`uuid` = '". $result["user-uuid"] ."'";
-    $query = $conn->query($sql);
-    $seller_name = $query->fetch_column();
-
     echo 'Sprzedaje: ' . $seller_name;
 
     $sql = "SELECT * FROM `products` WHERE `products`.`offer-id` = ". $result["id"];
