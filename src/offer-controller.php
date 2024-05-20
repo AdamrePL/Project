@@ -6,38 +6,6 @@ class OfferController
 
     public $post;
 
-    private function upload_image($image, $key){
-        $target_dir = "../assets/img/downloads/";
-        $image_name = uniqid() . "." . pathinfo($image["name"][$key], PATHINFO_EXTENSION);
-        $target_file = $target_dir . $image_name;
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $check = getimagesize($image["tmp_name"][$key]);
-        if ($check !== false) {
-            $uploadOk = 1;
-        } else {
-            $uploadOk = 0;
-        }
-        if (file_exists($target_file)) {
-            $uploadOk = 0;
-        }
-        if ($image["size"][$key] > 500000) {
-            $uploadOk = 0;
-        }
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-            $uploadOk = 0;
-        }
-        if ($uploadOk == 0) {
-            return false;
-        } else {
-            if (move_uploaded_file($image["tmp_name"][$key], $target_file)) {
-                return $image_name;
-            } else {
-                return false;
-            }
-        }
-    }
-
     public function __construct($conn)
     {
         $this->conn = $conn;
@@ -99,14 +67,9 @@ class OfferController
                 $price = htmlspecialchars(stripslashes(trim($_POST["price"][$key])));
                 $query = mysqli_query($this->conn, "SELECT * FROM booklist WHERE id =" . $book);
                 $res = mysqli_fetch_assoc($query);
-                $image = $_FILES["image"];
-                $image_path = self::upload_image($image, $key);
-                if ($image_path == false) {
-                    $image_path = "";
-                }
 
                 $list = array($res["name"], $res["authors"], $res["publisher"], $res["subject"], $note, $price,$res["class"], $_POST["quality"][$key]);
-                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','$list[6]','$list[5]','$list[7]','$list[4]','$image_path','0')");
+                $this->conn->query("INSERT INTO products VALUES ('','$lastid','$list[0]','$list[1]','$list[2]','$list[3]','$list[6]','$list[5]','$list[7]','$list[4],'0')");
             }
         } catch (Exception $e) {
             echo $e->getMessage();

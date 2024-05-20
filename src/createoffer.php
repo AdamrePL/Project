@@ -82,16 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <textarea name="note[]" id="" cols="30" rows="3"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <input type="file" name="image[]" accept="image/png, image/jpeg, image/gif, image/webp" multiple/>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </div>
