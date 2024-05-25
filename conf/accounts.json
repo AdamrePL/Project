@@ -1,0 +1,11 @@
+{
+    "Admins": [
+        {
+            "name": "Adam",
+            "surename": "-",
+            "login": "websiteOreator",
+            "password": "hashedpassword",
+            "permission-level": 2
+        }
+    ]
+}

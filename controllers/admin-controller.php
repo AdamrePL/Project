@@ -3,13 +3,13 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 require_once $abspath . 'conf/config.php';
 
 if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] == false) {
-    header("Location: /");
+    header("Location: ". $_SERVER["BASE"]);
     exit(403);
 }
 
 mysqli_query($conn,"TRUNCATE TABLE `booklist`;");
 
-$json_data = file_get_contents("$abspath.assets/downloads/booklist.json");
+$json_data = file_get_contents($abspath."assets/downloads/booklist.json");
 $json_data = json_decode($json_data);
 $sql = "INSERT INTO `booklist` VALUES('', ?, ?, ?, ?, ?)";
 $stmt = $conn->stmt_init();

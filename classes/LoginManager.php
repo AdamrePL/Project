@@ -25,7 +25,6 @@ class LoginManager {
         if ($result->num_rows) {
             session_regenerate_id(true);
             $_SESSION["email"] = $this->email;
-            $_SESSION["isadmin"] = 0;
             return true;
         }
         $stmt->close();

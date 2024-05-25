@@ -3,6 +3,8 @@ $abspath = $_SERVER["DOCUMENT_ROOT"] . $_SERVER["BASE"];
 require_once $abspath."conf/config.php"; 
 
 // if (!isset($_SESSION["isadmin"]) || $_SESSION["isadmin"] < 1) {
+//     http_response_code(403);
+//     header("HTTP/1.0 403 Forbidden");
 //     header("Location: ". $_SERVER["BASE"]);
 // }
 ?>
@@ -50,6 +52,9 @@ require_once $abspath."conf/config.php";
     <input type="email" inputmode="email" />
     <input type="submit" name="del_user" value="Wykonaj" />
 </form>
+
+<a href="../controllers/logout.php">Wyloguj</a>
+<a href="<?php echo $_SERVER["BASE"]; ?>">Strona Główna</a>
 
 </body>
 </html>
