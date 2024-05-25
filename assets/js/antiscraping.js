@@ -44,12 +44,3 @@ document.querySelectorAll(".contact-info").forEach(element => {
         }
     });
 });
-
-// You can create class for that if you want.. ig it is gonna be used in 2 places, profile.php and main page to be exact
-// function displayInfo(id) {
-//     getContact(id);
-// }
-
-// class OfferController {
-
-// }

@@ -7,34 +7,6 @@ body {
     background: rgb(var(--background));
 }
 
-/* ? okay hear me out, I found out now, how siblings selector work, so basicaly: 
-    * if you were to use +; example: h1 + p {} - you'd have selected an element that is right after the h1
-    * whereas if you had used ~ it wouldn't matter where the sibling is, as long as its in the same parent, it would've selected it. 
-    * so, if you want to choose sibling element there are atleast 2 "arguments" required: first - element off of which you want to choose next sibling '+' second - the sibling element you want to choose.
-    ? ^ too many words, '+' selects sibling after 1st arg, ~ selects any sibling of same type as 2nd arg when it appears after 1st arg
-    * .. oh btw i dont even know if that sentence exists or if its atleast correct    -->   -->     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^, please correct me if im wrong (id like to know) and uhh I know I had milion different ways to say that but jsut felt like using this.
-
-    oh and one more thing, if you'd want to choose parent of an element, lets say a parent element of something that has a class... toggled. and you dont want to create another class (Because you shouldnt or you atleast should minimize their amount) to select that element that has a child with that class,
-    THEN you want to use something like this; parent:has(.toggled), you can even read it clearly out of syntax what it does, but be careful, accidently typing space between: parent :has(.toggled) - would select ALL CHILDREN from that parent that have 'toggled' class
-*/
-
-/* oh and just right now after I wrote this, found out we can add our custom comments formatting, like if we'd used $ for something within comment */
-/* & go to file extensions, click cogwheel.. cogwheel? wasnt there a different word for that? anyway.. and then the setting at the bottom: tags
-open that up and then where the tags are, paste in this thing below, after you do that, return to this file and check out line above ^^^ @PiwkoM
-
-,
-        {
-            "tag": "&",
-            "color": "#b1ae17",
-            "strikethrough": false,
-            "underline": false,
-            "backgroundColor": "transparent",
-            "bold": true,
-            "italic": false
-        }
-
-*/
-
 header {
     text-align: center;
     height: 95svh;

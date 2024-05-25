@@ -8,7 +8,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="tlimc,Technikum Szkół Łączności i Multimediów Cyfrowych,giełda książek,giełda">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/index.css">
     <link rel="icon" type="image/png" href="assets/img/logo.png">
     
     <title><?php echo SITENAME; ?> Książkowa</title>
@@ -108,7 +108,7 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
         <div class="browse-wrapper">
             <script src="assets/js/antiscraping.js" defer></script>
             <?php
-            require_once "classes/Offer.php";
+            require_once "classes/OfferManager.php";
             
             $offers = new OffersDisplay($conn);
             $offers->display_offers(20);

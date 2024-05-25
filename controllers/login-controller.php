@@ -4,7 +4,7 @@ require_once "../conf/config.php";
 
 $path_to_form = "../src/login.php";
 
-if (isset($_SESSION["uid"])) {
+if (isset($_SESSION["email"])) {
     header("Location: ". $_SERVER["BASE"]);
     exit(403);
 }
@@ -20,14 +20,14 @@ if (!isset($_POST["email"])) {
     exit(403);
 }
 
-include_once "../classes/AccountManager.php";
 require_once "../classes/LoginManager.php";
-
 
 $email = str_replace(" ", "", trim($_POST["email"]));
 
+$user_credentials = new LoginManager($conn, $email);
+
 if ($user_credentials->login()) {
-    header("Location: ../src/profile.php?info=success");
+    header("Location: ../src/manage.php");
 } else {
     header("Location: $path_to_form?error=unexpected-error");
 }

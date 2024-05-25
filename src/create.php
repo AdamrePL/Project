@@ -1,12 +1,6 @@
 <?php
 require_once "../conf/config.php"; 
 $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
-
-if (!isset($_SESSION["uid"])) {
-    header("HTTP/1.0 403 Forbidden", true, 403);
-    header("Location: ". $_SERVER["BASE"]);
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -21,14 +15,13 @@ if (!isset($_SESSION["uid"])) {
         <meta http-equiv="refresh" content="0; url=<?php echo $_SERVER["BASE"] . "src/noscript.html" ?>">
     </noscript>
 
-    <link rel="stylesheet" href="../assets/css/createoffer.css">
+    <link rel="stylesheet" href="../assets/css/create.css">
     <script src="../assets/js/offer-form-controller.js" type="text/javascript" defer></script>
 </head>
-
-<a class="return-btn" href="<?php echo $_SERVER["BASE"]; ?>">&NestedLessLess;&nbsp;Powrót</a>
+<body>
 
 <?php 
-    $quality = ["Used", "Damaged", "New"];
+    $quality = ["Używana", "Zniszczona", "Nowa"];
 ?>
 
 <section id="offer-creation">
@@ -39,20 +32,14 @@ if (!isset($_SESSION["uid"])) {
                 <div class="offer-contact">
                     <!-- <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p> -->
                     <h3>Dane kontaktowe</h3>
-                    <?php 
-                        $sql = "SELECT `phone`, `email`, `discord`, `email-flag` FROM `users` WHERE email = '".$_SESSION["email"]."';";
-                        $query = $conn->query($sql);
-                        $result = $query->fetch_assoc();
-                        $query->close();
-                        ?>
-                    <input type="text" name="phone" placeholder="numer telefonu" <?php echo 'value="' . $result["phone"] . '"'; ?> />
-                    <input type="text" name="email" placeholder="e-mail" <?php if ($result["email-flag"] != 0) echo 'value="'. base64_decode(convert_uudecode($result["email"])) .'"';?> />
-                    <input type="text" name="discord" placeholder="discord tag" <?php echo 'value="' . $result["discord"].'"'; ?> /> <!-- Discord user right here, used discord for past ... 7 years and yet I don't remember how this is now called.-->
+                    <input type="text" name="phone" placeholder="numer telefonu" />
+                    <input type="text" name="email" placeholder="e-mail" />
+                    <input type="text" name="discord" placeholder="discord tag" />
                 </div>
                 <div class="offer-options">
                     <h3>Oferta ma wygasnąć po:</h3>
-                    <input type="number" name="exp_days" inputmode="numeric" placeholder="Dni - min 5, max 91, puste = 14" min="5" max="91" />
-                    <input type="number" name="exp_hours" inputmode="numeric" placeholder="Godziny - max 23" min="0" max="23" />
+                    <input type="number" name="exp_days" inputmode="numeric" placeholder="Ilosc dni" min="5" max="91" />
+                    <input type="number" name="exp_hours" inputmode="numeric" placeholder="Ilosc godzin" min="0" max="23" />
                 </div>
             </div>
             
@@ -85,8 +72,8 @@ if (!isset($_SESSION["uid"])) {
             </div>
             
             <label><input type="checkbox"  name="personal-data-agreement" required /> Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
-            <input type="submit" value="Stwórz ofertę" name="standard" />
-            <input type="reset" value="Resetuj" />    
+            <input type="submit" value="Stwórz ofertę" name="confirm" />
+            <input type="reset" value="Resetuj" />
         </form>
 
     </div>

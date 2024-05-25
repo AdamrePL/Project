@@ -36,11 +36,11 @@
                 <dt>Użytkownik</dt>
                 <dd>Każda osoba korzystająca z serwisu.</dd>
                 <dt>Sprzedawca</dt>
-                <dd>Osoba posiadająca zarejestrowane konto w serwisie.</dd>
+                <dd>Osoba posiadająca utworzoną oferte w serwisie.</dd>
                 <dt>Osoba sprzedająca</dt>
                 <dd>Sprzedawca posiadająca aktywną/tworząca oferte, odnosi się do właściciela (sprzedawcy) danej oferty.</dd>
                 <dt>Produkt</dt>
-                <dd>Każda książka sprzedawana przez przedawce</dd>
+                <dd>Każda książka sprzedawana przez sprzedawce</dd>
             </dl>
         </article>
 
@@ -67,20 +67,11 @@ Cillum id aliqua minim sint incididunt ex minim qui laborum. Deserunt amet repre
             <h2>FAQ</h2>
             <p></p>
             <span>
-                <h3>Usuwanie konta</h3>
-                <p>Użytkownik może w dowolnym momencie usunąć swoje konto, w ustawieniach profilu użytkownika (w tym oferty z nim związane)</p>
-            </span>
-            <span>
-                <h3>Odzyskiwanie konta</h3>
-                <p></p>
-            </span>
-            <span>
-                <h3>Resetowanie hasła</h3>
-                <p></p>
+                <h3>Usuwanie wszystkich danych</h3>
+                <p>Użytkownik może w dowolnym momencie wszystkie jego oferty na stronie zarządzania własnymi ofertami. Usuwając wszystkie oferty usuną się również wszystkie podane dane kontaktowe i email.</p>
             </span>
             <span>
                 <h3>Dane kontaktowe</h3>
-                <p>Dane kontaktowe, o ile użytkownik je dodał, będa za każdym razem przy tworzeniu oferty, automatycznie wpisywane do pól form kontatku dla danej oferty. Użytkownik może zawsze, w dowolnym momencie usunąć dane kontaktowe w profilu użytkownika, przez co nie będą one wpisywane przy tworzeniu oferty.</p>
                 <p>Po uzupełnieniu danych, użytkownik nadal ma możliwość zmiany na inne oraz usunięcia ich z danych pól danych kontaktowy w formularzu tworzenia oferty.</p>
                 <p>W przypadku adresu e-mail, który jest wymagany, użytkownik może co najwyżej go zmienić, ale nie usunąć. <br>Aby został automatycznie dodawany, osoba musi wyrazić na to zgodę w ustawieniach użytkownika.</p>
             </span>
@@ -90,9 +81,6 @@ Cillum id aliqua minim sint incididunt ex minim qui laborum. Deserunt amet repre
             </span>
         </article>
     </main>
-    <footer>
-        <span title="TLiMC&#013;Technikum Łączności i Multimediów Cyfrowych"><a target="_blank" href="https://tlimc.szczecin.pl/">TLiMC</a></span>
-        <P>&copy; Made by Adamre and Browar - 2024</P>
-    </footer>
+    <?php include_once "footer.php"; ?>
 </body>
 </html>

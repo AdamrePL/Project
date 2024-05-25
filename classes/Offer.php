@@ -1,95 +1,94 @@
-<?php
+<?php 
 
 class Offer {
-    private $conn;
-    private $offer_id;
-    
-    public function __construct($conn, $offer_id) {
-        $this->conn = $conn;
-        $this->offer_id = $offer_id;
-    }
+    private mysqli $conn;
 
-    public function get_products() {
-        $sql = "SELECT * FROM `products` WHERE `products`.`offer-id` = $this->offer_id";
-        $query = $this->conn->query($sql);
-        return $query->fetch_assoc();
-    }
-}
+    private int $days = 14;
+    private int $hours = 0;
 
-class OffersDisplay {
-    private $conn;
+    public string $discord;
+    public int $phone;
+    public string $email;
 
-    
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
+    public array $books;
+    public array $price;
+    public array $quality;
 
-    public function display_offers($amount, $status = null, $email = null) {
-        if (!is_null($email)) {
-            $sql = "SELECT * FROM `offers` WHERE `email` = '$email'";
-            $this->display($sql, true);
-        } else if (!is_null($status)) {
-            $sql = "SELECT * FROM `offers` WHERE `status` = $status LIMIT $amount";
-            $this->display($sql);
-        } else {
-            $sql = "SELECT * FROM `offers` WHERE `status` = 1 LIMIT $amount";
-            $this->display($sql);
+    public array $qulities = ["Używana", "Zniszczona", "Nowa"];
+    private const PRICE_CHECK_REGEX = "/^\d*\.?\d*$/"; // or ^\d*(\.\d{0,2})?$
+
+    /**
+     * @var string[] $status
+     * 
+     * "active" - Aktywna
+     * 
+     * "expired" - Wygasła
+     * 
+     * "cancelled" - Anulowana
+     * 
+     * "ended" - Zakończona
+     * 
+     * "removed" - Usunięta przez administratora
+     * 
+     * "archived" - [experimental] opcjonalne na wypadek zostawiania ofert w bazie danych po miesiącu od zakończenia/wygasniecia oferty
+     * 
+     * "hidden" - [experimental] Ukryta, aby sprzedawca nie widział jej na swoim profilu - bardzo podobne do expired/cancelled, tylko roznica taka ze go nie widac na profilu
+    */
+    private $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
+
+    public function __construct(mysqli $conn, string $email, ?string $discord = null, ?int $phone = null) {
+        $this->$conn = $conn;
+        $this->$email = $this->conn->real_escape_string(str_replace(" ", "", $email), ENT_QUOTES, 'UTF-8');
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("Incorrect Email", 1);
         }
+        $this->$discord = htmlspecialchars($this->conn->real_escape_string(str_replace(" ", "", $discord)), ENT_QUOTES, 'UTF-8');
+        $this->$phone = str_replace(" ", "", $phone);
+    }
+
+    public function set_expiry($days = 14, $hours = 0) {
+        $this->days = $days < 5 ? 14 : $days;
+        $this->days = $days > 90 ? 90 : $days;
+
+        $this->hours = $hours < 0 ? 0 : $hours;
+        $this->hours = $hours > 23 ? 23 : $hours;
+    }
+
+    public function insert_products(array $books, array $prices, array $quality) {
+        $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->stmt_init();
+        $stmt->prepare($sql);
+
+        $book_count = count($books);
+
+        for ($i = 0; $i < $book_count; $i++) {
+            $sql = "SELECT * FROM `booklist` WHERE id = ".$this->conn->real_escape_string($books[$i]);
+           
+            //$query = "SELECT * FROM `booklist` WHERE"; for($i = 0; $i < $book_count; $i++) { if ($i == 0) {$query .= ' id = ' . $_POST["book"][$i]; continue; } $query .= ' AND id = ' . $_POST["book"][$i]; }
+            $query = $this->conn->query($sql);
+            if ($result = mysqli_fetch_assoc($query)) {
+                $book_name = $result["name"];
+                $book_subj = $result["subject"];
+                $book_class = $result["class"];
+                $book_authors = $result["authors"];
+                $book_pub = $result["publisher"];  
+            }
         
-    }
-
-    public function display($sql, $settings = false){
-        $query = $this->conn->query($sql);
-        while ($result = $query->fetch_assoc()) {
-            echo '<div class="offer" id="offer_'. $result["id"] .'">';
-                $sql2 = "SELECT * FROM `products` WHERE `offer-id` =" . $result["id"];
-                $query2 = mysqli_query($this->conn, $sql2);
-                $prod = mysqli_num_rows($query2);
-                
-                if ($prod > 1) {
-                    echo '<h4 class="offer-title">Pakiet</h4>';
-                    if ($settings) {
-                        echo '<span>ustawienia: <a><i class="fa fa-trash"></i></a></span>';
-                    }
-                    echo '<details class="offer-contains">';
-                    echo '<summary>Pakiet zawiera: </summary>';
-                    // for ($i = 0; $i < $prod; $i++) {
-                        
-                    // }
-                    while ($result2 = mysqli_fetch_assoc($query2)) {
-                        echo $result2["name"] . '<br>';
-                    }
-                    
-                    echo '</details>';
-
-                } else {
-                    $result2 = mysqli_fetch_assoc($query2);
-                    echo '<h4 class="offer-title">'. $result2["name"] .'</h4>';
-                    if ($settings) {
-                        echo '<span>ustawienia: <a><i class="fa fa-trash"></i></a></span>';
-                    }
-                }
-
-                echo '<details class="contact-info">';
-                echo '<summary>Dane kontaktowe</summary>';
-                if ($settings) {
-                    $sql = "SELECT `phone`, `email`, `discord` FROM `offers` WHERE email = '". $_SESSION["email"]." '";
-                    $query = $this->conn->query($sql);
-                    $result3 = $query->fetch_assoc();
-                    echo '<p>'. $result3["discord"] .'</p>';
-                    echo '<p>'. $result3["phone"] .'</p>';
-                    echo '<p>'. $result3["email"] .'</p>';
-                }
-                echo '</details>';
-                echo '<a href="src/offer.php?id='. $result["id"] .'">Pokaż więcej..</a>';
-                echo '<span class="offer-date">';                
-                    echo '<span>oferta utworzona: ' . date('d.m.Y', strtotime($result["offer-cdate"]))  . '</span>';
-                    echo '<span>oferta wygasa: ' . date('d.m.Y', strtotime($result["offer-edate"])) . '</span>';
-                echo '</span>';
-            echo '</div>';
+            $book_price = doubleval(str_replace(" ", "", $prices[$i]));
+            $book_qual = str_replace(" ", "", $quality[$i]);
+            
+            $sql = "INSERT INTO `products`(`id`, `offer-id`, `name`, `author`, `publisher`, `subject`, `class`, `price`, `quality`) VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt->bind_param('issssids', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual);
+            $stmt->execute();
         }
     }
 
+    public function insert_offer() {
+        $sql = "INSERT INTO `offers` VALUES('', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $this->days DAY), INTERVAL $this->hours HOUR), '1', '$this->phone', '$this->email', '$this->discord')";
+        $this->conn->query($sql);
+        return $this->conn->insert_id;
+    }
+
 }
+
 ?>
