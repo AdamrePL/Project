@@ -27,3 +27,10 @@ $hours = $_POST["exp_hours"];
 $books = $_POST["book"];
 $price = $_POST["price"];
 $quality = $_POST["quality"];
+
+$new_offer = new Offer($conn, $email, $discord, $phone);
+$new_offer->set_expiry($days, $hours);
+$offer_id = $new_offer->insert_offer();
+$new_offer->insert_products($offer_id, $books, $price, $quality);
+
+header("Location: " . $_SERVER["BASE"]);

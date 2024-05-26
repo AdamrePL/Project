@@ -3,8 +3,8 @@
         {
             "name": "Adam",
             "surename": "-",
-            "login": "websiteOreator",
-            "password": "hashedpassword",
+            "login": "",
+            "password": "",
             "permission-level": 2
         }
     ]

@@ -4,7 +4,6 @@ body {
     color: rgb(var(--text));
     /* font-size: 16pt; */
     font-size: 1.5em; /*== 24px*/
-    background: rgb(var(--background));
 }
 
 header {
@@ -253,12 +252,6 @@ main {
     list-style-type: disc;
 }
 
-.offer-seller{
-    margin-top: 0.8rem;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-}
 .offer-date {
     margin-top: 1rem;
     display: flex;

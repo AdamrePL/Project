@@ -1,15 +1,18 @@
 @import "global.css";
 
 body {
+    font-size: 16pt;
+}
+
+body:has(.access-wrapper) {
     margin: 0;
     display: flex;
-    font-size: 16pt;
     align-items: center;
     /* flex-direction: column; /* ! include this if you want to have footer here aswell
     justify-content: center; */
 }
 
-main {
+.access-wrapper {
     --_line-width: 2px;
     min-height: 500px; /* or height: max(500px, 85svh) */
     height: 85svh; /* 85svh or 100svh */
@@ -22,6 +25,25 @@ main {
     align-items: center;
     flex-direction: row;
     /* flex-direction: row-reverse; */
+}
+
+.access-heading {
+    text-align: center;
+    text-transform: capitalize;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.access-heading::after {
+    content: '';
+    width: 90%;
+    height: 2px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background: linear-gradient(90deg, rgba(80, 80, 80, 0.5), rgba(50, 50, 50, 0.8),rgba(80, 80, 80, 0.5));
+    box-shadow: 0px 1px 1px 0.1px rgba(200, 200, 200, 0.5);
 }
 
 .logo {
@@ -42,25 +64,6 @@ main {
     height: 90%;
     box-shadow: 1px 0px 1px 0.1px rgba(200, 200, 200, 0.5);
     margin: 0;
-}
-
-h1 {
-    text-align: center;
-    text-transform: capitalize;
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-h1::after {
-    content: '';
-    width: 90%;
-    height: 2px;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    background: linear-gradient(90deg, rgba(80, 80, 80, 0.5), rgba(50, 50, 50, 0.8),rgba(80, 80, 80, 0.5));
-    box-shadow: 0px 1px 1px 0.1px rgba(200, 200, 200, 0.5);
 }
 
 .form-wrapper {
@@ -94,7 +97,7 @@ h1::after {
     }
 }
 
-form {
+.user-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,4 +146,30 @@ input[type="submit"] {
 form :focus-visible {
     outline: 1px solid rgb(255,255,255, 0.667);
     outline-offset: 3px;
+}
+
+::-webkit-file-upload-button {
+    display: none;
+}
+
+input[type="file"] {
+    color: transparent !important;
+    position: relative;
+}
+
+/* https://kapeli.com/cheat_sheets/Font_Awesome.docset/Contents/Resources/Documents/index */
+
+input[type="file"]::before {
+    font-family: 'Font Awesome 6 Free';
+    content: '\f1c5'; /*\f15b file icon*/
+    color: rgb(var(--text));
+
+}
+
+input[type="file"]::after {
+    content: attr(title);
+    color: rgb(var(--text));
+    position: absolute;
+    margin-left: 25px;
+    left: 0;
 }

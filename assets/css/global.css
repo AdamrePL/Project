@@ -217,6 +217,7 @@ html {
 
 body {
     min-height: 100svh;
+    background: rgb(var(--background));
 }
 
 img {

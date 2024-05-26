@@ -36,17 +36,17 @@ class Offer {
     */
     private $status = ["active", "expired", "cancelled", "ended", "removed", "archived", "hidden"];
 
-    public function __construct(mysqli $conn, string $email, ?string $discord = null, ?int $phone = null) {
-        $this->$conn = $conn;
-        $this->$email = $this->conn->real_escape_string(str_replace(" ", "", $email), ENT_QUOTES, 'UTF-8');
+    public function __construct(mysqli $conn, string $email, ?string $discord = null, int|string|null $phone = null) {
+        $this->conn = $conn;
+        $this->email = $this->conn->real_escape_string(htmlspecialchars(str_replace(" ", "", $email), ENT_QUOTES, 'UTF-8'));
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             throw new Exception("Incorrect Email", 1);
         }
-        $this->$discord = htmlspecialchars($this->conn->real_escape_string(str_replace(" ", "", $discord)), ENT_QUOTES, 'UTF-8');
-        $this->$phone = str_replace(" ", "", $phone);
+        $this->discord = htmlspecialchars($this->conn->real_escape_string(str_replace(" ", "", $discord)), ENT_QUOTES, 'UTF-8');
+        $this->phone = str_replace(" ", "", $phone);
     }
 
-    public function set_expiry($days = 14, $hours = 0) {
+    public function set_expiry(int|string $days = 14, int|string $hours = 0) {
         $this->days = $days < 5 ? 14 : $days;
         $this->days = $days > 90 ? 90 : $days;
 
@@ -54,8 +54,8 @@ class Offer {
         $this->hours = $hours > 23 ? 23 : $hours;
     }
 
-    public function insert_products(array $books, array $prices, array $quality) {
-        $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public function insert_products(int $offer_id, array $books, array $prices, array $quality) {
+        $sql = "INSERT INTO `products` VALUES('', ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->stmt_init();
         $stmt->prepare($sql);
 
@@ -77,14 +77,15 @@ class Offer {
             $book_price = doubleval(str_replace(" ", "", $prices[$i]));
             $book_qual = str_replace(" ", "", $quality[$i]);
             
-            $sql = "INSERT INTO `products`(`id`, `offer-id`, `name`, `author`, `publisher`, `subject`, `class`, `price`, `quality`) VALUES('', ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO `products`(`id`, `offer-id`, `name`, `author`, `publisher`, `subject`, `class`, `price`, `quality`) VALUES('', ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt->bind_param('issssids', $offer_id, $book_name, $book_authors, $book_pub, $book_subj, $book_class, $book_price, $book_qual);
             $stmt->execute();
         }
     }
 
     public function insert_offer() {
-        $sql = "INSERT INTO `offers` VALUES('', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $this->days DAY), INTERVAL $this->hours HOUR), '1', '$this->phone', '$this->email', '$this->discord')";
+        $hashed_mail = convert_uuencode(base64_encode($this->email));
+        $sql = "INSERT INTO `offers` VALUES('', NOW(), DATE_ADD(DATE_ADD(NOW(), INTERVAL $this->days DAY), INTERVAL $this->hours HOUR), '1', '$this->phone', '$hashed_mail', '$this->discord')";
         $this->conn->query($sql);
         return $this->conn->insert_id;
     }

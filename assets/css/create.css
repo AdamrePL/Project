@@ -1,27 +1,16 @@
 @import "global.css";
 
 body {
-    background: rgb(var(--background));
-    min-height: 100svh;
     font-size: 16pt;
+}
+
+main {
+    width: min(1400px, 100% - 4rem);
+    margin-inline: auto;
 }
 
 h1 {
     text-align: center;
-}
-
-.return-btn {
-    color: rgb(var(--text));
-    font-size: 1.5rem;
-    background: rgba(var(--secondary-100), 0.8);
-    box-shadow: 0px 0px 3px 0.1px rgba(var(--secondary-100), 0.8);
-    text-decoration: none;
-    border-radius: 3px;
-    width: min-content;
-    margin: 0rem 0 0 1.5rem;
-    display: block;
-    padding: 0.5rem;
-    font-variant: small-caps;
 }
 
 input:not([type="checkbox"]) , select {
@@ -51,31 +40,7 @@ input[type="text"]:not(:placeholder-shown):valid {
     border-bottom: 2px solid rgb(var(--confirm-success, limegreen));
 }
 
-::-webkit-file-upload-button {
-    display: none;
-}
 
-input[type="file"] {
-    color: transparent !important;
-    position: relative;
-}
-
-/* https://kapeli.com/cheat_sheets/Font_Awesome.docset/Contents/Resources/Documents/index */
-
-input[type="file"]::before {
-    font-family: 'Font Awesome 6 Free';
-    content: '\f1c5'; /*\f15b file icon*/
-    color: rgb(var(--text));
-
-}
-
-input[type="file"]::after {
-    content: attr(title);
-    color: rgb(var(--text));
-    position: absolute;
-    margin-left: 25px;
-    left: 0;
-}
 
 input[type="submit"], input[type="reset"] {
     padding: 0.3rem 0.8rem;

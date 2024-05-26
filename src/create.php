@@ -24,64 +24,61 @@ $abspath = $_SERVER["DOCUMENT_ROOT"].$_SERVER["BASE"];
     $quality = ["Używana", "Zniszczona", "Nowa"];
 ?>
 
-<section id="offer-creation">
+<main>
     <h1>Stwórz ofertę</h1>
-    <div class="offer-wrapper">
-        <form action="../controllers/offer-controller.php" method="post">
-            <div class="offer-info">
-                <div class="offer-contact">
-                    <!-- <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p> -->
-                    <h3>Dane kontaktowe</h3>
-                    <input type="text" name="phone" placeholder="numer telefonu" />
-                    <input type="text" name="email" placeholder="e-mail" />
-                    <input type="text" name="discord" placeholder="discord tag" />
-                </div>
-                <div class="offer-options">
-                    <h3>Oferta ma wygasnąć po:</h3>
-                    <input type="number" name="exp_days" inputmode="numeric" placeholder="Ilosc dni" min="5" max="91" />
-                    <input type="number" name="exp_hours" inputmode="numeric" placeholder="Ilosc godzin" min="0" max="23" />
-                </div>
+    <form action="../controllers/offer-controller.php" method="post">
+        <div class="offer-info">
+            <div class="offer-contact">
+                <!-- <p>Wypełniając powyższe pola danych kontaktowych niniejszym wyrażasz zgodę na udostępnianie podanych danych kontaktowych innym osobom korzystającym z serwisu (przeglądającym oferty).</p> -->
+                <h2>Dane kontaktowe</h2>
+                <input type="text" name="phone" placeholder="numer telefonu" />
+                <input type="text" name="email" placeholder="e-mail" />
+                <input type="text" name="discord" placeholder="discord tag" />
             </div>
-            
-            <div class="product-list">
-                <h3>Produkty</h3>
-                <div class="product">
-                    <select name="book[]">
-                        <?php
-                            $sql = "SELECT `id`, `name` FROM `booklist`";
-                            $query = $conn->query($sql);
-                            while ($result = $query->fetch_assoc()) {
-                                echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
-                            }
-                        ?>
-                    </select>
-                    
-                    <input type="number" name="price[]" placeholder="przewidywana cena" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
-                    
-                    <select name="quality[]">
-                        <?php
-                            $quality_count = count($quality);
-                            for ($q = 0; $q < $quality_count; $q++){
-                                echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
-                            }
-                        ?>
-                    </select>
-                </div>
+            <div class="offer-options">
+                <h2>Oferta ma wygasnąć po:</h2>
+                <input type="number" name="exp_days" inputmode="numeric" placeholder="Ilosc dni" min="5" max="91" />
+                <input type="number" name="exp_hours" inputmode="numeric" placeholder="Ilosc godzin" min="0" max="23" />
+            </div>
+        </div>
+        
+        <div class="product-list">
+            <h2>Produkty</h2>
+            <div class="product">
+                <select name="book[]">
+                    <?php
+                        $sql = "SELECT `id`, `name` FROM `booklist`";
+                        $query = $conn->query($sql);
+                        while ($result = $query->fetch_assoc()) {
+                            echo '<option value="' . $result["id"] . '">' . $result["name"] . '</option>';
+                        }
+                    ?>
+                </select>
                 
-                <button type="button">Dodaj pole</button>
+                <input type="number" name="price[]" placeholder="przewidywana cena" min="0" max="999.99" step="0.01" required /> <!-- or pattern ^\d*(\.\d{0,2})?$ -->
+                
+                <select name="quality[]">
+                    <?php
+                        $quality_count = count($quality);
+                        for ($q = 0; $q < $quality_count; $q++){
+                            echo '<option value="' . $q . '">' . $quality[$q] . '</option>';
+                        }
+                    ?>
+                </select>
             </div>
             
-            <label><input type="checkbox"  name="personal-data-agreement" required /> Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
-            <input type="submit" value="Stwórz ofertę" name="confirm" />
-            <input type="reset" value="Resetuj" />
-        </form>
-
-    </div>
+            <button type="button">Dodaj pole</button>
+        </div>
+        
+        <label><input type="checkbox"  name="personal-data-agreement" required /> Wyrażam zgodę na opublikowanie moich danych osobowych.</label>
+        <input type="submit" value="Stwórz ofertę" name="confirm" />
+        <input type="reset" value="Resetuj" />
+    </form>
 <!-- <label for="phone email discord">Test</label> -->
 <!-- <input type="checkbox" name="phone">Numer telefonu</input>
 <input type="checkbox" name="email">E-mail</input>
 <input type="checkbox" name="discord">Discord</input> -->
-</section>
+</main>
 
 <?php include_once $abspath."src/footer.php"; ?>
 
